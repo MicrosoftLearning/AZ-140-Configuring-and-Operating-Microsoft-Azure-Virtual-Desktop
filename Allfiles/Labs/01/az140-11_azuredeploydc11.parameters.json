@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "Student"
+    },
+    "adminPassword": {
+      "value": "Pa55w.rd1234"
+    },
+    "domainName": {
+      "value": null
+    },
+    "dnsPrefix": {
+      "value": null
+    },
+    "vmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "_artifactsLocation": {
+      "value": "[deployment().properties.templateLink.uri]"
+    },
+    "_artifactsLocationSasToken": {
+      "value": null
+    },
+    "location": {
+      "value": "[resourceGroup().location]"
+    },
+    "virtualMachineName": {
+      "value": "az140-dc-vm11"
+    },
+    "virtualNetworkName": {
+      "value": "az140-adds-vnet11"
+    },
+    "virtualNetworkAddressRange": {
+      "value": "10.0.0.0/16"
+    },
+    "loadBalancerName": {
+      "value": "az140-adds-lb11"
+    },
+    "loadBalancerFrontEndIPName": {
+      "value": "az140-adds-lbfe11"
+    },
+    "backendAddressPoolName": {
+      "value": "az140-adds-lbbe11"
+    },
+    "inboundNatRulesName": {
+      "value": "az140-dc-vm11-rdpInbound"
+    },
+    "networkInterfaceName": {
+      "value": "az140-dc-vm11-nic"
+    },
+    "privateIPAddress": {
+      "value": "10.0.0.4"
+    },
+    "subnetName": {
+      "value": "adds-subnet"
+    },
+    "subnetRange": {
+      "value": "10.0.0.0/24"
+    },
+    "publicIPAddressName": {
+      "value": "az140-dc-vm11-pip"
+    },
+    "availabilitySetName": {
+      "value": "az140-dc-advset11"
+    }
+  }
+}

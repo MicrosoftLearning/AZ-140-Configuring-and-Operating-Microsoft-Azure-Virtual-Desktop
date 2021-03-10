@@ -1,0 +1,180 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nestedTemplatesLocation": {
+      "value": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/ARM-wvd-templates/nestedtemplates/"
+    },
+    "artifactsLocation": {
+      "value": "https://raw.githubusercontent.com/Azure/RDS-Templates/master/ARM-wvd-templates/DSC/Configuration.zip"
+    },
+    "hostpoolName": {
+      "value": "az140-23-hp2"
+    },
+    "hostpoolFriendlyName": {
+      "value": "az140-23 hostpool 2"
+    },
+    "hostpoolDescription": {
+      "value": "az140-23 hostpool 2"
+    },
+    "location": {
+      "value": null
+    },
+    "workSpaceName": {
+      "value": "az140-23-ws1"
+    },
+    "workspaceLocation": {
+      "value": null
+    },
+    "workspaceResourceGroup": {
+      "value": null
+    },
+    "allApplicationGroupReferences": {
+      "value": null
+    },
+    "addToWorkspace": {
+      "value": true
+    },
+    "administratorAccountUsername": {
+      "value": "student@adatum.com"
+    },
+    "administratorAccountPassword": {
+      "value": "Pa55w.rd1234"
+    },
+    "createAvailabilitySet": {
+      "value": true
+    },
+    "vmResourceGroup": {
+      "value": "az140-23-RG"
+    },
+    "vmLocation": {
+      "value": null
+    },
+    "vmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "vmNumberOfInstances": {
+      "value": 2
+    },
+    "vmNamePrefix": {
+      "value": "az140-23-p2"
+    },
+    "vmImageType": {
+      "value": "Gallery"
+    },
+    "vmGalleryImageOffer": {
+      "value": "office-365"
+    },
+    "vmGalleryImagePublisher": {
+      "value": "MicrosoftWindowsDesktop"
+    },
+    "vmGalleryImageSKU": {
+      "value": "20h1-evd-o365pp"
+    },
+    "vmImageVhdUri": {
+      "value": null
+    },
+    "vmCustomImageSourceId": {
+      "value": null
+    },
+    "vmDiskType": {
+      "value": "StandardSSD_LRS"
+    },
+    "vmUseManagedDisks": {
+      "value": true
+    },
+    "storageAccountResourceGroupName": {
+      "value": null
+    },
+    "existingVnetName": {
+      "value": "az140-adds-vnet11"
+    },
+    "existingSubnetName": {
+      "value": "hp2-Subnet"
+    },
+    "virtualNetworkResourceGroupName": {
+      "value": "az140-11-RG"
+    },
+    "usePublicIP": {
+      "value": true
+    },
+    "publicIpAddressSku": {
+      "value": "Basic"
+    },
+    "publicIpAddressType": {
+      "value": "Dynamic"
+    },
+    "createNetworkSecurityGroup": {
+      "value": false
+    },
+    "networkSecurityGroupId": {
+      "value": null
+    },
+    "networkSecurityGroupRules": {
+      "value": []
+    },
+    "hostpoolType": {
+      "value": "Personal"
+    },
+    "personalDesktopAssignmentType": {
+      "value": "Automatic"
+    },
+    "maxSessionLimit": {
+      "value": 99999
+    },
+    "loadBalancerType": {
+      "value": "BreadthFirst"
+    },
+    "customRdpProperty": {
+      "value": null
+    },
+    "vmTemplate": {
+      "value": null
+    },
+    "tokenExpirationTime": {
+      "value": null
+    },
+    "hostpoolTags": {
+      "value": {}
+    },
+    "applicationGroupTags": {
+      "value": {}
+    },
+    "availabilitySetTags": {
+      "value": {}
+    },
+    "networkInterfaceTags": {
+      "value": {}
+    },
+    "networkSecurityGroupTags": {
+      "value": {}
+    },
+    "publicIPAddressTags": {
+      "value": {}
+    },
+    "virtualMachineTags": {
+      "value": {}
+    },
+    "imageTags": {
+      "value": {}
+    },
+    "apiVersion": {
+      "value": "2019-12-10-preview"
+    },
+    "deploymentId": {
+      "value": null
+    },
+    "validationEnvironment": {
+      "value": false
+    },
+    "preferredAppGroupType": {
+      "value": "Desktop"
+    },
+    "ouPath": {
+      "value": "ou=WVDInfra,dc=adatum,dc=com"
+    },
+    "domain": {
+      "value": "adatum.com"
+    }
+  }
+}

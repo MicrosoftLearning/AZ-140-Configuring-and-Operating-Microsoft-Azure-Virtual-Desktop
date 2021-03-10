@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "existingVNetResourceGroupName": {
+      "value": "az140-11-RG"
+    },
+    "existingVnetName": {
+      "value": "az140-adds-vnet11"
+    },
+    "existingSubnetName": {
+      "value": "hp3-Subnet"
+    },
+    "vmCount": {
+      "value": 1
+    },
+    "vmNamePrefix": {
+      "value": "az140-24-p3-"
+    },
+    "vmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "domainToJoin": {
+      "value": "adatum.com"
+    },
+    "domainUsername": {
+      "value": "Student"
+    },
+    "domainPassword": {
+      "value": "Pa55w.rd1234"
+    },
+    "domainJoinOptions": {
+      "value": 3
+    },
+    "vmAdminUsername": {
+      "value": "Student"
+    },
+    "vmAdminPassword": {
+      "value": "Pa55w.rd1234"
+    },
+    "ouPath": {
+      "value": "ou=WVDInfra,dc=adatum,dc=com"
+    }
+  }
+}

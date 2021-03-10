@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "existingVNetName": {
+      "value": "az140-adds-vnet11"
+    },
+    "existingSubnetName": {
+      "value": "cl-Subnet"
+    },
+    "vmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "domainToJoin": {
+      "value": "adatum.com"
+    },
+    "domainUsername": {
+      "value": "Student"
+    },
+    "domainPassword": {
+      "value": "Pa55w.rd1234"
+    },
+    "domainJoinOptions": {
+      "value": 3
+    },
+    "vmAdminUsername": {
+      "value": "Student"
+    },
+    "vmAdminPassword": {
+      "value": "Pa55w.rd1234"
+    },
+    "vmName": {
+      "value": "az140-cl-vm11"
+    },
+    "ouPath": {
+      "value": "" 
+    }
+  }
+}
