@@ -46,7 +46,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Prepare AD DS domain and the Azure subscription for deployment of an Azure Windows Virtual Desktop host pool
 
-1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
+1. From your lab computer, start a web browser, navigate to the [Azure portal]( ), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
 1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-dc-vm11 \| Connect** blade, in the **IP address** drop-down list, select the **Load balancer DNS name** entry, and then select **Download RDP File**.
 1. When prompted, sign in with the following credentials:
@@ -84,7 +84,7 @@ The main tasks for this exercise are as follows:
    Register-AzResourceProvider -ProviderNamespace Microsoft.DesktopVirtualization
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Virtual networks** and, on the **Virtual networks** blade, select **az140-adds-vnet11**. 
 1. On the **az140-adds-vnet11** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, specify the following settings (leave all other settings with their default values) and click **Save**:
 
@@ -95,7 +95,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Deploy an Azure Windows Virtual Desktop host pool
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select **+ Add**. 
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
 
    |Setting|Value|
@@ -115,18 +115,16 @@ The main tasks for this exercise are as follows:
    |---|---|
    |Add virtual machines|**Yes**|
    |Resource group|**Defaulted to same as host pool**|
+   |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
+   |Availability options|No infrastructure redundancy required|
+   |Image type|**Gallery**|
+   |Image|**Windows 10 Enterprise multi-session, Version 20H2 + Microsoft 365 Apps**|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**2**|
-   |Name prefix|**az140-21-p1**|
-   |Image type|**Gallery**|
-   |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
-   |Public IP|**Yes**|
-   |Configure SKU|**Basic**|
-   |Configure assignment|**Dynamic**|
    |Network security group|**Basic**|
    |Public inbound ports|**Yes**|
    |Inbound ports to allow|**RDP**|
@@ -135,6 +133,9 @@ The main tasks for this exercise are as follows:
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
    |AD domain join UPN|**student@adatum.com**|
    |Password|**Pa55w.rd1234**|
+   |User name|Student|
+   |Password|Pa55w.rd1234|
+   |Confirm password|Pa55w.rd1234|
 
 1. On the **Workspace** tab of the **Create a host pool** blade, specify the following settings and select **Review + create**:
 
@@ -285,7 +286,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 5: Configure Windows Virtual Desktop workspaces
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Workspaces**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Workspaces**.
 1. On the **Windows Virtual Desktop \| Workspaces** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
 
@@ -319,7 +320,7 @@ The main tasks for this exercise are as follows:
 #### Task 1: Install Microsoft Remote Desktop client (MSRDC) on a Windows 10 computer
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select the **az140-cl-vm11** entry.
-1. On the **az140-cl-vm11** blade, scroll down to the **Settings** section and select **Run Command**. 
+1. On the **az140-cl-vm11** blade, scroll down to the **Operations** section and select **Run Command**. 
 1. On the **az140-cl-vm11 \| Run command** blade, select **EnableRemotePS** and select **Run**. 
 
    > **Note**: Wait for the command to complete before you proceed to the next step. This might take about 1 minute.

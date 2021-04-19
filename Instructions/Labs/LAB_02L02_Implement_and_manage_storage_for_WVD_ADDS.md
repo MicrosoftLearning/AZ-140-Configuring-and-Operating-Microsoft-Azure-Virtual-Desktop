@@ -55,8 +55,8 @@ The main tasks for this exercise are as follows:
    |User Name|**ADATUM\\Student**|
    |Password|**Pa55w.rd1234**|
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Add**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Add**.
 1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
 
    |Setting|Value|
@@ -77,7 +77,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Create an Azure Files share
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the newly created storage account.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the newly created storage account.
 1. On the storage account blade, in the **File services** section, select **File shares** and then select **+ File share**.
 1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
 
@@ -88,7 +88,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Enable AD DS authentication for the Azure Storage account 
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, open another tab in the Internet Explorer window, navigate to the [Azure Files samples GitHub repository](https://github.com/Azure-Samples/azure-files-samples/releases), download [the most recent version of the compressed **AzFilesHybid.zip** PowerShell module, and extract its content into **C:\\Allfiles\\Labs\\02** folder (create the folder if needed).
+1. Within the Remote Desktop session to **az140-dc-vm11**, open another tab in the Microsoft Edge window, navigate to the [Azure Files samples GitHub repository](https://github.com/Azure-Samples/azure-files-samples/releases), download [the most recent version of the compressed **AzFilesHybid.zip** PowerShell module, and extract its content into **C:\\Allfiles\\Labs\\02** folder (create the folder if needed).
 1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to remove the **Zone.Identifier** alternate data stream, which has a value of **3**, indicating that it was downloaded from the Internet:
 
    ```powershell
@@ -142,14 +142,14 @@ The main tasks for this exercise are as follows:
    AzureStorageSid   : S-1-5-21-1102940778-2483248400-1820931179-2109
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, switch to the Internet Explorer window displaying the Azure portal, on the blade displaying the storage account properties, in the **Settings** section of the vertical menu, select **Configuration**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, switch to the Microsoft Edge window displaying the Azure portal, on the blade displaying the storage account properties, in the **Settings** section of the vertical menu, select **Configuration**.
 1. On the configuration blade of the storage account, ensure that **Active Directory Domain Services (AD DS)** option is set to **Enabled** and that **Joined domain** entry is set to **adatum.com**.
 
    >**Note**: You might have to refresh the browser page for the change to be reflected within the Azure portal.
 
 #### Task 4: Configure the Azure Files RBAC-based permissions
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, on the blade displaying properties of the storage account you created earlier in this exercise, in the vertical menu on the left side, in the **File Services** section, select **File shares**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, on the blade displaying properties of the storage account you created earlier in this exercise, in the vertical menu on the left side, in the **File Services** section, select **File shares**.
 1. On the **File shares** blade, in the list of shares, select the **az140-22-profiles** entry.
 1. On the **az140-22-profiles** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
 1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
@@ -158,7 +158,7 @@ The main tasks for this exercise are as follows:
    |Setting|Value|
    |---|---|
    |Role|**Storage File Data SMB Share Contributor**|
-   |Assign access to|**Azure AD user, group, or service principal**|
+   |Assign access to|**User, group, or service principal**|
    |Select|**az140-wvd-users**|
 
 1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
@@ -167,7 +167,7 @@ The main tasks for this exercise are as follows:
    |Setting|Value|
    |---|---|
    |Role|**Storage File Data SMB Share Elevated Contributor**|
-   |Assign access to|**Azure AD user, group, or service principal**|
+   |Assign access to|**User, group, or service principal**|
    |Select|**az140-wvd-admins**|
 
 #### Task 5: Configure the Azure Files file system permissions

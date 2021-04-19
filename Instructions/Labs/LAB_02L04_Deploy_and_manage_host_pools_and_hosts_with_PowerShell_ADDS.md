@@ -78,7 +78,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Ignore any warnings regarding existing PowerShell modules in use.
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Virtual networks** and, on the **Virtual networks** blade, select **az140-adds-vnet11**. 
 1. On the **az140-adds-vnet11** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, specify the following settings (leave all other settings with their default values) and click **Save**:
 
@@ -207,12 +207,13 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    Install-Module -Name Az.DesktopVirtualization -AllowClobber -Force
+   Install-Module -Name Az -AllowClobber -Force
    ```
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to modify the PowerShell execution policy and sign in to your Azure subscription:
 
    ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentProcess -Force
+   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser -Force
    Connect-AzAccount
    ```
 
@@ -269,8 +270,6 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to publish Microsoft Word:
 
    ```powershell
-   New-AzWvdApplication -AppAlias word -GroupName $appGroupName -Name 'Microsoft Word' -ResourceGroupName $resourceGroupName -CommandLineSetting DoNotAllow
-
    $name = 'Microsoft Word'
    $filePath = 'C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE'
    $iconPath = 'C:\Program Files\Microsoft Office\Root\VFS\Windows\Installer\{90160000-000F-0000-1000-0000000FF1CE}\wordicon.exe'

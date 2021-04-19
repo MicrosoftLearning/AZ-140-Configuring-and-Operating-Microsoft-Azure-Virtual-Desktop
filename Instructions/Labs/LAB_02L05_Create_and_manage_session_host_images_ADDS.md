@@ -94,7 +94,7 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-25-vm0**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** console, run the following to perform per-machine installation of OneDrive:
 
    ```powershell
-   Start-Process -FilePath 'C:\Allfiles\Labs\02\x64\Release\FSLogixAppsSetup.exe -ArgumentList '/quiet' -Wait
+   Start-Process -FilePath 'C:\Allfiles\Labs\02\x64\Release\FSLogixAppsSetup.exe' -ArgumentList '/quiet' -Wait
    ```
 
    > **Note**: Wait for the installation to complete. This might take about 1 minute.
@@ -109,12 +109,6 @@ The main tasks for this exercise are as follows:
    ```
 
 1. Within the Remote Desktop session to **az140-25-vm0**, in Microsoft Edge, browse to [the download page of Microsoft Visual C++ Redistributable](https://aka.ms/vs/16/release/vc_redist.x64.exe), save **VC_redist.x64** into the **C:\\Allfiles\\Labs\\02** folder.
-1. Within the Remote Desktop session to **az140-25-vm0**, switch to the **Administrator: C:\windows\system32\cmd.exe** window and, from the command prompt, run the following to perform installation of Microsoft Visual C++ Redistributable:
-
-   ```cmd
-   C:\Allfiles\Labs\02\vc_redist.x64.exe /install /passive /norestart /log C:\Allfiles\Labs\02\vc_redist.log
-   ```
-
 1. Within the Remote Desktop session to **az140-25-vm0**, switch to the **Administrator: C:\windows\system32\cmd.exe** window and, from the command prompt, run the following to perform installation of Microsoft Visual C++ Redistributable:
 
    ```cmd
@@ -229,7 +223,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    > **Note**: Wait for the deployment to complete. This might take about 20 minutes.
 
-1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Share image galleries** and, on the **Share image galleries** blade, select the **az10425imagegallery** entry, and, on the ****az10425imagegallery**** blade, verify the presence of the **az140-25-host-image** entry representing the newly created image.
+1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Shared image galleries** and, on the **Shared image galleries** blade, select the **az10425imagegallery** entry, and, on the ****az10425imagegallery**** blade, verify the presence of the **az140-25-host-image** entry representing the newly created image.
 
 #### Task 4: Provision a Windows Virtual Desktop host pool by using a custom image
 
@@ -261,22 +255,25 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |---|---|
    |Add virtual machines|**Yes**|
    |Resource group|**Defaulted to same as host pool**|
+   |Name prefix|**az140-25-p4**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
+   |Availability options|No infrastructure redundancy required|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**1**|
-   |Name prefix|**az140-25-p4**|
    |Image type|**Gallery**|
+   |User name|Student|
+   |Password|Pa55w.rd1234|
+   |Confirm password|Pa55w.rd1234|
 
-1. On the **Virtual machines** tab of the **Create a host pool** blade, directly below the **Image** dropdown list, click the **Browse all images and disks** link.
+1. On the **Virtual machines** tab of the **Create a host pool** blade, directly below the **Image** dropdown list, click the **See all images** link.
 1. On the **Select an image** blade, click the **My Items** tab, click **Shared Images**, and, in the list of shared images, select **az140-25-host-image**. 
 1. Back on the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >**
 
+   |Setting|Value|
+   |---|---|
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp4-Subnet (10.0.4.0/24)**|
-   |Public IP|**Yes**|
-   |Configure SKU|**Basic**|
-   |Configure assignment|**Dynamic**|
    |Network security group|**Basic**|
    |Public inbound ports|**Yes**|
    |Inbound ports to allow|**RDP**|

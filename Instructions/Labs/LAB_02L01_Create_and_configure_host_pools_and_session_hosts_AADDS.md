@@ -222,7 +222,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 4: Configure Windows Virtual Desktop workspaces
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Internet Explorer window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Workspaces**.
+1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Workspaces**.
 1. On the **Windows Virtual Desktop \| Workspaces** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
 

@@ -146,7 +146,7 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    $aadUser = Get-AzureADUser -ObjectId "aadadmin1@$aadDomainName"
-   $aadRole = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq 'Company administrator'}
+   $aadRole = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq 'Global administrator'}
    Add-AzureADDirectoryRoleMember -ObjectId $aadRole.ObjectId -RefObjectId $aadUser.ObjectId
    ```
 
