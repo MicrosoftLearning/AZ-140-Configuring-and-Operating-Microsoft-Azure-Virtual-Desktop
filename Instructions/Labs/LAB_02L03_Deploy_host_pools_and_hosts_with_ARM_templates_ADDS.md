@@ -91,7 +91,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: A registration token is required to authorize a host to join the pool. The value of token's expiration date must be between one hour and one month from the current date and time.
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Virtual networks** and, on the **Virtual networks** blade, select **az140-adds-vnet11**. 
 1. On the **az140-adds-vnet11** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, specify the following settings (leave all other settings with their default values) and click **Save**:
 
@@ -100,7 +100,7 @@ The main tasks for this exercise are as follows:
    |Name|**hp2-Subnet**|
    |Subnet address range|**10.0.2.0/24**|
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Network security groups** and, on the **Network security groups** blade, select the security group in the **az140-11-RG** resource group.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Network security groups** and, on the **Network security groups** blade, select the network security group in the **az140-11-RG** resource group.
 1. On the network security group blade, in the vertical menu on the left, in the **Settings** section, click **Properties**.
 1. On the **Properties** blade, click the **Copy to clipboard** icon on the right side of the **Resource ID** textbox. 
 
@@ -122,7 +122,7 @@ The main tasks for this exercise are as follows:
    |Location|the name of the Azure region into which you deployed Azure VMs hosting AD DS domain controllers in the lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)**|
    |Workspace location|the name of the same Azure region as the one set as the value of the **Location** parameters|
    |Workspace Resource Group|none, since, if null, its value will be automatically set to match the deployment target resource group|
-   |All Application Group Reference|null, since there are no existing application groups in the target workspace (there is no workspace)|
+   |All Application Group Reference|none, since there are no existing application groups in the target workspace (there is no workspace)|
    |Vm location|the name of the same Azure region as the one set as the value of the **Location** parameters|
    |Create Network Security Group|**false**|
    |Network Security Group Id|the value of the resourceID parameter of the existing network security group you identified in the previous task|
@@ -208,7 +208,7 @@ The main tasks for this exercise are as follows:
    > **Note**: Now let's review the experience of a user connecting to the Windows Virtual Desktop host pool.
 
 1. From your lab computer, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select the **az140-cl-vm11** entry.
-1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, and then select **Download RDP File**.
+1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, select the Public IP address, and then select **Download RDP File**.
 1. When prompted, sign in as the **ADATUM\\aduser7** user with **Pa55w.rd1234** as its password.
 1. In the **Stay signed in to all your apps** window, clear the checkbox **Allow my organization to manage my device** checkbox and select **No, sign in to this app only**. 
 1. Within the Remote Desktop session to **az140-cl-vm11**, click **Start** and, in the **Start** menu, select the **Remote Desktop** client app.
@@ -223,7 +223,7 @@ The main tasks for this exercise are as follows:
    > **Note**: Now let's switch the personal desktop assignment from the direct mode to automatic. 
 
 1. Switch to your lab computer, to the web browser displaying the Azure portal, on the **az140-23-hp2-DAG \| Assignments** blade, in the informational bar directly above the list of assignments, click the **Assign VM** link. This will redirect you to the **az140-23-hp2 \| Session hosts** blade. 
-1. On the **az140-23-hp2 \| Session hosts** blade, verify that one of the hosts is has **aduser7** listed in the **Assigned User** column.
+1. On the **az140-23-hp2 \| Session hosts** blade, verify that one of the hosts has **aduser7** listed in the **Assigned User** column.
 
    > **Note**: This is expected since the host pool is configured for automatic assignment.
 
@@ -236,7 +236,7 @@ The main tasks for this exercise are as follows:
 
 1. On your lab computer, in the web browser window displaying the Azure portal, navigate to the **az140-23-hp2** host pool blade, review the **Essentials** section and verify that the **Host pool type** is set to **Personal** with the **Assignment type** set to **Direct**.
 1. Switch back to the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** window, click the ellipsis icon in the upper right corner next to the **Windows Virtual Desktop** label, in the dropdown menu, click **Unsubscribe**, and, when prompted for confirmation, click **Continue**.
-1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** window, on the **Let's get started page, click **Subscribe**.
+1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** window, on the **Let's get started** page, click **Subscribe**.
 1. When prompted to sign in, on the **Pick an account** pane, click **Use another account**, and, when prompted, sign in by using the user principal name of the **aduser8** user account with **Pa55w.rd1234** as the password.
 1. In the **Stay signed in to all your apps** window, clear the checkbox **Allow my organization to manage my device** checkbox and select **No, sign in to this app only**. 
 1. On the **Remote Desktop** page, double-click the **SessionDesktop** icon, verify that you receive an error message stating **We couldn't connect because there are currently no available resources. Try again later or contact tech support for help if this keeps happening**, and click **OK**.
