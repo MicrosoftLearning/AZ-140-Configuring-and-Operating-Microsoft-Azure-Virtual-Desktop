@@ -65,8 +65,8 @@ The main tasks for this exercise are as follows:
    Restart-Computer -ComputerName $servers -Force
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, search for and select **Virtual machines** blade and, on the **Virtual machines** blade, select **az140-21-p1-0**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Virtual machines** blade and, on the **Virtual machines** blade, select **az140-21-p1-0**.
 1. On the **az140-21-p1-0** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **az140-21-p1-0 \| Connect** blade, in the **IP address** dropdown list, select the **Private IP address** entry, select **Download RDP File**, and then select **Open**.
 1. When prompted, sign in with the following credentials:
 
@@ -143,7 +143,7 @@ The main tasks for this exercise are as follows:
    ```powershell
    $server = 'az140-21-p1-1' 
    $localPath = 'C:\Allfiles\Labs\04\x64'
-   $remotePath = "\\$server\C$\Allfiles\Labs\02\x64\Release"
+   $remotePath = "\\$server\C$\Allfiles\Labs\04\x64\Release"
    Copy-Item -Path $localPath\Release -Destination $remotePath -Filter '*.exe' -Force -Recurse
    Invoke-Command -ComputerName $server -ScriptBlock {
       Start-Process -FilePath $using:localPath\Release\FSLogixAppsSetup.exe -ArgumentList '/quiet' -Wait
@@ -185,7 +185,7 @@ The main tasks for this exercise are as follows:
 1. In the upper left corner of the **Command Prompt** window, right-click the **Command Prompt** icon and, in the drop-down menu, select **Properties**.
 1. In the **Command Prompt Properties** dialog box, select the **Font** tab, modify the size and font settings, and select **OK**.
 1. From the **Command Prompt** window, type **logoff** and press the **Enter** key to sign out from the Remote Desktop session.
-1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
+1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** under az-140-21-ws1 and verify that it launches a Remote Desktop session. 
 1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** text box, type **cmd** and select **OK** to launch a **Command Prompt** window:
 1. Verify that the **Command Prompt** window settings match those you configured earlier in this task.
 1. Within the **SessionDesktop** session, minimize all windows, right-click the desktop, in the right-click menu, select **New** and, in the cascading menu, select **Shortcut**. 
@@ -195,7 +195,7 @@ The main tasks for this exercise are as follows:
 1. Back in the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, and double-click **SessionDesktop** to start a new Remote Desktop session. 
 1. Within the **SessionDesktop** session, verify that the **Notepad** shortcut appears on the desktop.
 1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
-1. Switch to your lab computer and, in the Internet Explorer window displaying the Azure portal, navigate to the **Storage accounts** blade and select the entry representing the storage account you created in the previous exercise.
+1. Switch to your lab computer and, in the Microsoft Edge window displaying the Azure portal, navigate to the **Storage accounts** blade and select the entry representing the storage account you created in the previous exercise.
 1. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22-profiles**. 
 1. On the **az140-22-profiles** blade, verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aduser1** account followed by the **_aduser1** suffix.
 1. Select the folder you identified in the previous step and note that it contains a single file named **Profile_aduser1.vhd**.
