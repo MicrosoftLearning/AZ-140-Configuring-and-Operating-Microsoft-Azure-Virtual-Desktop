@@ -175,6 +175,8 @@ The main tasks for this exercise are as follows:
    |Resource Group|**az140-23-RG**|
    |Hostpool Token|the value of the token you generated in the previous task|
    |Hostpool Location|the name of the Azure region into which you deployed the hostpool earlier in this lab|
+   |Vm Administrator Account Username|**student**|
+   |Vm Administrator Account Password|**Pa55w.rd1234**|
    |Vm location|the name of the same Azure region as the one set as the value of the **Hostpool Location** parameters|
    |Create Network Security Group|**false**|
    |Network Security Group Id|the value of the resourceID parameter of the existing network security group you identified in the previous task|
@@ -183,7 +185,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the deployment to complete before you proceed to the next task. This might take about 5 minutes.
 
-#### Task 6: Verify changes to the Azure Windows Virtual Desktop host pool
+#### Task 6: Verify changes to the Azure Windows Virtual Desktop host pool <!-- invalid -->
 
 1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, note that the list includes an additional virtual machine named **az140-23-p2-2**.
 1. From your lab computer, switch to the Remote Desktop session to **az140-dc-vm11**. 
@@ -195,7 +197,7 @@ The main tasks for this exercise are as follows:
 1. Switch back to your lab computer, in the web browser displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select the entry **az140-23-hp2** representing the newly modified pool.
 1. On the **az140-23-hp2** blade, review the **Essentials** section and verify that the **Host pool type** is set to **Personal** with the **Assignment type** set to **Automatic**.
 1. On the **az140-23-hp2** blade, in the vertical menu on the left side, in the **Manage** section, click **Session hosts**. 
-1. On the **az140-23-hp2 \| Session hosts** blade, verify that the deployment consists of three hosts.
+1. On the **az140-23-hp2 \| Session hosts** blade, verify that the deployment consists of three hosts. <!-- only 2 hosts -->
 
 #### Task 7: Manage personal desktop assignments in the Azure Windows Virtual Desktop host pool
 
