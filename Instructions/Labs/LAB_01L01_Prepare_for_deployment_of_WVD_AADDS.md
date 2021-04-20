@@ -300,7 +300,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |User Name|**ADATUM\\aaadmin1**|
+   |User Name|**ADATUM\\aadadmin1**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the Active Directory and DNS-related Remote Server Administration Tools:
