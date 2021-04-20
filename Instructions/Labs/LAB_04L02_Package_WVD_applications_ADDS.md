@@ -367,8 +367,8 @@ The main tasks for this exercise are as follows:
 1. On the **Optional features** page in the **Microsoft Azure Active Directory Connect** window, accept the default settings, and select **Next**.
 1. On the **Ready to configure** page in the **Microsoft Azure Active Directory Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
 1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Azure Active Directory Connect** window.
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Azure AD tenant associated with the Azure subscription you are using for this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Azure AD tenant associated with the Azure subscription you are using for this lab.
 1. On the Azure Active Directory blade, in the vertical menu bar on the left side, in the **Manage** section, click **Groups**. 
 1. On the **Groups | All groups** blade, in the list of groups, select the **az140-hosts-42-p1** entry.
 1. On the **az140-hosts-42-p1** blade, in the vertical menu bar on the left side, in the **Manage** section, click **Members**.
@@ -423,9 +423,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Windows Virtual Desktop users and hosts need at least read access to the file share.
 
-1. Back on the **az140-42-msixvhds \| Access Control (IAM)** blade, in the vertical menu on the left side, in the **Settings** section, click **Properties**.
-1. On the **az140-42-msixvhds \| Properties** blade, record the value of the **URL** textbox, excluding the **https://** prefix and, within the recorded URL, replace each instance of a forward slash (**/**) with a backslash (**\**). You will need it later in this task.
-1. On the **az140-42-msixvhds \| Properties** blade, in the vertical menu on the left side, click **Overview** and, in the list of files on the right side, click the **XmlNotepad.vhd** entry. 
+1. Back on the **az140-42-msixvhds \| Access Control (IAM)** blade, in the vertical menu on the left side, in the **Settings** section, click **Overview**, on the right side, click the **packages** folder entry, and, in the list of files, click the **XmlNotepad.vhd** entry. 
 1. On the **File properties** blade, record the value of the **URL** textbox, excluding the **https://** prefix. You will need it in the next task.
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the **az140-42-msixvhds** share (replace the `<storage-account-name>` placeholder with the name of the storage account) and verify that the command completes successfully:
 
@@ -452,15 +450,34 @@ The main tasks for this exercise are as follows:
    Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
    ```
 
-#### Task 4: Run the MSIX app attach staging script on Windows Virtual Desktop hosts
+#### Task 3: Run the MSIX app attach staging script on Windows Virtual Desktop hosts
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to authenticate to the Azure subscription using in this lab:
+1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
+
+   ```powershell
+   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+   Install-Module -Name PowerShellGet -Force -SkipPublisherCheck
+   ```
+
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the latest version of the Az PowerShell module (select **Yes to All** when prompted for confirmation):
+
+   ```powershell
+   Install-Module -Name Az -AllowClobber -SkipPublisherCheck
+   ```
+
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to modify the execution policy:
+
+   ```powershell
+   Set-ExecutionPolicy RemoteSigned -Force
+   ```
+
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to authenticate to the Azure subscription using in this lab:
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. When prompted, sign in with the **wvdadmin1** user principal name and **Pa55w.rd1234** as its password.
+1. When prompted, sign in with the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the name of the Azure storage account hosting the file share containing the MSIX package:
 
    ```powershell
@@ -468,12 +485,21 @@ The main tasks for this exercise are as follows:
    $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName  
    ```
 
+1. Within the Remote Desktop session to **az140-cl-vm42**, start Command Prompt as Administrator, from the Command Prompt, run the following to enable WinRM (when prompted for confirmation, type **Y** and press the **Enter** key:
+
+   ```cmd
+   winrm qc
+   ```
+
 1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to enable CredSSP authentication for PowerShell Remoting to the target Windows Remote Desktop hosts:
 
    ```powershell
-   winrm qc
    Enable-WSManCredSSP -Role client -DelegateComputer * -Force
+   ```
 
+1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to enable CredSSP authentication for PowerShell Remoting to the target Windows Remote Desktop hosts:
+
+   ```powershell
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
    ForEach ($wvdhost in $wvdhosts){
       Invoke-Command -ComputerName $wvdhost -ScriptBlock {
@@ -525,16 +551,17 @@ The main tasks for this exercise are as follows:
    }
     ```
 
-#### Task 5: Initiate a Remote Desktop session to one of the pool hosts
+#### Task 4: Initiate a Remote Desktop session to one of the pool hosts
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge and navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, when prompted, select **Run** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. 
 1. Once the installation completes, ensure that the **Launch Remote Desktop when setup exits** checkbox is selected and click **Finish** to start the Remote Desktop client.
 1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** user principal name and **Pa55w.rd1234** as its password.
-1. In the **Remote Desktop** client window, within the **az140-21-ws1** section, double-click **SessionDesktop** icon to open a Remote Desktop session to the host pool that is part of the **az140-21-ws1** workspace.
+1. If prompted, in the **Stay signed in to all your apps** window, clear the **Allow my organization to manage my device** checkbox and click **No, sign in to this app only**.
+1. In the **Remote Desktop** client window, within the **az140-21-ws1** section, double-click **SessionDesktop** icon to open a Remote Desktop session to the host pool that is part of the **az140-21-ws1** workspace. When prompted provide the password for the **aduser1** account.
 
-#### Task 6: Run the MSIX app attach registration script on Windows Virtual Desktop hosts
+#### Task 5: Run the MSIX app attach registration script on Windows Virtual Desktop hosts
 
-1. Within the Remote Desktop session from **az140-cl-vm42** to a host pool in the **az140-21-ws1** workspace, while signed in as **ADATUM\aduser1**, start **Windows PowerShell ISE** and, from the **Windows PowerShell ISE** console, run the following to perform the MSIX app attach registration:
+1. Within the Remote Desktop session from **az140-cl-vm42** to a host pool in the **az140-21-ws1** workspace, while signed in as **aduser1**, start **Windows PowerShell ISE** and, from the **Windows PowerShell ISE** console, run the following to perform the MSIX app attach registration:
 
    ```powershell
    $packageName = 'XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8'
@@ -545,7 +572,7 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session from **az140-cl-vm42** to a host pool in the **az140-21-ws1** workspace, while signed in as **ADATUM\aduser1**, click **Start**, in the **Start** menu, click **XML Notepad** and verify that it successfully launches the XML Notepad app.
 1. Close XML Notepad and the **Windows PowerShell ISE** window, right-click **Start**, in the right-click menu, select **Shut down or sign out** and, in the cascading menu, select **Sign out**.
 
-#### Task 7: Run the MSIX app attach deregistration script
+#### Task 6: Run the MSIX app attach deregistration script
 
 1. Back within the Remote Desktop session to **az140-cl-vm42**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to perform the MSIX app deregistration on all hosts in the **az140-21-hp1** host pool:
 
@@ -561,7 +588,7 @@ The main tasks for this exercise are as follows:
 
 1. Verify that the script completed successfully.
 
-#### Task 8: Run the MSIX app attach destaging script
+#### Task 7: Run the MSIX app attach destaging script
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the name of the Azure storage account hosting the file share containing the MSIX package:
 
