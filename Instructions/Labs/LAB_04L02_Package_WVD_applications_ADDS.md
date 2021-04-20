@@ -423,8 +423,6 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Windows Virtual Desktop users and hosts need at least read access to the file share.
 
-1. Back on the **az140-42-msixvhds \| Access Control (IAM)** blade, in the vertical menu on the left side, in the **Settings** section, click **Overview**, on the right side, click the **packages** folder entry, and, in the list of files, click the **XmlNotepad.vhd** entry. 
-1. On the **File properties** blade, record the value of the **URL** textbox, excluding the **https://** prefix. You will need it in the next task.
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the **az140-42-msixvhds** share (replace the `<storage-account-name>` placeholder with the name of the storage account) and verify that the command completes successfully:
 
    ```cmd
