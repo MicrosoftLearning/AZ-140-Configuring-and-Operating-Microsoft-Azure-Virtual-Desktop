@@ -65,12 +65,12 @@ The main tasks for this exercise are as follows:
    Register-AzResourceProvider -ProviderNamespace Microsoft.DesktopVirtualization
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge displaying the Azure portal, search for and select **Virtual networks** and, from the **Virtual networks** blade, select the **wvd-aads-vnet11a** entry. 
-1. On the **wvd-aads-vnet11a** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, in the **Name** text box, type **hp1-Subnet**, leave all other settings with their default values, and select **OK**. 
+1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge displaying the Azure portal, search for and select **Virtual networks** and, from the **Virtual networks** blade, select the **az140-aadds-vnet11a** entry. 
+1. On the **az140-aadds-vnet11a** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, in the **Name** text box, type **hp1-Subnet**, leave all other settings with their default values, and select **Save**. 
 
 #### Task 2: Deploy an Azure Windows Virtual Desktop host pool
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select **+ Add**. 
+1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
 
    |Setting|Value|
@@ -97,7 +97,7 @@ The main tasks for this exercise are as follows:
    |Image type|**Gallery**|
    |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
    |OS disk type|**Standard SSD**|
-   |Virtual network|**wvd-aaads-vnet11**|
+   |Virtual network|**az140-aadds-vnet11a**|
    |Subnet|**hp1-Subnet (10.10.1.0/24)**|
    |Public IP|**Yes**|
    |Configure SKU|**Basic**|
@@ -127,7 +127,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21a-hp1-DAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Assignments**.
 1. On the **az140-21a-hp1-DAG \| Assignments** blade, select **+ Add**.
 1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-apooled** and click **Select**.
-1. Navigate back to the **Windows Virtual Desktop \| Application groups** blade, and select **+ Add** again.
+1. Navigate back to the **Windows Virtual Desktop \| Application groups** blade, and select **+ Create** again.
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
    |Setting|Value|
@@ -183,7 +183,7 @@ The main tasks for this exercise are as follows:
    > **Note**: Now you will create an application group based on file path as the application source
 
 1. Within the Remote Desktop session to **az140-cl-vm11a**, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Application groups**.
-1. On the **Windows Virtual Desktop \| Application groups** blade, select **+ Add**. 
+1. On the **Windows Virtual Desktop \| Application groups** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
    |Setting|Value|
@@ -223,7 +223,7 @@ The main tasks for this exercise are as follows:
 #### Task 4: Configure Windows Virtual Desktop workspaces
 
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Workspaces**.
-1. On the **Windows Virtual Desktop \| Workspaces** blade, select **+ Add**. 
+1. On the **Windows Virtual Desktop \| Workspaces** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
 
    |Setting|Value|
@@ -259,9 +259,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Subscribe to a Windows Virtual Desktop workspace
 
-1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aaduser1** credentials (using its userPrincipalName attribute as the user name and **Pa55w.rd1234** as its password.
-
-   > **Note**: 
+1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aaduser1** credentials (using its userPrincipalName attribute as the user name and **Pa55w.rd1234** as its password. 
 
    > **Note**: Alternatively, in the **Remote Desktop** client window, select **Subscribe with URL**, in the **Subscribe to a Workspace** pane, in the **Email or Workspace URL**, type **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery**, select **Next**, and, once prompted, sign in with the **aaduser1** credentials (using its userPrincipalName attribute as the user name and **Pa55w.rd1234** as its password). 
 
