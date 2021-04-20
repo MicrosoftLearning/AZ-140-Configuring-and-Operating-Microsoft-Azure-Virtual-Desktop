@@ -83,7 +83,7 @@ The main tasks for this exercise are as follows:
      -TemplateParameterFile $HOME/az140-42_azuredeploycl42.parameters.json
    ```
 
-   > **Note**: Wait for the deployment to complete before you proceed to the next task. This might take about than 10 minutes. 
+   > **Note**: Wait for the deployment to complete before you proceed to the next task. This might take about 10 minutes. 
 
 #### Task 3: Prepare the Azure VM running Windows 10 for MSIX packaging
 
@@ -136,14 +136,14 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Since you are using a self-signed certificate, you need to install it in the **Trusted People** certificate store on the target session hosts.
 
-1. from the **Administrator: Windows PowerShell ISE** console, run the following to install the newly generated certificate in the **Trusted People** certificate store on the target session hosts.
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the newly generated certificate in the **Trusted People** certificate store on the target session hosts:
 
    ```powershell
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
    $cleartextPassword = 'Pa55w.rd1234'
    $securePassword = ConvertTo-SecureString $cleartextPassword -AsPlainText -Force
    ForEach ($wvdhost in $wvdhosts){
-      $localPath = 'C:\Allfiles\Labs\04\'
+      $localPath = 'C:\Allfiles\Labs\04'
       $remotePath = "\\$wvdhost\C$\Allfiles\Labs\04\"
       Copy-Item -Path "$localPath\adatum.pfx" -Destination $remotePath -Force
       Invoke-Command -ComputerName $wvdhost -ScriptBlock {
@@ -309,34 +309,13 @@ The main tasks for this exercise are as follows:
 
 The main tasks for this exercise are as follows:
 
-1. Configure an Azure File share for MSIX app attach
 1. Configure Active Directory groups containing Windows Virtual Desktop hosts
-1. Set up the Azure Files share
+1. Set up the Azure Files share for MSIX app attach
 1. Mount and register the MSIX App attach container on Windows Virtual Desktop session hosts
 1. Publish MSIX apps to an application group
 1. Validate the functionality of MSIX App attach
 
-#### Task 1: Configure Azure File share for MSIX app attach
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge in the InPrivate mode, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
-
-   > **Note**: Ensure to use the Microsoft Edge InPrivate mode.
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select the storage account you configure to host user profiles.
-
-   > **Note**: This part of the lab is contingent on completing the lab **Windows Virtual Desktop profile management (AD DS)** or **Windows Virtual Desktop profile management (Azure AD DS)**
-
-   > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Azure AD DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
-
-1. On the storage account blade, in the vertical menu on the left side, in the **File services** section, select **File shares** and then select **+ File share**.
-1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
-
-   |Setting|Value|
-   |---|---|
-   |Name|**az140-42-msixvhds**|
-
-
-#### Task 2: Configure Active Directory groups containing Windows Virtual Desktop hosts
+#### Task 1: Configure Active Directory groups containing Windows Virtual Desktop hosts
 
 1. Switch to the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
 1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-dc-vm11 \| Connect** blade, in the **IP address** drop-down list, select the **Load balancer DNS name** entry, and then select **Download RDP File**.
@@ -384,7 +363,7 @@ The main tasks for this exercise are as follows:
 1. On the **Additional tasks** page in the **Microsoft Azure Active Directory Connect** window, select **Customize synchronization options** and select **Next**.
 1. On the **Connect to Azure AD** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task and the **Pa55w.rd1234** password.
 1. On the **Connect your directories** page in the **Microsoft Azure Active Directory Connect** window, select **Next**.
-1. On the **Domain and OU filtering** page in the **Microsoft Azure Active Directory Connect** window, ensure that the option **Sync selected domains and OUs** is selected, expand the **adatum.com node, select the checkbox next to the **WVDInfra** OU (leave any other selected checkboxes unchanged), and select **Next**.
+1. On the **Domain and OU filtering** page in the **Microsoft Azure Active Directory Connect** window, ensure that the option **Sync selected domains and OUs** is selected, expand the **adatum.com** node, select the checkbox next to the **WVDInfra** OU (leave any other selected checkboxes unchanged), and select **Next**.
 1. On the **Optional features** page in the **Microsoft Azure Active Directory Connect** window, accept the default settings, and select **Next**.
 1. On the **Ready to configure** page in the **Microsoft Azure Active Directory Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
 1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Azure Active Directory Connect** window.
@@ -395,20 +374,29 @@ The main tasks for this exercise are as follows:
 1. On the **az140-hosts-42-p1** blade, in the vertical menu bar on the left side, in the **Manage** section, click **Members**.
 1. On the **az140-hosts-42-p1 | Members** blade, verify that the list of **Direct members** include the three hosts of the Windows Virtual Desktop pool you added to the group earlier in this task.
 
-#### Task 3: Set up the Azure Files share
+#### Task 2: Set up the Azure Files share for MSIX app attach
 
 1. On the lab computer, switch back to the Remote Desktop session to **az140-cl-vm42**.
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** window, run the following to copy the VHD file you created in the previous exercise to the newly created Azure Files share:
+1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge in the InPrivate mode, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 
-   ```powershell
-   New-Item -ItemType Directory -Path 'Z:\packages' 
-   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
-   ```
+   > **Note**: Ensure to use the Microsoft Edge InPrivate mode.
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, switch to the Microsoft Edge window displaying the Azure portal, navigate back to the blade of the storage account containing the **az140-42-msixvhds** file share you created earlier in this exercise.
-1. On the storage account blade, in the vertical menu on the left side, in the **File Service** section, click **File shares** and, in the list of file shares, click the **az140-42-msixvhds** entry.
-1. On the **az140-42-msixvhds** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
-1. On the **az140-42-msixvhds \| Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
+1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select the storage account you configured to host user profiles.
+
+   > **Note**: This part of the lab is contingent on completing the lab **Windows Virtual Desktop profile management (AD DS)** or **Windows Virtual Desktop profile management (Azure AD DS)**
+
+   > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Azure AD DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
+
+1. On the storage account blade, in the vertical menu on the left side, in the **File services** section, select **File shares** and then select **+ File share**.
+1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
+
+   |Setting|Value|
+   |---|---|
+   |Name|**az140-42-msixvhds**|
+
+1. In the Microsoft Edge displaying the Azure portal, in the list of file shares, select the newly created file share. 
+1. On the **az140-42a-msixvhds** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
+1. On the **az140-42a-msixvhds \| Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
 1. On the **Add role assignment** blade, specify the following settings and select **Save**:
 
    |Setting|Value|
@@ -453,9 +441,16 @@ The main tasks for this exercise are as follows:
    icacls Z:\ /grant ADATUM\az140-wvd-admins:(OI)(CI)(F) /T
    ```
 
-   >**Note**: You could set these permissions by using File Explorer while signed in as **ADATUM\\wvdadmin1**. 
+   >**Note**: You could also set these permissions by using File Explorer while signed in as **ADATUM\\wvdadmin1**. 
 
    >**Note**: Next you will validate the functionality of MSIX App attach
+
+1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** window, run the following to copy the VHD file you created in the previous exercise to the Azure Files share you created earlier in this exercise:
+
+   ```powershell
+   New-Item -ItemType Directory -Path 'Z:\packages' 
+   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
+   ```
 
 #### Task 4: Run the MSIX app attach staging script on Windows Virtual Desktop hosts
 
