@@ -195,7 +195,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |Name|**az140-aadds-vnet11**|
+   |Name|**az140-aadds-vnet11a**|
    |Address range|**10.10.0.0/16**|
    |Subnet name|**aadds-Subnet**|
    |Subnet name|**10.10.0.0/24**|
@@ -249,11 +249,11 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
-1. From your lab computer, in the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **cl-Subnet** to the virtual network named **az140-aadds-vnet11** you created in the previous task:
+1. From your lab computer, in the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **cl-Subnet** to the virtual network named **az140-aadds-vnet11a** you created in the previous task:
 
    ```powershell
    $resourceGroupName = 'az140-11a-RG'
-   $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name 'az140-aadds-vnet11'
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name 'az140-aadds-vnet11a'
    $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
      -Name 'cl-Subnet' `
      -AddressPrefix 10.10.255.0/24 `
