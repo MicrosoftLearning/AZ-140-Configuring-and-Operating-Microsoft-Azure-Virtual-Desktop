@@ -46,7 +46,7 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
-1. From the **az140-cl-vm11a** blade, connect to the newly deployed Azure VM via Remote Desktop. When prompted to authentiate, specify **ADATUM\aadadmin1** as the username and the **Pa55w.rd1234** as its password. 
+1. From the **az140-cl-vm11a** blade, connect to the newly deployed Azure VM via Remote Desktop. When prompted to authenticate, specify **ADATUM\aadadmin1** as the username and the **Pa55w.rd1234** as its password. 
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Active Directory Users and Computers**.
 1. In the **Active Directory Users and Computers** console, right-click the domain node, select **New**, followed by **Organizational Unit**, in the **New Object - Organizational Unit** dialog box, in the **Name** textbox, type **ADDC Users**, and select **OK**.
 1. In the **Active Directory Users and Computers** console, right-click the **ADDC Users**, select **New**, followed by **Group**, in the **New Object - Group** dialog box, specify the following settings and select **OK**:
@@ -58,22 +58,24 @@ The main tasks for this exercise are as follows:
    |Group scope|**Global**|
    |Group type|**Security**|
 
-1. In the **Active Directory Users and Computers** console, display the properties of the **Local Admins** group, switch to the **Members** tab, select **Add**, in the **Select Users, Contacts, Computers, Service Accounts, or Groups** dialog box, in the **Enter the object names to select**, type **wvdadmin1** and select **OK**.
+1. In the **Active Directory Users and Computers** console, display the properties of the **Local Admins** group, switch to the **Members** tab, select **Add**, in the **Select Users, Contacts, Computers, Service Accounts, or Groups** dialog box, in the **Enter the object names to select**, type **aadadmin1** and select **OK**.
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Group Policy Management**.
 1. In the **Group Policy Management** console, navigate to the **AADDC Computers** OU, right-click the **AADDC Computers GPO** icon and select **Edit**.
 1. In the **Group Policy Management Editor** console, expand **Computer Configuration**, **Policies**, **Windows Settings**, **Security Settings**, right-click **Restriced Groups**, and select **Add Group**.
 1. In the **Add Group** dialog box, in the **Group** text box, select **Browse**, in the **Select Groups** dialog box, in the **Enter the object names to select**, type **Local Admins** and select **OK**.
-1. Back in the **Add Group* dialog box, select **OK**.
+1. Back in the **Add Group** dialog box, select **OK**.
 1. In the **ADATUM\Local Admins Properties** dialog box, in the section labeled **This group is a member of**, select **Add**, in the **Group Membership** dialog box, type **Administrators**, select **OK**, and select **OK** again to finalize the change.
 
    >**Note**: Make sure to use the section labeled **This group is a member of**
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start PowerShell ISE as Administrator and run the following to trigger Group Policy processing on the two Windows Virtual Desktop hosts:
+1. Within the Remote Desktop to the az140-cl-vm11a Azure VM, start PowerShell ISE as Administrator and run the following to restart the two Windows Virtual Desktop hosts in order to trigger Group Policy processing:
 
    ```powershell
    $servers = 'az140-21-p1-0','az140-21-p1-1'
-   foreach ($server in $servers) {Invoke-GPUpdate –Computer $server –RandomDelayInMinutes 0}
+   Restart-Computer -ComputerName $servers -Force -Wait
    ```
+
+1. Wait for the script to complete. This should take about 3 minutes.
 
 #### Task 2: Configure FSLogix-based profiles on Windows Virtual Desktop session host VMs
 
@@ -114,7 +116,7 @@ The main tasks for this exercise are as follows:
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to retrieve the name of the Azure Storage account you configured earlier in this lab:
 
    ```powershell
-   $resourceGroupName = 'az140-21a-RG'
+   $resourceGroupName = 'az140-22a-RG'
    $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName   
    ```
 
@@ -193,16 +195,16 @@ and select **OK** to close the group **Properties** window.
 1. In the upper left corner of the **Command Prompt** window, right-click the **Command Prompt** icon and, in the drop-down menu, select **Properties**.
 1. In the **Command Prompt Properties** dialog box, select the **Font** tab, modify the size and font settings, and select **OK**.
 1. From the **Command Prompt** window, type **logoff** and press the **Enter** key to sign out from the Remote Desktop session.
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Default Desktop** and verify that it launches a Remote Desktop session. 
+1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
 1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** text box, type **cmd** and select **OK** to launch a **Command Prompt** window:
 1. Verify that the **Command Prompt** window properties match those you set earlier in this task.
-1. Within the **Default Desktop** session, minimize all windows, right-click the desktop, in the right-click menu, select **New** and, in the cascading menu, select **Shortcut**. 
+1. Within the **SessionDesktop** session, minimize all windows, right-click the desktop, in the right-click menu, select **New** and, in the cascading menu, select **Shortcut**. 
 1. On the **What item would you like to create a shortcut for?** page of the **Create Shortcut** wizard, in the **Type the location of the item** text box, type **Notepad** and select **Next**.
 1. On the **What would you like to name the shortcut** page of the **Create Shortcut** wizard, in the **Type a name for this shortcut** text box, type **Notepad** and select **Finish**.
-1. Within the **Default Desktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
-1. Back in the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, and double-click **Default Desktop** to start a new Remote Desktop session. 
-1. Within the **Default Desktop** session, verify that the **Notepad** shortcut appears on the desktop.
-1. Within the **Default Desktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
+1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
+1. Back in the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, and double-click **SessionDesktop** to start a new Remote Desktop session. 
+1. Within the **SessionDesktop** session, verify that the **Notepad** shortcut appears on the desktop.
+1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
 1. Switch to the Remote Desktop session to **az140-cl-vm11a**, switch to the Microsoft Edge window displaying the Azure portal.
 1. In the Microsoft Edge window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the storage account you created in the prevous exercise.
 1. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22a-profiles**. 
