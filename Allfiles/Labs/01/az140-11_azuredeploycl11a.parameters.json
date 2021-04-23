@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "existingVNetName": {
-      "value": "az140-aadds-vnet11"
+      "value": "az140-aadds-vnet11a"
     },
     "existingSubnetName": {
       "value": "cl-Subnet"
