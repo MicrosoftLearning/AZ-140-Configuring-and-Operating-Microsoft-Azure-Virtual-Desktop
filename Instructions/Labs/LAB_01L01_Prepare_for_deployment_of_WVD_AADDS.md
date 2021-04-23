@@ -222,14 +222,14 @@ The main tasks for this exercise are as follows:
    > **Note**: Any existing cloud-only users that need to be able to access Azure AD DS domain computers and their resources must either change their passwords or have them reset. This applies to the **aadadmin1** account you created earlier in this lab.
 
 1. From your lab computer, in the Azure portal, open a **PowerShell** session in the **Cloud Shell** pane.
-1. From the PowerShell session in the Cloud Shell pane, run the following to identify the objectID attribute of the Azure AD **aadmin1** user account:
+1. From the PowerShell session in the Cloud Shell pane, run the following to identify the objectID attribute of the Azure AD **aadadmin1** user account:
 
    ```powershell
    Connect-AzureAD
    $objectId = (Get-AzureADUser -Filter "MailNickName eq 'aadadmin1'").ObjectId
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to reset the password of the **aadmin1** user account, which objectId you identified in the previous step:
+1. From the PowerShell session in the Cloud Shell pane, run the following to reset the password of the **aadadmin1** user account, which objectId you identified in the previous step:
 
    ```powershell
    $password = ConvertTo-SecureString 'Pa55w.rd1234' -AsPlainText -Force
@@ -324,7 +324,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Create AD DS users and groups that will be synchronized to Azure AD DS
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadmin1** user account with **Pa55w.rd1234** as its password.
+1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with **Pa55w.rd1234** as its password.
 1. In the Azure portal, open a PowerShell session in the **Cloud Shell**.
 1. When prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
 
