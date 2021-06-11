@@ -1,20 +1,20 @@
 ---
 lab:
-    title: 'Lab: Package Windows Virtual Desktop applications (AD DS)'
+    title: 'Lab: Package Azure Virtual Desktop applications (AD DS)'
     module: 'Module 4: Manage User Environments and Apps'
 ---
 
-# Lab - Package Windows Virtual Desktop applications (AD DS)
+# Lab - Package Azure Virtual Desktop applications (AD DS)
 # Student lab manual
 
 ## Lab dependencies
 
 - An Azure subscription
 - A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
-- The completed lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Windows Virtual Desktop (Azure AD DS)**
-- The completed lab **Windows Virtual Desktop profile management (AD DS)** or **Windows Virtual Desktop profile management (Azure AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
+- The completed lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Azure AD DS)**
 
-> **Note**: At the time of authoring this lab, the MSIX app attach functionality for Windows Virtual Desktop is in public preview. In order to try it, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
+> **Note**: At the time of authoring this lab, the MSIX app attach functionality for Azure Virtual Desktop is in public preview. In order to try it, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
 
 ## Estimated Time
 
@@ -22,15 +22,15 @@ lab:
 
 ## Lab scenario
 
-You need to package and deploy Windows Virtual Desktop applications in an Active Directory Domain Services (AD DS) environment.
+You need to package and deploy Azure Virtual Desktop applications in an Active Directory Domain Services (AD DS) environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
 - Prepare for and create MSIX app packages
-- Implement MSIX app attach container for Windows Virtual Desktop in AD DS environment
-- Implement the MSIX app attach on Windows Virtual Desktop in AD DS environment
+- Implement MSIX app attach container for Azure Virtual Desktop in AD DS environment
+- Implement the MSIX app attach on Azure Virtual Desktop in AD DS environment
 
 ## Lab files
 
@@ -43,7 +43,7 @@ After completing this lab, you will be able to:
 
 The main tasks for this exercise are as follows:
 
-1. Prepare for configuration of Windows Virtual Desktop session hosts
+1. Prepare for configuration of Azure Virtual Desktop session hosts
 1. Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 1. Prepare the Azure VM running Windows 10 for MSIX packaging
 1. Generate a signing certificate
@@ -51,11 +51,11 @@ The main tasks for this exercise are as follows:
 1. Install the MSIX Packaging Tool
 1. Create an MSIX package
 
-#### Task 1: Prepare for configuration of Windows Virtual Desktop session hosts
+#### Task 1: Prepare for configuration of Azure Virtual Desktop session hosts
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. On the lab computer and, in the web browser window displaying the Azure portal, open the **PowerShell** shell session within the **Cloud Shell** pane.
-1. From the PowerShell session in the Cloud Shell pane, run the following to start the Windows Virtual Desktop session host Azure VMs you will be using in this lab:
+1. From the PowerShell session in the Cloud Shell pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM -NoWait
@@ -209,7 +209,7 @@ The main tasks for this exercise are as follows:
 1. Switch to the File Explorer window, navigate to the **C:\\Allfiles\\Labs\\04\\XmlNotepad** folder and verify that it contains the *.msix and *.xml files. 
 
 
-### Exercise 2: Implement MSIX app attach container for Windows Virtual Desktop in Azure AD DS environment
+### Exercise 2: Implement MSIX app attach container for Azure Virtual Desktop in Azure AD DS environment
 
 The main tasks for this exercise are as follows:
 
@@ -218,7 +218,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Enable Hyper-V on the Azure VMs running Window 10 Enterprise Edition
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the target Windows Virtual Desktop hosts for MSIX app attach: 
+1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the target Azure Virtual Desktop hosts for MSIX app attach: 
 
    ```powershell
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
@@ -235,7 +235,7 @@ The main tasks for this exercise are as follows:
    }
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to install Hyper-V and its management tools, including the Hyper-V PowerShell module on the Windows Virtual Desktop hosts:
+1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to install Hyper-V and its management tools, including the Hyper-V PowerShell module on the Azure Virtual Desktop hosts:
 
    ```powershell
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
@@ -305,17 +305,17 @@ The main tasks for this exercise are as follows:
    Dismount-VHD -Path "C:\Allfiles\Labs\04\MSIXVhds\$appName.vhd" -Confirm:$false
    ```
 
-### Exercise 3: Implement MSIX app attach on Windows Virtual Desktop session hosts
+### Exercise 3: Implement MSIX app attach on Azure Virtual Desktop session hosts
 
 The main tasks for this exercise are as follows:
 
-1. Configure Active Directory groups containing Windows Virtual Desktop hosts
+1. Configure Active Directory groups containing Azure Virtual Desktop hosts
 1. Set up the Azure Files share for MSIX app attach
-1. Mount and register the MSIX App attach container on Windows Virtual Desktop session hosts
+1. Mount and register the MSIX App attach container on Azure Virtual Desktop session hosts
 1. Publish MSIX apps to an application group
 1. Validate the functionality of MSIX App attach
 
-#### Task 1: Configure Active Directory groups containing Windows Virtual Desktop hosts
+#### Task 1: Configure Active Directory groups containing Azure Virtual Desktop hosts
 
 1. Switch to the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
 1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-dc-vm11 \| Connect** blade, in the **IP address** drop-down list, select the **Load balancer DNS name** entry, and then select **Download RDP File**.
@@ -334,7 +334,7 @@ The main tasks for this exercise are as follows:
    New-ADGroup -Name 'az140-hosts-42-p1' -GroupScope 'Global' -GroupCategory Security -Path $ouPath
    ```
 
-   > **Note**: You will use this group to grant Windows Virtual Desktop hosts permissions to the **az140-42-msixvhds** file share.
+   > **Note**: You will use this group to grant Azure Virtual Desktop hosts permissions to the **az140-42-msixvhds** file share.
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to add members to the groups you created in the previous step:
 
@@ -372,7 +372,7 @@ The main tasks for this exercise are as follows:
 1. On the Azure Active Directory blade, in the vertical menu bar on the left side, in the **Manage** section, click **Groups**. 
 1. On the **Groups | All groups** blade, in the list of groups, select the **az140-hosts-42-p1** entry.
 1. On the **az140-hosts-42-p1** blade, in the vertical menu bar on the left side, in the **Manage** section, click **Members**.
-1. On the **az140-hosts-42-p1 | Members** blade, verify that the list of **Direct members** include the three hosts of the Windows Virtual Desktop pool you added to the group earlier in this task.
+1. On the **az140-hosts-42-p1 | Members** blade, verify that the list of **Direct members** include the three hosts of the Azure Virtual Desktop pool you added to the group earlier in this task.
 
 #### Task 2: Set up the Azure Files share for MSIX app attach
 
@@ -383,7 +383,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select the storage account you configured to host user profiles.
 
-   > **Note**: This part of the lab is contingent on completing the lab **Windows Virtual Desktop profile management (AD DS)** or **Windows Virtual Desktop profile management (Azure AD DS)**
+   > **Note**: This part of the lab is contingent on completing the lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Azure AD DS)**
 
    > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Azure AD DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
 
@@ -421,7 +421,7 @@ The main tasks for this exercise are as follows:
    |Assign access to|**User, group, or service principal**|
    |Select|**az140-wvd-users**|
 
-   > **Note**: Windows Virtual Desktop users and hosts need at least read access to the file share.
+   > **Note**: Azure Virtual Desktop users and hosts need at least read access to the file share.
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the **az140-42-msixvhds** share (replace the `<storage-account-name>` placeholder with the name of the storage account) and verify that the command completes successfully:
 
@@ -448,7 +448,7 @@ The main tasks for this exercise are as follows:
    Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
    ```
 
-#### Task 3: Run the MSIX app attach staging script on Windows Virtual Desktop hosts
+#### Task 3: Run the MSIX app attach staging script on Azure Virtual Desktop hosts
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
 
@@ -557,7 +557,7 @@ The main tasks for this exercise are as follows:
 1. If prompted, in the **Stay signed in to all your apps** window, clear the **Allow my organization to manage my device** checkbox and click **No, sign in to this app only**.
 1. In the **Remote Desktop** client window, within the **az140-21-ws1** section, double-click **SessionDesktop** icon to open a Remote Desktop session to the host pool that is part of the **az140-21-ws1** workspace. When prompted provide the password for the **aduser1** account.
 
-#### Task 5: Run the MSIX app attach registration script on Windows Virtual Desktop hosts
+#### Task 5: Run the MSIX app attach registration script on Azure Virtual Desktop hosts
 
 1. Within the Remote Desktop session from **az140-cl-vm42** to a host pool in the **az140-21-ws1** workspace, while signed in as **aduser1**, start **Windows PowerShell ISE** and, from the **Windows PowerShell ISE** console, run the following to perform the MSIX app attach registration:
 

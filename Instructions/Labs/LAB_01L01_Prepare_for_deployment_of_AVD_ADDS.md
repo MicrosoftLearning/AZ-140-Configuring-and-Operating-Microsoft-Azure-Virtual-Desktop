@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Prepare for deployment of Azure Windows Virtual Desktop (AD DS)'
-    module: 'Module 1: Plan a WVD Architecture'
+    title: 'Lab: Prepare for deployment of Azure Virtual Desktop (AD DS)'
+    module: 'Module 1: Plan a AVD Architecture'
 ---
 
-# Lab - Prepare for deployment of Azure Windows Virtual Desktop (AD DS)
+# Lab - Prepare for deployment of Azure Virtual Desktop (AD DS)
 # Student lab manual
 
 ## Lab dependencies
@@ -12,7 +12,7 @@ lab:
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
 
-> **Note**: At the time of authoring this course, the MSIX app attach functionality for Windows Virtual Desktop is in public preview. If you intend to run the lab that involves the use of MSIX app attach included in this course, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
+> **Note**: At the time of authoring this course, the MSIX app attach functionality for Azure Virtual Desktop is in public preview. If you intend to run the lab that involves the use of MSIX app attach included in this course, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
 
 ## Estimated Time
 
@@ -22,7 +22,7 @@ lab:
 
 ## Lab scenario
 
-You need to prepare for deployment of Azure Windows Virtual Desktop in an Active Directory Domain Services (AD DS) environment
+You need to prepare for deployment of an Active Directory Domain Services (AD DS) environment
 
 ## Objectives
   
@@ -92,7 +92,7 @@ The main tasks for this exercise are as follows:
    |Standard|**DSv3 Series**|
    |New vCPU Limit|the new limit|
 
-   >**Note**: The use of **BS Series** Azure VMs is in this case intended to minimize the cost of running the lab environment. It is not meant to represent the intended usage of the **BS Series** Azure VMs in the Windows Virtual Desktop scenarios.
+   >**Note**: The use of **BS Series** Azure VMs is in this case intended to minimize the cost of running the lab environment. It is not meant to represent the intended usage of the **BS Series** Azure VMs in the Azure Virtual Desktop scenarios.
 
 1. Back on the **Details** tab of the **New support request** blade, specify the following and select **Next: Review + create >**:
 
@@ -174,7 +174,7 @@ The main tasks for this exercise are as follows:
    ```
 
 1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.json** and **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.parameters.json** into the Cloud Shell home directory.
-1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Windows Virtual Desktop client into the newly created subnet:
+1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a client into the newly created subnet:
 
    ```powershell
    $location = (Get-AzResourceGroup -ResourceGroupName $resourceGroupName).Location

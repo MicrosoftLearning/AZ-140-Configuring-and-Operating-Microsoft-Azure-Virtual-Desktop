@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Lab: Implement and manage storage for WVD (AD DS)'
-    module: 'Module 2: Implement a WVD Infrastructure'
+    title: 'Lab: Implement and manage storage for AVD (AD DS)'
+    module: 'Module 2: Implement a AVD Infrastructure'
 ---
 
-# Lab - Implement and manage storage for WVD (AD DS)
+# Lab - Implement and manage storage for AVD (AD DS)
 # Student lab manual
 
 ## Lab dependencies
 
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
-- The completed lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 
 ## Estimated Time
 
@@ -19,13 +19,13 @@ lab:
 
 ## Lab scenario
 
-You need to implement and manage storage for a Windows Virtual Desktop deployment in an Azure Active Directory Domain Services (Azure AD DS) environment.
+You need to implement and manage storage for a Azure Virtual Desktop deployment in an Azure Active Directory Domain Services (Azure AD DS) environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Configure Azure Files to store profile containers for Windows Virtual Desktop
+- Configure Azure Files to store profile containers for Azure Virtual Desktop
 
 ## Lab files
 
@@ -33,7 +33,7 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 1: Configure Azure Files to store profile containers for Windows Virtual Desktop
+### Exercise 1: Configure Azure Files to store profile containers for Azure Virtual Desktop
 
 The main tasks for this exercise are as follows:
 
@@ -64,7 +64,7 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|the name of a new resource group **az140-22-RG**|
    |Storage account name|any globally unique name between 3 and 15 in length consisting of lower case letters and digits, starting with a letter|
-   |Location|the name of an Azure region hosting the Windows Virtual Desktop lab environment|
+   |Location|the name of an Azure region hosting the Azure Virtual Desktop lab environment|
    |Performance|**Standard**|
    |Account kind|**StorageV2 (general purpose v2)**|
    |Replication|**Read-access geo-redundant storage (RA-GRS)**|

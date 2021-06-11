@@ -11,7 +11,7 @@ lab:
 
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
-- The completed lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Windows Virtual Desktop (Azure AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
 
 ## Estimated Time
 
@@ -19,14 +19,14 @@ lab:
 
 ## Lab scenario
 
-You need to automate deployment of Windows Virtual Desktop host pools and hosts by using PowerShell in an Active Directory Domain Services (AD DS) environment.
+You need to automate deployment of Azure Virtual Desktop host pools and hosts by using PowerShell in an Active Directory Domain Services (AD DS) environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Deploy Azure Windows Virtual Desktop host pools and hosts by using PowerShell
-- Add hosts to the Windows Virtual Desktop host pool by using PowerShell
+- Deploy Azure Virtual Desktop host pools and hosts by using PowerShell
+- Add hosts to the Azure Virtual Desktop host pool by using PowerShell
 
 ## Lab files
 
@@ -35,17 +35,17 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 1: Implement Azure Windows Virtual Desktop host pools and session hosts by using PowerShell
+### Exercise 1: Implement Azure Virtual Desktop host pools and session hosts by using PowerShell
   
 The main tasks for this exercise are as follows:
 
-1. Prepare for deployment of Windows Virtual Desktop host pool by using PowerShell
-1. Create a Windows Virtual Desktop host pool by using PowerShell
+1. Prepare for deployment of Azure Virtual Desktop host pool by using PowerShell
+1. Create a Azure Virtual Desktop host pool by using PowerShell
 1. Perform a template-based deployment of an Azure VM running Windows 10 Enterprise by using PowerShell
-1. Add an Azure VM running Windows 10 Enterprise as a session host to the Windows Virtual Desktop host pool by using PowerShell
-1. Verify the deployment of the Azure Windows Virtual Desktop session host
+1. Add an Azure VM running Windows 10 Enterprise as a session host to the Azure Virtual Desktop host pool by using PowerShell
+1. Verify the deployment of the Azure Virtual Desktop session host
 
-#### Task 1: Prepare for deployment of Windows Virtual Desktop host pool by using PowerShell
+#### Task 1: Prepare for deployment of Azure Virtual Desktop host pool by using PowerShell
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
@@ -58,13 +58,13 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the distinguished name of the organizational unit named **WVDInfra** that will host the computer objects of the Windows Virtual Desktop pool session hosts:
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the distinguished name of the organizational unit named **WVDInfra** that will host the computer objects of the Azure Virtual Desktop pool session hosts:
 
    ```powershell
    (Get-ADOrganizationalUnit -Filter "Name -eq 'WVDInfra'").distinguishedName
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to identify the UPN suffix of the **ADATUM\\Student** account that you will use to join the Windows Virtual Desktop hosts to the AD DS domain (**student@adatum.com**):
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to identify the UPN suffix of the **ADATUM\\Student** account that you will use to join the Azure Virtual Desktop hosts to the AD DS domain (**student@adatum.com**):
 
    ```powershell
    (Get-ADUser -Filter {sAMAccountName -eq 'student'} -Properties userPrincipalName).userPrincipalName
@@ -93,7 +93,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: The value should resemble the format `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`, although the subscription ID will differ. Record it since you will need it in the next task.
 
-#### Task 2: Create a Windows Virtual Desktop host pool by using PowerShell
+#### Task 2: Create a Azure Virtual Desktop host pool by using PowerShell
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to sign in to your Azure subscription:
 
@@ -142,7 +142,7 @@ The main tasks for this exercise are as follows:
 #### Task 3: Perform a template-based deployment of an Azure VM running Windows 10 Enterprise by using PowerShell
 
 1. From your lab computer, use the Remote Desktop session to the **az140-dc-vm11** Azure VM to copy the lab files **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.json** and **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.parameters.json** to the **C:\\AllFiles\\Labs\\02** folder (create it if needed).
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to deploy an Azure VM running Windows 10 Enterprise (multi-session) that will serve as a Windows Virtual Desktop session host in the host pool you created in the previous task:
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to deploy an Azure VM running Windows 10 Enterprise (multi-session) that will serve as a Azure Virtual Desktop session host in the host pool you created in the previous task:
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
@@ -165,7 +165,7 @@ The main tasks for this exercise are as follows:
    Get-ADComputer -Filter "sAMAccountName -eq 'az140-24-p3-0$'"
    ```
 
-#### Task 4: Add an Azure VM running Windows 10 Enterprise as a host to the Windows Virtual Desktop host pool by using PowerShell
+#### Task 4: Add an Azure VM running Windows 10 Enterprise as a host to the Azure Virtual Desktop host pool by using PowerShell
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, in the list of virtual machines, select **az140-24-p3-0**.
 1. On the **az140-24-p3-0** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-24-p3-0 \| Connect** blade, in the **IP address** drop-down list, select the **Private IP address (10.0.3.4)** entry, and then select **Download RDP File**.
@@ -184,7 +184,7 @@ The main tasks for this exercise are as follows:
    New-Item -ItemType Directory -Path $labFilesFolder
    ```
 
-1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to download the Windows Virtual Desktop Agent and Boot Loader installers, required to add the session host to the host pool:
+1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to download the Azure Virtual Desktop Agent and Boot Loader installers, required to add the session host to the host pool:
 
    ```powershell
    $webClient = New-Object System.Net.WebClient
@@ -227,22 +227,22 @@ The main tasks for this exercise are as follows:
    ```
    > **Note**: A registration token is required to authorize a session host to join the host pool. The value of token's expiration date must be between one hour and one month from the current date and time.
 
-1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** console, run the following to install the Windows Virtual Desktop Agent:
+1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** console, run the following to install the Azure Virtual Desktop Agent:
 
    ```powershell
    Set-Location -Path $labFilesFolder
    Start-Process -FilePath 'msiexec.exe' -ArgumentList "/i $WVDAgentInstallerName", "/quiet", "/qn", "/norestart", "/passive", "REGISTRATIONTOKEN=$($registrationInfo.Token)", "/l* $labFilesFolder\AgentInstall.log" | Wait-Process
    ```
 
-1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** console, run the following to install the Windows Virtual Desktop Boot Loader:
+1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** console, run the following to install the Azure Virtual Desktop Boot Loader:
 
    ```powershell
    Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $wvdBootLoaderInstallerName", "/quiet", "/qn", "/norestart", "/passive", "/l* $labFilesFolder\BootLoaderInstall.log" | Wait-process
    ```
 
-#### Task 5: Verify the deployment of the Azure Windows Virtual Desktop host
+#### Task 5: Verify the deployment of the Azure Virtual Desktop host
 
-1. Switch to the lab computer, in the web browser displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select the entry **az140-24-hp3** representing the newly modified pool.
+1. Switch to the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select the entry **az140-24-hp3** representing the newly modified pool.
 1. On the **az140-24-hp3** blade, in the vertical menu on the left side, in the **Manage** section, click **Session hosts**. 
 1. On the **az140-24-hp3 \| Session hosts** blade, verify that the deployment includes a single host.
 

@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Lab: Implement and manage Windows Virtual Desktop profiles (Azure AD DS)'
+    title: 'Lab: Implement and manage Azure Virtual Desktop profiles (Azure AD DS)'
     module: 'Module 4: Manage User Environments and Apps'
 ---
 
-# Lab - Implement and manage Windows Virtual Desktop profiles (Azure AD DS)
+# Lab - Implement and manage Azure Virtual Desktop profiles (Azure AD DS)
 # Student lab manual
 
 ## Lab dependencies
 
 - An Azure subscription
 - A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
-- A Windows Virtual Desktop environment provisioned in the lab **Introduction to Windows Virtual Desktop (Azure AD DS)**
+- A Azure Virtual Desktop environment provisioned in the lab **Introduction to Azure Virtual Desktop (Azure AD DS)**
 
 ## Estimated Time
 
@@ -19,14 +19,14 @@ lab:
 
 ## Lab scenario
 
-You need to implement Windows Virtual Desktop profile management in an Azure Active Directory Domain Services (Azure AD DS) environment.
+You need to implement Azure Virtual Desktop profile management in an Azure Active Directory Domain Services (Azure AD DS) environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Configure Azure Files to store profile containers for Windows Virtual Desktop in Azure AD DS environment
-- Implement FSLogix based profiles for Windows Virtual Desktop in Azure AD DS environment
+- Configure Azure Files to store profile containers for Azure Virtual Desktop in Azure AD DS environment
+- Implement FSLogix based profiles for Azure Virtual Desktop in Azure AD DS environment
 
 ## Lab files
 
@@ -34,15 +34,15 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 1: Implement FSLogix based profiles for Windows Virtual Desktop
+### Exercise 1: Implement FSLogix based profiles for Azure Virtual Desktop
 
 The main tasks for this exercise are as follows:
 
-1. Configure local Administrators group on Windows Virtual Desktop session host VMs
-1. Configure FSLogix-based profiles on Windows Virtual Desktop session host VMs
-1. Test FSLogix-based profiles with Windows Virtual Desktop
+1. Configure local Administrators group on Azure Virtual Desktop session host VMs
+1. Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
+1. Test FSLogix-based profiles with Azure Virtual Desktop
 
-#### Task 1: Configure local Administrators group on Windows Virtual Desktop session host VMs
+#### Task 1: Configure local Administrators group on Azure Virtual Desktop session host VMs
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
@@ -68,7 +68,7 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Make sure to use the section labeled **This group is a member of**
 
-1. Within the Remote Desktop to the az140-cl-vm11a Azure VM, start PowerShell ISE as Administrator and run the following to restart the two Windows Virtual Desktop hosts in order to trigger Group Policy processing:
+1. Within the Remote Desktop to the az140-cl-vm11a Azure VM, start PowerShell ISE as Administrator and run the following to restart the two Azure Virtual Desktop hosts in order to trigger Group Policy processing:
 
    ```powershell
    $servers = 'az140-21-p1-0','az140-21-p1-1'
@@ -77,7 +77,7 @@ The main tasks for this exercise are as follows:
 
 1. Wait for the script to complete. This should take about 3 minutes.
 
-#### Task 2: Configure FSLogix-based profiles on Windows Virtual Desktop session host VMs
+#### Task 2: Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
 
 1. Within the Remote Desktop session to **az140-cl-vm11a**, start a Remote Desktop session to **az140-21-p1-0** and, when prompted, sign in with the following credentials:
 
@@ -148,7 +148,7 @@ The main tasks for this exercise are as follows:
 and select **OK** to close the group **Properties** window. 
 1. In the **Local Users and Groups** console, double-click the **FSLogix Profile Exclude List** group enty, note that it does not include any group members by default, and select **OK** to close the group **Properties** window. 
 
-   > **Note**: To provide consistent user experience, you need to install and configure FSLogix components on all Windows Virtual Desktop session hosts. You will perform this task in the unattended manner on the other session host in our lab environment. 
+   > **Note**: To provide consistent user experience, you need to install and configure FSLogix components on all Azure Virtual Desktop session hosts. You will perform this task in the unattended manner on the other session host in our lab environment. 
 
 1. Within the Remote Desktop session to **az140-21-p1-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install FSLogix components on the **az140-21-p1-1** session host:
 
@@ -175,7 +175,7 @@ and select **OK** to close the group **Properties** window.
    }
    ```
 
-   > **Note**: Before you test the FSLogix-based profile functionality, you need to remove the locally cached profile of the ADATUM\wvdaadmin1 account you will be using for testing from the Windows Virtual Desktop session hosts you used in the previous lab.
+   > **Note**: Before you test the FSLogix-based profile functionality, you need to remove the locally cached profile of the ADATUM\wvdaadmin1 account you will be using for testing from the Azure Virtual Desktop session hosts you used in the previous lab.
 
 1. Switch to the Remote Desktop session to **az140-cl-vm11a**, within the Remote Desktop session to **az140-cl-vm11a**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to remove the locally cached profile of the ADATUM\aaduser1 account:
 
@@ -185,7 +185,7 @@ and select **OK** to close the group **Properties** window.
    Get-CimInstance -ComputerName $servers -Class Win32_UserProfile | Where-Object { $_.LocalPath.split('\')[-1] -eq $userName } | Remove-CimInstance
    ```
 
-#### Task 3: Test FSLogix-based profiles with Windows Virtual Desktop
+#### Task 3: Test FSLogix-based profiles with Azure Virtual Desktop
 
 1. Within the Remote Desktop session to **az140-cl-vm11a**, switch to the Remote Desktop client.
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt**, when prompted, provide the password, and verify that it launches a **Command Prompt** window. 

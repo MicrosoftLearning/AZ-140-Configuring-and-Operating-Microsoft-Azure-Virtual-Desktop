@@ -11,7 +11,7 @@ lab:
 
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
-- The completed lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Windows Virtual Desktop (Azure AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
 
 ## Estimated Time
 
@@ -19,7 +19,7 @@ lab:
 
 ## Lab scenario
 
-You need to create and manage Windows Virtual Desktop host images in an Active Directory Domain Services (AD DS) environment.
+You need to create and manage Azure Virtual Desktop host images in an Active Directory Domain Services (AD DS) environment.
 
 ## Objectives
   
@@ -38,17 +38,17 @@ After completing this lab, you will be able to:
   
 The main tasks for this exercise are as follows:
 
-1. Prepare for configuration of a Windows Virtual Desktop host image
-1. Configure a Windows Virtual Desktop host image
-1. Create a Windows Virtual Desktop host image
-1. Provision a Windows Virtual Desktop host pool by using the custom image
+1. Prepare for configuration of a Azure Virtual Desktop host image
+1. Configure a Azure Virtual Desktop host image
+1. Create a Azure Virtual Desktop host image
+1. Provision a Azure Virtual Desktop host pool by using the custom image
 
-#### Task 1: Prepare for configuration of a Windows Virtual Desktop host image
+#### Task 1: Prepare for configuration of a Azure Virtual Desktop host image
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. If prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
-1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group that will contain the Windows Virtual Desktop host image:
+1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group that will contain the Azure Virtual Desktop host image:
 
    ```powershell
    $vnetResourceGroupName = 'az140-11-RG'
@@ -58,7 +58,7 @@ The main tasks for this exercise are as follows:
    ```
 
 1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_azuredeployvm25.json** and **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_azuredeployvm25.parameters.json** into the Cloud Shell home directory.
-1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Windows Virtual Desktop client into the newly created subnet:
+1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Azure Virtual Desktop client into the newly created subnet:
 
    ```powershell
    New-AzResourceGroupDeployment `
@@ -70,7 +70,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the deployment to complete but instead proceed to the next exercise. The deployment might take about 10 minutes.
 
-#### Task 2: Configure a Windows Virtual Desktop host image
+#### Task 2: Configure a Azure Virtual Desktop host image
 
 1. In the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select **az140-25-vm0**.
 1. On the **az140-25-vm0** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-25-vm0 \| Connect** blade, in the **IP address** drop-down list, select the **Public IP address** entry, and then select **Download RDP File**.
@@ -176,7 +176,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    cleanmgr /d C: /verylowdisk
    ```
 
-#### Task 3: Create a Windows Virtual Desktop host image
+#### Task 3: Create a Azure Virtual Desktop host image
 
 1. Within the Remote Desktop session to **az140-25-vm0**, in the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the sysprep utility in order to prepare the operating system for generating an image and automatically shut it down:
 
@@ -225,7 +225,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
 1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Shared image galleries** and, on the **Shared image galleries** blade, select the **az10425imagegallery** entry, and, on the ****az10425imagegallery**** blade, verify the presence of the **az140-25-host-image** entry representing the newly created image.
 
-#### Task 4: Provision a Windows Virtual Desktop host pool by using a custom image
+#### Task 4: Provision a Azure Virtual Desktop host pool by using a custom image
 
 1. From the lab computer, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Virtual networks** and, on the **Virtual networks** blade, select **az140-adds-vnet11**. 
 1. On the **az140-adds-vnet11** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, specify the following settings (leave all other settings with their default values) and click **Save**:
@@ -235,7 +235,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |Name|**hp4-Subnet**|
    |Subnet address range|**10.0.4.0/24**|
 
-1. From the lab computer, in the Azure portal, in the web browser window displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select **+ Add**. 
+1. From the lab computer, in the Azure portal, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
 
    |Setting|Value|

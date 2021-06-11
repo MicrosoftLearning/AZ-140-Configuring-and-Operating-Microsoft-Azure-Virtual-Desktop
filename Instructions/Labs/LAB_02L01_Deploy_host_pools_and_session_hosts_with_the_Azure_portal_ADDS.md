@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Deploy host pools and session hosts by using the Azure portal (AD DS)'
-    module: 'Module 2: Implement a WVD Infrastructure'
+    module: 'Module 2: Implement a AVD Infrastructure'
 ---
 
 # Lab - Deploy host pools and session hosts by using the Azure portal (AD DS)
@@ -11,7 +11,7 @@ lab:
 
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
-- The completed lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 
 ## Estimated Time
 
@@ -25,8 +25,8 @@ You need to create and configure host pools and session hosts in an Active Direc
   
 After completing this lab, you will be able to:
 
-- Implement an Azure Windows Virtual Desktop environment in an AD DS domain
-- Validate Azure Windows Virtual Desktop environment in an AD DS domain
+- Implement an Azure Virtual Desktop environment in an AD DS domain
+- Validate an Azure Virtual Desktop environment in an AD DS domain
 
 ## Lab files
 
@@ -34,17 +34,17 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 1: Implement an Azure Windows Virtual Desktop environment in an AD DS domain
+### Exercise 1: Implement an Azure Virtual Desktop environment in an AD DS domain
   
 The main tasks for this exercise are as follows:
 
-1. Prepare AD DS domain and the Azure subscription for deployment of an Azure Windows Virtual Desktop host pool
-1. Deploy an Azure Windows Virtual Desktop host pool
-1. Manage the Azure Windows Virtual Desktop host pool session hosts
-1. Configure Windows Virtual Desktop application groups
-1. Configure Windows Virtual Desktop workspaces
+1. Prepare AD DS domain and the Azure subscription for deployment of an Azure Virtual Desktop host pool
+1. Deploy an Azure Virtual Desktop host pool
+1. Manage the Azure Virtual Desktop host pool session hosts
+1. Configure Azure Virtual Desktop application groups
+1. Configure Azure Virtual Desktop workspaces
 
-#### Task 1: Prepare AD DS domain and the Azure subscription for deployment of an Azure Windows Virtual Desktop host pool
+#### Task 1: Prepare AD DS domain and the Azure subscription for deployment of an Azure Virtual Desktop host pool
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal]( ), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
@@ -57,7 +57,7 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to create an organizational unit that will host the computer objects of the Windows Virtual Desktop hosts:
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to create an organizational unit that will host the computer objects of the Azure Virtual Desktop hosts:
 
    ```powershell
    New-ADOrganizationalUnit 'WVDInfra' –path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
@@ -93,9 +93,9 @@ The main tasks for this exercise are as follows:
    |Name|**hp1-Subnet**|
    |Subnet address range|**10.0.1.0/24**|
 
-#### Task 2: Deploy an Azure Windows Virtual Desktop host pool
+#### Task 2: Deploy an Azure Virtual Desktop host pool
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop**, on the **Windows Virtual Desktop** blade, select **Host pools** and, on the **Windows Virtual Desktop \| Host pools** blade, select **+ Add**. 
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
 
    |Setting|Value|
@@ -147,10 +147,10 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the deployment to complete. This might take about 10 minutes.
 
-#### Task 3: Manage the Azure Windows Virtual Desktop host pool session hosts
+#### Task 3: Manage the Azure Virtual Desktop host pool session hosts
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the web browser window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, in the vertical menu bar, in the **Manage section**, select **Host pools**.
-1. On the **Windows Virtual Desktop \| Host pools** blade, in the list of host pools, select **az140-21-hp1**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu bar, in the **Manage section**, select **Host pools**.
+1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select **az140-21-hp1**.
 1. On the **az140-21-hp1** blade, in the in the vertical menu bar, in the **Manage section**, select **Session hosts** and verify that the pool consists of two hosts. 
 1. On the **az140-21-hp1 \| Session hosts** blade, select **+ Add**.
 1. On the **Basics** tab of the **Add virtual machines to a host pool** blade, review the preconfigured settings and select **Next: Virtual Machines**.
@@ -182,14 +182,14 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Do not wait for the deployment to complete but instead proceed to the next task. The deployment might take about 5 minutes. 
 
-#### Task 4: Configure Windows Virtual Desktop application groups
+#### Task 4: Configure Azure Virtual Desktop application groups
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the web browser window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Application groups**.
-1. On the **Windows Virtual Desktop \| Application groups** blade, note the existing, auto-generated **az140-21-hp1-DAG** desktop application group, and select it. 
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
+1. On the **Azure Virtual Desktop \| Application groups** blade, note the existing, auto-generated **az140-21-hp1-DAG** desktop application group, and select it. 
 1. On the **az140-21-hp1-DAG** blade, select **Assignments**.
 1. On the **az140-21-hp1-DAG \| Assignments** blade, select **+ Add**.
 1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-pooled** and click **Select**.
-1. Navigate back to the **Windows Virtual Desktop \| Application groups** blade, select **+ Add**. 
+1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
    |Setting|Value|
@@ -246,8 +246,8 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Next you will create an application group based on file path as the application source.
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Application groups**.
-1. On the **Windows Virtual Desktop \| Application groups** blade, select **+ Add**. 
+1. Within the Remote Desktop session to **az140-dc-vm11**, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
+1. On the **Azure Virtual Desktop \| Application groups** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
    |Setting|Value|
@@ -284,10 +284,10 @@ The main tasks for this exercise are as follows:
 
 1. On the **Review + create** tab of the **Create an application group** blade, select **Create**.
 
-#### Task 5: Configure Windows Virtual Desktop workspaces
+#### Task 5: Configure Azure Virtual Desktop workspaces
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Windows Virtual Desktop** and, on the **Windows Virtual Desktop** blade, select **Workspaces**.
-1. On the **Windows Virtual Desktop \| Workspaces** blade, select **+ Add**. 
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Workspaces**.
+1. On the **Azure Virtual Desktop \| Workspaces** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
 
    |Setting|Value|
@@ -309,13 +309,13 @@ The main tasks for this exercise are as follows:
 1. Back on the **Application groups** tab of the **Create a workspace** blade, select **Review + create**.
 1. On the **Review + create** tab of the **Create a workspace** blade, select **Create**.
 
-### Exercise 2: Validate Azure Windows Virtual Desktop environment
+### Exercise 2: Validate Azure Virtual Desktop environment
   
 The main tasks for this exercise are as follows:
 
 1. Install Microsoft Remote Desktop client (MSRDC) on a Windows 10 computer
-1. Subscribe to a Windows Virtual Desktop workspace
-1. Test Windows Virtual Desktop apps
+1. Subscribe to a Azure Virtual Desktop workspace
+1. Test Azure Virtual Desktop apps
 
 #### Task 1: Install Microsoft Remote Desktop client (MSRDC) on a Windows 10 computer
 
@@ -325,7 +325,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the command to complete before you proceed to the next step. This might take about 1 minute.
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to add all members of the **ADATUM\\az140-wvd-users** to the local **Remote Desktop Users** group on the Azure VM **az140-cl-vm11** running Windows 10 which you deployed in the lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to add all members of the **ADATUM\\az140-wvd-users** to the local **Remote Desktop Users** group on the Azure VM **az140-cl-vm11** running Windows 10 which you deployed in the lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**.
 
    ```powershell
    $computerName = 'az140-cl-vm11'
@@ -338,7 +338,7 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-cl-vm11**, start Microsoft Edge and navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, when prompted, select **Run** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. When prompted by User Account Control for administrative credentials, authenticate by using the **ADATUM\\Student** username with **Pa55w.rd1234** as its password.
 1. Once the installation completes, ensure that the **Launch Remote Desktop when setup exits** checkbox is selected and click **Finish** to start the Remote Desktop client.
 
-#### Task 2: Subscribe to a Windows Virtual Desktop workspace
+#### Task 2: Subscribe to a Azure Virtual Desktop workspace
 
 1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** credentials, by providing its userPrincipalName you identified earlier in this lab and **Pa55w.rd1234** as its password.
 
@@ -347,7 +347,7 @@ The main tasks for this exercise are as follows:
 1. In the **Stay signed in to all your apps** window, clear the checkbox **Allow my organization to manage my device** checkbox and select **No, sign in to this app only**. 
 1. Ensure that the **Remote Desktop** page displays the listing of applications that are included in the application groups published to the workspace and associated with the user account **aduser1** via its group membership. 
 
-#### Task 3: Test Windows Virtual Desktop apps
+#### Task 3: Test Azure Virtual Desktop apps
 
 1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type **Pa55w.rd1234** as the password of the **aduser1** user account, select the checkbox **Remember me**, and select **OK**.
 

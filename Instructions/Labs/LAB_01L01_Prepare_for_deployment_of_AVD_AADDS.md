@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Prepare for deployment of Azure Windows Virtual Desktop (Azure AD DS)'
-    module: 'Module 1: Plan a WVD Architecture'
+    title: 'Lab: Prepare for deployment of Azure Virtual Desktop (Azure AD DS)'
+    module: 'Module 1: Plan a AVD Architecture'
 ---
 
-# Lab - Prepare for deployment of Azure Windows Virtual Desktop (Azure AD DS)
+# Lab - Prepare for deployment of Azure Virtual Desktop (Azure AD DS)
 # Student lab manual
 
 ## Lab dependencies
@@ -12,7 +12,7 @@ lab:
 - An Azure subscription
 - A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
 
-> **Note**: At the time of authoring this course, the MSIX app attach functionality for Windows Virtual Desktop is in public preview. If you intend to run the lab that involves the use of MSIX app attach included in this course, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
+> **Note**: At the time of authoring this course, the MSIX app attach functionality for Azure Virtual Desktop is in public preview. If you intend to run the lab that involves the use of MSIX app attach included in this course, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
 
 ## Estimated Time
 
@@ -22,7 +22,7 @@ lab:
 
 ## Lab scenario
 
-You need to prepare for deployment of Azure Windows Virtual Desktop in an Azure Active Directory Domain Services (Azure AD DS) environment
+You need to prepare for deployment of Azure Virtual Desktop in an Azure Active Directory Domain Services (Azure AD DS) environment
 
 ## Objectives
   
@@ -91,7 +91,7 @@ The main tasks for this exercise are as follows:
    |Standard|**DSv3 Series**|
    |New vCPU Limit|the new limit|
 
-   >**Note**: The use of **BS Series** Azure VMs is in this case intended to minimize the cost of running the lab environment. It is not meant to represent the intended usage of the **BS Series** Azure VMs in the Windows Virtual Desktop scenarios.
+   >**Note**: The use of **BS Series** Azure VMs is in this case intended to minimize the cost of running the lab environment. It is not meant to represent the intended usage of the **BS Series** Azure VMs in the Azure Virtual Desktop scenarios.
 
 1. Back on the **Details** tab of the **New support request** blade, specify the following and select **Next: Review + create >**:
 
@@ -184,7 +184,7 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|the name of a new resource group **az140-11a-RG**|
    |Domain name|**adatum.com**|
-   |Region|the name of the region where you want to host your WVD deployment|
+   |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
    |Forest type|**User**|
 
@@ -262,7 +262,7 @@ The main tasks for this exercise are as follows:
    ```
 
 1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11a.json** and **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11a.parameters.json** into the Cloud Shell home directory.
-1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Windows Virtual Desktop client and join it to the Azure AD DS domain:
+1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Azure Virtual Desktop client and join it to the Azure AD DS domain:
 
    ```powershell
    $resourceGroupName = 'az140-11a-RG'
@@ -363,7 +363,7 @@ The main tasks for this exercise are as follows:
    Add-AzureADGroupMember -ObjectId $az140wvdaadmins.ObjectId -RefObjectId $userObjectId
    ```
 
-1. From the Cloud Shell pane, repeat the previous step to create Azure AD groups for Windows Virtual Desktop users that you will use in the upcoming labs and add to them previously created Azure AD user accounts:
+1. From the Cloud Shell pane, repeat the previous step to create Azure AD groups for users that you will use in the upcoming labs and add to them previously created Azure AD user accounts:
 
    ```powershell
    $az140wvdausers = New-AzureADGroup -Description 'az140-wvd-ausers' -DisplayName 'az140-wvd-ausers' -MailEnabled $false -SecurityEnabled $true -MailNickName 'az140-wvd-ausers'

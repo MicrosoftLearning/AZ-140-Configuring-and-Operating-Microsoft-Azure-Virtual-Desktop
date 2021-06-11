@@ -11,7 +11,7 @@ lab:
 
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
-- The completed lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 - The completed lab **Deploy host pools and session hosts by using the Azure portal (AD DS)**
 
 ## Estimated Time
@@ -20,14 +20,14 @@ lab:
 
 ## Lab scenario
 
-You need to configure autoscaling of Windows Virtual Desktop session hosts in an Active Directory Domain Services (AD DS) environment.
+You need to configure autoscaling of Azure Virtual Desktop session hosts in an Active Directory Domain Services (AD DS) environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Configure autoscaling of Windows Virtual Desktop session hosts
-- Verify autoscaling of Windows Virtual Desktop session hosts
+- Configure autoscaling of Azure Virtual Desktop session hosts
+- Verify autoscaling of Azure Virtual Desktop session hosts
 
 ## Lab files
 
@@ -35,19 +35,19 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 1: Configure autoscaling of Windows Virtual Desktop session hosts
+### Exercise 1: Configure autoscaling of Azure Virtual Desktop session hosts
 
 The main tasks for this exercise are as follows:
 
-1. Prepare for autoscaling of Windows Virtual Desktop session hosts
+1. Prepare for autoscaling of Azure Virtual Desktop session hosts
 1. Create and configure an Azure Automation account
 1. Create an Azure Logic app
 
-#### Task 1: Prepare for autoscaling of Windows Virtual Desktop session hosts
+#### Task 1: Prepare for autoscaling of Azure Virtual Desktop session hosts
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. On the lab computer and, in the web browser window displaying the Azure portal, open the **PowerShell** shell session within the **Cloud Shell** pane.
-1. From the PowerShell session in the Cloud Shell pane, run the following to start the Windows Virtual Desktop session host Azure VMs you will be using in this lab:
+1. From the PowerShell session in the Cloud Shell pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM -NoWait
@@ -240,16 +240,16 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21-hp1_Autoscale_Scheduler** blade, in the vertical menu on the left side, in the **Development Tools** section, select **Logic app designer**. 
 1. On the designer pane, click the rectangle labeled **Recurrence** and note that you can use it to control frequency in which the need for autoscaling is evaluated. 
 
-### Exercise 2: Verify and review autoscaling of Windows Virtual Desktop session hosts
+### Exercise 2: Verify and review autoscaling of Azure Virtual Desktop session hosts
 
 The main tasks for this exercise are as follows:
 
-1. Verify autoscaling of Windows Virtual Desktop session hosts
-1. Use Azure Log Analytics to track Windows Virtual Desktop events
+1. Verify autoscaling of Azure Virtual Desktop session hosts
+1. Use Azure Log Analytics to track Azure Virtual Desktop events
 
-#### Task 1: Verify autoscaling of Windows Virtual Desktop session hosts
+#### Task 1: Verify autoscaling of Azure Virtual Desktop session hosts
 
-1. To verify the autoscaling of the Windows Virtual Desktop session hosts, within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, review the status of the three Azure VMs in the **az140-21-RG** resource group.
+1. To verify the autoscaling of the Azure Virtual Desktop session hosts, within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, review the status of the three Azure VMs in the **az140-21-RG** resource group.
 1. Verify that two of the three Azure VMs are either in the process of being deallocated or are already **Stopped (deallocated)**.
 
    >**Note**: As soon as you verify that autoscaling is working, you should disable the Azure Logic app to minimize the corresponding charges.
@@ -261,13 +261,13 @@ The main tasks for this exercise are as follows:
 1. On the **Automation Account** blade, in the vertical menu on the left side, in the **Process Automation** section, select **Jobs** and review the list of jobs corresponding to individual invocations of the **WVDAutoScaleRunbookARMBased** runbook.
 1. Select the most recent job and, on its blade, click **All Logs** tab header. This will display detailed listing of job execution steps.
 
-#### Task 2: Use Azure Log Analytics to track Windows Virtual Desktop events
+#### Task 2: Use Azure Log Analytics to track Azure Virtual Desktop events
 
->**Note**: To analyze autoscaling and any other Windows Virtual Desktop events, you can use Log Analytics.
+>**Note**: To analyze autoscaling and any other Azure Virtual Desktop events, you can use Log Analytics.
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Log Analytics workspaces** and, on the **Log Analytics workspaces** blade, select the entry representing the Azure Log Analytics workspace used in this lab (which name starts with the **az140-workspace-51** prefix.
 1. On the Log Analytics workspace blade, in the vertical menu on the left side, in the **General** section, click **Logs** and, on the **Welcome to Log Analytics** pane, click **Get Started**.
-1. On the **Queries** pane, in the **All Queries** vertical menu on the left side, select **Windows Virtual Desktop** and review the predefined queries.
+1. On the **Queries** pane, in the **All Queries** vertical menu on the left side, select **Azure Virtual Desktop** and review the predefined queries.
 1. Close the **Queries** pane. This will automatically display the **New Query 1** tab.
 1. In the query window, paste the following query, click **Run** to display all events for the host pool used in this lab:
 

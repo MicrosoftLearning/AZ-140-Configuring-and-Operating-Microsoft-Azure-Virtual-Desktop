@@ -11,7 +11,7 @@ lab:
 
 - An Azure subscription
 - A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
-- The completed lab **Prepare for deployment of Azure Windows Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Windows Virtual Desktop (Azure AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
 - The completed lab **Deploy host pools and session hosts by using the Azure portal (AD DS)** or **Deploy host pools and session hosts by using the Azure portal (Azure AD DS)**
 
 ## Estimated Time
@@ -20,14 +20,14 @@ lab:
 
 ## Lab scenario
 
-You need to control access to a deployment of Windows Virtual Desktop in an Active Directory Domain Services (AD DS) environment by using Azure Active Directory (Azure AD) conditional access.
+You need to control access to a deployment of Azure Virtual Desktop in an Active Directory Domain Services (AD DS) environment by using Azure Active Directory (Azure AD) conditional access.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Prepare for Azure Active Directory (Azure AD)-based Conditional Access for Windows Virtual Desktop
-- Implement Azure AD-based Conditional Access for Windows Virtual Desktop
+- Prepare for Azure Active Directory (Azure AD)-based Conditional Access for Azure Virtual Desktop
+- Implement Azure AD-based Conditional Access for Azure Virtual Desktop
 
 ## Lab files
 
@@ -35,7 +35,7 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 1: Prepare for Azure AD-based Conditional Access for Windows Virtual Desktop
+### Exercise 1: Prepare for Azure AD-based Conditional Access for Azure Virtual Desktop
 
 The main tasks for this exercise are as follows:
 
@@ -163,18 +163,18 @@ The main tasks for this exercise are as follows:
 1. On the **Devices | All devices** blade, review the list of devices and verify that the **az140-cl-vm11** device is listed with the **Hybrid Azure AD joined** entry in the **Join Type** column.
 
 
-### Exercise 2: Implement Azure AD-based Conditional Access for Windows Virtual Desktop
+### Exercise 2: Implement Azure AD-based Conditional Access for Azure Virtual Desktop
 
 The main tasks for this exercise are as follows:
 
-1. Create an Azure AD-based Conditional Access policy for all Windows Virtual Desktop connections
-1. Test the Azure AD-based Conditional Access policy for all Windows Virtual Desktop connections
+1. Create an Azure AD-based Conditional Access policy for all Azure Virtual Desktop connections
+1. Test the Azure AD-based Conditional Access policy for all Azure Virtual Desktop connections
 1. Modify the Azure AD-based Conditional Access policy to exclude hybrid Azure AD joined computers from the MFA requirement
 1. Test the modified Azure AD-based Conditional Access policy
 
-#### Task 1: Create an Azure AD-based Conditional Access policy for all Windows Virtual Desktop connections
+#### Task 1: Create an Azure AD-based Conditional Access policy for all Azure Virtual Desktop connections
 
->**Note**: In this task, you will configure an Azure AD-based Conditional Access policy that requires MFA to sign in to a Windows Virtual Desktop session. The policy will also enforce reauthentication after the first 4 hours following a successful authentication.
+>**Note**: In this task, you will configure an Azure AD-based Conditional Access policy that requires MFA to sign in to a Azure Virtual Desktop session. The policy will also enforce reauthentication after the first 4 hours following a successful authentication.
 
 1. On your lab computer, in the web browser displaying the Azure portal, navigate back to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Security**.
 1. On the **Security \| Getting started** blade, in the vertical menu on the left side, in the **Protect** section, click **Conditional Access**.
@@ -183,7 +183,7 @@ The main tasks for this exercise are as follows:
 
    - In the **Name** text box, type **az140-31-wvdpolicy1**
    - In the **Assignments** section, click **Users and groups**, click the **Select users and groups** option, click the **Users and groups** checkbox, on the **Select** blade, click **aduser5**, and click **Select**.
-   - In the **Assignments** section, click **Cloud apps or actions**, ensure that in the **Select what this policy applies to switch, the **Cloud apps** option is selected, click the **Select apps** option, on the **Select** blade, select the checkbox next to the **Windows Virtual Desktop** entry, and click **Select**. 
+   - In the **Assignments** section, click **Cloud apps or actions**, ensure that in the **Select what this policy applies to switch, the **Cloud apps** option is selected, click the **Select apps** option, on the **Select** blade, select the checkbox next to the **Azure Virtual Desktop** entry, and click **Select**. 
    - In the **Assignments** section, click **Conditions**, click **Client apps**, on the **Client apps** blade, set the **Configure** switch to **Yes**, ensure that both the **Browser** and **Mobile apps and desktop clients** checkboxes are selected, and click **Done**.
    - In the **Access controls** section, click **Grant**, on the **Grant** blade, ensure that the **Grant access** option is selected, select the **Require multi-factor authentication** checkbox and click **Select**.
    - In the **Access controls** section, click **Session**, on the **Session** blade, select the **Sign-in frequency** checkbox, in the first textbox, type **4**, in the **Select units** dropdown list, select **Hours**, leave the **Persistent browser session** checkbox cleared, and click **Select**.
@@ -191,13 +191,13 @@ The main tasks for this exercise are as follows:
 
 1. On the **New** blade, click **Create**. 
 
-#### Task 2: Test the Azure AD-based Conditional Access policy for all Windows Virtual Desktop connections
+#### Task 2: Test the Azure AD-based Conditional Access policy for all Azure Virtual Desktop connections
 
 1. On your lab computer, open an **InPrivate** web browser session, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing the **user5** user principal name you identified earlier in this exercise and the **Pa55w.rd1234** as the password.
 
    > **Note**: Verify that you are not prompted to authenticate via MFA.
 
-1. In the **InPrivate** web browser session, navigate to the Windows Virtual Desktop HTML5 web client page at [https://rdweb.wvd.microsoft.com/arm/webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
+1. In the **InPrivate** web browser session, navigate to the Azure Virtual Desktop HTML5 web client page at [https://rdweb.wvd.microsoft.com/arm/webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
 
    > **Note**: Verify that this will automatically trigger authentication via MFA.
 
@@ -210,7 +210,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Modify the Azure AD-based Conditional Access policy to exclude hybrid Azure AD joined computers from the MFA requirement
 
->**Note**: In this task, you will modify the Azure AD-based Conditional Access policy that requires MFA to sign in to a Windows Virtual Desktop session such that connections originating from Azure AD joined computers will not require MFA.
+>**Note**: In this task, you will modify the Azure AD-based Conditional Access policy that requires MFA to sign in to a Azure Virtual Desktop session such that connections originating from Azure AD joined computers will not require MFA.
 
 1. On your lab computer, in the browser window displaying the Azure portal, on the **Conditional Access | Policies** blade, click the entry representing the **az140-31-wvdpolicy1** policy.
 1. On the **az140-31-wvdpolicy1** blade, in the **Assignments** section, click **Conditions**, in the list of conditions, click **Device state**, on the **Device state** blade, set the **Configure** switch to **Yes**, click the **Exclude** tab, on the **Exclude** tab, select **Device Hybrid Azure AD joined**, and click **Done**.
@@ -222,7 +222,7 @@ The main tasks for this exercise are as follows:
 1. On your lab computer, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select the **az140-cl-vm11** entry.
 1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, and then select **Download RDP File**.
 1. When prompted, sign in as the **ADATUM\\aduser5** user with **Pa55w.rd1234** as its password.
-1. Within the Remote Desktop session to **az140-cl-vm11**, start Microsoft Edge and navigate to navigate to the Windows Virtual Desktop HTML5 web client page at [https://rdweb.wvd.microsoft.com/arm/webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
+1. Within the Remote Desktop session to **az140-cl-vm11**, start Microsoft Edge and navigate to navigate to the Azure Virtual Desktop HTML5 web client page at [https://rdweb.wvd.microsoft.com/arm/webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
 
    > **Note**: Verify that this time you will not be prompted to authenticate via MFA. This is because **az140-cl-vm11** is Hybrid Azure AD-joined.
 
