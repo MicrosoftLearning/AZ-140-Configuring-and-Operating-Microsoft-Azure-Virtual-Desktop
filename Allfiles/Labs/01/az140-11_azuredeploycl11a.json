@@ -83,7 +83,7 @@
     "storageAccountName": "[concat(uniquestring(resourceGroup().id, deployment().name))]",
     "imagePublisher": "MicrosoftWindowsDesktop",
     "imageOffer": "Windows-10",
-    "windowsOSVersion": "rs5-pro",
+    "windowsOSVersion": "20h2-pro",
     "nicName": "[concat(parameters('vmName'),'-nic')]",
     "nsgName": "[concat(parameters('vmName'),'-nsg')]",
     "publicIPName": "[concat(parameters('vmName'),'-pip')]",

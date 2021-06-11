@@ -41,7 +41,7 @@
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "imagePublisher": "MicrosoftWindowsDesktop",
     "imageOffer": "office-365",
-    "imageSku": "20h1-evd-o365pp",
+    "imageSku": "20h2-evd-o365pp-g2",
     "windowsImage": {
       "publisher": "[variables('imagePublisher')]",
       "offer": "[variables('imageOffer')]",
