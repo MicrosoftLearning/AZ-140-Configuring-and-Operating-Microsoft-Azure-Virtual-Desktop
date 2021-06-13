@@ -183,7 +183,7 @@ The main tasks for this exercise are as follows:
    |---|---|
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|the name of a new resource group **az140-11a-RG**|
-   |Domain name|**adatum.com**|
+   |DNS domain name|**adatum.com**|
    |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
    |Forest type|**User**|
@@ -203,6 +203,7 @@ The main tasks for this exercise are as follows:
 1. Back on the **Networking** tab of the **Create virtual network** blade, select **Next** (leave others with their existing values).
 1. On the **Administration** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select **Next**.
 1. On the **Synchronization** tab of the **Create Azure AD Domain Services** blade, ensure that **All** is selected and then select **Next**.
+1. On the **Security Settings** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select **Next**.
 1. On the **Review + create** tab of the **Create Azure AD Domain Services** blade, select **Create**. 
 1. Review the notification regarding settings that you will not be able to change following creation of the Azure AD DS domain and select **OK**.
 
