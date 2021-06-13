@@ -59,6 +59,7 @@ The main tasks for this exercise are as follows:
    ```powershell
    $location = '<Azure_region>'
    Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardDSv3Family'}
+   Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardBSFamily'}
    ```
 
    > **Note**: To identify the names of Azure regions, in the **Cloud Shell**, at the PowerShell prompt, run `(Get-AzLocation).Location`.
@@ -222,13 +223,13 @@ The main tasks for this exercise are as follows:
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to create an AD DS organizational unit that will contain objects included in the scope of synchronization to the Azure AD tenant used in this lab:
 
    ```powershell
-   New-ADOrganizationalUnit 'ToSync' –path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'ToSync' Â–path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to create an AD DS organizational unit that will contain computer objects of Windows 10 domain-joined client computers:
 
    ```powershell
-   New-ADOrganizationalUnit 'WVDClients' –path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'WVDClients' Â–path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create AD DS user accounts that will be synchronized to the Azure AD tenant used in this lab:
