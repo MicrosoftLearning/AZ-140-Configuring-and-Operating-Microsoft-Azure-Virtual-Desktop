@@ -122,7 +122,7 @@ The main tasks for this exercise are as follows:
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1. In the Cloud Shell pane, run the following to identify an available DNS name you will need to provide in the next task (substitute the placeholder `<custom-label>` with any valid DNS domain name prefix which is likely to be globally unique and the placeholder `<Azure_region>` with the name of the Azure region into which you want to deploy the Azure VM that will host an Active Directory domain controller):
+1. In the Cloud Shell pane, run the following to identify an available DNS name you will need to provide in the next task (substitute the placeholder `<custom-name>` with any valid DNS domain name prefix which is likely to be globally unique and the placeholder `<Azure_region>` with the name of the Azure region into which you want to deploy the Azure VM that will host an Active Directory domain controller):
 
    ```powershell
    $location = '<Azure_region>'
@@ -143,7 +143,7 @@ The main tasks for this exercise are as follows:
    ```
 
 1. In the Azure portal, close the **Cloud Shell** pane.
-1. From your lab computer, in the same web browser window, open another web browser tab and navigate to the QuickStart template named [Create a new Windows VM and create a new AD Forest, Domain and DC](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain). 
+1. From your lab computer, in the same web browser window, open another web browser tab and navigate to the QuickStart template named [Create a new Windows VM and create a new AD Forest, Domain and DC](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain). 
 1. On the **Create a new Windows VM and create a new AD Forest, Domain and DC** page, select **Deploy to Azure**. This will automatically redirect the browser to the **Create an Azure VM with a new AD Forest** blade in the Azure portal.
 1. On the **Create an Azure VM with a new AD Forest** blade, select **Edit parameters**.
 1. On the **Edit parameters** blade, select **Load file**, in the **Open** dialog box, select **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json**, select **Open**, and then select **Save**. 
@@ -223,13 +223,13 @@ The main tasks for this exercise are as follows:
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to create an AD DS organizational unit that will contain objects included in the scope of synchronization to the Azure AD tenant used in this lab:
 
    ```powershell
-   New-ADOrganizationalUnit 'ToSync' path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'ToSync' -path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to create an AD DS organizational unit that will contain computer objects of Windows 10 domain-joined client computers:
 
    ```powershell
-   New-ADOrganizationalUnit 'WVDClients' path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'WVDClients' -path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create AD DS user accounts that will be synchronized to the Azure AD tenant used in this lab:
