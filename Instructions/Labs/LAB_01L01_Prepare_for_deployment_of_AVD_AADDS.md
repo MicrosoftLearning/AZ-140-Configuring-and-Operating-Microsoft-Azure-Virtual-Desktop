@@ -134,16 +134,18 @@ The main tasks for this exercise are as follows:
    $aadDomainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
    ```
 
-1. From the Cloud Shell pane, run the following to create a new Azure AD user:
+1. From the Cloud Shell pane, run the following to create Azure AD users that will be granted elevated privileges:
 
    ```powershell
    $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
    $passwordProfile.Password = 'Pa55w.rd1234'
    $passwordProfile.ForceChangePasswordNextLogin = $false
    New-AzureADUser -AccountEnabled $true -DisplayName 'aadadmin1' -PasswordProfile $passwordProfile -MailNickName 'aadadmin1' -UserPrincipalName "aadadmin1@$aadDomainName"
+
+   New-AzureADUser -AccountEnabled $true -DisplayName 'wvdaadmin1' -PasswordProfile $passwordProfile -MailNickName 'wvdaadmin1' -UserPrincipalName "wvdaadmin1@$aadDomainName"
    ```
 
-1. From the Cloud Shell pane, run the following to assign the Global Administrator role to the newly created Azure AD user:
+1. From the Cloud Shell pane, run the following to assign the Global Administrator role to the first of the newly created Azure AD users:
 
    ```powershell
    $aadUser = Get-AzureADUser -ObjectId "aadadmin1@$aadDomainName"
@@ -240,6 +242,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: In real-world scenarios you would typically set the value of the **-ForceChangePasswordNextLogin** to $true. We chose **$false** in this case to simplify the lab steps. 
 
+1. Repeat the previous two steps to reset the password for the **wvdaadmin1** user account.
 
 ### Exercise 2: Configure the Azure AD DS domain environment
   
@@ -357,11 +360,13 @@ The main tasks for this exercise are as follows:
    } 
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to create an Azure AD group named **az140-wvd-aadmins** and add to it the **aadadmin1** user account:
+1. From the PowerShell session in the Cloud Shell pane, run the following to create an Azure AD group named **az140-wvd-aadmins** and add to it the **aadadmin1** and **wvdaadmin1** user accounts:
 
    ```powershell
    $az140wvdaadmins = New-AzureADGroup -Description 'az140-wvd-aadmins' -DisplayName 'az140-wvd-aadmins' -MailEnabled $false -SecurityEnabled $true -MailNickName 'az140-wvd-aadmins'
    $userObjectId = (Get-AzureADUser -Filter "MailNickName eq 'aadadmin1'").ObjectId
+   Add-AzureADGroupMember -ObjectId $az140wvdaadmins.ObjectId -RefObjectId $userObjectId
+   $userObjectId = (Get-AzureADUser -Filter "MailNickName eq 'wvdaadmin1'").ObjectId
    Add-AzureADGroupMember -ObjectId $az140wvdaadmins.ObjectId -RefObjectId $userObjectId
    ```
 

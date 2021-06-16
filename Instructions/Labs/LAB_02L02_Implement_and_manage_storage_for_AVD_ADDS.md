@@ -64,10 +64,9 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|the name of a new resource group **az140-22-RG**|
    |Storage account name|any globally unique name between 3 and 15 in length consisting of lower case letters and digits, starting with a letter|
-   |Location|the name of an Azure region hosting the Azure Virtual Desktop lab environment|
+   |Region|the name of an Azure region hosting the Azure Virtual Desktop lab environment|
    |Performance|**Standard**|
-   |Account kind|**StorageV2 (general purpose v2)**|
-   |Replication|**Read-access geo-redundant storage (RA-GRS)**|
+   |Redundancy|**Read-access geo-redundant storage (RA-GRS)**|
 
    >**Note**: Make sure that the length of the storage account name does not exceed 15 characters. The name will be used to create a computer account in the Active Directory Domain Services (AD DS) domain that is integrated with the Azure AD tenant associated with the Azure subscription containing the storage account. This will allow for AD DS-based authentication when accessing file shares hosted in this storage account.
 
@@ -78,7 +77,7 @@ The main tasks for this exercise are as follows:
 #### Task 2: Create an Azure Files share
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the newly created storage account.
-1. On the storage account blade, in the **File services** section, select **File shares** and then select **+ File share**.
+1. On the storage account blade, in the **Data storage** section, select **File shares** and then select **+ File share**.
 1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
 
    |Setting|Value|

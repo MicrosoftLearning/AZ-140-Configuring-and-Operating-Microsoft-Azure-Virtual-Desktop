@@ -154,15 +154,17 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21-hp1** blade, in the in the vertical menu bar, in the **Manage section**, select **Session hosts** and verify that the pool consists of two hosts. 
 1. On the **az140-21-hp1 \| Session hosts** blade, select **+ Add**.
 1. On the **Basics** tab of the **Add virtual machines to a host pool** blade, review the preconfigured settings and select **Next: Virtual Machines**.
-1. On the **Virtual Machines** tab of the **Add virtual machines to a host pool** blade, specify the following settings and select **Review + create**:
+1. On the **Virtual Machines** tab of the **Add virtual machines to a host pool** blade, specify the following settings and select **Review + create** (leave others with their default settings):
 
    |Setting|Value|
    |---|---|
    |Resource group|**az140-21-RG**|
+   |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed the first two session host VMs|
-   |Number of VMs|**1**|
+   |Availability options|**No infrastructure redundancy required**|
    |Image type|**Gallery**|
    |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
+   |Number of VMs|**1**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
    |Public IP|**Yes**|
@@ -175,6 +177,8 @@ The main tasks for this exercise are as follows:
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
    |AD domain join UPN|**student@adatum.com**|
    |Password|**Pa55w.rd1234**|
+   |Virtual Machine Administrator account username|**student**|
+   |Virtual Machine Administrator account pasword|**Pa55w.rd1234**|
 
    > **Note**: As you likely noticed, it's possible to change the image and prefix of the VMs as you add session hosts to the existing pool. In general, this is not recommended unless you plan to replace all VMs in the pool. 
 
