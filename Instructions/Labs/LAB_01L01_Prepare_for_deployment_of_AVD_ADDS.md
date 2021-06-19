@@ -118,7 +118,7 @@ The main tasks for this exercise are as follows:
     
 1. On the **Review + create** tab of the **New support request** blade, select **Create**.
 
-   > **Note**: Quota increase requests within this range of vCPUs are typically completed within a few hours.
+   > **Note**: Quota increase requests within this range of vCPUs are typically completed within a few hours. However, you can complete this lab without waiting for it.
 
 ### Exercise 1: Deploy an Active Directory Domain Services (AD DS) domain
 
