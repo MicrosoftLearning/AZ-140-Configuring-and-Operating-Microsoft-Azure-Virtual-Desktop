@@ -435,7 +435,7 @@ The main tasks for this exercise are as follows:
    ```
 
 1. Close the Cloud Shell pane.
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** blade, on your Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage* section, select **Users** and, on the **Users \| All users** blade, verify that new user accounts have been created.
+1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** blade, on your Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Users** and, on the **Users \| All users** blade, verify that new user accounts have been created.
 1. Navigate back to the Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Groups** and, on the **Groups \| All groups** blade, verify that new group accounts have been created.
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, switch to the **Active Directory Users and Computers** console, in the **Active Directory Users and Computers** console, navigate to the **AADDC Users** OU, and verify that it contains the same user and group accounts.
 
