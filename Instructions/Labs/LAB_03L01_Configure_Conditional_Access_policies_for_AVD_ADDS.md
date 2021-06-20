@@ -187,7 +187,7 @@ The main tasks for this exercise are as follows:
 
    - In the **Name** text box, type **az140-31-wvdpolicy1**
    - In the **Assignments** section, click **Users and groups**, click the **Select users and groups** option, click the **Users and groups** checkbox, on the **Select** blade, click **aduser5**, and click **Select**.
-   - In the **Assignments** section, click **Cloud apps or actions**, ensure that in the **Select what this policy applies to switch, the **Cloud apps** option is selected, click the **Select apps** option, on the **Select** blade, select the checkbox next to the **Azure Virtual Desktop** entry, and click **Select**. 
+   - In the **Assignments** section, click **Cloud apps or actions**, ensure that in the **Select what this policy applies to** switch, the **Cloud apps** option is selected, click the **Select apps** option, on the **Select** blade, select the checkbox next to the **Windows Virtual Desktop** entry, and click **Select**. 
    - In the **Assignments** section, click **Conditions**, click **Client apps**, on the **Client apps** blade, set the **Configure** switch to **Yes**, ensure that both the **Browser** and **Mobile apps and desktop clients** checkboxes are selected, and click **Done**.
    - In the **Access controls** section, click **Grant**, on the **Grant** blade, ensure that the **Grant access** option is selected, select the **Require multi-factor authentication** checkbox and click **Select**.
    - In the **Access controls** section, click **Session**, on the **Session** blade, select the **Sign-in frequency** checkbox, in the first textbox, type **4**, in the **Select units** dropdown list, select **Hours**, leave the **Persistent browser session** checkbox cleared, and click **Select**.
