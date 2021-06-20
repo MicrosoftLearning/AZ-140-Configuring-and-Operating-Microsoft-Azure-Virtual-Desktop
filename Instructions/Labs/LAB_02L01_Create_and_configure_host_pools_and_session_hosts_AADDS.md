@@ -99,10 +99,6 @@ The main tasks for this exercise are as follows:
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-aadds-vnet11a**|
    |Subnet|**hp1-Subnet (10.10.1.0/24)**|
-   |Public IP|**Yes**|
-   |Configure SKU|**Basic**|
-   |Configure assignment|**Dynamic**|
-   |Network security group|**Basic**|
    |Public inbound ports|**No**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
