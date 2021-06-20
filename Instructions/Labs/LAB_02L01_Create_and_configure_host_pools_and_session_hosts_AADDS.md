@@ -182,7 +182,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Now you will create an application group based on file path as the application source
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
+1. Within the Remote Desktop session to **az140-cl-vm11a**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
 1. On the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
