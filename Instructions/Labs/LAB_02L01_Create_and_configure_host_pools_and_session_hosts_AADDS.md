@@ -84,7 +84,7 @@ The main tasks for this exercise are as follows:
    |Max session limit|**10**|
    |Load balancing algorithm|**Breadth-first**|
 
-1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Azure AD tenant associated with the subscription into which you deployed the Azure AD DS instance):
+1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Azure AD tenant associated with the subscription into which you deployed the Azure AD DS instance):
 
    |Setting|Value|
    |---|---|
@@ -99,6 +99,7 @@ The main tasks for this exercise are as follows:
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-aadds-vnet11a**|
    |Subnet|**hp1-Subnet (10.10.1.0/24)**|
+   |Network security group|**Basic**|
    |Public inbound ports|**No**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
