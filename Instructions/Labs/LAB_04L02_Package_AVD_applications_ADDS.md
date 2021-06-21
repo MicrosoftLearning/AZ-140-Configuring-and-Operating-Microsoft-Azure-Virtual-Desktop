@@ -14,11 +14,9 @@ lab:
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
 - The completed lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Azure AD DS)**
 
-> **Note**: At the time of authoring this lab, the MSIX app attach functionality for Azure Virtual Desktop is in public preview. In order to try it, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
-
 ## Estimated Time
 
-90 minutes
+60 minutes
 
 ## Lab scenario
 
@@ -29,7 +27,7 @@ You need to package and deploy Azure Virtual Desktop applications in an Active D
 After completing this lab, you will be able to:
 
 - Prepare for and create MSIX app packages
-- Implement MSIX app attach container for Azure Virtual Desktop in AD DS environment
+- Implement an MSIX app attach image for Azure Virtual Desktop in Azure AD DS environment
 - Implement the MSIX app attach on Azure Virtual Desktop in AD DS environment
 
 ## Lab files
@@ -113,13 +111,13 @@ The main tasks for this exercise are as follows:
 
 > **Note**: In this lab, you will use a self-signed certificate. In a production environment, you should be using a certificate issued by either a public Certification Authority or an internal one, depending on the intended use.
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to generate a self-signed certificate with the Common Name attribute set to **Adatum**, and store the certificate in the **Personal** folder of the **Local Machine** certificate store:
+1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to generate a self-signed certificate with the Common Name attribute set to **Adatum**, and store the certificate in the **Personal** folder of the **Local Machine** certificate store:
 
    ```powershell
    New-SelfSignedCertificate -Type Custom -Subject "CN=Adatum" -KeyUsage DigitalSignature -KeyAlgorithm RSA -KeyLength 2048 -CertStoreLocation "cert:\LocalMachine\My"
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to start the **Certificates** console targeting the Local Machine certificate store:
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to start the **Certificates** console targeting the Local Machine certificate store:
 
    ```powershell
    certlm.msc
@@ -130,7 +128,7 @@ The main tasks for this exercise are as follows:
 1. On the **Export Private Key** page of the **Certificate Export Wizard**, select the option **Yes, export the private key** option and select **Next**.
 1. On the **Export File Format** page of the **Certificate Export Wizard**, select the checkbox **Export all extended properties**, clear the checkbox **Enable certificate privacy**, and select **Next**.
 1. On the **Security** page of the **Certificate Export Wizard**, select the **Password** checkbox, in the textboxes below, type **Pa55w.rd1234**, and select **Next**.
-1. On the **File to Export** page of the **Certificate Export Wizard**, in the **File name** textbox, select **Browse**, in the **Save As** dialog box, navigate to the **C:\\Allfiles\\Labs\\04** folder (create the folder if needed), in the **File name** textbox, type **adatum.pfx**, and select **Save**.
+1. On the **File to Export** page of the **Certificate Export Wizard**, in the **File name** textbox, select **Browse**, in the **Save As** dialog box, navigate to the **C:\\Allfiles\\Labs\\04** folder (create the folder first), in the **File name** textbox, type **adatum.pfx**, and select **Save**.
 1. Back on the **File to Export** page of the **Certificate Export Wizard**, ensure that the textbox contains the entry **C:\\Allfiles\\Labs\\04\\adatum.pfx**, and select **Next**.
 1. On the **Completing Certificate Export Wizard** page of the **Certificate Export Wizard**, select **Finish**, and select **OK** to acknowledge successful export. 
 
@@ -142,9 +140,10 @@ The main tasks for this exercise are as follows:
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
    $cleartextPassword = 'Pa55w.rd1234'
    $securePassword = ConvertTo-SecureString $cleartextPassword -AsPlainText -Force
+   $localPath = 'C:\Allfiles\Labs\04'
    ForEach ($wvdhost in $wvdhosts){
-      $localPath = 'C:\Allfiles\Labs\04'
       $remotePath = "\\$wvdhost\C$\Allfiles\Labs\04\"
+      New-Item -ItemType Directory -Path $remotePath -Force
       Copy-Item -Path "$localPath\adatum.pfx" -Destination $remotePath -Force
       Invoke-Command -ComputerName $wvdhost -ScriptBlock {
          Import-PFXCertificate -CertStoreLocation Cert:\LocalMachine\TrustedPeople -FilePath 'C:\Allfiles\Labs\04\adatum.pfx' -Password $using:securePassword
@@ -156,7 +155,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Microsoft Edge** and browse to **https://github.com/microsoft/XmlNotepad**.
 1. On the **microsoft/XmlNotepad** **readme.md** page, select the download link for [Standalone downloadable installer](http://www.lovettsoftware.com/downloads/xmlnotepad/xmlnotepadsetup.zip) and download the compressed installation files.
-1. Within the Remote Desktop session to **az140-cl-vm42**, start File Explorer, navigate to the **Downloads** folder, open the compressed file, copy its content, create a folder **C:\\AllFiles\\Labs\\04\\**, and paste the copied content into the newly created folder. 
+1. Within the Remote Desktop session to **az140-cl-vm42**, start File Explorer, navigate to the **Downloads** folder, open the compressed file, copy its content and paste it to the **C:\\AllFiles\\Labs\\04\\** directory. 
 
 #### Task 6: Install the MSIX Packaging Tool
 
@@ -197,28 +196,29 @@ The main tasks for this exercise are as follows:
 1. On the **Select installer** page of the **Create new package** wizard, in the **Signing preference** drop-down list, select the **Sign with a certificate (.pfx)** entry, next to the **Browse for certificate** textbox, select **Browse**, in the **Open** dialog box, navigate to the **C:\\AllFiles\\Labs\\04** folder, select the **adatum.pfx** file, click **Open**, in the **Password** text box, type **Pa55w.rd1234**, and select **Next**.
 1. On the **Package information** page of the **Create new package** wizard, review the package information, validate that the publisher name is set to **CN=Adatum**, and select **Next**. This will trigger installation of the downloaded software.
 1. In the **XMLNotepad Setup** window, accept the terms in the License Agreement and select **Install** and, once the installation completes, select the **Launch XML Notepad** checkbox and select **Finish**.
-1. Verify that XML Notepad is running, close it, switch back to the **Create new package** wizard in the **MSIX Packaging Tool** window, and select **Next**.
+1. When prompted, in the **XML Notepad Analytics** window, select **No**, verify that XML Notepad is running, close it, switch back to the **Create new package** wizard in the **MSIX Packaging Tool** window, and select **Next**.
 
    > **Note**: In this case, restart is not required to complete the installation.
 
 1. On the **First launch tasks** page of the **Create new package** wizard, review the provided information and select **Next**.
 1. When prompted **Are you done?**, select **Yes, move on**.
 1. On the **Services report** page of the **Create new package** wizard, verify that no services are listed and select **Next**.
-1. On the **Create package** page of the **Create new package** wizard, in the **Save location** textbox, type **C:\\Allfiles\\Labs\\04\\XmlNotepad** and click **Create**.
+1. On the **Create package** page of the **Create new package** wizard, in the **Save location** textbox, type **C:\\Allfiles\\Labs\\04\\XmlNotepad\XmlNotepad.msix** and click **Create**.
 1. In the **Package successfully created** dialog box, note the location of the saved package and select **Close**.
-1. Switch to the File Explorer window, navigate to the **C:\\Allfiles\\Labs\\04\\XmlNotepad** folder and verify that it contains the *.msix and *.xml files. 
+1. Switch to the File Explorer window, navigate to the **C:\\Allfiles\\Labs\\04\\XmlNotepad** folder and verify that it contains the *.msix and *.xml files.
+1. Copy the **XmlNotepad.msix** file to the **C:\\Allfiles\\Labs\\04** folder.
 
 
-### Exercise 2: Implement MSIX app attach container for Azure Virtual Desktop in Azure AD DS environment
+### Exercise 2: Implement an MSIX app attach image for Azure Virtual Desktop in Azure AD DS environment
 
 The main tasks for this exercise are as follows:
 
 1. Enable Hyper-V on the Azure VMs running Window 10 Enterprise Edition
-1. Create an app attach container
+1. Create an MSIX app attach image
 
 #### Task 1: Enable Hyper-V on the Azure VMs running Window 10 Enterprise Edition
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the target Azure Virtual Desktop hosts for MSIX app attach: 
+1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the target Azure Virtual Desktop hosts for MSIX app attach: 
 
    ```powershell
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
@@ -255,24 +255,24 @@ The main tasks for this exercise are as follows:
 
 1. Once the installation of the Hyper-V components completes, type **Y** and press the **Enter** key to restart the operating system. Following the restart, sign in back by using the **ADATUM\wvdadmin1** account with the **Pa55w.rd1234** password.
 
-#### Task 2: Create an app attach container
+#### Task 2: Create an MSIX app attach image
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Microsoft Edge**, browse to **https://aka.ms/msixmgr** and, when prompted whether to open or save **msixmgr.zip** file, click **Save**. This will download the MSIX mgr tool archive into the **Downloads** folder.
-1. In File Explorer, navigate to the **Downloads** folder, open the compressed file and copy the **x64** folder to the **C:\\AllFiles\\Labs\\04** folder. 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE**  script pane, run the following to create the VHD file that will serve as the app attach container:
+1. In File Explorer, navigate to the **Downloads** folder, open the compressed file and copy the content of the **x64** folder to the **C:\\AllFiles\\Labs\\04** folder. 
+1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE**  script pane, run the following to create the VHD file that will serve as the MSIX app attach image:
 
    ```powershell
    New-Item -ItemType Directory -Path 'C:\Allfiles\Labs\04\MSIXVhds' -Force
    New-VHD -SizeBytes 128MB -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Dynamic -Confirm:$false
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to mount the newly created VHD file:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to mount the newly created VHD file:
 
    ```powershell
    $vhdObject = Mount-VHD -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Passthru
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to initialize the disk, create a new partition, format it, and assign to it the first available drive letter:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to initialize the disk, create a new partition, format it, and assign to it the first available drive letter:
 
    ```powershell
    $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
@@ -280,26 +280,17 @@ The main tasks for this exercise are as follows:
    Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create a folder structure that will host the MSIX files and unpack into it the MSIX package you created in the previous task:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create a folder structure that will host the MSIX files and unpack into it the MSIX package you created in the previous task:
 
    ```powershell
    $appName = 'XmlNotepad'
-   $msixPackage = Get-ChildItem -Path "C:\AllFiles\Labs\04\$appName" -Filter *.msix -File 
-   C:\AllFiles\Labs\04\x64\msixmgr.exe -Unpack -packagePath $msixPackage.FullName -destination "$($partition.DriveLetter):\Apps\$appName" -applyacls
+   New-Item -ItemType Directory -Path "$($partition.DriveLetter):\Apps" -Force
+   Set-Location -Path 'C:\AllFiles\Labs\04'
+   .\msixmgr.exe -Unpack -packagePath .\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps\\XmlNoteppad** folder and review its content.
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to identify the GUID of volume hosting the unpacked MSIX package
-
-   ```powershell
-   $uniqueId = (Get-Volume -DriveLetter "$($partition.DriveLetter)").UniqueId
-   $regex = [regex]"\{(.*)\}"
-   [regex]::match($uniqueId, $regex).Groups[1].value
-   ```
-
-   > **Note**: Record the GUID value you identified. You will need it in the next exercise of this lab. 
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to unmount the VHD file that will serve as the app attach container:
+1. Within the Remote Desktop session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps** folder and review its content.
+1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to unmount the VHD file that will serve as the MSIX image:
 
    ```powershell
    Dismount-VHD -Path "C:\Allfiles\Labs\04\MSIXVhds\$appName.vhd" -Confirm:$false
@@ -311,7 +302,7 @@ The main tasks for this exercise are as follows:
 
 1. Configure Active Directory groups containing Azure Virtual Desktop hosts
 1. Set up the Azure Files share for MSIX app attach
-1. Mount and register the MSIX App attach container on Azure Virtual Desktop session hosts
+1. Mount and register the MSIX App attach image on Azure Virtual Desktop session hosts
 1. Publish MSIX apps to an application group
 1. Validate the functionality of MSIX App attach
 
@@ -351,13 +342,6 @@ The main tasks for this exercise are as follows:
 
    > **Note**: This step ensures that the group membership change takes effect. 
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the user principal name of the **aadsyncuser** Azure AD user account:
-
-   ```powershell
-   (Get-AzADUser -DisplayName 'aadsyncuser').UserPrincipalName
-   ```
-   > **Note**: Record the user principal name you identified in this step. You will need it later in this task.
-
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the **Start** menu, expand the **Azure AD Connect** folder and select **Azure AD Connect**.
 1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** window, select **Configure**.
 1. On the **Additional tasks** page in the **Microsoft Azure Active Directory Connect** window, select **Customize synchronization options** and select **Next**.
@@ -367,10 +351,13 @@ The main tasks for this exercise are as follows:
 1. On the **Optional features** page in the **Microsoft Azure Active Directory Connect** window, accept the default settings, and select **Next**.
 1. On the **Ready to configure** page in the **Microsoft Azure Active Directory Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
 1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Azure Active Directory Connect** window.
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Internet Explorer window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Azure AD tenant associated with the Azure subscription you are using for this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Azure AD tenant associated with the Azure subscription you are using for this lab.
 1. On the Azure Active Directory blade, in the vertical menu bar on the left side, in the **Manage** section, click **Groups**. 
 1. On the **Groups | All groups** blade, in the list of groups, select the **az140-hosts-42-p1** entry.
+
+   > **Note**: You might need to refresh the page for the group to be displayed.
+
 1. On the **az140-hosts-42-p1** blade, in the vertical menu bar on the left side, in the **Manage** section, click **Members**.
 1. On the **az140-hosts-42-p1 | Members** blade, verify that the list of **Direct members** include the three hosts of the Azure Virtual Desktop pool you added to the group earlier in this task.
 
@@ -448,169 +435,65 @@ The main tasks for this exercise are as follows:
    Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
    ```
 
-#### Task 3: Run the MSIX app attach staging script on Azure Virtual Desktop hosts
+#### Task 3: Mount and register the MSIX App attach image on Azure Virtual Desktop session hosts
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
+1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools**.
+1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select the **az140-21-hp1** entry.
+1. On the **az140-21-hp1** host pool entry, in the vertical menu on the left side, in the **Settings** section, select **Properties**.
+1. On the **az140-21-hp1 \| Properties** blade, in the vertical menu on the left side, in the **Manage** section, select **MSIX packages**.
+1. On the **az140-21-hp1 \| MSIX packages** blade, click **+ Add**.
+1. On the **Add MSIX package** blade, in the **MSIX image path** textbox, enter the path to the **XmlNotepad.vhd** file in the format `\\<storage-account-name>.file.core.windows.net\az140-42-msixvhds\packages\XmlNotepad.vhd` (replace the `<storage-account-name>` placeholder with the name of the storage account hosting the **az140-42-msixvhds** file share) and click **Add**.
+1. On the **Add MSIX package** blade, specify the following settings and click **Add**:
 
-   ```powershell
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   Install-Module -Name PowerShellGet -Force -SkipPublisherCheck
-   ```
+   |Setting|Value|
+   |---|---|
+   |MSIX image path|**\\<storage-account-name>.file.core.windows.net\az140-42-msixvhds\XmlNotepad.vhd**, where the placeholder `<storage-account-name>` designates the name of the storage account hosting the **az140-42-msixvhds** file share|
+   |MSIX package|the name generated during package creation|
+   |Display name|**XML Notepad**|
+   |Registration type|**On-demand**|
+   |State|**Active**|
 
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the latest version of the Az PowerShell module (select **Yes to All** when prompted for confirmation):
+#### Task 4: Publish MSIX apps to an application group
 
-   ```powershell
-   Install-Module -Name Az -AllowClobber -SkipPublisherCheck
-   ```
+> **Note**: You will publish the MSIX app to both the remote app and the desktop app group. 
 
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to modify the execution policy:
+1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Application groups**.
+1. On the **Azure Virtual Desktop \| Application groups** blade, select the **az140-21-hp1-Utilities-RAG** application group entry.
+1. On the **az140-21-hp1-Utilities-RAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Applications**. 
+1. On the **az140-21-hp1-Utilities-RAG | Applications** blade, click **+ Add**.
+1. On the **Add application** blade, specify the following settings and select **Save**:
 
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned -Force
-   ```
+   |Setting|Value|
+   |---|---|
+   |Application source|**MSIX package**|
+   |MSIX package|the name representing the package included in the image|
+   |MSIX application|**XMLNOTEPAD**|
+   |Application name|**XML Notepad**|
+   |Display name|**XML Notepad**|
+   |Description|**XML Notepad**|
+   |Icon path|**C:\Program Files\WindowsApps\XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8\VFS\ProgramFilesX86\LovettSoftware\XmlNotepad\XmlNotepad.exe**|
+   |Icon index|**0**|
 
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to authenticate to the Azure subscription using in this lab:
+1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade and select the **az140-21-hp1-DAG** application group entry.
+1. On the **az140-21-hp1-DAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Applications**. 
+1. On the **az140-21-hp1-DAG | Applications** blade, click **+ Add**.
+1. On the **Add application** blade, specify the following settings and select **Save**:
 
-   ```powershell
-   Connect-AzAccount
-   ```
+   |Setting|Value|
+   |---|---|
+   |Application source|**MSIX package**|
+   |MSIX package|the name representing the package included in the image|
+   |Application name|**XML Notepad**|
+   |Display name|**XML Notepad**|
+   |Description|**XML Notepad**|
 
-1. When prompted, sign in with the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the name of the Azure storage account hosting the file share containing the MSIX package:
+#### Task 5: Validate the functionality of MSIX App attach
 
-   ```powershell
-   $resourceGroupName = 'az140-22-RG'
-   $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName  
-   ```
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, start Command Prompt as Administrator, from the Command Prompt, run the following to enable WinRM (when prompted for confirmation, type **Y** and press the **Enter** key:
-
-   ```cmd
-   winrm qc
-   ```
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to enable CredSSP authentication for PowerShell Remoting to the target Windows Remote Desktop hosts:
-
-   ```powershell
-   Enable-WSManCredSSP -Role client -DelegateComputer * -Force
-   ```
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to enable CredSSP authentication for PowerShell Remoting to the target Windows Remote Desktop hosts:
-
-   ```powershell
-   $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
-   ForEach ($wvdhost in $wvdhosts){
-      Invoke-Command -ComputerName $wvdhost -ScriptBlock {
-        winrm qc
-        Enable-PSRemoting -Force
-        Enable-WSManCredSSP -Role server -Force
-      } 
-   }
-   ```
-
-   >**Note**: This is done to allow running the staging script remotely. Alternatively, you could run the script locally on each target host.
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to perform the MSIX app attach staging (replace the `<volume_guid>` placeholder with the volume GUID you identified in the previous exercise):
-
-   ```powershell
-   $username = 'ADATUM\wvdadmin1'
-   $cleartextPassword = 'Pa55w.rd1234'
-   $securePassword = ConvertTo-SecureString -AsPlainText $cleartextPassword -Force
-   $creds = New-Object System.Management.Automation.PSCredential -ArgumentList $username,$securePassword
-
-   $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
-   ForEach ($wvdhost in $wvdhosts){
-      Invoke-Command -ComputerName $wvdhost -Authentication Credssp -Credential $creds -ScriptBlock {
-
-         $vhdSrc = "\\$using:storageAccountName.file.core.windows.net\az140-42-msixvhds\packages\XmlNotepad.vhd"
-         Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
-         $volumeGuid = '<volume_guid>'
-         $msixDest = "\\?\Volume{" + $volumeGuid + "}\"
-
-         $parentFolder = '\Apps\XmlNotepad\'
-         $msixJunction = 'C:\Allfiles\Labs\04\AppAttach\'
-         $packageName = "XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8"
-
-         If (!(Test-Path -Path $msixJunction)) {New-Item -ItemType Directory -Path $msixJunction}
-         $msixJunction = $msixJunction + $packageName
-         cmd.exe /c mklink /j $msixJunction $msixDest
-
-         [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime] | Out-Null
-         Add-Type -AssemblyName System.Runtime.WindowsRuntime
-         $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
-         $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
-         $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-         $path = $msixJunction + $parentFolder + $packageName
-         $path = ([System.Uri]$path).AbsoluteUri
-         $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
-         $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
-         $task 
-      }
-   }
-    ```
-
-#### Task 4: Initiate a Remote Desktop session to one of the pool hosts
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge and navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, when prompted, select **Run** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. 
+1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge, navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, once download completes, select **Open file** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. 
 1. Once the installation completes, ensure that the **Launch Remote Desktop when setup exits** checkbox is selected and click **Finish** to start the Remote Desktop client.
 1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** user principal name and **Pa55w.rd1234** as its password.
 1. If prompted, in the **Stay signed in to all your apps** window, clear the **Allow my organization to manage my device** checkbox and click **No, sign in to this app only**.
-1. In the **Remote Desktop** client window, within the **az140-21-ws1** section, double-click **SessionDesktop** icon to open a Remote Desktop session to the host pool that is part of the **az140-21-ws1** workspace. When prompted provide the password for the **aduser1** account.
-
-#### Task 5: Run the MSIX app attach registration script on Azure Virtual Desktop hosts
-
-1. Within the Remote Desktop session from **az140-cl-vm42** to a host pool in the **az140-21-ws1** workspace, while signed in as **aduser1**, start **Windows PowerShell ISE** and, from the **Windows PowerShell ISE** console, run the following to perform the MSIX app attach registration:
-
-   ```powershell
-   $packageName = 'XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8'
-   $path = 'C:\Program Files\WindowsApps\' + $packageName + '\AppxManifest.xml'
-   Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
-   ```
-
-1. Within the Remote Desktop session from **az140-cl-vm42** to a host pool in the **az140-21-ws1** workspace, while signed in as **ADATUM\aduser1**, click **Start**, in the **Start** menu, click **XML Notepad** and verify that it successfully launches the XML Notepad app.
-1. Close XML Notepad and the **Windows PowerShell ISE** window, right-click **Start**, in the right-click menu, select **Shut down or sign out** and, in the cascading menu, select **Sign out**.
-
-#### Task 6: Run the MSIX app attach deregistration script
-
-1. Back within the Remote Desktop session to **az140-cl-vm42**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to perform the MSIX app deregistration on all hosts in the **az140-21-hp1** host pool:
-
-   ```powershell
-   $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
-   ForEach ($wvdhost in $wvdhosts){
-      Invoke-Command -ComputerName $wvdhost -Authentication Credssp -Credential $creds -ScriptBlock {
-         $packageName = "XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8"
-         Remove-AppxPackage -AllUsers -Package $packageName
-      }
-   }
-    ```
-
-1. Verify that the script completed successfully.
-
-#### Task 7: Run the MSIX app attach destaging script
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the name of the Azure storage account hosting the file share containing the MSIX package:
-
-   ```powershell
-   $resourceGroupName = 'az140-22-RG'
-   $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName  
-   ```
-
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to perform the MSIX app destaging on all hosts in the **az140-21-hp1** host pool:
-
-   ```powershell
-   $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
-   ForEach ($wvdhost in $wvdhosts){
-      Invoke-Command -ComputerName $wvdhost -Authentication Credssp -Credential $creds -ScriptBlock {
-         $vhdSrc = "\\$using:storageAccountName.file.core.windows.net\az140-42-msixvhds\packages\XmlNotepad.vhd"
-         $packageName = "XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8"
-         $msixJunction = 'C:\Allfiles\Labs\04\AppAttach'
-         Remove-Item "$msixJunction\$packageName" -Recurse -Force -Verbose
-         Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
-      }
-   }
-    ```
-
-1. Verify that the script completed successfully.
+1. In the **Remote Desktop** client window, within the **az140-21-ws1** section, double-click the **XML Notepad** icon, when prompted, provide the password, and verify that the XML Notepad launches successfully.
 
 
 ### Exercise 4: Stop and deallocate Azure VMs provisioned and used in the lab
