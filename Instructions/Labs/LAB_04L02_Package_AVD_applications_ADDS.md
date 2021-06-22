@@ -11,8 +11,8 @@ lab:
 
 - An Azure subscription
 - A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
-- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)** or **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
-- The completed lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Azure AD DS)**
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
+- The completed lab **Azure Virtual Desktop profile management (AD DS)**
 
 ## Estimated Time
 
