@@ -229,7 +229,7 @@ The main tasks for this exercise are as follows:
 #### Task 3: Configure the network and identity settings of the Azure AD DS deployment
 
 1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select the **adatum.com** entry to navigate to the newly provisioned Azure AD DS instance. 
-1. On the **adatum.com** blade of the Azure AD DS instance, click the warning stating **Network configuration issues detected. See detailed diagnosis**. 
+1. On the **adatum.com** blade of the Azure AD DS instance, click the warning starting with **Configuration issues for your managed domian were detected**. 
 1. On the **adatum.com | Configuration diagnostics (preview)** blade, click **Run**.
 1. In the **Validation** section, expand the **DNS records** pane and click **Fix**.
 1. On the **DNS records** blade, click **Fix** again.
