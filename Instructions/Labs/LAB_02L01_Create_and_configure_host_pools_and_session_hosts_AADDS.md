@@ -229,6 +229,7 @@ The main tasks for this exercise are as follows:
    |Resource group|**az140-21a-RG**|
    |Workspace name|**az140-21a-ws1**|
    |Friendly name|**az140-21a-ws1**|
+   |Location|the name of the Azure region into which you deployed resources in this lab||
 
 1. On the **Application groups** tab of the **Create a workspace** blade, specify the following settings:
 
