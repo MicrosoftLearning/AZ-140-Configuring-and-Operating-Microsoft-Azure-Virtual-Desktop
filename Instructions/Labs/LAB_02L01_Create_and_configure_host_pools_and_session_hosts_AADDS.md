@@ -91,11 +91,12 @@ The main tasks for this exercise are as follows:
    |Add virtual machines|**Yes**|
    |Resource group|**Defaulted to same as host pool**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
+   |Availability options|**No infrastructure redundancy required**|
+   |Image type|**Gallery**|
+   |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**2**|
    |Name prefix|**az140-21-p1**|
-   |Image type|**Gallery**|
-   |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-aadds-vnet11a**|
    |Subnet|**hp1-Subnet (10.10.1.0/24)**|
@@ -106,6 +107,8 @@ The main tasks for this exercise are as follows:
    |Organizational Unit path|**OU=AADDC Computers,DC=adatum,DC=com**|
    |AD domain join UPN|**aadadmin1@***<Azure_AD_domain_name>*|
    |Password|**Pa55w.rd1234**|
+   |Virtual Machine Administrator account username|**student**|
+   |Virtual Machine Administrator account password|**Pa55w.rd1234**|
 
 1. On the **Workspace** tab of the **Create a host pool** blade, specify the following settings and select **Review + create**:
 
