@@ -55,7 +55,7 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to register the **Microsoft.Compute** resource provider, in case it's not registered:
 
    ```powershell
-   Register-AzResourceProvider -Name 'Microsoft.Compute'
+   Register-AzResourceProvider -ProviderNamespace 'Microsoft.Compute'
    ```
 
 1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to verify the registration status of the **Microsoft.Compute** resource provider:
