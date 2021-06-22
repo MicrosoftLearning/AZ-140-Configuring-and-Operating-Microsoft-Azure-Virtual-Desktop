@@ -12,8 +12,6 @@ lab:
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
 
-> **Note**: At the time of authoring this course, the MSIX app attach functionality for Azure Virtual Desktop is in public preview. If you intend to run the lab that involves the use of MSIX app attach included in this course, you need to submit a request via on [online form](https://aka.ms/enablemsixappattach) to enable MSIX app attach in your subscription. The approval and processing of requests can take up to 24 hours during business days. You'll receive an email confirmation once your request has been accepted and completed.
-
 ## Estimated Time
 
 60 minutes
