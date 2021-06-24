@@ -60,7 +60,7 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to create an organizational unit that will host the computer objects of the Azure Virtual Desktop hosts:
 
    ```powershell
-   New-ADOrganizationalUnit 'WVDInfra' –path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'WVDInfra' â€“path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to sign in to your Azure subscription:
@@ -184,7 +184,7 @@ The main tasks for this exercise are as follows:
 
 1. On the **Review + create** tab of the **Add virtual machines to a host pool** blade, select **Create**
 
-   > **Note**: Do not wait for the deployment to complete but instead proceed to the next task. The deployment might take about 5 minutes. 
+   > **Note**: Wait for the deployment to complete before you proceed to the next task. The deployment might take about 5 minutes. 
 
 #### Task 4: Configure Azure Virtual Desktop application groups
 
