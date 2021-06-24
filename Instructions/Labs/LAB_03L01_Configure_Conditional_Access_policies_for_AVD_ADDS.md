@@ -197,6 +197,15 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Test the Azure AD-based Conditional Access policy for all Azure Virtual Desktop connections
 
+1. On the lab computer and, in the web browser window displaying the Azure portal, open the **PowerShell** shell session within the **Cloud Shell** pane.
+1. From the PowerShell session in the Cloud Shell pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
+   ```
+
+   >**Note**: Wait until the command completes and all the Azure VMs aren the **az140-21-RG** resource group are running. 
+
 1. On your lab computer, open an **InPrivate** web browser session, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing the **user5** user principal name you identified earlier in this exercise and the **Pa55w.rd1234** as the password.
 
    > **Note**: Verify that you are not prompted to authenticate via MFA.
