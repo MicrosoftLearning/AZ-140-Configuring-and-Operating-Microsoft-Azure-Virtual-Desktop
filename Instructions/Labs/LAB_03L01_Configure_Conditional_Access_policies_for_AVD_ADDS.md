@@ -83,7 +83,7 @@ The main tasks for this exercise are as follows:
 1. On the **Enable Security defaults** blade, if needed, select **No**, select the **My organization is using Conditional Access** checkbox, and select **Save**.
 1. On your lab computer, in the web browser displaying the Azure portal, navigate back to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Security**.
 1. On the **Security | Getting started** blade, in the vertical menu on the left side, in the **Manage** section, click **Identity Protection**.
-1. On the **Identity Protection | Overview** blade, in the vertical menu on the left side, in the **Protect** section, click **MFA registration policy**.
+1. On the **Identity Protection | Overview** blade, in the vertical menu on the left side, in the **Protect** section, click **MFA registration policy** (if necessary, refresh the web browser page).
 1. On the **Identity Protection | MFA registration policy** blade, in the **Assignments** section of the **Multi-factor authentication registration policy**, click **All users**, on the **Include** tab, click the **Select individuals and groups** option, on the **Select users**, click **aduser5**, click **Select**, at the bottom of the blade, set the **Enforce policy** switch to **On**, and click **Save**.
 
 #### Task 3: Register a user for Azure AD MFA
