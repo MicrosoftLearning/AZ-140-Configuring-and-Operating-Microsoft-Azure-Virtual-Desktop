@@ -172,6 +172,7 @@ The main tasks for this exercise are as follows:
    |Configure assignment|**Dynamic**|
    |Network security group|**Basic**|
    |Public inbound ports|**Yes**|
+   |Inbound ports to allow|**RDP**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
