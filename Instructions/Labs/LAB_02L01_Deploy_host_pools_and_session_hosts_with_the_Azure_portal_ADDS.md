@@ -126,8 +126,7 @@ The main tasks for this exercise are as follows:
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
    |Network security group|**Basic**|
-   |Public inbound ports|**Yes**|
-   |Inbound ports to allow|**RDP**|
+   |Public inbound ports|**No**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
@@ -171,8 +170,7 @@ The main tasks for this exercise are as follows:
    |Configure SKU|**Basic**|
    |Configure assignment|**Dynamic**|
    |Network security group|**Basic**|
-   |Public inbound ports|**Yes**|
-   |Inbound ports to allow|**RDP**|
+   |Public inbound ports|**No**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
