@@ -148,7 +148,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 4: Configure the Azure Files RBAC-based permissions
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, on the blade displaying properties of the storage account you created earlier in this exercise, in the vertical menu on the left side, in the **File Services** section, select **File shares**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, on the blade displaying properties of the storage account you created earlier in this exercise, in the vertical menu on the left side, in the **Data storage** section, select **File shares**.
 1. On the **File shares** blade, in the list of shares, select the **az140-22-profiles** entry.
 1. On the **az140-22-profiles** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
 1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
