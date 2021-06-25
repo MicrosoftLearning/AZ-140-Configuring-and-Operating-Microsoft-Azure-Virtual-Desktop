@@ -90,12 +90,7 @@ The main tasks for this exercise are as follows:
 
 1. On your lab computer, open an **InPrivate** web browser session, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing the **user5** user principal name you identified earlier in this exercise and the **Pa55w.rd1234** as the password.
 1. When presented with the message **More information required**, click **Next**. This will automatically redirect your browser to the **Microsoft Authenticator** page.
-1. On the **Microsoft Authenticator** page, click the link **I want to set up a different method**.
-1. In the **Choose a different method** dialog box, in the **Which method would you like to use?** dropdown list, select **Phone** an click **Confirm**.
-1. On the **Phone** page, provide your phone number, verify that the **Text me a code** option is selected, and click **Next**.
-1. On the **Phone** page, type the code included in the text you received on your phone and click **Next**.
-1. Ensure that the SMS was successfully verified and your phone registered successfully and click **Next**.
-1. On the **Success!** page, click **Done**.
+1. On the **Additional security verification** page, in the **Step 1: How should we contact you?** section, select your preferred authentication method and follow instructions to complete the registration process. 
 1. On the Azure portal page, in the upper right corner, click the icon representing the user avatar, click **Sign out**, and close the **In private** browser window. 
 
 #### Task 4: Configure hybrid Azure AD join
