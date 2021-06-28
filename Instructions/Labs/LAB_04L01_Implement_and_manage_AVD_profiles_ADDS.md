@@ -58,12 +58,15 @@ The main tasks for this exercise are as follows:
 
    > **Note**: The next step is necessary to prepare for the next lab. Restarting the hosts ensures that the user profiles are offloaded.
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to restart both session host VMs
+1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
+1. On the lab computer and, in the web browser window displaying the Azure portal, open the **PowerShell** shell session within the **Cloud Shell** pane.
+1. From the PowerShell session in the Cloud Shell pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
 
    ```powershell
-   $servers = 'az140-21-p1-0','az140-21-p1-1'
-   Restart-Computer -ComputerName $servers -Force
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
    ```
+
+   >**Note**: Wait until the Azure VMs are running before you proceed to the next step.
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Virtual machines** blade and, on the **Virtual machines** blade, select **az140-21-p1-0**.
@@ -115,7 +118,7 @@ The main tasks for this exercise are as follows:
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22-profiles'
-   New-Item -Path $profilesParentKey -Name $profilesChildKey –Force
+   New-Item -Path $profilesParentKey -Name $profilesChildKey â€“Force
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$storageAccountName.file.core.windows.net\$fileShareName"
    ```
@@ -159,7 +162,7 @@ The main tasks for this exercise are as follows:
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22-profiles'
    Invoke-Command -ComputerName $server -ScriptBlock {
-      New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey –Force
+      New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey â€“Force
       New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
       New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$using:storageAccountName.file.core.windows.net\$using:fileShareName"
    }
