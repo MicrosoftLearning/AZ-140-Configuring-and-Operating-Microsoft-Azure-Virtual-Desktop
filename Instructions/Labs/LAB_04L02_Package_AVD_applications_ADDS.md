@@ -374,7 +374,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Azure AD DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
 
-1. On the storage account blade, in the vertical menu on the left side, in the **File services** section, select **File shares** and then select **+ File share**.
+1. On the storage account blade, in the vertical menu on the left side, in the **Data storage** section, select **File shares** and then select **+ File share**.
 1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
 
    |Setting|Value|
