@@ -206,7 +206,7 @@ The main tasks for this exercise are as follows:
    > **Note**: While this is technically not required, in general, you should assign an Azure AD DS domain name different from any existing Azure or on-premises DNS name space.
 
 1. On the **Networking** tab of the **Create Azure AD Domain Services** blade, next to the **Virtual network** drop-down list, select **Create new**.
-1. On the **Create virtual network** blade, specify the following settings and select **OK** (leave others with their existing values):
+1. On the **Create virtual network** blade, assign the following settings and select **OK**:
 
    |Setting|Value|
    |---|---|
