@@ -127,11 +127,12 @@ The main tasks for this exercise are as follows:
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
    |Network security group|**Basic**|
    |Public inbound ports|**No**|
+   |Select which directory you would like to join|**Active Directory**|
+   |AD domain join UPN|**student@adatum.com**|
+   |Password|**Pa55w.rd1234**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
-   |AD domain join UPN|**student@adatum.com**|
-   |Password|**Pa55w.rd1234**|
    |User name|Student|
    |Password|Pa55w.rd1234|
    |Confirm password|Pa55w.rd1234|
