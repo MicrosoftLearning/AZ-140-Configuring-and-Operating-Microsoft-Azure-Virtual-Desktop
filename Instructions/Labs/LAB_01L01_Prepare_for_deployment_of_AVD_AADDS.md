@@ -342,7 +342,7 @@ The main tasks for this exercise are as follows:
 #### Task 3: Create AD DS users and groups that will be synchronized to Azure AD DS
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with **Pa55w.rd1234** as its password.
-1. In the Azure portal, open a PowerShell session in the **Cloud Shell**.
+1. In the Azure portal, open the **Cloud Shell**.
 1. When prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
 
    >**Note**: Since this is the first time you are starting **Cloud Shell** by using the **aadadmin1** user account, you will need to configure its Cloud Shell home directory. When presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
