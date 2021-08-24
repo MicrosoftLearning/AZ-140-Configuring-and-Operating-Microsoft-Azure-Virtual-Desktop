@@ -172,9 +172,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the deployment to complete before you proceed to the next exercise. This might take about 15 minutes. 
 
-
-9. Verify if the AD DS VM is listed as the IP Address for the VNET
-Go to VNET, under DNS verify custom option is selected and the IP is 10.0.0.4, if missing manually add it.
+   > **Note**: Once the deployment completes, navigate to the blade of **az140-adds-vnet11** virtual network, verify that its DNS custom configuration is set to the IP address of the newly deployed Azure VM (10.0.0.4), and, if not, add it manually.
 
 #### Task 3: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
