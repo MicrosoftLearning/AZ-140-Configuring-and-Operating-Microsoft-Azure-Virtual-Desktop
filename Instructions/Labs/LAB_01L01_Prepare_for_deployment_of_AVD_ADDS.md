@@ -172,6 +172,10 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the deployment to complete before you proceed to the next exercise. This might take about 15 minutes. 
 
+
+9. Verify if the AD DS VM is listed as the IP Address for the VNET
+Go to VNET, under DNS verify custom option is selected and the IP is 10.0.0.4, if missing manually add it.
+
 #### Task 3: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
 1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **cl-Subnet** to the virtual network named **az140-adds-vnet11** you created in the previous task:
