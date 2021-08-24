@@ -141,8 +141,7 @@ The main tasks for this exercise are as follows:
    AzureStorageSid   : S-1-5-21-1102940778-2483248400-1820931179-2109
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, switch to the Microsoft Edge window displaying the Azure portal, on the blade displaying the storage account properties, in the **Settings** section of the vertical menu, select **Configuration**.
-1. On the configuration blade of the storage account, ensure that **Active Directory Domain Services (AD DS)** option is set to **Enabled** and that **Joined domain** entry is set to **adatum.com**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, switch to the Microsoft Edge window displaying the Azure portal, on the blade displaying the storage account , click File Share, in the middle of the blade ensure that **Active Directory is Configured**.
 
    >**Note**: You might have to refresh the browser page for the change to be reflected within the Azure portal.
 
