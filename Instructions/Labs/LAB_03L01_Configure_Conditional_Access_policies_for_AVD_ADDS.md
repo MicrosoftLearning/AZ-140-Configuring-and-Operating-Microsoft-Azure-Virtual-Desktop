@@ -221,8 +221,7 @@ The main tasks for this exercise are as follows:
 >**Note**: In this task, you will modify the Azure AD-based Conditional Access policy that requires MFA to sign in to a Azure Virtual Desktop session such that connections originating from Azure AD joined computers will not require MFA.
 
 1. On your lab computer, in the browser window displaying the Azure portal, on the **Conditional Access | Policies** blade, click the entry representing the **az140-31-wvdpolicy1** policy.
-1. On the **az140-31-wvdpolicy1** blade, in the **Assignments** section, click **Conditions**, in the list of conditions, click **Device state**, on the **Device state** blade, set the **Configure** switch to **Yes**, click the **Exclude** tab, on the **Exclude** tab, select **Device Hybrid Azure AD joined**, and click **Done**.
-1. On the **az140-31-wvdpolicy1** blade, in the **Access controls** section, click **Grant**, on the **Grant** blade, select the **Require Hybrid Azure AD joined device** checkbox, ensure that the **Require one of the selected controls** option is enabled, and click **Select**.
+1. On the **az140-31-wvdpolicy1** blade, in the **Access controls** section, click **Grant**, on the **Grant** blade, select the **Require multi-factor authentication** and **Require Hybrid Azure AD joined device** checkboxes, ensure that the **Require one of the selected controls** option is enabled, and click **Select**.
 1. On the **az140-31-wvdpolicy1** blade, click **Save**.
 
 #### Task 4: Test the modified Azure AD-based Conditional Access policy
