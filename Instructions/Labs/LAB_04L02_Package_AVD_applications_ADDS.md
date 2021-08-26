@@ -419,9 +419,9 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Command Prompt** window, run the following to grant the required NTFS permissions to the computer accounts of session hosts:
 
    ```cmd
-   icacls Z:\ /grant ADATUM\az140-hosts-42-p1:(OI)(CI)(RX) /T
-   icacls Z:\ /grant ADATUM\az140-wvd-users:(OI)(CI)(RX) /T
-   icacls Z:\ /grant ADATUM\az140-wvd-admins:(OI)(CI)(F) /T
+   icacls Z:\ /grant 'ADATUM\az140-hosts-42-p1:(OI)(CI)(RX)' /T
+   icacls Z:\ /grant 'ADATUM\az140-wvd-users:(OI)(CI)(RX)' /T
+   icacls Z:\ /grant 'ADATUM\az140-wvd-admins:(OI)(CI)(F)' /T
    ```
 
    >**Note**: You could also set these permissions by using File Explorer while signed in as **ADATUM\\wvdadmin1**. 
