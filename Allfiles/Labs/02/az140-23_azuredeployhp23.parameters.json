@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "nestedTemplatesLocation": {
@@ -17,6 +17,27 @@
     "hostpoolDescription": {
       "value": "az140-23 hostpool 2"
     },
+    "hostpoolDiagnosticSettingsStorageAccount": {
+      "value": null
+    },
+    "hostpoolDiagnosticSettingsLogAnalyticsWorkspaceId": {
+      "value": null
+    },
+    "hostpoolDiagnosticSettingsEventHubName": {
+      "value": null
+    },
+    "hostpoolDiagnosticSettingsEventHubAuthorizationId": {
+      "value": null
+    },
+    "hostpoolDiagnosticSettingsLogCategories": {
+      "value": []
+    },
+    "appGroupDiagnosticSettingsLogCategories": {
+      "value": []
+    },
+    "workspaceDiagnosticSettingsLogCategories": {
+      "value": []
+    },
     "location": {
       "value": null
     },
@@ -27,6 +48,9 @@
       "value": null
     },
     "workspaceResourceGroup": {
+      "value": null
+    },
+    "isNewWorkspace": {
       "value": null
     },
     "allApplicationGroupReferences": {
@@ -41,8 +65,29 @@
     "administratorAccountPassword": {
       "value": "Pa55w.rd1234"
     },
+    "vmAdministratorAccountUsername": {
+      "value": null
+    },
+    "vmAdministratorAccountPassword": {
+      "value": null
+    },
+    "availabilityOption": {
+      "value": "None"
+    },
+    "availabilitySetName": {
+      "value": null
+    },
     "createAvailabilitySet": {
       "value": true
+    },
+    "availabilitySetUpdateDomainCount": {
+      "value": 5
+    },
+    "availabilitySetFaultDomainCount": {
+      "value": 2
+    },
+    "availabilityZone": {
+      "value": 1
     },
     "vmResourceGroup": {
       "value": "az140-23-RG"
@@ -67,6 +112,9 @@
     },
     "vmGalleryImagePublisher": {
       "value": "MicrosoftWindowsDesktop"
+    },
+    "vmGalleryImageHasPlan": {
+      "value": null
     },
     "vmGalleryImageSKU": {
       "value": "20h2-evd-o365pp-g2"
@@ -95,17 +143,8 @@
     "virtualNetworkResourceGroupName": {
       "value": "az140-11-RG"
     },
-    "usePublicIP": {
-      "value": true
-    },
-    "publicIpAddressSku": {
-      "value": "Basic"
-    },
-    "publicIpAddressType": {
-      "value": "Dynamic"
-    },
     "createNetworkSecurityGroup": {
-      "value": false
+      "value": null
     },
     "networkSecurityGroupId": {
       "value": null
@@ -149,9 +188,6 @@
     "networkSecurityGroupTags": {
       "value": {}
     },
-    "publicIPAddressTags": {
-      "value": {}
-    },
     "virtualMachineTags": {
       "value": {}
     },
@@ -165,7 +201,7 @@
       "value": null
     },
     "validationEnvironment": {
-      "value": false
+      "value": null
     },
     "preferredAppGroupType": {
       "value": "Desktop"
@@ -175,6 +211,24 @@
     },
     "domain": {
       "value": "adatum.com"
+    },
+    "aadJoin": {
+      "value": null
+    },
+    "intune": {
+      "value": null
+    },
+    "bootDiagnostics": {
+      "value": {}
+    },
+    "userAssignedIdentity": {
+      "value": null
+    },
+    "customConfigurationTemplateUrl": {
+      "value": null
+    },
+    "customConfigurationParameterUrl": {
+      "value": null
     }
   }
 }
