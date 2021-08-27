@@ -96,7 +96,7 @@ The main tasks for this exercise are as follows:
 #### Task 2: Deploy an Azure Virtual Desktop host pool
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Add**. 
-1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
+1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >** (leave other settings with their default values):
 
    |Setting|Value|
    |---|---|
@@ -109,7 +109,7 @@ The main tasks for this exercise are as follows:
    |Max session limit|**50**|
    |Load balancing algorithm|**Breadth-first**|
 
-1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >**:
+1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >** (leave other settings with their default values):
 
    |Setting|Value|
    |---|---|
@@ -117,7 +117,7 @@ The main tasks for this exercise are as follows:
    |Resource group|**Defaulted to same as host pool**|
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
-   |Availability options|No infrastructure redundancy required|
+   |Availability options|**No infrastructure redundancy required**|
    |Image type|**Gallery**|
    |Image|**Windows 10 Enterprise multi-session, Version 20H2 + Microsoft 365 Apps**|
    |Virtual machine size|**Standard D2s v3**|
@@ -133,9 +133,9 @@ The main tasks for this exercise are as follows:
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
-   |User name|Student|
-   |Password|Pa55w.rd1234|
-   |Confirm password|Pa55w.rd1234|
+   |User name|**Student**|
+   |Password|**Pa55w.rd1234**|
+   |Confirm password|**Pa55w.rd1234**|
 
 1. On the **Workspace** tab of the **Create a host pool** blade, specify the following settings and select **Review + create**:
 
