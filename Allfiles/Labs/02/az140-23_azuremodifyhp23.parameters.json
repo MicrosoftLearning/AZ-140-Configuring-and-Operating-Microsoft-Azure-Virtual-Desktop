@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "nestedTemplatesLocation": {
@@ -11,53 +11,20 @@
     "hostpoolName": {
       "value": "az140-23-hp2"
     },
-    "hostpoolFriendlyName": {
-      "value": "az140-23 hostpool 2"
-    },
-    "hostpoolDescription": {
-      "value": "az140-23 hostpool 2"
-    },
-    "hostpoolDiagnosticSettingsStorageAccount": {
+    "hostpoolToken": {
       "value": null
     },
-    "hostpoolDiagnosticSettingsLogAnalyticsWorkspaceId": {
+    "hostpoolResourceGroup": {
+      "value": "az140-23-RG"
+    },
+    "hostpoolLocation": {
       "value": null
     },
-    "hostpoolDiagnosticSettingsEventHubName": {
+    "hostpoolProperties": {
+      "value": {}
+    },
+    "vmTemplate": {
       "value": null
-    },
-    "hostpoolDiagnosticSettingsEventHubAuthorizationId": {
-      "value": null
-    },
-    "hostpoolDiagnosticSettingsLogCategories": {
-      "value": []
-    },
-    "appGroupDiagnosticSettingsLogCategories": {
-      "value": []
-    },
-    "workspaceDiagnosticSettingsLogCategories": {
-      "value": []
-    },
-    "location": {
-      "value": null
-    },
-    "workSpaceName": {
-      "value": "az140-23-ws1"
-    },
-    "workspaceLocation": {
-      "value": null
-    },
-    "workspaceResourceGroup": {
-      "value": null
-    },
-    "isNewWorkspace": {
-      "value": null
-    },
-    "allApplicationGroupReferences": {
-      "value": null
-    },
-    "addToWorkspace": {
-      "value": true
     },
     "administratorAccountUsername": {
       "value": "student@adatum.com"
@@ -65,29 +32,8 @@
     "administratorAccountPassword": {
       "value": "Pa55w.rd1234"
     },
-    "vmAdministratorAccountUsername": {
-      "value": null
-    },
-    "vmAdministratorAccountPassword": {
-      "value": null
-    },
-    "availabilityOption": {
-      "value": "None"
-    },
-    "availabilitySetName": {
-      "value": null
-    },
     "createAvailabilitySet": {
       "value": true
-    },
-    "availabilitySetUpdateDomainCount": {
-      "value": 5
-    },
-    "availabilitySetFaultDomainCount": {
-      "value": 2
-    },
-    "availabilityZone": {
-      "value": 1
     },
     "vmResourceGroup": {
       "value": "az140-23-RG"
@@ -98,8 +44,11 @@
     "vmSize": {
       "value": "Standard_D2s_v3"
     },
-    "vmNumberOfInstances": {
+    "vmInitialNumber": {
       "value": 2
+    },
+    "vmNumberOfInstances": {
+      "value": 1
     },
     "vmNamePrefix": {
       "value": "az140-23-p2"
@@ -113,11 +62,8 @@
     "vmGalleryImagePublisher": {
       "value": "MicrosoftWindowsDesktop"
     },
-    "vmGalleryImageHasPlan": {
-      "value": null
-    },
     "vmGalleryImageSKU": {
-      "value": "20h2-evd-o365pp-g2"
+      "value": "20h1-evd-o365pp"
     },
     "vmImageVhdUri": {
       "value": null
@@ -143,41 +89,23 @@
     "virtualNetworkResourceGroupName": {
       "value": "az140-11-RG"
     },
+    "usePublicIP": {
+      "value": true
+    },
+    "publicIpAddressSku": {
+      "value": "Basic"
+    },
+    "publicIpAddressType": {
+      "value": "Dynamic"
+    },
     "createNetworkSecurityGroup": {
-      "value": null
+      "value": false
     },
     "networkSecurityGroupId": {
       "value": null
     },
     "networkSecurityGroupRules": {
       "value": []
-    },
-    "hostpoolType": {
-      "value": "Personal"
-    },
-    "personalDesktopAssignmentType": {
-      "value": "Automatic"
-    },
-    "maxSessionLimit": {
-      "value": 99999
-    },
-    "loadBalancerType": {
-      "value": "BreadthFirst"
-    },
-    "customRdpProperty": {
-      "value": null
-    },
-    "vmTemplate": {
-      "value": null
-    },
-    "tokenExpirationTime": {
-      "value": null
-    },
-    "hostpoolTags": {
-      "value": {}
-    },
-    "applicationGroupTags": {
-      "value": {}
     },
     "availabilitySetTags": {
       "value": {}
@@ -188,47 +116,26 @@
     "networkSecurityGroupTags": {
       "value": {}
     },
+    "publicIPAddressTags": {
+      "value": {}
+    },
     "virtualMachineTags": {
       "value": {}
     },
     "imageTags": {
       "value": {}
     },
-    "apiVersion": {
-      "value": "2019-12-10-preview"
-    },
     "deploymentId": {
       "value": null
     },
-    "validationEnvironment": {
-      "value": null
-    },
-    "preferredAppGroupType": {
-      "value": "Desktop"
+    "apiVersion": {
+      "value": "2019-12-10-preview"
     },
     "ouPath": {
       "value": "ou=WVDInfra,dc=adatum,dc=com"
     },
     "domain": {
       "value": "adatum.com"
-    },
-    "aadJoin": {
-      "value": null
-    },
-    "intune": {
-      "value": null
-    },
-    "bootDiagnostics": {
-      "value": {}
-    },
-    "userAssignedIdentity": {
-      "value": null
-    },
-    "customConfigurationTemplateUrl": {
-      "value": null
-    },
-    "customConfigurationParameterUrl": {
-      "value": null
     }
   }
 }
