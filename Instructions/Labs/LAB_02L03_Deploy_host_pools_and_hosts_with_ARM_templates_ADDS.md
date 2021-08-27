@@ -119,8 +119,9 @@ The main tasks for this exercise are as follows:
    |---|---|
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource Group|the name of a new resource group **az140-23-RG**|
-   |Location|the name of the Azure region into which you deployed Azure VMs hosting AD DS domain controllers in the lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**|
-   |Workspace location|the name of the same Azure region as the one set as the value of the **Location** parameters|
+   |Region|the name of the Azure region into which you deployed Azure VMs hosting AD DS domain controllers in the lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**|
+   |Location||the name of the same Azure region as the one set as the value of the **Region** parameters|
+   |Workspace location|the name of the same Azure region as the one set as the value of the **Region** parameters|
    |Workspace Resource Group|none, since, if null, its value will be automatically set to match the deployment target resource group|
    |All Application Group Reference|none, since there are no existing application groups in the target workspace (there is no workspace)|
    |Vm location|the name of the same Azure region as the one set as the value of the **Location** parameters|
