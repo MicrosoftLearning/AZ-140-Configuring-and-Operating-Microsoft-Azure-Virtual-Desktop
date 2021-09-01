@@ -76,7 +76,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: To identify the names of Azure regions, in the **Cloud Shell**, at the PowerShell prompt, run `(Get-AzLocation).Location`.
    
-1. Review the output of the command executed in the previous step and ensure that you have at least **20** available vCPUs in both the **Standard DSv3 Family** and **StandardBSFamily** of Azure VMs in the target Azure region. If that's already the case, proceed directly to the next exercise. Otherwise, proceed to the next task of this exercise. 
+1. Review the output of the command executed in the previous step and ensure that you have at least **40** available vCPUs in both the **Standard DSv3 Family** and **StandardBSFamily** of Azure VMs in the target Azure region. If that's already the case, proceed directly to the next exercise. Otherwise, proceed to the next task of this exercise. 
 
 #### Task 2: Request vCPU quota increase
 
