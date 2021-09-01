@@ -103,7 +103,7 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|the name of a new resource group **az140-21-RG**|
    |Host pool name|**az140-21-hp1**|
-   |Location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
+   |Location|the name of the Azure region into which you deployed resources in the first exercise of this lab or a region close to it |
    |Validation environment|**No**|
    |Host pool type|**Pooled**|
    |Max session limit|**50**|
