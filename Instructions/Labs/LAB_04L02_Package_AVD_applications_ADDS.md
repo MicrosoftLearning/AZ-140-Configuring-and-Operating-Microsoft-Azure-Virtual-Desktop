@@ -374,16 +374,8 @@ The main tasks for this exercise are as follows:
 
    > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Azure AD DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
 
-1. On the storage account blade, in the vertical menu on the left side, in the **Data storage** section, select **File shares** and then select **+ File share**.
-1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
-
-   |Setting|Value|
-   |---|---|
-   |Name|**az140-42-msixvhds**|
-
-1. In the Microsoft Edge displaying the Azure portal, in the list of file shares, select the newly created file share. 
-1. On the **az140-42a-msixvhds** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
-1. On the **az140-42a-msixvhds \| Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
+1. On the storage account blade, in the vertical menu on the left side, select **Access Control (IAM)**.
+1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
 1. On the **Add role assignment** blade, specify the following settings and select **Save**:
 
    |Setting|Value|
@@ -409,6 +401,15 @@ The main tasks for this exercise are as follows:
    |Select|**az140-wvd-users**|
 
    > **Note**: Azure Virtual Desktop users and hosts need at least read access to the file share.
+
+1. On the storage account blade, in the vertical menu on the left side, in the **Data storage** section, select **File shares** and then select **+ File share**.
+1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
+
+   |Setting|Value|
+   |---|---|
+   |Name|**az140-42-msixvhds**|
+
+1. In the Microsoft Edge displaying the Azure portal, in the list of file shares, select the newly created file share. 
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the **az140-42-msixvhds** share (replace the `<storage-account-name>` placeholder with the name of the storage account) and verify that the command completes successfully:
 
