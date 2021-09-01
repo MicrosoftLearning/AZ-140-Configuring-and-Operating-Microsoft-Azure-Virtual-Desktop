@@ -152,6 +152,7 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console pane, run the following to trigger Azure AD Connect delta synchronization:
 
    ```powershell
+   Import-Module -Name "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync"
    Start-ADSyncSyncCycle -PolicyType Delta
    ```
 
