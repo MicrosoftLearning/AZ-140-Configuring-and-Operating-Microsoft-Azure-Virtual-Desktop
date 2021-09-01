@@ -88,7 +88,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-21-p1-0**, start Microsoft Edge, browse to [FSLogix download page](https://aka.ms/fslogix_download), download FSLogix compressed installation binaries, extract them into the **C:\\Source** folder, navigate to the **x64\\Release** subfolder and use **FSLogixAppsSetup.exe** to install Microsoft FSLogix Apps with the default settings.
 
-   > **Note**: Installation of FXLogic might not be necessary, depending on whether the image already includes it.
+   > **Note**: Installation of FXLogic might not be necessary, depending on whether the image already includes it. An FX Logix installation requires a reboot.
 
 1. Within the Remote Desktop session to **az140-21-p1-0**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
 
