@@ -66,7 +66,8 @@ The main tasks for this exercise are as follows:
    |Storage account name|any globally unique name between 3 and 15 in length consisting of lower case letters and digits, starting with a letter|
    |Region|the name of an Azure region hosting the Azure Virtual Desktop lab environment|
    |Performance|**Standard**|
-   |Redundancy|**Read-access geo-redundant storage (RA-GRS)**|
+   |Redundancy|**Geo-redundant storage (GRS)**|
+   |Make read access to data available in the event of regional unavailability|enabled|
 
    >**Note**: Make sure that the length of the storage account name does not exceed 15 characters. The name will be used to create a computer account in the Active Directory Domain Services (AD DS) domain that is integrated with the Azure AD tenant associated with the Azure subscription containing the storage account. This will allow for AD DS-based authentication when accessing file shares hosted in this storage account.
 
