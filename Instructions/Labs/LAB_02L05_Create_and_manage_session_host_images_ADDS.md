@@ -99,7 +99,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the installation to complete. This might take about 1 minute. If the installation triggers a reboot, re-connect to **az140-25-vm0**.
 
-   > **Note**: Next, you will install and configure Microsoft Teams.
+   > **Note**: Next, you will step through installation and configuration of Microsoft Teams (for learning purposes, since Teams are already present on the image used for this lab).
 
 1. Within the Remote Desktop session to **az140-25-vm0**, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** textbox, type **cmd** and press the **Enter** key to start **Command Prompt**.
 1. In the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the following to prepare for per-machine installation of Microsoft Teams:
@@ -127,7 +127,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    > **Note**: The installer supports the ALLUSER=1 and ALLUSERS=1 parameters. The ALLUSER=1 parameter is intended for per-machine installation in VDI environments. The ALLUSERS=1 parameter can be used in non-VDI and VDI environments. 
 
-1. Within the Remote Desktop session to **az140-25-vm0**, start the **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** console, run the following to install Microsoft Edge Chromium:
+1. Within the Remote Desktop session to **az140-25-vm0**, start the **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** console, run the following to install Microsoft Edge Chromium (for learning purposes, since Edge is already present on the image used for this lab).:
 
    ```powershell
    Start-BitsTransfer -Source "https://aka.ms/edge-msi" -Destination 'C:\Allfiles\Labs\02\MicrosoftEdgeEnterpriseX64.msi'
