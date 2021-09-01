@@ -97,7 +97,7 @@ The main tasks for this exercise are as follows:
    Start-Process -FilePath 'C:\Allfiles\Labs\02\x64\Release\FSLogixAppsSetup.exe' -ArgumentList '/quiet' -Wait
    ```
 
-   > **Note**: Wait for the installation to complete. This might take about 1 minute.
+   > **Note**: Wait for the installation to complete. This might take about 1 minute. If the installation triggers a reboot, re-connect to **az140-25-vm0**.
 
    > **Note**: Next, you will install and configure Microsoft Teams.
 
@@ -127,7 +127,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    > **Note**: The installer supports the ALLUSER=1 and ALLUSERS=1 parameters. The ALLUSER=1 parameter is intended for per-machine installation in VDI environments. The ALLUSERS=1 parameter can be used in non-VDI and VDI environments. 
 
-1. Within the Remote Desktop session to **az140-25-vm0**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** console, run the following to install Microsoft Edge Chromium:
+1. Within the Remote Desktop session to **az140-25-vm0**, start the **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** console, run the following to install Microsoft Edge Chromium:
 
    ```powershell
    Start-BitsTransfer -Source "https://aka.ms/edge-msi" -Destination 'C:\Allfiles\Labs\02\MicrosoftEdgeEnterpriseX64.msi'
