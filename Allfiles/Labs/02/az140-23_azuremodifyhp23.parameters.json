@@ -80,6 +80,9 @@
     "storageAccountResourceGroupName": {
       "value": null
     },
+    "bootDiagnostics": {
+      "value": {}
+    },
     "existingVnetName": {
       "value": "az140-adds-vnet11"
     },
