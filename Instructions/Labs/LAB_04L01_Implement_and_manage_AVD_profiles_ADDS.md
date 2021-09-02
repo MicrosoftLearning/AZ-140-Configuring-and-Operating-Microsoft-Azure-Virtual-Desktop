@@ -147,13 +147,15 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-21-p1-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install FSLogix components on the **az140-21-p1-1** and **'az140-21-p1-1'** session hosts:
 
    ```powershell
-   $server = 'az140-21-p1-1', 'az140-21-p1-2'
-   $localPath = 'C:\Allfiles\Labs\04\x64'
-   $remotePath = "\\$server\C$\Allfiles\Labs\04\x64\Release"
-   Copy-Item -Path $localPath\Release -Destination $remotePath -Filter '*.exe' -Force -Recurse
-   Invoke-Command -ComputerName $server -ScriptBlock {
-      Start-Process -FilePath $using:localPath\Release\FSLogixAppsSetup.exe -ArgumentList '/quiet' -Wait
-   } 
+   $servers = 'az140-21-p1-1', 'az140-21-p1-2'
+   foreach ($server in $servers) {
+      $localPath = 'C:\Allfiles\Labs\04\x64'
+      $remotePath = "\\$server\C$\Allfiles\Labs\04\x64\Release"
+      Copy-Item -Path $localPath\Release -Destination $remotePath -Filter '*.exe' -Force -Recurse
+      Invoke-Command -ComputerName $server -ScriptBlock {
+         Start-Process -FilePath $using:localPath\Release\FSLogixAppsSetup.exe -ArgumentList '/quiet' -Wait
+      } 
+   }
    ```
 
    > **Note**: Wait for the script execution to complete. This might take about 2 minutes.
@@ -164,10 +166,12 @@ The main tasks for this exercise are as follows:
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22-profiles'
-   Invoke-Command -ComputerName $server -ScriptBlock {
-      New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey –Force
-      New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
-      New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$using:storageAccountName.file.core.windows.net\$using:fileShareName"
+   foreach ($server in $servers) {
+      Invoke-Command -ComputerName $server -ScriptBlock {
+         New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey –Force
+         New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
+         New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$using:storageAccountName.file.core.windows.net\$using:fileShareName"
+      }
    }
    ```
 
