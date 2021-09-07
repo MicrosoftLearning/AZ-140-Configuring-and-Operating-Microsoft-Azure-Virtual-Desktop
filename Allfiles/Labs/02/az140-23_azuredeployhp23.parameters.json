@@ -229,6 +229,9 @@
     },
     "customConfigurationParameterUrl": {
       "value": null
+    },
+    "systemData": {
+      "value": {}      
     }
   }
 }
