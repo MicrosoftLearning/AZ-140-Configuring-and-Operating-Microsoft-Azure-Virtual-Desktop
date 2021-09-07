@@ -158,7 +158,7 @@ The main tasks for this exercise are as follows:
    $registrationInfo.Token | clip
    ```
 
-   > **Note**: Record the value copied into Clipboard since you will need it in the next task. Make sure to that the value you are using includes a single line of text, without any line breaks. 
+   > **Note**: Record the value copied into Clipboard (for example, by launching Notepad and pressing the Ctrl+V key combination to paste the content of the Clipboard into Notepad) the content of the since you will need it in the next task. Make sure to that the value you are using includes a single line of text, without any line breaks. 
 
    > **Note**: A registration token is required to authorize a host to join the pool. The value of token's expiration date must be between one hour and one month from the current date and time.
 
