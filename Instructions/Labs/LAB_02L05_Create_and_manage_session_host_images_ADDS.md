@@ -68,7 +68,7 @@ The main tasks for this exercise are as follows:
      -TemplateParameterFile $HOME/az140-25_azuredeployvm25.parameters.json
    ```
 
-   > **Note**: Wait for the deployment to complete but instead proceed to the next exercise. The deployment might take about 10 minutes.
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 10 minutes.
 
 #### Task 2: Configure a Azure Virtual Desktop host image
 
