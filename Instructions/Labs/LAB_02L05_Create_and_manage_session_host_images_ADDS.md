@@ -258,12 +258,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |Name prefix|**az140-25-p4**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
    |Availability options|No infrastructure redundancy required|
-   |Virtual machine size|**Standard D2s v3**|
-   |Number of VMs|**1**|
    |Image type|**Gallery**|
-   |User name|Student|
-   |Password|Pa55w.rd1234|
-   |Confirm password|Pa55w.rd1234|
 
 1. On the **Virtual machines** tab of the **Create a host pool** blade, directly below the **Image** dropdown list, click the **See all images** link.
 1. On the **Select an image** blade, click the **My Items** tab, click **Shared Images**, and, in the list of shared images, select **az140-25-host-image**. 
@@ -271,17 +266,22 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    |Setting|Value|
    |---|---|
+   |Virtual machine size|**Standard D2s v3**|
+   |Number of VMs|**1**|
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp4-Subnet (10.0.4.0/24)**|
    |Network security group|**Basic**|
    |Public inbound ports|**Yes**|
    |Inbound ports to allow|**RDP**|
+   |AD domain join UPN|**student@adatum.com**|
+   |Password|**Pa55w.rd1234**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
-   |AD domain join UPN|**student@adatum.com**|
-   |Password|**Pa55w.rd1234**|
+   |User name|Student|
+   |Password|Pa55w.rd1234|
+   |Confirm password|Pa55w.rd1234|
 
 1. On the **Workspace** tab of the **Create a host pool** blade, specify the following settings and select **Review + create**:
 
