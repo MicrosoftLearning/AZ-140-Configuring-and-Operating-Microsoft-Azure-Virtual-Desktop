@@ -307,6 +307,8 @@ The main tasks for this exercise are as follows:
    | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
    ```
 
+>**Note**: Ignore the error message regarding `TenantId`
+
 ### Exercise 3: Stop and deallocate Azure VMs provisioned in the lab
 
 The main tasks for this exercise are as follows:
