@@ -238,7 +238,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |Register desktop app group|**Yes**|
+   |Register application groups|**Yes**|
 
 1. On the **Workspace** tab of the **Create a workspace** blade, select **+ Register application groups**.
 1. On the **Add application groups** blade, select the plus sign next to the **az140-21a-hp1-DAG**, **az140-21a-hp1-Office365-RAG**, and **az140-21a-hp1-Utilities-RAG** entries and click **Select**. 
