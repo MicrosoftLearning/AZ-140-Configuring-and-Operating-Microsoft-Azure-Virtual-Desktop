@@ -238,7 +238,7 @@ The main tasks for this exercise are as follows:
     ```
 
 1. On your lab computer, in the web browser window displaying the Azure portal, navigate to the **az140-23-hp2** host pool blade, review the **Essentials** section and verify that the **Host pool type** is set to **Personal** with the **Assignment type** set to **Direct**.
-1. Switch back to the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** window, click the ellipsis icon in the upper right corner next to the **Azure Virtual Desktop** label, in the dropdown menu, click **Unsubscribe**, and, when prompted for confirmation, click **Continue**.
+1. Switch back to the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** window, click the ellipsis icon in the upper right corner, in the dropdown menu, click **Unsubscribe**, and, when prompted for confirmation, click **Continue**.
 1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** window, on the **Let's get started** page, click **Subscribe**.
 1. When prompted to sign in, on the **Pick an account** pane, click **Use another account**, and, when prompted, sign in by using the user principal name of the **aduser8** user account with **Pa55w.rd1234** as the password.
 1. In the **Stay signed in to all your apps** window, clear the checkbox **Allow my organization to manage my device** checkbox and select **No, sign in to this app only**. 
