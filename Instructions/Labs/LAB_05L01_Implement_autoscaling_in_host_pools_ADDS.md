@@ -107,7 +107,7 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create an Azure Log Analytics workspace you will use in this lab:
 
    ```powershell
-   New-AzOperationalInsightsWorkspace -Location $location -Name $workspaceName -Sku Standard -ResourceGroupName $resourceGroupName
+   New-AzOperationalInsightsWorkspace -Location $location -Name $workspaceName -ResourceGroupName $resourceGroupName
    ```
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** script and enclose the code between lines **82** an **86** into the multiline comment, such that they look as follows:
