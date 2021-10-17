@@ -73,7 +73,7 @@ The main tasks for this exercise are as follows:
 1. While on the **Licenses \| Overview** blade, refresh the browser window to verify that the activation was successful. 
 1. On the **Licenses - All products** blade, select the **Enterprise Mobility + Security E5** entry. 
 1. On the **Enterprise Mobility + Security E5** blade, in the toolbar, click **+ Assign**.
-1. On the **Assign license** blade, click **Add users and groups**, on the **Add users and groups** blade, select **aduser5** and your user accounts, and click **Select**.
+1. On the **Assign license** blade, click **Add users and groups**, on the **Add users and groups** blade, select **aduser5** and your user account, and click **Select**.
 1. Back on the **Assign license** blade, click **Assignment options**, on the **Assignment options** blade, verify that all options are enabled, click **Review + assign**, click **Assign**.
 
 #### Task 2: Configure Azure AD Multi-Factor Authentication (MFA)
