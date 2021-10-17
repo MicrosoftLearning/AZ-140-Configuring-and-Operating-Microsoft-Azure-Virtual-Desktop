@@ -209,3 +209,28 @@ The main tasks for this exercise are as follows:
 1. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22-profiles**. 
 1. On the **az140-22-profiles** blade, verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aduser1** account followed by the **_aduser1** suffix.
 1. Select the folder you identified in the previous step and note that it contains a single file named **Profile_aduser1.vhd**.
+
+### Exercise 2: Stop and deallocate Azure VMs provisioned and used in the lab
+
+The main tasks for this exercise are as follows:
+
+1. Stop and deallocate Azure VMs provisioned and used in the lab
+
+>**Note**: In this exercise, you will deallocate the Azure VMs provisioned and used in this lab to minimize the corresponding compute charges
+
+#### Task 1: Deallocate Azure VMs provisioned and used in the lab
+
+1. Switch to the lab computer and, in the web browser window displaying the Azure portal, open the **PowerShell** shell session within the **Cloud Shell** pane.
+1. From the PowerShell session in the Cloud Shell pane, run the following to list all Azure VMs created and used in this lab:
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG'
+   ```
+
+1. From the PowerShell session in the Cloud Shell pane, run the following to stop and deallocate all Azure VMs you created and used in this lab:
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Stop-AzVM -NoWait -Force
+   ```
+
+   >**Note**: The command executes asynchronously (as determined by the -NoWait parameter), so while you will be able to run another PowerShell command immediately afterwards within the same PowerShell session, it will take a few minutes before the Azure VMs are actually stopped and deallocated.
