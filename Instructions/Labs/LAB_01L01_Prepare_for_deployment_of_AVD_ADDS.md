@@ -179,7 +179,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
-1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **cl-Subnet** to the virtual network named **az140-adds-vnet11** you created in the previous task:
+1. On the lab computer, in the web browser displaying the Azure portal, open a PowerShell session in the Cloud Shell pane, and run the following to add a subnet named **cl-Subnet** to the virtual network named **az140-adds-vnet11** you created in the previous task:
 
    ```powershell
    $resourceGroupName = 'az140-11-RG'
