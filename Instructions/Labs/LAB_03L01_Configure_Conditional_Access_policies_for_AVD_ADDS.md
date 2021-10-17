@@ -231,7 +231,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Verify that this time you will not be prompted to authenticate via MFA. This is because **az140-cl-vm11** is Hybrid Azure AD-joined.
 
-1. On the **All Resources** page, click **Command Prompt**, on the **Access local resources** pane, clear the **Printer** checkbox, and click **Allow**.
+1. On the **All Resources** page, double-click **Command Prompt**, on the **Access local resources** pane, clear the **Printer** checkbox, and click **Allow**.
 1. When prompted, in the **Enter your credentials**, in the **User name** textbox type the user principal name of **aduser5** and, in the **Password** textbox, type **Pa55w.rd1234** and click **Submit**.
 1. Verify that the **Command Prompt** Remote App was launched successfully.
 1. In the **Command Prompt** Remote App window, at the command prompt, type **logoff** and press the **Enter** key.
