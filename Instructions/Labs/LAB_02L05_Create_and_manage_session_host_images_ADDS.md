@@ -266,7 +266,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |---|---|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**1**|
-   |OS disk type|**Standard SSD**|
+   |OS disk type|**Standard SSD LRS**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp4-Subnet (10.0.4.0/24)**|
    |Network security group|**Basic**|
