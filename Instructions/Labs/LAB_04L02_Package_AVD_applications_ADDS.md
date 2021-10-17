@@ -280,6 +280,8 @@ The main tasks for this exercise are as follows:
    Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
    ```
 
+   > **Note**: If presented with a pop-up window prompting you to format the F: drive, select **Cancel**.
+
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create a folder structure that will host the MSIX files and unpack into it the MSIX package you created in the previous task:
 
    ```powershell
