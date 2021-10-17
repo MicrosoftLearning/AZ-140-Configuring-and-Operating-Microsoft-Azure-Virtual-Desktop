@@ -115,8 +115,6 @@ The main tasks for this exercise are as follows:
    C:\Allfiles\Labs\02\vc_redist.x64.exe /install /passive /norestart /log C:\Allfiles\Labs\02\vc_redist.log
    ```
 
-1. Within the Remote Desktop session to **az140-25-vm0**, switch to the Microsoft Edge window, browse to [the download page of Remote Desktop WebRTC Redirector Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt), and save the installer package into the **C:\\Allfiles\\Labs\\02** folder.
-1. Within the Remote Desktop session to **az140-25-vm0**, start File Explorer, navigate to the **C:\\Allfiles\\Labs\\02** folder, double-click the newly downloaded installer, and run the installation with the default settings.
 1. Within the Remote Desktop session to **az140-25-vm0**, in Microsoft Edge, browse to the documentation page titled [
 Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm), click the **64-bit version** link, and, when prompted, save the **Teams_windows_x64.msi** file into the **C:\\Allfiles\\Labs\\02** folder.
 1. Within the Remote Desktop session to **az140-25-vm0**, switch to the **Administrator: C:\windows\system32\cmd.exe** window and, from the command prompt, run the following to perform per-machine installation of Microsoft Teams:
