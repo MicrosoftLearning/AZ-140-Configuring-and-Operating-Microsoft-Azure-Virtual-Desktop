@@ -289,7 +289,7 @@ The main tasks for this exercise are as follows:
    .\msixmgr.exe -Unpack -packagePath .\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps** folder and review its content.
+1. Within the Remote Desktop session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps** folder and review its content. If prompted to gain access to the folder, select **Continue**.
 1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to unmount the VHD file that will serve as the MSIX image:
 
    ```powershell
