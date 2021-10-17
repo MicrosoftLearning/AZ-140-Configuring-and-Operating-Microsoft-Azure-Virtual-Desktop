@@ -266,7 +266,7 @@ The main tasks for this exercise are as follows:
 >**Note**: To analyze autoscaling and any other Azure Virtual Desktop events, you can use Log Analytics.
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Log Analytics workspaces** and, on the **Log Analytics workspaces** blade, select the entry representing the Azure Log Analytics workspace used in this lab (which name starts with the **az140-workspace-51** prefix.
-1. On the Log Analytics workspace blade, in the vertical menu on the left side, in the **General** section, click **Logs** and, on the **Welcome to Log Analytics** pane, click **Get Started**.
+1. On the Log Analytics workspace blade, in the vertical menu on the left side, in the **General** section, click **Logs**, if needed, close the **Welcome to Log Analytics** window, and proceed to the **Query** pane.
 1. On the **Queries** pane, in the **All Queries** vertical menu on the left side, select **Azure Virtual Desktop** and review the predefined queries.
 1. Close the **Queries** pane. This will automatically display the **New Query 1** tab.
 1. In the query window, paste the following query, click **Run** to display all events for the host pool used in this lab:
