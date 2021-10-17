@@ -440,7 +440,6 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools**.
 1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select the **az140-21-hp1** entry.
-1. On the **az140-21-hp1** host pool entry, in the vertical menu on the left side, in the **Settings** section, select **Properties**.
 1. On the **az140-21-hp1 \| Properties** blade, in the vertical menu on the left side, in the **Manage** section, select **MSIX packages**.
 1. On the **az140-21-hp1 \| MSIX packages** blade, click **+ Add**.
 1. On the **Add MSIX package** blade, in the **MSIX image path** textbox, enter the path to the **XmlNotepad.vhd** file in the format `\\<storage-account-name>.file.core.windows.net\az140-42-msixvhds\packages\XmlNotepad.vhd` (replace the `<storage-account-name>` placeholder with the name of the storage account hosting the **az140-42-msixvhds** file share) and click **Add**.
