@@ -222,6 +222,8 @@ The main tasks for this exercise are as follows:
 1. On the **az140-31-wvdpolicy1** blade, in the **Access controls** section, click **Grant**, on the **Grant** blade, select the **Require multi-factor authentication** and **Require Hybrid Azure AD joined device** checkboxes, ensure that the **Require one of the selected controls** option is enabled, and click **Select**.
 1. On the **az140-31-wvdpolicy1** blade, click **Save**.
 
+>**Note**: It might take a few minutes for the policy to take effect.
+
 #### Task 4: Test the modified Azure AD-based Conditional Access policy
 
 1. On your lab computer, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select the **az140-cl-vm11** entry.
