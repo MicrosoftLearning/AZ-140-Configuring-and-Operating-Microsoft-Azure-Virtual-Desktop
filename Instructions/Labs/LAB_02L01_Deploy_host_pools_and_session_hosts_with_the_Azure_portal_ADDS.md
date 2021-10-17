@@ -172,11 +172,11 @@ The main tasks for this exercise are as follows:
    |Configure assignment|**Dynamic**|
    |Network security group|**Basic**|
    |Public inbound ports|**No**|
-   |Specify domain or unit|**Yes**|
-   |Domain to join|**adatum.com**|
-   |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
    |AD domain join UPN|**student@adatum.com**|
    |Password|**Pa55w.rd1234**|
+   |Specify domain or unit|**Yes**|
+   |Domain to join|**adatum.com**|
+   |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|   
    |Virtual Machine Administrator account username|**student**|
    |Virtual Machine Administrator account pasword|**Pa55w.rd1234**|
 
