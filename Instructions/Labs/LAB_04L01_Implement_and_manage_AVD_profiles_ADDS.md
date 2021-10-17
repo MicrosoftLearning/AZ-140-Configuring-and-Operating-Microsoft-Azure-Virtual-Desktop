@@ -191,11 +191,12 @@ The main tasks for this exercise are as follows:
 1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, and then select **Download RDP File**.
 1. When prompted, sign in with the **ADATUM\\aduser1** credentials. 
 1. Within the Remote Desktop session to **az140-cl-vm11**, click **Start** and, in the **Start** menu, click **Remote Desktop** to start the Remote Desktop client.
-1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt**, when prompted, provide the password of the **aduser1** account, and verify a **Command Prompt** window opens successfully.
+1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** credentials.
+1. in the list of applications, double-click **Command Prompt**, when prompted, provide the password of the **aduser1** account, and verify a **Command Prompt** window opens successfully.
 1. In the upper left corner of the **Command Prompt** window, right-click the **Command Prompt** icon and, in the drop-down menu, select **Properties**.
 1. In the **Command Prompt Properties** dialog box, select the **Font** tab, modify the size and font settings, and select **OK**.
 1. From the **Command Prompt** window, type **logoff** and press the **Enter** key to sign out from the Remote Desktop session.
-1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** under az-140-21-ws1 and verify that it launches a Remote Desktop session. 
+1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** under az-140-21-s1 and verify that it launches a Remote Desktop session. 
 1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** text box, type **cmd** and select **OK** to launch a **Command Prompt** window:
 1. Verify that the **Command Prompt** window settings match those you configured earlier in this task.
 1. Within the **SessionDesktop** session, minimize all windows, right-click the desktop, in the right-click menu, select **New** and, in the cascading menu, select **Shortcut**. 
