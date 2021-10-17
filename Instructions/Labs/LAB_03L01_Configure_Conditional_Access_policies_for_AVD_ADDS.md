@@ -150,7 +150,7 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    Import-Module -Name "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync"
-   Start-ADSyncSyncCycle -PolicyType Delta
+   Start-ADSyncSyncCycle -PolicyType Initial
    ```
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
