@@ -191,9 +191,9 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    |Setting|Value|
    |---|---|
-   |Share image to Shared image gallery|**Yes, share it to a gallery as an image version**|
+   |Share image to Azure compute gallery|**Yes, share it to a gallery as an image version**|
    |Automatically delete this virtual machine after creating the image|checkbox cleared|
-   |Target image gallery|the name of a new image gallery **az14025imagegallery**|
+   |Target Azure compute gallery|the name of a new gallery **az14025imagegallery**|
    |Operating system state|**Generalized**|
 
 1. On the **Basics** tab of the **Create an image** blade, below the **Target image definition** textbox, click **Create new**.
