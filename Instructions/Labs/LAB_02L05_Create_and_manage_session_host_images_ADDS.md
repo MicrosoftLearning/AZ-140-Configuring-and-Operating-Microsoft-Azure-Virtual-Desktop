@@ -221,7 +221,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    > **Note**: Wait for the deployment to complete. This might take about 20 minutes.
 
-1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Shared image galleries** and, on the **Shared image galleries** blade, select the **az14025imagegallery** entry, and, on the ****az14025imagegallery**** blade, verify the presence of the **az140-25-host-image** entry representing the newly created image.
+1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Azure compute galleries** and, on the **Azure compute galleries** blade, select the **az14025imagegallery** entry, and, on the ****az14025imagegallery**** blade, verify the presence of the **az140-25-host-image** entry representing the newly created image.
 
 #### Task 4: Provision a Azure Virtual Desktop host pool by using a custom image
 
