@@ -86,7 +86,7 @@ The main tasks for this exercise are as follows:
 #### Task 3: Prepare the Azure VM running Windows 10 for MSIX packaging
 
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, in the list of virtual machines, select the **az140-cl-vm42** entry. This will open the **az140-cl-vm42** blade.
-1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-cl-vm42 \| Connect** blade, and then select **Download RDP File**.
+1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11 \| Connect** blade, select **Use Bastion**.
 1. When prompted, sign in with the following credentials:
 
    |Setting|Value|
@@ -311,12 +311,12 @@ The main tasks for this exercise are as follows:
 #### Task 1: Configure Active Directory groups containing Azure Virtual Desktop hosts
 
 1. Switch to the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
-1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-dc-vm11 \| Connect** blade, in the **IP address** drop-down list, select the **Load balancer DNS name** entry, and then select **Download RDP File**.
-1. When prompted, sign in with the following credentials:
+1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
-   |User Name|**ADATUM\\Student**|
+   |User Name|**Student**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.

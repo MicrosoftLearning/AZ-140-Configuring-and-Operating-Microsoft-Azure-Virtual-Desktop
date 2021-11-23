@@ -95,12 +95,12 @@ The main tasks for this exercise are as follows:
 > **Note**: This functionality can be leveraged to implement additional security when setting up Conditional Access for devices based on their Azure AD join status.
 
 1. On the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
-1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-dc-vm11 \| Connect** blade, in the **IP address** drop-down list, select the **Load balancer DNS name** entry, and then select **Download RDP File**.
-1. When prompted, sign in with the following credentials:
+1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
-   |User Name|**ADATUM\\Student**|
+   |User Name|**Student**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the **Start** menu, expand the **Azure AD Connect** folder and select **Azure AD Connect**.
@@ -227,8 +227,14 @@ The main tasks for this exercise are as follows:
 #### Task 4: Test the modified Azure AD-based Conditional Access policy
 
 1. On your lab computer, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select the **az140-cl-vm11** entry.
-1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, and then select **Download RDP File**.
-1. When prompted, sign in as the **ADATUM\\aduser5** user with **Pa55w.rd1234** as its password.
+1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11 \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
+
+   |Setting|Value|
+   |---|---|
+   |User Name|**Student@adatum.com**|
+   |Password|**Pa55w.rd1234**|
+
 1. Within the Remote Desktop session to **az140-cl-vm11**, start Microsoft Edge and navigate to navigate to the Azure Virtual Desktop HTML5 web client page at [https://rdweb.wvd.microsoft.com/arm/webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
 
    > **Note**: Verify that this time you will not be prompted to authenticate via MFA. This is because **az140-cl-vm11** is Hybrid Azure AD-joined.
