@@ -47,12 +47,12 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
-1. On the **az140-cl-vm11a** blade, in the toolbar, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-cl-vm11a \| Connect** blade, in the **IP address** drop-down list, select the **Public IP address** entry, and then select **Download RDP File**.
-1. When prompted, sign in with the following credentials:
+1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
-   |User Name|**ADATUM\\aadadmin1**|
+   |User Name|**Student@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with **Pa55w.rd1234** as its password.

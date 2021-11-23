@@ -73,8 +73,8 @@ The main tasks for this exercise are as follows:
 #### Task 2: Configure a Azure Virtual Desktop host image
 
 1. In the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select **az140-25-vm0**.
-1. On the **az140-25-vm0** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-25-vm0 \| Connect** blade, in the **IP address** drop-down list, select the **Public IP address** entry, and then select **Download RDP File**.
-1. When prompted, sign in with the following credentials:
+1. On the **az140-25-vm0** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-25-vm0 \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|

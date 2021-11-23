@@ -122,11 +122,12 @@ The main tasks for this exercise are as follows:
 
 The main tasks for this exercise are as follows:
 
-1. Identify an available DNS name for an Azure VM deployment
+1. Prepare for an Azure VM deployment
 1. Deploy an Azure VM running an AD DS domain controller by using an Azure Resource Manager QuickStart template
 1. Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
+1. Deploy Azure Bastion
 
-#### Task 1: Identify an available DNS name for an Azure VM deployment
+#### Task 1: Prepare for an Azure VM deployment
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the web browser displaying the Azure portal, navigate to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Properties**.
@@ -137,28 +138,19 @@ The main tasks for this exercise are as follows:
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1. In the Cloud Shell pane, run the following to identify an available DNS name you will need to provide in the next task (substitute the placeholder `<custom-name>` with any valid DNS domain name prefix which is likely to be globally unique and the placeholder `<Azure_region>` with the name of the Azure region into which you want to deploy the Azure VM that will host an Active Directory domain controller):
-
-   ```powershell
-   $location = '<Azure_region>'
-   Test-AzDnsAvailability -Location $location -DomainNameLabel <custom-name>
-   ```
-   > **Note**: To identify Azure regions where you can provision Azure VMs, refer to [https://azure.microsoft.com/en-us/regions/offers/](https://azure.microsoft.com/en-us/regions/offers/)
-
-1. Verify that the command returned **True**. If not, rerun the same command with a different value of the `<custom-name>` until the command returns **True**.
-1. Record the value of the `<custom-name>` that resulted in the successful outcome. You will need it in the next task.
 
 #### Task 2: Deploy an Azure VM running an AD DS domain controller by using an Azure Resource Manager QuickStart template
 
-1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group:
+1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`)::
 
    ```powershell
+   $location = '<Azure_region>'
    $resourceGroupName = 'az140-11-RG'
    New-AzResourceGroup -Location $location -Name $resourceGroupName
    ```
 
 1. In the Azure portal, close the **Cloud Shell** pane.
-1. From your lab computer, in the same web browser window, open another web browser tab and navigate to the QuickStart template named [Create a new Windows VM and create a new AD Forest, Domain and DC](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain). 
+1. From your lab computer, in the same web browser window, open another web browser tab and navigate a customized version of QuickStart template named [Create a new Windows VM and create a new AD Forest, Domain and DC](https://github.com/az140mp/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain). 
 1. On the **Create a new Windows VM and create a new AD Forest, Domain and DC** page, select **Deploy to Azure**. This will automatically redirect the browser to the **Create an Azure VM with a new AD Forest** blade in the Azure portal.
 1. On the **Create an Azure VM with a new AD Forest** blade, select **Edit parameters**.
 1. On the **Edit parameters** blade, select **Load file**, in the **Open** dialog box, select **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json**, select **Open**, and then select **Save**. 
@@ -169,13 +161,10 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|**az140-11-RG**|
    |Domain name|**adatum.com**|
-   |Dns Prefix|the DNS hostname you identified in the previous task|
 
 1. On the **Create an Azure VM with a new AD Forest** blade, select **Review + create** and select **Create**.
 
    > **Note**: Wait for the deployment to complete before you proceed to the next exercise. This might take about 15 minutes. 
-
-   > **Note**: Once the deployment completes, navigate to the blade of **az140-adds-vnet11** virtual network, verify that its DNS custom configuration is set to the IP address of the newly deployed Azure VM (10.0.0.4), and, if not, add it manually.
 
 #### Task 3: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
@@ -204,8 +193,44 @@ The main tasks for this exercise are as follows:
      -TemplateParameterFile $HOME/az140-11_azuredeploycl11.parameters.json
    ```
 
-   > **Note**: Do not wait for the deployment to complete but instead proceed to the next exercise. The deployment might take about 10 minutes.
+   > **Note**: Do not wait for the deployment to complete but instead proceed to the next task. The deployment might take about 10 minutes.
 
+#### Task 4: Deploy Azure Bastion 
+
+> **Note**: Azure Bastion allows for connection to the Azure VMs without public endpoints which you deployed in the previous task of this exercise, while providing protection against brute force exploits that target operating system level credentials.
+
+1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the Azure portal.
+1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
+1. From the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **AzureBastionSubnet** to the virtual network named **az140-adds-vnet11** you created earlier in this exercise:
+
+   ```powershell
+   $resourceGroupName = 'az140-11-RG'
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name 'az140-adds-vnet11'
+   $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
+     -Name 'AzureBastionSubnet' `
+     -AddressPrefix 10.0.254.0/24 `
+     -VirtualNetwork $vnet
+   $vnet | Set-AzVirtualNetwork
+   ```
+
+1. Close the Cloud Shell pane.
+1. In the Azure portal, search for and select **Bastions** and, from the **Bastions** blade, select **+ Create**.
+1. On the **Basic** tab of the **Create a Bastion** blade, specify the following settings and select **Review + create**:
+
+   |Setting|Value|
+   |---|---|
+   |Subscription|the name of the Azure subscription you are using in this lab|
+   |Resource group|**az140-11-RG**|
+   |Region|the same Azure region to which you deployed the resources in the previous tasks of this exercise|
+   |Tier|**Basic**|
+   |Virtual network|**az140-adds-vnet11**|
+   |Subnet|**AzureBastionSubnet (10.0.254.0/24)**|
+   |Public IP address|**Create new**|
+   |Public IP name|**az140-adds-vnet11-ip**|
+
+1. On the **Review + create** tab of the **Create a Bastion** blade, select **Create**:
+
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 5 minutes.
 
 ### Exercise 2: Integrate an AD DS forest with an Azure AD tenant
   
@@ -220,12 +245,12 @@ The main tasks for this exercise are as follows:
 #### Task 1: Create AD DS users and groups that will be synchronized to Azure AD
 
 1. On the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
-1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-dc-vm11 \| Connect** blade, in the **IP address** drop-down list, select the **Load balancer DNS name** entry, and then select **Download RDP File**.
-1. When prompted, sign in with the following credentials:
+1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
-   |User Name|**ADATUM\\Student**|
+   |User Name|**Student**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.

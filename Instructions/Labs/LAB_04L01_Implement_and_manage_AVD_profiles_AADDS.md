@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: 'Lab: Implement and manage Azure Virtual Desktop profiles (Azure AD DS)'
     module: 'Module 4: Manage User Environments and Apps'
@@ -47,7 +47,14 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
-1. From the **az140-cl-vm11a** blade, connect to the newly deployed Azure VM via Remote Desktop. When prompted to authenticate, specify **ADATUM\aadadmin1** as the username and the **Pa55w.rd1234** as its password. 
+1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
+
+   |Setting|Value|
+   |---|---|
+   |User Name|**Student@adatum.com**|
+   |Password|**Pa55w.rd1234**|
+
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Active Directory Users and Computers**.
 1. In the **Active Directory Users and Computers** console, right-click the domain node, select **New**, followed by **Organizational Unit**, in the **New Object - Organizational Unit** dialog box, in the **Name** textbox, type **ADDC Users**, and select **OK**.
 1. In the **Active Directory Users and Computers** console, right-click the **ADDC Users**, select **New**, followed by **Group**, in the **New Object - Group** dialog box, specify the following settings and select **OK**:
