@@ -259,11 +259,13 @@ The main tasks for this exercise are as follows:
 
 1. Repeat the previous two steps to reset the password for the **wvdaadmin1** user account.
 
+
 ### Exercise 2: Configure the Azure AD DS domain environment
   
 The main tasks for this exercise are as follows:
 
 1. Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
+1. Deploy Azure Bastion
 1. Review the default configuration of the Azure AD DS domain
 1. Create AD DS users and groups that will be synchronized to Azure AD DS
 
@@ -298,7 +300,45 @@ The main tasks for this exercise are as follows:
    > **Note**: The deployment might take about 10 minutes. Wait for the deployment to complete before you proceed to the next task. 
 
 
-#### Task 2: Review the default configuration of the Azure AD DS domain
+#### Task 2: Deploy Azure Bastion 
+
+> **Note**: Azure Bastion allows for connection to the Azure VMs without public endpoints which you deployed in the previous task of this exercise, while providing protection against brute force exploits that target operating system level credentials.
+
+1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the Azure portal.
+1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
+1. From the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **AzureBastionSubnet** to the virtual network named **az140-adds-vnet11** you created earlier in this exercise:
+
+   ```powershell
+   $resourceGroupName = 'az140-11a-RG'
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name 'az140-aadds-vnet11a'
+   $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
+     -Name 'AzureBastionSubnet' `
+     -AddressPrefix 10.10.254.0/24 `
+     -VirtualNetwork $vnet
+   $vnet | Set-AzVirtualNetwork
+   ```
+
+1. Close the Cloud Shell pane.
+1. In the Azure portal, search for and select **Bastions** and, from the **Bastions** blade, select **+ Create**.
+1. On the **Basic** tab of the **Create a Bastion** blade, specify the following settings and select **Review + create**:
+
+   |Setting|Value|
+   |---|---|
+   |Subscription|the name of the Azure subscription you are using in this lab|
+   |Resource group|**az140-11a-RG**|
+   |Region|the same Azure region to which you deployed the resources in the previous task of this exercise|
+   |Tier|**Basic**|
+   |Virtual network|**az140-aadds-vnet11a**|
+   |Subnet|**AzureBastionSubnet (10.10.254.0/24)**|
+   |Public IP address|**Create new**|
+   |Public IP name|**az140-aadds-vnet11a-ip**|
+
+1. On the **Review + create** tab of the **Create a Bastion** blade, select **Create**:
+
+   > **Note**: Wait for the deployment to complete before you proceed to the next task of this exercise. The deployment might take about 5 minutes.
+
+
+#### Task 3: Review the default configuration of the Azure AD DS domain
 
 > **Note**: Before you can sign in to the newly Azure AD DS joined computer, you need to add the user account you intend to sign in with to the **AAD DC Administrators** Azure AD group. This Azure AD group is created automatically in the Azure AD tenant associated with the Azure subscription where you provisioned the Azure AD DS instance.
 
@@ -315,12 +355,12 @@ The main tasks for this exercise are as follows:
 
 1  Close the Cloud Shell pane.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
-1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-cl-vm11a \| Connect** blade, in the **IP address** drop-down list, select the **Public IP address** entry, and then select **Download RDP File**.
-1. When prompted, sign in with the following credentials:
+1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a \| Connect** blade, select **Use Bastion**.
+1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
-   |User Name|**ADATUM\\aadadmin1**|
+   |User Name|**Student@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the Active Directory and DNS-related Remote Server Administration Tools:
@@ -342,7 +382,7 @@ The main tasks for this exercise are as follows:
 1. In the **Active Directory Users and Computers** console, in the **AADDC Users** OU, select the **aadadmin1** user account, display its **Properties** dialog box, switch to the **Accounts** tab, and note that the user principal name suffix matches the primary Azure AD DNS domain name and is not modifiable. 
 1. In the **Active Directory Users and Computers** console, review the content of the **Domain Controllers** organizational unit and note that it includes computer accounts of two domain controllers with randomly generated names. 
 
-#### Task 3: Create AD DS users and groups that will be synchronized to Azure AD DS
+#### Task 4: Create AD DS users and groups that will be synchronized to Azure AD DS
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with **Pa55w.rd1234** as its password.
 1. In the Azure portal, open the **Cloud Shell**.
