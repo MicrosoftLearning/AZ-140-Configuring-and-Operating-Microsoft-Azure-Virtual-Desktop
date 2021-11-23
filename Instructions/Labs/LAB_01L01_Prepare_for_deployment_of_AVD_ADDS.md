@@ -125,6 +125,7 @@ The main tasks for this exercise are as follows:
 1. Prepare for an Azure VM deployment
 1. Deploy an Azure VM running an AD DS domain controller by using an Azure Resource Manager QuickStart template
 1. Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
+1. Deploy Azure Bastion
 
 #### Task 1: Prepare for an Azure VM deployment
 
@@ -192,7 +193,7 @@ The main tasks for this exercise are as follows:
      -TemplateParameterFile $HOME/az140-11_azuredeploycl11.parameters.json
    ```
 
-   > **Note**: Do not wait for the deployment to complete but instead proceed to the next exercise. The deployment might take about 10 minutes.
+   > **Note**: Do not wait for the deployment to complete but instead proceed to the next task. The deployment might take about 10 minutes.
 
 #### Task 4: Deploy Azure Bastion 
 
@@ -229,7 +230,7 @@ The main tasks for this exercise are as follows:
 
 1. On the **Review + create** tab of the **Create a Bastion** blade, select **Create**:
 
-   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 10 minutes.
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 5 minutes.
 
 ### Exercise 2: Integrate an AD DS forest with an Azure AD tenant
   
