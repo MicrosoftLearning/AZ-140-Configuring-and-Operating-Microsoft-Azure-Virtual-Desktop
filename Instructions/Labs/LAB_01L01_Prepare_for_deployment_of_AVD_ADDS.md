@@ -199,6 +199,8 @@ The main tasks for this exercise are as follows:
 
 > **Note**: Azure Bastion allows for connection to the Azure VMs without public endpoints which you deployed in the previous task of this exercise, while providing protection against brute force exploits that target operating system level credentials.
 
+> **Note**: Ensure that your browser has the pop-up functionality enabled.
+
 1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the Azure portal.
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. From the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **AzureBastionSubnet** to the virtual network named **az140-adds-vnet11** you created earlier in this exercise:
@@ -221,6 +223,7 @@ The main tasks for this exercise are as follows:
    |---|---|
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|**az140-11-RG**|
+   |Name|**az140-11-bastion**|
    |Region|the same Azure region to which you deployed the resources in the previous tasks of this exercise|
    |Tier|**Basic**|
    |Virtual network|**az140-adds-vnet11**|
