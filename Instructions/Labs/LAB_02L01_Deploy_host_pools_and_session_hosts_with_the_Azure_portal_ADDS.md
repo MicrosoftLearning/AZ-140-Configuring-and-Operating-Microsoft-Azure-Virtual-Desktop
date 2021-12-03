@@ -168,7 +168,6 @@ The main tasks for this exercise are as follows:
    |Number of VMs|**1**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
-   |Public IP|**Yes**|
    |Configure SKU|**Basic**|
    |Configure assignment|**Dynamic**|
    |Network security group|**Basic**|
