@@ -39,6 +39,7 @@ After completing this lab, you will be able to:
 The main tasks for this exercise are as follows:
 
 1. Prepare for configuration of a Azure Virtual Desktop host image
+1. Deploy Azure Bastion
 1. Configure a Azure Virtual Desktop host image
 1. Create a Azure Virtual Desktop host image
 1. Provision a Azure Virtual Desktop host pool by using the custom image
@@ -70,7 +71,47 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 10 minutes.
 
-#### Task 2: Configure a Azure Virtual Desktop host image
+#### Task 2: Deploy Azure Bastion 
+
+> **Note**: Azure Bastion allows for connection to the Azure VMs without public endpoints which you deployed in the previous task of this exercise, while providing protection against brute force exploits that target operating system level credentials.
+
+> **Note**: Ensure that your browser has the pop-up functionality enabled.
+
+1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the Azure portal.
+1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
+1. From the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **AzureBastionSubnet** to the virtual network named **az140-25-vnet** you created earlier in this exercise:
+
+   ```powershell
+   $resourceGroupName = 'az140-25-RG'
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name 'az140-25-vnet'
+   $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
+     -Name 'AzureBastionSubnet' `
+     -AddressPrefix 10.25.254.0/24 `
+     -VirtualNetwork $vnet
+   $vnet | Set-AzVirtualNetwork
+   ```
+
+1. Close the Cloud Shell pane.
+1. In the Azure portal, search for and select **Bastions** and, from the **Bastions** blade, select **+ Create**.
+1. On the **Basic** tab of the **Create a Bastion** blade, specify the following settings and select **Review + create**:
+
+   |Setting|Value|
+   |---|---|
+   |Subscription|the name of the Azure subscription you are using in this lab|
+   |Resource group|**az140-25-RG**|
+   |Name|**az140-25-bastion**|
+   |Region|the same Azure region to which you deployed the resources in the previous tasks of this exercise|
+   |Tier|**Basic**|
+   |Virtual network|**az140-25-vnet**|
+   |Subnet|**AzureBastionSubnet (10.25.254.0/24)**|
+   |Public IP address|**Create new**|
+   |Public IP name|**az140-25-vnet-ip**|
+
+1. On the **Review + create** tab of the **Create a Bastion** blade, select **Create**:
+
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 5 minutes.
+
+#### Task 3: Configure a Azure Virtual Desktop host image
 
 1. In the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select **az140-25-vm0**.
 1. On the **az140-25-vm0** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-25-vm0 \| Connect** blade, select **Use Bastion**.
@@ -174,7 +215,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    cleanmgr /d C: /verylowdisk
    ```
 
-#### Task 3: Create a Azure Virtual Desktop host image
+#### Task 4: Create a Azure Virtual Desktop host image
 
 1. Within the Remote Desktop session to **az140-25-vm0**, in the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the sysprep utility in order to prepare the operating system for generating an image and automatically shut it down:
 
@@ -223,7 +264,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
 1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Azure compute galleries** and, on the **Azure compute galleries** blade, select the **az14025imagegallery** entry, and, on the ****az14025imagegallery**** blade, verify the presence of the **az140-25-host-image** entry representing the newly created image.
 
-#### Task 4: Provision a Azure Virtual Desktop host pool by using a custom image
+#### Task 5: Provision a Azure Virtual Desktop host pool by using a custom image
 
 1. From the lab computer, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Virtual networks** and, on the **Virtual networks** blade, select **az140-adds-vnet11**. 
 1. On the **az140-adds-vnet11** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, specify the following settings (leave all other settings with their default values) and click **Save**:
