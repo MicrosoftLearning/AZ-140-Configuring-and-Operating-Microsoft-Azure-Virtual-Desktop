@@ -55,7 +55,7 @@ The main tasks for this exercise are as follows:
    |User Name|**Student@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with **Pa55w.rd1234** as its password.
+1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set when creating this account.
 
    >**Note**: You can identify the user principal name (UPN) attribute of the **aadadmin1** account by reviewing its properties dialog box from the Active Directory Users and Computers console or by switching back to your lab computer and reviewing its properties from the Azure AD tenant blade in the Azure portal.
 
@@ -84,7 +84,9 @@ The main tasks for this exercise are as follows:
    |Max session limit|**10**|
    |Load balancing algorithm|**Breadth-first**|
 
-1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Azure AD tenant associated with the subscription into which you deployed the Azure AD DS instance):
+1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Azure AD tenant associated with the subscription into which you deployed the Azure AD DS instance and replace the `<password>` placeholder with the password you set when creating the aadadmin1 account):
+
+   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.:
 
    |Setting|Value|
    |---|---|
@@ -106,7 +108,7 @@ The main tasks for this exercise are as follows:
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=AADDC Computers,DC=adatum,DC=com**|
    |AD domain join UPN|**aadadmin1@***<Azure_AD_domain_name>*|
-   |Password|**Pa55w.rd1234**|
+   |Password|`<password>`|
    |Virtual Machine Administrator account username|**student**|
    |Virtual Machine Administrator account password|**Pa55w.rd1234**|
 
@@ -260,7 +262,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Subscribe to a Azure Virtual Desktop workspace
 
-1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aaduser1** credentials (using its userPrincipalName attribute as the user name and **Pa55w.rd1234** as its password. 
+1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aaduser1** credentials (using its userPrincipalName attribute as the user name and the password you set when creating this account). 
 
    > **Note**: Alternatively, in the **Remote Desktop** client window, select **Subscribe with URL**, in the **Subscribe to a Workspace** pane, in the **Email or Workspace URL**, type **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery**, select **Next**, and, once prompted, sign in with the **aaduser1** credentials (using its userPrincipalName attribute as the user name and **Pa55w.rd1234** as its password). 
 
@@ -271,7 +273,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Test Azure Virtual Desktop apps
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type **Pa55w.rd1234** as the password of the **aaduser1** user account, select the checkbox **Remember me**, and select **OK**.
+1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set for the **aaduser1** user account, select the checkbox **Remember me**, and select **OK**.
 
    > **Note**: Initially, it might take a few minutes for the application to start, but subsequently, the application startup should be much faster.
 

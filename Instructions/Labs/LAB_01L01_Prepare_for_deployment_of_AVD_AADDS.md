@@ -149,11 +149,13 @@ The main tasks for this exercise are as follows:
    $aadDomainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
    ```
 
-1. From the Cloud Shell pane, run the following to create Azure AD users that will be granted elevated privileges:
+1. From the Cloud Shell pane, run the following to create Azure AD users that will be granted elevated privileges (replace the `<password>` placeholder with a random, complex password):
+
+   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
 
    ```powershell
    $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-   $passwordProfile.Password = 'Pa55w.rd1234'
+   $passwordProfile.Password = '<password>'
    $passwordProfile.ForceChangePasswordNextLogin = $false
    New-AzureADUser -AccountEnabled $true -DisplayName 'aadadmin1' -PasswordProfile $passwordProfile -MailNickName 'aadadmin1' -UserPrincipalName "aadadmin1@$aadDomainName"
 
@@ -248,10 +250,12 @@ The main tasks for this exercise are as follows:
    $objectId = (Get-AzureADUser -Filter "MailNickName eq 'aadadmin1'").ObjectId
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to reset the password of the **aadadmin1** user account, which objectId you identified in the previous step:
+1. From the PowerShell session in the Cloud Shell pane, run the following to reset the password of the **aadadmin1** user account, which objectId you identified in the previous step (replace the `<password>` placeholder with a random, complex password):
+
+   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
 
    ```powershell
-   $password = ConvertTo-SecureString 'Pa55w.rd1234' -AsPlainText -Force
+   $password = ConvertTo-SecureString '<password>' -AsPlainText -Force
    Set-AzureADUserPassword -ObjectId $objectId -Password $password -ForceChangePasswordNextLogin $false
    ```
 
@@ -359,7 +363,7 @@ The main tasks for this exercise are as follows:
 1  Close the Cloud Shell pane.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
 1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a \| Connect** blade, select **Use Bastion**.
-1. When prompted, provde the following credentials and select **Connect**:
+1. When prompted, provide the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
@@ -387,7 +391,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 4: Create AD DS users and groups that will be synchronized to Azure AD DS
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with **Pa55w.rd1234** as its password.
+1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set earlier in this lab as its password.
 1. In the Azure portal, open the **Cloud Shell**.
 1. When prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
 
@@ -405,11 +409,13 @@ The main tasks for this exercise are as follows:
    $aadDomainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to create the Azure AD user accounts you will use in the upcoming labs:
+1. From the PowerShell session in the Cloud Shell pane, run the following to create the Azure AD user accounts you will use in the upcoming labs (replace the `<password>` placeholder with a random, complex password):
+
+   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
 
    ```powershell
    $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-   $passwordProfile.Password = 'Pa55w.rd1234'
+   $passwordProfile.Password = '<password>'
    $passwordProfile.ForceChangePasswordNextLogin = $false
    $aadUserNamePrefix = 'aaduser'
    $userCount = 1..9

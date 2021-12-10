@@ -88,13 +88,7 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, in the list of virtual machines, select the **az140-cl-vm42** entry. This will open the **az140-cl-vm42** blade.
 1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11 \| Connect** blade, select **Use Bastion**.
-1. When prompted, sign in with the following credentials:
-
-   |Setting|Value|
-   |---|---|
-   |User Name|**ADATUM\\wvdadmin1**|
-   |Password|**Pa55w.rd1234**|
-
+1. When prompted, sign in with the **ADATUM\wvdadmin1** user name and the password you set when creating this user account. 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the operating system for MSIX packaging:
 
    ```powershell
@@ -254,7 +248,7 @@ The main tasks for this exercise are as follows:
    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
    ```
 
-1. Once the installation of the Hyper-V components completes, type **Y** and press the **Enter** key to restart the operating system. Following the restart, sign in back by using the **ADATUM\wvdadmin1** account with the **Pa55w.rd1234** password.
+1. Once the installation of the Hyper-V components completes, type **Y** and press the **Enter** key to restart the operating system. Following the restart, sign in back by using the **ADATUM\wvdadmin1** account with the password you set when creating this user account.
 
 #### Task 2: Create an MSIX app attach image
 
@@ -348,7 +342,7 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the **Start** menu, expand the **Azure AD Connect** folder and select **Azure AD Connect**.
 1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** window, select **Configure**.
 1. On the **Additional tasks** page in the **Microsoft Azure Active Directory Connect** window, select **Customize synchronization options** and select **Next**.
-1. On the **Connect to Azure AD** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task and the **Pa55w.rd1234** password.
+1. On the **Connect to Azure AD** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task with the password you set when creating this user account.
 1. On the **Connect your directories** page in the **Microsoft Azure Active Directory Connect** window, select **Next**.
 1. On the **Domain and OU filtering** page in the **Microsoft Azure Active Directory Connect** window, ensure that the option **Sync selected domains and OUs** is selected, expand the **adatum.com** node, select the checkbox next to the **WVDInfra** OU (leave any other selected checkboxes unchanged), and select **Next**.
 1. On the **Optional features** page in the **Microsoft Azure Active Directory Connect** window, accept the default settings, and select **Next**.
@@ -494,7 +488,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge, navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, once download completes, select **Open file** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. 
 1. Once the installation completes, ensure that the **Launch Remote Desktop when setup exits** checkbox is selected and click **Finish** to start the Remote Desktop client.
-1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** user principal name and **Pa55w.rd1234** as its password.
+1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** user principal name and the password you set when creating this user account. 
 1. If prompted, in the **Stay signed in to all your apps** window, clear the **Allow my organization to manage my device** checkbox and click **No, sign in to this app only**.
 1. In the **Remote Desktop** client window, within the **az140-21-ws1** section, double-click the **XML Notepad** icon, when prompted, provide the password, and verify that the XML Notepad launches successfully.
 

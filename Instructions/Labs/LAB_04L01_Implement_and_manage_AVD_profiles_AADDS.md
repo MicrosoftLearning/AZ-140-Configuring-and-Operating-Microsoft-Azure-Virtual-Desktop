@@ -87,13 +87,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, start a Remote Desktop session to **az140-21-p1-0** and, when prompted, sign in with the following credentials:
-
-   |Setting|Value|
-   |---|---|
-   |User Name|**ADATUM\wvdaadmin1**|
-   |Password|**Pa55w.rd1234**|
-
+1. Within the Remote Desktop session to **az140-cl-vm11a**, start a Remote Desktop session to **az140-21-p1-0** and, when prompted, sign in with the **ADATUM\wvdaadmin1** user name and the password you set when creating this user account. 
 1. Within the Remote Desktop session to **az140-21-p1-0**, start Microsoft Edge, browse to [FSLogix download page](https://aka.ms/fslogix_download), download FSLogix compressed installation binaries, extract them into the **C:\\Source** folder, navigate to the **x64\\Release** subfolder and use **FSLogixAppsSetup.exe** to install Microsoft FSLogix Apps with the default settings.
 
    > **Note**: Installation of FXLogic might not be necessary, depending on whether the image already includes it. An FX Logix installation requires a reboot.
