@@ -45,31 +45,8 @@ The main tasks for this exercise are as follows:
 #### Task 1: Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
-1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
-1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
-1. When prompted, provde the following credentials and select **Connect**:
-
-   |Setting|Value|
-   |---|---|
-   |User Name|**Student**|
-   |Password|**Pa55w.rd1234**|
-
-1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
-
-   > **Note**: The next step is necessary to prepare for the next lab. Restarting the hosts ensures that the user profiles are offloaded.
-
-1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
-1. On the lab computer and, in the web browser window displaying the Azure portal, open the **PowerShell** shell session within the **Cloud Shell** pane.
-1. From the PowerShell session in the Cloud Shell pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
-
-   ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
-   ```
-
-   >**Note**: Wait until the Azure VMs are running before you proceed to the next step.
-
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Virtual machines** blade and, on the **Virtual machines** blade, select **az140-21-p1-0**.
+1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-21-p1-0**.
+1. On the **az140-21-p1-0** blade, select **Start** and wait until the status of the virtual machine changes to **Running**.
 1. On the **az140-21-p1-0** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **az140-21-p1-0 \| Connect** blade, in the **IP address** dropdown list, select the **Private IP address** entry, select **Download RDP File**, and then select **Open**.
 1. When prompted, sign in with the following credentials:
 
@@ -77,6 +54,16 @@ The main tasks for this exercise are as follows:
    |---|---|
    |User Name|**ADATUM\Student**|
    |Password|**Pa55w.rd1234**|
+
+1. Within the Remote Desktop session to **az140-21-p1-0**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-21-p1-0**, in the Microsoft Edge window displaying the Azure portal, open a PowerShell session within the Cloud Shell pane. 
+1. From the PowerShell session in the Cloud Shell pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
+   ```
+
+   >**Note**: Wait until the Azure VMs are running before you proceed to the next step.
 
 1. Within the Remote Desktop session to **az140-21-p1-0**, start Microsoft Edge, browse to [FSLogix download page](https://aka.ms/fslogix_download), download FSLogix compressed installation binaries, extract them into the **C:\\Allfiles\\Labs\\04** folder (create the folder if needed), navigate to the **x64\\Release** subfolder, double-click the **FSLogixAppsSetup.exe** file to launch the **Microsoft FSLogix Apps Setup** wizard, and step through the installation of Microsoft FSLogix Apps with the default settings.
 
