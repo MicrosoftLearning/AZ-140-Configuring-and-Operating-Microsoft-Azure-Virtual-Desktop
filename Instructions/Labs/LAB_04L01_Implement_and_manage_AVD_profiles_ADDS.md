@@ -47,7 +47,7 @@ The main tasks for this exercise are as follows:
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-21-p1-0**.
 1. On the **az140-21-p1-0** blade, select **Start** and wait until the status of the virtual machine changes to **Running**.
-1. On the **az140-21-p1-0** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **az140-21-p1-0 \| Connect** blade, in the **IP address** dropdown list, select the **Private IP address** entry, select **Download RDP File**, and then select **Open**.
+1. On the **az140-21-p1-0** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-21-p1-0 \| Connect** blade, select **Use Bastion**.
 1. When prompted, sign in with the following credentials:
 
    |Setting|Value|
