@@ -52,7 +52,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |User Name|**Student@adatum.com**|
+   |User Name|**aadadmin1@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set when creating this account.
@@ -92,23 +92,24 @@ The main tasks for this exercise are as follows:
    |---|---|
    |Add virtual machines|**Yes**|
    |Resource group|**Defaulted to same as host pool**|
+   |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
    |Availability options|**No infrastructure redundancy required**|
    |Image type|**Gallery**|
    |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**2**|
-   |Name prefix|**az140-21-p1**|
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-aadds-vnet11a**|
    |Subnet|**hp1-Subnet (10.10.1.0/24)**|
    |Network security group|**Basic**|
    |Public inbound ports|**No**|
+   |Select which directory you would like to join|**Active Directory**|
+   |AD domain join UPN|**aadadmin1@**|
+   |Password|Use password for aadadmin1|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=AADDC Computers,DC=adatum,DC=com**|
-   |AD domain join UPN|**aadadmin1@***<Azure_AD_domain_name>*|
-   |Password|`<password>`|
    |Virtual Machine Administrator account username|**student**|
    |Virtual Machine Administrator account password|**Pa55w.rd1234**|
 
