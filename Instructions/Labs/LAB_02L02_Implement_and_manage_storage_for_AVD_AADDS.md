@@ -52,7 +52,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |User Name|**Student@adatum.com**|
+   |User Name|**aadadmin1@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account and the password you set when creating this account.
@@ -99,20 +99,15 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, on the blade displaying properties of the storage account you created earlier in this exercise, in the vertical menu on the left side, in the **Data storage** section, select **File shares**, and in the list of shares, select the **az140-22a-profiles** entry.
 1. On the **az140-22a-profiles** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
 1. On the **az140-22a-profiles \| Access Control (IAM)** blade, select **+ Add** and, in the drop-down menu, select **Add role assignment**.
-1. On the **Add role assignment** blade, specify the following settings and select **Save**:
-
-   |Setting|Value|
-   |---|---|
-   |Role|**Storage File Data SMB Share Contributor**|
-   |Assign access to|**User, group, or service principal**|
-   |Select|**az140-wvd-ausers**|
-
-1. Back on the **Add role assignment** blade, specify the following settings and select **Save**:
+1. On the **Add role assignment** blade, select **Storage File Data SMB Share Contributor**, and select **Next**:
+1. On the **Members** blade, select  **Assign access to** and then click on **+ Select members**.
+1. On the **Select Members** blade, in the **Select** tesxt box, type **az140-wvd-ausers**, and then click **Select**.
+1. On the  **Members** blade, select **Review + assign** two times.
+1. Repeat steps 3-8 above, specify the following settings:
 
    |Setting|Value|
    |---|---|
    |Role|**Storage File Data SMB Share Elevated Contributor**|
-   |Assign access to|**User, group, or service principal**|
    |Select|**az140-wvd-aadmins**|
 
    > **Note**: You will use the **aadadmin1** user account, which is a member of the **az140-wvd-aadmins** group to configure file share permissions. 
