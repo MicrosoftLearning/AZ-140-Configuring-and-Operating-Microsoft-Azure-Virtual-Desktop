@@ -142,6 +142,9 @@ The main tasks for this exercise are as follows:
 #### Task 3: Perform a template-based deployment of an Azure VM running Windows 10 Enterprise by using PowerShell
 
 1. From your lab computer, use the Remote Desktop session to the **az140-dc-vm11** Azure VM to copy the lab files **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.json** and **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.parameters.json** to the **C:\\AllFiles\\Labs\\02** folder (create it if needed).
+
+>**Note:** If you're having trouble getting the files from the Lab computer over to the nested virtual machine, in the Azure portal on the lab computer, you can upload the 2 files to the **az140-22-profiles** file share you made in the previous lab. After uploading the files to the share, simply go to **az140-dc-vm1** and, in the Azure portal, from the file share there, download the files locally.
+
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to deploy an Azure VM running Windows 10 Enterprise (multi-session) that will serve as a Azure Virtual Desktop session host in the host pool you created in the previous task:
 
    ```powershell
@@ -183,6 +186,8 @@ The main tasks for this exercise are as follows:
    $labFilesFolder = 'C:\AllFiles\Labs\02'
    New-Item -ItemType Directory -Path $labFilesFolder
    ```
+
+>**Note** take care using the [T] construct to copy over the PowerShell cmdlets. In some instances, the text copied over can be incorrect, such as the $ sign showing as a 4 number character. You will need to correct these before issuing the cmdlet. Copy over to the PowerShell ISE **Script** pane, make the corrections there, and then highlight the corrected text and press **F8** (**Run Selection**).
 
 1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to download the Azure Virtual Desktop Agent and Boot Loader installers, required to add the session host to the host pool:
 
