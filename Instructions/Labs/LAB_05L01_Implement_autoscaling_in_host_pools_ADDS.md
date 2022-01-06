@@ -148,7 +148,7 @@ The main tasks for this exercise are as follows:
 1. To verify the configuration of the Azure Automation account, within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Automation accounts** and, on the **Automation accounts** blade, select the entry representing the newly provisioned Azure Automation account (with the name starting with the **az140-automation-51** prefix).
 1. On the Automation Account blade, in the vertical menu on the left side, in the **Process Automation** section, select **Runbooks** and, in the list of runbooks, verify the presence of the **WVDAutoScaleRunbookARMBased** runbook.
-1. On the Automation Account blade, in the vertical menu on the left side, in the **Account Settings** section, select **Run as accounts** and, in the list of accounts on the right side, next to the **Azure Run As Account**, click **+ Create**.
+1. On the Automation Account blade, in the vertical menu on the left side, in the **Account Settings** section, select **Run as accounts** and, in the list of accounts on the right side, next to the **+ Azure Run As Account**, click **Create**.
 1. On the **Add Azure Run As Account** blade, click **Create** and verify that the new account was successfully created.
 
 #### Task 3: Create an Azure Logic app
@@ -277,6 +277,7 @@ The main tasks for this exercise are as follows:
    | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
    ```
 
+   >**Note**: If there was an extra pipe character (|) in second line when using the cut an paste contrsuct, remove it to avoid a failure. This could apply to each query.
    >**Note**: If you don't see any results, wait a few minutes and try again.
 
 1. In the query window, paste the following query, click **Run** to display the total number of currently running session hosts and active user sessions in the target host pool:
