@@ -176,7 +176,7 @@ The main tasks for this exercise are as follows:
    |Resource Group|**az140-23-RG**|
    |Hostpool Token|the value of the token you generated in the previous task|
    |Hostpool Location|the name of the Azure region into which you deployed the hostpool earlier in this lab|
-   |Vm Administrator Account Username|**student**|
+   |Vm Administrator Account Username|**student** Do not use @adatum.com|
    |Vm Administrator Account Password|**Pa55w.rd1234**|
    |Vm location|the name of the same Azure region as the one set as the value of the **Hostpool Location** parameters|
    |Create Network Security Group|**false**|
@@ -220,7 +220,9 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-cl-vm11**, click **Start** and, in the **Start** menu, select the **Remote Desktop** client app.
-1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser7** credentials, by providing its userPrincipalName and the password you set when creating this account.
+2. In the Remote Desktop window, click the ellipsis icon in the upper right corner, in the dropdown menu, click **Unsubscribe**, and, when prompted for confirmation, click **Continue**.
+3. Within the Remote Desktop session to **az140-cl-vm11**, in the Remote Desktop window, on the **Let's get started page**, click **Subscribe**.
+4. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser7** credentials, by providing its userPrincipalName and **Pa55w.rd1234** as its password.
 
    > **Note**: Alternatively, in the **Remote Desktop** client window, select **Subscribe with URL**, in the **Subscribe to a Workspace** pane, in the **Email or Workspace URL**, type **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery**, select **Next**, and, once prompted, sign in with the **aduser7** credentials (using its userPrincipalName attribute as the user name and the password you set when creating this account). 
 
