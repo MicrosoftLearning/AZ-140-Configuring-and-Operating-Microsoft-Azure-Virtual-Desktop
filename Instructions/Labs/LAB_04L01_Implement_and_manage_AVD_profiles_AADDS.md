@@ -52,7 +52,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |User Name|**Student@adatum.com**|
+   |User Name|**aadadmin1@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Active Directory Users and Computers**.
@@ -135,7 +135,8 @@ The main tasks for this exercise are as follows:
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$storageAccountName.file.core.windows.net\$fileShareName"
    ```
-
+   >**Note** If the command generates an error, continue on to next step.
+   
 1. Within the Remote Desktop session to **az140-21-p1-0**, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** text box, type the following and select **OK** to launch the **Local Users and Groups** window:
 
    ```cmd
@@ -168,6 +169,7 @@ and select **OK** to close the group **Properties** window.
    ```
 
 1. Within the Remote Desktop session to **az140-21-p1-0**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to configure profile registry settings on the **az140-21-p1-1** session host:
+>**Note**: Replace <storageAccountName> with actual name of your storage account.
 
    ```powershell
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
@@ -176,7 +178,7 @@ and select **OK** to close the group **Properties** window.
    Invoke-Command -ComputerName $server -ScriptBlock {
       New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey –Force
       New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
-      New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$using:storageAccountName.file.core.windows.net\$using:fileShareName"
+      New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\<storageAccountName>.file.core.windows.net\$using:fileShareName"
    }
    ```
 
