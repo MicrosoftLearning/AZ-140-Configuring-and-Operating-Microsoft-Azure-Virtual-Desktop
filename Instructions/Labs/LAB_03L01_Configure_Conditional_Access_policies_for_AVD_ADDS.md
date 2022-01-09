@@ -104,10 +104,11 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the **Start** menu, expand the **Azure AD Connect** folder and select **Azure AD Connect**.
-1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** window, select **Configure**.
-1. On the **Additional tasks** page in the **Microsoft Azure Active Directory Connect** window, select **Configure device options** and select **Next**.
-1. On the **Overview** page in the **Microsoft Azure Active Directory Connect** window, review the information regarding **Hybrid Azure AD join** and **Device writeback** and select **Next**.
-1. On the **Connect to Azure AD** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the credentials of the **aadsyncuser** user account you created in the previous exercise and select **Next**. 
+> **Note** If you receive a failure error window that the Sync Service is not running, go to PowerShell command window and enter **Start-Service "ADSync"**, and then try the step 4 again.
+3. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** window, select **Configure**.
+4. On the **Additional tasks** page in the **Microsoft Azure Active Directory Connect** window, select **Configure device options** and select **Next**.
+5. On the **Overview** page in the **Microsoft Azure Active Directory Connect** window, review the information regarding **Hybrid Azure AD join** and **Device writeback** and select **Next**.
+6. On the **Connect to Azure AD** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the credentials of the **aadsyncuser** user account you created in the previous exercise and select **Next**.  
 
    > **Note**: Provide the userPrincipalName attribute of the **aadsyncuser** account you recorded earlier in this lab and specify the password you set when creating this user account. 
 
@@ -175,7 +176,7 @@ The main tasks for this exercise are as follows:
 
 1. On your lab computer, in the web browser displaying the Azure portal, navigate back to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Security**.
 1. On the **Security \| Getting started** blade, in the vertical menu on the left side, in the **Protect** section, click **Conditional Access**.
-1. On the **Conditional Access \| Policies** blade, in the toolbar, click **+ New policy**. 
+1. On the **Conditional Access \| Policies** blade, in the toolbar, click **+ New policy**, and in the context menu, select **New Policy**.
 1. On the **New** blade, configure the following settings:
 
    - In the **Name** text box, type **az140-31-wvdpolicy1**
