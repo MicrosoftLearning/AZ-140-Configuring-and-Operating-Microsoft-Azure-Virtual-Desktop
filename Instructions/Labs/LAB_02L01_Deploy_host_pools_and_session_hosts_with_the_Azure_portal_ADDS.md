@@ -168,8 +168,6 @@ The main tasks for this exercise are as follows:
    |Number of VMs|**1**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
-   |Configure SKU|**Basic**|
-   |Configure assignment|**Dynamic**|
    |Network security group|**Basic**|
    |Public inbound ports|**No**|
    |AD domain join UPN|**student@adatum.com**|
@@ -327,7 +325,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-cl-vm11** blade, scroll down to the **Operations** section and select **Run Command**. 
 1. On the **az140-cl-vm11 \| Run command** blade, select **EnableRemotePS** and select **Run**. 
 
-   > **Note**: Wait for the command to complete before you proceed to the next step. This might take about 1 minute.
+   > **Note**: Wait for the command to complete before you proceed to the next step. This might take about 1 minute. You may get red text errors addressing the Public profile being used and not the Domain profile, if so, yuo can ignore and go to the next step.
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to add all members of the **ADATUM\\az140-wvd-users** to the local **Remote Desktop Users** group on the Azure VM **az140-cl-vm11** running Windows 10 which you deployed in the lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**.
 
