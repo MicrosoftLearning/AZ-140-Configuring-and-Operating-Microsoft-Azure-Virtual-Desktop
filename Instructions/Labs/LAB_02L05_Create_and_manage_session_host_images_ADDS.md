@@ -165,6 +165,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    ```
 
    > **Note**: The installer supports the ALLUSER=1 and ALLUSERS=1 parameters. The ALLUSER=1 parameter is intended for per-machine installation in VDI environments. The ALLUSERS=1 parameter can be used in non-VDI and VDI environments. 
+   > **Note** if you encounter an error stating **Another version of the product is already installed**, then complete the following steps: Go to **Control Panel > Programs > Programs and Features** Right-click on the **Teams Machine-Wide Installer** program and select **Uninstall**. Proceed with removal of the program, and rerun step 13 above. 
 
 1. Within the Remote Desktop session to **az140-25-vm0**, start the **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** console, run the following to install Microsoft Edge Chromium (for learning purposes, since Edge is already present on the image used for this lab).:
 
@@ -331,6 +332,8 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 1. On the **Review + create** tab of the **Create a host pool** blade, select **Create**.
 
    > **Note**: Wait for the deployment to complete. This might take about 10 minutes.
+   > 
+   > **Note** If the deployment fails due to the quota limit being reached, perform the steps spelled out in the first lab to automatically request quota increase of the Standard D2sv3 limit to 30.
 
    > **Note**: Following deployment of hosts based on custom images, you should consider running the Virtual Desktop Optimization Tool, available from [its GitHub repository](https://github.com/The-Virtual-Desktop-Team/).
 
