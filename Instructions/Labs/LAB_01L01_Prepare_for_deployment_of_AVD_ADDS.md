@@ -83,40 +83,26 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, search for and select **Subscriptions** and, from the **Subscriptions** blade, select the entry representing the Azure subscription you intend to use for this lab.
 1. In the Azure portal, on the subscription blade, in the vertical menu on the left side, in the **Settings** section, select **Usage + quotas**. 
 1. On the subscription's **Usage + quotas** blade, select **Request Increase**.
-1. On the **Basics** tab of the **New support request** blade, specify the following and select **Next: Solutions >**:
+1. On the **1. Problem description** tab of the **New support request** blade, specify the following and select **Manage quota >**:
 
    |Setting|Value|
    |---|---|
    |Issue type|**Service and subscription limits (quotas)**|
    |Subscription|the name of the Azure subscription you will be using in this lab|
    |Quota type|**Compute-VM (cores-vCPUs) subscription limit increases**|
-   |Support plan|the name of the support plan associated with the target subscription|
+   
+1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select the following drop down arrows from the top search bar:
 
-1. On the **Details** tab of the **New support request** blade, select the **Provide details** link.
-1. On the **Quota details** tab of the **New support request** blade, specify the following and select **Save and continue**:
-
-   |Setting|Value|
+   |**Setting**|**Value**|
    |---|---|
-   |Deployment model|**Resource Manager**|
-   |Location|the name of the Azure region you intend to use in this lab|
-   |Types|**Standard**|
-   |Standard|**BS Series**|
-   |New vCPU Limit|the new limit|
-   |Standard|**DSv3 Series**|
-   |New vCPU Limit|the new limit|
+   |**Search**|**Standard BS**|
+   |**All locations**|**Clear all**, and then check *your location*|
 
-   >**Note**: The use of **BS Series** Azure VMs is in this case intended to minimize the cost of running the lab environment. It is not meant to represent the intended usage of the **BS Series** Azure VMs in the Azure Virtual Desktop scenarios.
+1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
+1. In the **Quota Details** blade, in the **New limit** column text box, type **20**, and then select **Save and continue**.
+1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
+1. Complete steps 5-8 above, using the **Standard DSv3** in the **Search** text box from step 5.
 
-1. Back on the **Details** tab of the **New support request** blade, specify the following and select **Next: Review + create >**:
-
-   |Setting|Value|
-   |---|---|
-   |Severity|**C - Minimal impact**|
-   |Preferred contact method|choose your preferred option and provide your contact details|
-    
-1. On the **Review + create** tab of the **New support request** blade, select **Create**.
-
-   > **Note**: Quota increase requests within this range of vCPUs are typically completed within a few hours. However, you can complete this lab without waiting for it.
 
 ### Exercise 1: Deploy an Active Directory Domain Services (AD DS) domain
 
