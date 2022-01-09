@@ -87,8 +87,8 @@ The main tasks for this exercise are as follows:
 #### Task 3: Prepare the Azure VM running Windows 10 for MSIX packaging
 
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, in the list of virtual machines, select the **az140-cl-vm42** entry. This will open the **az140-cl-vm42** blade.
-1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11 \| Connect** blade, select **Use Bastion**.
-1. When prompted, sign in with the **ADATUM\wvdadmin1** user name and the password you set when creating this user account. 
+1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm42 \| Connect** blade, select **Use Bastion**.
+1. When prompted, sign in with the **wvdadmin1** user name and the password you set when creating this user account. 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the operating system for MSIX packaging:
 
    ```powershell
@@ -248,7 +248,7 @@ The main tasks for this exercise are as follows:
    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
    ```
 
-1. Once the installation of the Hyper-V components completes, type **Y** and press the **Enter** key to restart the operating system. Following the restart, sign in back by using the **ADATUM\wvdadmin1** account with the password you set when creating this user account.
+1. Once the installation of the Hyper-V components completes, type **Y** and press the **Enter** key to restart the operating system. Following the restart, sign in back by using the **wvdadmin1** account with the **Pa55w.rd1234** password.
 
 #### Task 2: Create an MSIX app attach image
 
