@@ -82,40 +82,27 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, search for and select **Subscriptions** and, from the **Subscriptions** blade, select the entry representing the Azure subscription you intend to use for this lab.
 1. In the Azure portal, on the subscription blade, in the vertical menu on the left side, in the **Settings** section, select **Usage + quotas**. 
 1. On the subscription's **Usage + quotas** blade, select **Request Increase**.
-1. On the **Basics** tab of the **New support request** blade, specify the following and select **Next: Solutions >**:
+1. On the **1. Problem description** tab of the **New support request** blade, specify the following and select **Manage quota >**:
 
    |Setting|Value|
    |---|---|
    |Issue type|**Service and subscription limits (quotas)**|
    |Subscription|the name of the Azure subscription you will be using in this lab|
    |Quota type|**Compute-VM (cores-vCPUs) subscription limit increases**|
-   |Support plan|the name of the support plan associated with the target subscription|
+   
+1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select the following drop down arrows from the top search bar:
 
-1. On the **Details** tab of the **New support request** blade, select the **Provide details** link.
-1. On the **Quota details** tab of the **New support request** blade, specify the following and select **Save and continue**:
-
-   |Setting|Value|
-   |---|---|
-   |Deployment model|**Resource Manager**|
-   |Location|the name of the Azure region you intend to use in this lab|
-   |Types|**Standard**|
-   |Standard|**BS Series**|
-   |New vCPU Limit|the new limit|
-   |Standard|**DSv3 Series**|
-   |New vCPU Limit|the new limit|
-
-   >**Note**: The use of **BS Series** Azure VMs is in this case intended to minimize the cost of running the lab environment. It is not meant to represent the intended usage of the **BS Series** Azure VMs in the Azure Virtual Desktop scenarios.
-
-1. Back on the **Details** tab of the **New support request** blade, specify the following and select **Next: Review + create >**:
-
-   |Setting|Value|
-   |---|---|
-   |Severity|**C - Minimal impact**|
-   |Preferred contact method|choose your preferred option and provide your contact details|
+|**Setting**|**Value**|
+|---|---|
+|**Search**|**Standard BS**|
+|**All locations**|**Clear all**, and then check *your location*|
     
 1. On the **Review + create** tab of the **New support request** blade, select **Create**.
 
-   > **Note**: Quota increase requests within this range of vCPUs are typically completed within a few hours. However, you can complete this lab without waiting for it.
+1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
+1. In the **Quota Details** blade, in the **New limit** column text box, type **20**, and then select **Save and continue**.
+1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
+1. Complete steps 5-8 above, using the **Standard DSv3** in the **Search** text box from step 5.
 
 
 ### Exercise 1: Implement an Azure Active Directory Domain Services (AD DS) domain
@@ -147,6 +134,7 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    $aadDomainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
+   $aadDomainName
    ```
 
 1. From the Cloud Shell pane, run the following to create Azure AD users that will be granted elevated privileges (replace the `<password>` placeholder with a random, complex password):
@@ -181,27 +169,24 @@ The main tasks for this exercise are as follows:
 
 1. Close the Cloud Shell pane.
 1. Within the Azure portal, search for and select **Subscriptions** and, from the **Subscriptions** blade, select the Azure subscription you are using in this lab. 
-1. On the blade displaying properties of your Azure subscription, select **Access control (IAM)**, select **+ Add**, and, in the drop-down list, select **Add role assignment**. 
-1. On the **Add role assignment** blade, specify the following settings and select **Save**:
-
-   |Setting|Value|
-   |---|---|
-   |Role|**Owner**|
-   |Assign access to|**User, group, or service principal**|
-   |Select|**aadadmin1**|
+1. On the blade displaying properties of your Azure subscription, select **Access control (IAM)**, and then select **Add role assignment**. 
+1. On the **Add role assignment** blade, select **Owner** and then click **Next**
+1. Click the **+Select members** hyperlink.
+1. In the **Select Members** blade, select the **aadadmin** item, and then click the **Select** button, and then click **Next**.
+1. In the **Review + assign** blade, select the **Review + Assign** button.
 
    > **Note**: You will use the **aadadmin1** account to manage your Azure subscription and the corresponding Azure AD tenant from an Azure AD DS joined Windows 10 Azure VM later in the lab. 
 
 
 #### Task 2: Deploy an Azure AD DS instance by using the Azure portal
 
-1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select **+ Add**. This will open the **Create Azure AD Domain Services** blade.
+1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select **+ Create**. This will open the **Create Azure AD Domain Services** blade.
 1. On the **Basics** tab of the **Create Azure AD Domain Services** blade, specify the following settings and select **Next** (leave others with their existing values):
 
    |Setting|Value|
    |---|---|
    |Subscription|the name of the Azure subscription you are using in this lab|
-   |Resource group|the name of a new resource group **az140-11a-RG**|
+   |Resource group|**Create new** **az140-11a-RG**|
    |DNS domain name|**adatum.com**|
    |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
@@ -361,7 +346,7 @@ The main tasks for this exercise are as follows:
 
 1  Close the Cloud Shell pane.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
-1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a \| Connect** blade, select **Use Bastion**.
+1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a**, provde the following credentials and select **Connect**:
 1. When prompted, sign in as the **aadadmin1** user using its principal name you identified earlier in this lab and the password you set for this user account when creating it earlier in the lab.
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the Active Directory and DNS-related Remote Server Administration Tools:
 
@@ -428,6 +413,8 @@ The main tasks for this exercise are as follows:
    ```
 
 1. From the Cloud Shell pane, repeat the previous step to create Azure AD groups for users that you will use in the upcoming labs and add to them previously created Azure AD user accounts:
+
+>**Note**: Note: Because of the limited size of the Clipboard on the virtual machine, not all the listed cmdlets will copy over correctly. Open up Notepad on the virtual machine and copy all of the cmdlets to it by using the Type Text, Type Clipboard Text construct that is part of the Lightning Bolt control. Once you have ensured that all of the cmdlets are in Notepad, cut and paste them in blocks into the Cloud Shell and run them.
 
    ```powershell
    $az140wvdausers = New-AzureADGroup -Description 'az140-wvd-ausers' -DisplayName 'az140-wvd-ausers' -MailEnabled $false -SecurityEnabled $true -MailNickName 'az140-wvd-ausers'
