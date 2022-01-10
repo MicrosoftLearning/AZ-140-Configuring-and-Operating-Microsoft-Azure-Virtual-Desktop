@@ -105,7 +105,7 @@ The main tasks for this exercise are as follows:
    |Network security group|**Basic**|
    |Public inbound ports|**No**|
    |Select which directory you would like to join|**Active Directory**|
-   |AD domain join UPN|**aadadmin1@**|
+   |AD domain join UPN|**aadadmin1@***<Azure_AD_domain_name>*|
    |Password|Use password for aadadmin1|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
