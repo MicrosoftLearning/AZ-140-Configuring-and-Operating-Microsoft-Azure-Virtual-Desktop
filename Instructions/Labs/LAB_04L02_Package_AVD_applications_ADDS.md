@@ -282,7 +282,7 @@ The main tasks for this exercise are as follows:
    ```powershell
    $appName = 'XmlNotepad'
    New-Item -ItemType Directory -Path "$($partition.DriveLetter):\Apps" -Force
-   Set-Location -Path 'C:\AllFiles\Labs\04'
+   Set-Location -Path 'C:\AllFiles\Labs\04\x64'
    .\msixmgr.exe -Unpack -packagePath .\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
    ```
 
