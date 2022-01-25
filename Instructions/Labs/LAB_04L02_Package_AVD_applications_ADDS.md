@@ -253,7 +253,7 @@ The main tasks for this exercise are as follows:
 #### Task 2: Create an MSIX app attach image
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Microsoft Edge**, browse to **https://aka.ms/msixmgr**. This will automatically download the **msixmgr.zip** file (the MSIX mgr tool archive) into the **Downloads** folder.
-1. In File Explorer, navigate to the **Downloads** folder, open the compressed file and copy the content of the **x64** folder to the **C:\\AllFiles\\Labs\\04** folder. 
+1. In File Explorer, navigate to the **Downloads** folder, open the compressed file and copy the content of the **x64** folder (including the folder) to the **C:\\AllFiles\\Labs\\04** folder. 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE**  script pane, run the following to create the VHD file that will serve as the MSIX app attach image:
 
    ```powershell
