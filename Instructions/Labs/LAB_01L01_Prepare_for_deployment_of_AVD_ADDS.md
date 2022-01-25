@@ -338,10 +338,11 @@ The main tasks for this exercise are as follows:
    $tenantId = (Get-AzContext).Tenant.Id
    ```
 
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the latest version of the Azure AD PowerShell module:
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to install and import the latest version of the Azure AD PowerShell module:
 
    ```powershell
    Install-Module -Name AzureAD -Force
+   Import-Module -Name AzureAD
    ```
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to authenticate to your Azure AD tenant:
