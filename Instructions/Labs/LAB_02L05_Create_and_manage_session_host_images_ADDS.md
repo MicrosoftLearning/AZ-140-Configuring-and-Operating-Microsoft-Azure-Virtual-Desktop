@@ -257,7 +257,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |End of life date|one year ahead from the current date|
    |Default replica count|**1**|
    |Target region replica count|**1**|
-   |Storage account type|**Premium SSD**|
+   |Storage account type|**Premium SSD LRS**|
 
 1. On the **Review + create** tab of the **Create an image** blade, click **Create**.
 
