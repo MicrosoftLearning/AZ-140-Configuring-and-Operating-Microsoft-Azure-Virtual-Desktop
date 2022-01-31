@@ -152,7 +152,7 @@ The main tasks for this exercise are as follows:
 1. On the **File shares** blade, in the list of shares, select the **az140-22-profiles** entry.
 1. On the **az140-22-profiles** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
 1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
-1. On the **Add role assignment** blade, specify the following settings and select **Save**:
+1. On the **Add role assignment** blade, specify the following settings and select **Review + assign**:
 
    |Setting|Value|
    |---|---|
