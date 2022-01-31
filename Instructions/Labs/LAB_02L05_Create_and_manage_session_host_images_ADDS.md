@@ -293,7 +293,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    |Setting|Value|
    |---|---|
-   |Add virtual machines|**Yes**|
+   |Add Azure virtual machines|**Yes**|
    |Resource group|**Defaulted to same as host pool**|
    |Name prefix|**az140-25-p4**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
