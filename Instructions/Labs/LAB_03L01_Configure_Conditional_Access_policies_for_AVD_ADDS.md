@@ -176,7 +176,7 @@ The main tasks for this exercise are as follows:
 
 1. On your lab computer, in the web browser displaying the Azure portal, navigate back to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Security**.
 1. On the **Security \| Getting started** blade, in the vertical menu on the left side, in the **Protect** section, click **Conditional Access**.
-1. On the **Conditional Access \| Policies** blade, in the toolbar, click **+ New policy**, and in the context menu, select **New Policy**.
+1. On the **Conditional Access \| Policies** blade, in the toolbar, click **+ New policy**, and in the context menu, select **Create New Policy**.
 1. On the **New** blade, configure the following settings:
 
    - In the **Name** text box, type **az140-31-wvdpolicy1**
