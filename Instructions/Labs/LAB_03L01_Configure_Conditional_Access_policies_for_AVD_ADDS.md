@@ -198,7 +198,7 @@ The main tasks for this exercise are as follows:
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
    ```
 
-   >**Note**: Wait until the command completes and all the Azure VMs aren the **az140-21-RG** resource group are running. 
+   >**Note**: Wait until the command completes and all the Azure VMs in the **az140-21-RG** resource group are running. 
 
 1. On your lab computer, open an **InPrivate** web browser session, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing the **aduser5** user principal name you identified earlier in this exercise and the password you set when creating this user account.
 
