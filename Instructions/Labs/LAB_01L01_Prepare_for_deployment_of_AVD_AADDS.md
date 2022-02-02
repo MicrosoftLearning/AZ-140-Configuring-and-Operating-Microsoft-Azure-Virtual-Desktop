@@ -186,7 +186,7 @@ The main tasks for this exercise are as follows:
    |Setting|Value|
    |---|---|
    |Subscription|the name of the Azure subscription you are using in this lab|
-   |Resource group|**Create new** **az140-11a-RG**|
+   |Resource group|Select Create new **az140-11a-RG**|
    |DNS domain name|**adatum.com**|
    |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
