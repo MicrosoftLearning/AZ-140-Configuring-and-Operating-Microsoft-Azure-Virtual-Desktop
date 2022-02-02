@@ -81,28 +81,17 @@ The main tasks for this exercise are as follows:
 
 1. In the Azure portal, search for and select **Subscriptions** and, from the **Subscriptions** blade, select the entry representing the Azure subscription you intend to use for this lab.
 1. In the Azure portal, on the subscription blade, in the vertical menu on the left side, in the **Settings** section, select **Usage + quotas**. 
-1. On the subscription's **Usage + quotas** blade, select **Request Increase**.
-1. On the **1. Problem description** tab of the **New support request** blade, specify the following and select **Manage quota >**:
-
-   |Setting|Value|
-   |---|---|
-   |Issue type|**Service and subscription limits (quotas)**|
-   |Subscription|the name of the Azure subscription you will be using in this lab|
-   |Quota type|**Compute-VM (cores-vCPUs) subscription limit increases**|
-   
 1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select the following drop down arrows from the top search bar:
 
 |**Setting**|**Value**|
 |---|---|
 |**Search**|**Standard BS**|
 |**All locations**|**Clear all**, and then check *your location*|
-    
-1. On the **Review + create** tab of the **New support request** blade, select **Create**.
-
+   
 1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
 1. In the **Quota Details** blade, in the **New limit** column text box, type **20**, and then select **Save and continue**.
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
-1. Complete steps 5-8 above, using the **Standard DSv3** in the **Search** text box from step 5.
+1. Repeat the above steps 3-6, replace the search value to **Standard DSv3** and increase the quota.
 
 
 ### Exercise 1: Implement an Azure Active Directory Domain Services (AD DS) domain
