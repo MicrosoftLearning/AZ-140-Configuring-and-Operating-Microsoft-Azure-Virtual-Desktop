@@ -117,7 +117,7 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the web browser displaying the Azure portal, navigate to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Properties**.
-1. On the **Properties** blade of your Azure AD tenant, at the very bottom of the blade, select the **Manage Security deaults** link.
+1. On the **Properties** blade of your Azure AD tenant, at the very bottom of the blade, select the **Manage Security defaults** link.
 1. On the **Enable Security defaults** blade, if needed, select **No**, select the **My organization is using Conditional Access** checkbox, and select **Save**.
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. If prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
