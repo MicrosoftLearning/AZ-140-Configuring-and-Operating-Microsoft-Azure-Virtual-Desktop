@@ -362,6 +362,8 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, in the **Start** menu, navigate to the **Windows Administrative Tools** folder, expand it, and, from the list of tools, start **Active Directory Users and Computers**. 
 1. In the **Active Directory Users and Computers** console, review the default hierarchy, including the **AADDC Computers** and **AADDC Users** organizational units. Note that the former includes the **az140-cl-vm11a** computer account and the latter includes the user accounts synchronized from the Azure AD tenant associated with the Azure subscription hosting the deployment of Azure AD DS instance. The **AADDC Users** organizational unit also includes the **AAD DC Administrators** group synchronized from the same Azure AD tenant, along with its group membership. This membership cannot be modified directly within the Azure AD DS domain, but instead, you have to manage it within the Azure AD DS tenant. Any changes are automatically synchronized with the replica of the group hosted in the Azure AD DS domain. 
 
+**Hint:** If the **Active Directory Users and Computers** does not list out any domain related content then Right-Click on the **Active Directory Users and Computers** and select **Change Domain** and choose the domain **Adatum**.
+
    > **Note**: Currently, the group includes only the **aadadmin1** user account.
 
 1. In the **Active Directory Users and Computers** console, in the **AADDC Users** OU, select the **aadadmin1** user account, display its **Properties** dialog box, switch to the **Accounts** tab, and note that the user principal name suffix matches the primary Azure AD DNS domain name and is not modifiable. 
