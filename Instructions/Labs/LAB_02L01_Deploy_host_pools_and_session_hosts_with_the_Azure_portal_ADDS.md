@@ -289,7 +289,7 @@ The main tasks for this exercise are as follows:
 #### Task 5: Configure Azure Virtual Desktop workspaces
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Workspaces**.
-1. On the **Azure Virtual Desktop \| Workspaces** blade, select **+ Add**. 
+1. On the **Azure Virtual Desktop \| Workspaces** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
 
    |Setting|Value|
