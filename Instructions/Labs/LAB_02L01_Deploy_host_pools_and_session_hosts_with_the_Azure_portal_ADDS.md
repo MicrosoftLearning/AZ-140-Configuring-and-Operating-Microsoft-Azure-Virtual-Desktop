@@ -114,7 +114,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |Add virtual machines|**Yes**|
+   |Add Azure virtual machines|**Yes**|
    |Resource group|**Defaulted to same as host pool**|
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
