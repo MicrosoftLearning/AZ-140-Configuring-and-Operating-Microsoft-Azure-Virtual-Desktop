@@ -161,7 +161,7 @@ The main tasks for this exercise are as follows:
    |Select|**az140-wvd-users**|
 
 1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
-1. On the **Add role assignment** blade, specify the following settings and select **Save**:
+1. On the **Add role assignment** blade, specify the following settings and select **Review + assign**:
 
    |Setting|Value|
    |---|---|
