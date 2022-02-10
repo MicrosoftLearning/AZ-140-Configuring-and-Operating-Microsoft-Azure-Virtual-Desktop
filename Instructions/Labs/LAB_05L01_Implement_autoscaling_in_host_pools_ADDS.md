@@ -162,7 +162,7 @@ The main tasks for this exercise are as follows:
    Invoke-WebRequest -Uri $uri -OutFile ".\CreateOrUpdateAzLogicApp.ps1"
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzLogicApp.ps1** script and enclose the code between lines **134** an **138** into the multiline comment, such that they look as follows:
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, Select the **File** from the top menu and open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzLogicApp.ps1** script, enclose the code between lines **134** an **138** into the multiline comment and save, such that they look as follows:
 
    ```powershell
    <#
