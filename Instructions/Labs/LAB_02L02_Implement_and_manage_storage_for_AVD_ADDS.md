@@ -56,7 +56,7 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Add**.
+1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Create**.
 1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
 
    |Setting|Value|
