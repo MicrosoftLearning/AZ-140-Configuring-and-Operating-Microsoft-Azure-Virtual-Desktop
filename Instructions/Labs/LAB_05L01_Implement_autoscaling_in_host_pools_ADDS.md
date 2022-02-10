@@ -110,7 +110,7 @@ The main tasks for this exercise are as follows:
    New-AzOperationalInsightsWorkspace -Location $location -Name $workspaceName -ResourceGroupName $resourceGroupName
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** script and enclose the code between lines **82** an **86** into the multiline comment, such that they look as follows:
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, Select File from the top menu and open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** script and enclose the code between lines **82** an **86** into the multiline comment and save it, such that they look as follows:
 
    ```powershell
    <#
