@@ -208,8 +208,9 @@ The main tasks for this exercise are as follows:
 1. On the **Administration** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select **Next**.
 1. On the **Synchronization** tab of the **Create Azure AD Domain Services** blade, ensure that **All** is selected and then select **Next**.
 1. On the **Security Settings** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select **Next**.
-1. On the **Review + create** tab of the **Create Azure AD Domain Services** blade, select **Create**. 
-1. Review the notification regarding settings that you will not be able to change following creation of the Azure AD DS domain and select **OK**.
+1. On the **Tags** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select Next
+2. On the **Review + create** tab of the **Create Azure AD Domain Services** blade, select **Create**. 
+3. Review the notification regarding settings that you will not be able to change following creation of the Azure AD DS domain and select **OK**.
 
    >**Note**: The settings that you will not be able to change following provisioning of an Azure AD DS domain include its DNS name, its Azure subscription, its resource group, the virtual network and subnet hosting its domain controllers, and the forest type.
 
