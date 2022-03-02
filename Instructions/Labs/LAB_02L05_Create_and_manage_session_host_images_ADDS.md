@@ -238,7 +238,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |Target Azure compute gallery|the name of a new gallery **az14025imagegallery**|
    |Operating system state|**Generalized**|
 
-1. On the **Basics** tab of the **Create an image** blade, below the **Target image definition** textbox, click **Create new**.
+1. On the **Basics** tab of the **Create an image** blade, below the **Target VM image definition** textbox, click **Create new**.
 1. On the **Create a VM image definition**, specify the following settings and click **OK**:
 
    |Setting|Value|
