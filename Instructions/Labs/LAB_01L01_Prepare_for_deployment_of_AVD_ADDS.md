@@ -82,14 +82,7 @@ The main tasks for this exercise are as follows:
 
 1. In the Azure portal, search for and select **Subscriptions** and, from the **Subscriptions** blade, select the entry representing the Azure subscription you intend to use for this lab.
 1. In the Azure portal, on the subscription blade, in the vertical menu on the left side, in the **Settings** section, select **Usage + quotas**. 
-1. On the subscription's **Usage + quotas** blade, select **Request Increase**.
-1. On the **1. Problem description** tab of the **New support request** blade, specify the following and select **Manage quota >**:
-
-   |Setting|Value|
-   |---|---|
-   |Issue type|**Service and subscription limits (quotas)**|
-   |Subscription|the name of the Azure subscription you will be using in this lab|
-   |Quota type|**Compute-VM (cores-vCPUs) subscription limit increases**|
+**Note:** You don't need a support ticket to get more quota.
    
 1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select the following drop down arrows from the top search bar:
 
