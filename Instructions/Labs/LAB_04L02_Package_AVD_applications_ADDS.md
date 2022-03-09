@@ -33,8 +33,8 @@ After completing this lab, you will be able to:
 
 ## Lab files
 
--  \\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.json
--  \\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.parameters.json
+-  \\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.json - Remove Public IP connected to az140-cl-vm42
+-  \\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.parameters.json - - Remove Public IP connected to az140-cl-vm42
 
 ## Instructions
 
