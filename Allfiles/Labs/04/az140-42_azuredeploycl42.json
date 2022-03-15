@@ -91,7 +91,6 @@
     "imageOffer": "Windows-10",
     "windowsOSVersion": "20h2-pro",
     "nicName": "[concat(parameters('vmName'),'-nic')]",
-    "publicIPName": "[concat(parameters('vmName'),'-pip')]",
     "subnetId": "[resourceId(parameters('existingVNetResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('existingVNETName'), parameters('existingSubnetName'))]",
     "computeAPIVersion": "2019-07-01",
     "computeextensionAPIVersion": "2015-06-15",
@@ -99,15 +98,6 @@
     "storageAPIVersion": "2019-06-01" 
   },
   "resources": [
-    {
-      "apiVersion": "[variables('networkAPIVersion')]",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('publicIPName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "publicIPAllocationMethod": "Dynamic"
-      }
-    },
     {
       "apiVersion": "[variables('storageAPIVersion')]",
       "type": "Microsoft.Storage/storageAccounts",
@@ -124,18 +114,12 @@
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('nicName')]",
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPName'))]"
-      ],
       "properties": {
         "ipConfigurations": [
           {
             "name": "ipconfig",
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPName'))]"
-              },
               "subnet": {
                 "id": "[variables('subnetId')]"
               }
