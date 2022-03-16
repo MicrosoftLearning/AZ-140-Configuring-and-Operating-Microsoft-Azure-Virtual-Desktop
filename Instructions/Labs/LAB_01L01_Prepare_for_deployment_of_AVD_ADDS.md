@@ -121,7 +121,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Deploy an Azure VM running an AD DS domain controller by using an Azure Resource Manager QuickStart template
 
-1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`)::
+1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`):
 
    ```powershell
    $location = '<Azure_region>'
