@@ -149,7 +149,7 @@ The main tasks for this exercise are as follows:
 #### Task 5: Download software to package
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start **Microsoft Edge** and browse to **https://github.com/microsoft/XmlNotepad**.
-1. On the **microsoft/XmlNotepad** **readme.md** page, select the download link for [Standalone downloadable installer](http://www.lovettsoftware.com/downloads/xmlnotepad/xmlnotepadsetup.zip) and download the compressed installation files.
+1. On the **microsoft/XmlNotepad** **readme.md** page, select the download link for Standalone downloadable installer and download the compressed installation files.
 1. Within the Remote Desktop session to **az140-cl-vm42**, start File Explorer, navigate to the **Downloads** folder, open the compressed file, copy the content from within the folder in the compressed file, and paste it to the **C:\\AllFiles\\Labs\\04\\** directory. 
 
 #### Task 6: Install the MSIX Packaging Tool
