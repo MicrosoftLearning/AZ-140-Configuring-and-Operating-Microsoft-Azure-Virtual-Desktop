@@ -52,7 +52,7 @@ The main tasks for this exercise are as follows:
 
    |Setting|Value|
    |---|---|
-   |User Name|**ADATUM\Student**|
+   |User Name|**student@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
 1. Within the Remote Desktop session to **az140-21-p1-0**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
