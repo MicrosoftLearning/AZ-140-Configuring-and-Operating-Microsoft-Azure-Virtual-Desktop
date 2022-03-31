@@ -261,6 +261,10 @@ The main tasks for this exercise are as follows:
    $vnet | Set-AzVirtualNetwork
    ```
 
+1. From your lab computer, locate the **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11a.parameters.json** parameters file and open the file using Visual Studio Code.
+
+1.  At line 21, locate the value of the domainPassword parameter. Update the existing password in the parameter file to use the password that you set earlier in this lab for the **aadadmin1** user account, and then **Save** the file.
+
 1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11a.json** and **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11a.parameters.json** into the Cloud Shell home directory.
 1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Azure Virtual Desktop client and join it to the Azure AD DS domain:
 
