@@ -53,7 +53,7 @@ The main tasks for this exercise are as follows:
    |Setting|Value|
    |---|---|
    |User Name|**aadadmin1@adatum.com**|
-   |Password|**Pa55w.rd1234**|
+   |Password|Password previously configured|
 
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Active Directory Users and Computers**.
 1. In the **Active Directory Users and Computers** console, right-click the domain node, select **New**, followed by **Organizational Unit**, in the **New Object - Organizational Unit** dialog box, in the **Name** textbox, type **ADDC Users**, and select **OK**.
