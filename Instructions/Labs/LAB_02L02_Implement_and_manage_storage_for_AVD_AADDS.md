@@ -125,6 +125,6 @@ The main tasks for this exercise are as follows:
 1. Back on the **Security** tab of the dialog box displaying permissions of the mapped drive, select **Edit**, select **Add**, in the **Select Users, Computers, Service Accounts, and Groups** dialog box, ensure that the **From this location** textbox contains the **adatum.com** entry, in the **Enter the object name to select** textbox, type **az140-wvd-aadmins** and click **OK**.
 1. Back on the **Security** tab of the dialog box displaying permissions of the mapped drive, ensure that the **az140-wvd-aadmins** entry is selected, select the **Full control** checkbox in the **Allow** column, and click **OK**. 
 1. On the **Security** tab of the dialog box displaying permissions of the mapped drive, select **Edit**, in the list of groups and user names, select the **Authenticated users** entry, and select **Remove**.
-1. On the **Security** tab of the dialog box displaying permissions of the mapped drive, select **Edit**, in the list of groups and user names, select the **Users** entry, select **Remove**, click **OK**, and then click **OK** twice to complete the process. 
+1. While still on the Edit screen, in the list of groups and user names, select the **Users** entry, select **Remove**, click **OK**, and then click **OK** twice to complete the process. 
 
    >**Note**: Alternatively, you could set permissions by using the **icacls** command-line utility. 
