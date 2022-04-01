@@ -53,7 +53,7 @@ The main tasks for this exercise are as follows:
    |Setting|Value|
    |---|---|
    |User Name|**aadadmin1@adatum.com**|
-   |Password|**Pa55w.rd1234**|
+   |Password|Password previously defined|
 
 1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account and the password you set when creating this account.
 
