@@ -141,11 +141,13 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Perform a template-based deployment of an Azure VM running Windows 10 Enterprise by using PowerShell
 
-1. From your lab computer, use the Remote Desktop session to the **az140-dc-vm11** Azure VM to copy the lab files **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.json** and **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.parameters.json** to the **C:\\AllFiles\\Labs\\02** folder (create it if needed).
+1. From your lab computer, navigate to the deployed storage account. On the File Share blade, select the **az140-22-profiles** file share.
 
->**Note:** If you're having trouble getting the files from the Lab computer over to the nested virtual machine, in the Azure portal on the lab computer, you can upload the 2 files to the **az140-22-profiles** file share you made in the previous lab. After uploading the files to the share, simply go to **az140-dc-vm1** and, in the Azure portal, from the file share there, download the files locally.
+1. Select **Upload** and upload both the lab files **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.json** and **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-24_azuredeployhp3.parameters.json** to file share.
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to deploy an Azure VM running Windows 10 Enterprise (multi-session) that will serve as a Azure Virtual Desktop session host in the host pool you created in the previous task:
+1. Within the Bastion session to **az140-dc-vm11**, open File Explorer and navigate to the previously configured Z:, or the drive letter assigned to the connection to the File Share. Copy the uploaded deployment files to **C:\AllFiles\Labs\02**.
+
+1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to deploy an Azure VM running Windows 10 Enterprise (multi-session) that will serve as a Azure Virtual Desktop session host in the host pool you created in the previous task:
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
