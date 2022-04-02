@@ -87,7 +87,7 @@ The main tasks for this exercise are as follows:
    $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
    ```
 
-   > **Note**: The value should resemble the format `2020-12-27T00:51:28.3008055Z`. Record it since you will need it in the next task.
+   > **Note**: The value should resemble the format `2022-03-27T00:51:28.3008055Z`. Record it since you will need it in the next task.
 
    > **Note**: A registration token is required to authorize a host to join the pool. The value of token's expiration date must be between one hour and one month from the current date and time.
 
