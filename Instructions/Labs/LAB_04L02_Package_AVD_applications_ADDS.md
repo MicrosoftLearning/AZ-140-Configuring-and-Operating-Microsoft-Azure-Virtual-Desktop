@@ -334,7 +334,7 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    $hosts = (Get-ADGroup -Identity 'az140-hosts-42-p1' | Get-ADGroupMember | Select-Object Name).Name
-   $hosts | Restart-Computer
+   $hosts | ForEach-Object {Restart-Computer -ComputerName $_ -Force}
    ```
 
    > **Note**: This step ensures that the group membership change takes effect. 
