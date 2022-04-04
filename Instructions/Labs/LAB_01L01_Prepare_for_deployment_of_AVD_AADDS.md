@@ -89,7 +89,7 @@ The main tasks for this exercise are as follows:
 |**All locations**|**Clear all**, and then check *your location*|
    
 1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
-1. In the **Quota Details** blade, in the **New limit** column text box, type **20**, and then select **Save and continue**.
+1. In the **Quota Details** blade, in the **New limit** column text box, type **30**, and then select **Save and continue**.
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
 1. Repeat the above steps 3-6, replace the search value to **Standard DSv3** and increase the quota.
 
