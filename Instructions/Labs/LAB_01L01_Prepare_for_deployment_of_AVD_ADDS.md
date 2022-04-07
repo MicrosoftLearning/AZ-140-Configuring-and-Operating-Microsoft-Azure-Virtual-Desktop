@@ -429,7 +429,7 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Azure Active Directory** blade and, on your Azure AD tenant blade, in the **Manage** section of the hub menu, select **Azure AD Connect**.
 1. On the **Azure AD Connect** blade, select the **Download Azure AD Connect** link. This will automatically open a new browser tab displaying the **Microsoft Azure Active Directory Connect** download page.
 1. On the **Microsoft Azure Active Directory Connect** download page, select **Download**.
-1. When prompted whether to run or save the **AzureADConnect.msi** installer, select **Run** to start the **Microsoft Azure Active Directory Connect** wizard.
+1. If prompted whether to run or save the **AzureADConnect.msi** installer, select **Run**. Otherwise, open the file after it downloads to start the **Microsoft Azure Active Directory Connect** wizard.
 1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** wizard, select the checkbox **I agree to the license terms and privacy notice** and select **Continue**.
 1. On the **Express Settings** page of the **Microsoft Azure Active Directory Connect** wizard, select the **Customize** option.
 1. On the **Install required components** page, leave all optional configuration options deselected and select **Install**.
