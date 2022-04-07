@@ -241,7 +241,7 @@ The main tasks for this exercise are as follows:
    }
    ```
 
-1. Following the installation of the Hyper-V components on each host, type **Y** and press the **Enter** key to restart the target operating system.
+1. When prompted to restrart the target operating system, select **Yes**.
 1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to install Hyper-V and its management tools, including the Hyper-V PowerShell module on the local computer:
 
    ```powershell
