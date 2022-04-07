@@ -76,7 +76,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: To identify the names of Azure regions, in the **Cloud Shell**, at the PowerShell prompt, run `(Get-AzLocation).Location`.
    
-1. Review the output of the command executed in the previous step and ensure that you have at least **20** available vCPUs in both the **Standard DSv3 Family** and **StandardBSFamily** of Azure VMs in the target Azure region. If that's already the case, proceed directly to the next exercise. Otherwise, proceed to the next task of this exercise. 
+1. Review the output of the command executed in the previous step and ensure that you have at least **30** available vCPUs in both the **Standard DSv3 Family** and **StandardBSFamily** of Azure VMs in the target Azure region. If that's already the case, proceed directly to the next exercise. Otherwise, proceed to the next task of this exercise. 
 
 #### Task 2: Request vCPU quota increase
 
@@ -93,7 +93,7 @@ The main tasks for this exercise are as follows:
    |**All locations**|**Clear all**, and then check *your location*|
 
 1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
-1. In the **Quota Details** blade, in the **New limit** column text box, type **20**, and then select **Save and continue**.
+1. In the **Quota Details** blade, in the **New limit** column text box, type **30**, and then select **Save and continue**.
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
 1. Complete steps 5-8 above, using the **Standard DSv3** in the **Search** text box from step 5.
 
