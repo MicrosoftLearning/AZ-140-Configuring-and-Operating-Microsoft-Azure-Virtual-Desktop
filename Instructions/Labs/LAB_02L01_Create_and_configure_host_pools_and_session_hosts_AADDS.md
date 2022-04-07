@@ -95,6 +95,7 @@ The main tasks for this exercise are as follows:
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
    |Availability options|**No infrastructure redundancy required**|
+   |Security type|**Standard**
    |Image type|**Gallery**|
    |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
    |Virtual machine size|**Standard D2s v3**|
@@ -105,7 +106,7 @@ The main tasks for this exercise are as follows:
    |Network security group|**Basic**|
    |Public inbound ports|**No**|
    |Select which directory you would like to join|**Active Directory**|
-   |AD domain join UPN|**aadadmin1@***<Azure_AD_domain_name>*|
+   |AD domain join UPN|**aadadmin1@adatum.com**|
    |Password|Use password for aadadmin1|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
