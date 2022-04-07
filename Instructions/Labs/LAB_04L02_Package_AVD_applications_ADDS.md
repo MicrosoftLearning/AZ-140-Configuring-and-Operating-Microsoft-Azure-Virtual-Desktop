@@ -283,7 +283,7 @@ The main tasks for this exercise are as follows:
    $appName = 'XmlNotepad'
    New-Item -ItemType Directory -Path "$($partition.DriveLetter):\Apps" -Force
    Set-Location -Path 'C:\AllFiles\Labs\04\x64'
-   .\msixmgr.exe -Unpack -packagePath .\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
+   .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
    ```
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps** folder and review its content. If prompted to gain access to the folder, select **Continue**.
