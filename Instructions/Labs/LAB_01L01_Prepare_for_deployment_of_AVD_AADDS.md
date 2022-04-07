@@ -159,7 +159,7 @@ The main tasks for this exercise are as follows:
 
 1. Close the Cloud Shell pane.
 1. Within the Azure portal, search for and select **Subscriptions** and, from the **Subscriptions** blade, select the Azure subscription you are using in this lab. 
-1. On the blade displaying properties of your Azure subscription, select **Access control (IAM)**, and then select **Add role assignment**. 
+1. On the blade displaying properties of your Azure subscription, select **Access control (IAM)**, select **Add**, and then select **Add role assignment**. 
 1. On the **Add role assignment** blade, select **Owner** and then click **Next**
 1. Click the **+Select members** hyperlink.
 1. In the **Select Members** blade, select the **aadadmin** item, and then click the **Select** button, and then click **Next**.
