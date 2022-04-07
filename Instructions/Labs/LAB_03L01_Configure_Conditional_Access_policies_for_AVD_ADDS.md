@@ -208,7 +208,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Verify that this will automatically trigger authentication via MFA.
 
-1. In the **Enter code** pane, type the code included in the text you received on your phone and click **Verify**.
+1. In the **Enter code** pane, type the code from the text message or authenticator app that you registered and select **Verify**.
 1. On the **All Resources** page, click **Command Prompt**, on the **Access local resources** pane, clear the **Printer** checkbox, and click **Allow**.
 1. When prompted, in the **Enter your credentials**, in the **User name** textbox type the user principal name of **aduser5** and, in the **Password** textbox, type the password you set when creating this user account and click **Submit**.
 1. Verify that the **Command Prompt** Remote App was launched successfully.
