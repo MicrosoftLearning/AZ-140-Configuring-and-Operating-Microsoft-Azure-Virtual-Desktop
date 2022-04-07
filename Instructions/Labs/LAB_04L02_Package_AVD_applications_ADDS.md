@@ -156,7 +156,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-cl-vm42**, start the **Microsoft Store** app.
 1. In the **Microsoft Store** app, search for and select **MSIX Packaging Tool**, on the **MSIX Packaging Tool** page, select **Get**.
-1. When prompted, skip signing in, wait for the installation to complete, select **Launch** and, in the **Send diagnostic data** dialog box, select **Decline**, 
+1. When prompted, skip signing in, wait for the installation to complete, select **Open** and, in the **Send diagnostic data** dialog box, select **Decline**, 
 
 #### Task 7: Create an MSIX package
 
