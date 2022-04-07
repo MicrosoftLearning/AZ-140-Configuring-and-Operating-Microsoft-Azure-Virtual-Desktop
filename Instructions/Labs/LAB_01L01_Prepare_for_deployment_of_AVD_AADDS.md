@@ -87,6 +87,7 @@ The main tasks for this exercise are as follows:
 |---|---|
 |**Search**|**Standard BS**|
 |**All locations**|**Clear all**, and then check *your location*|
+|**Resource provider** | **Microsoft.Compute** |
    
 1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
 1. In the **Quota Details** blade, in the **New limit** column text box, type **30**, and then select **Save and continue**.
