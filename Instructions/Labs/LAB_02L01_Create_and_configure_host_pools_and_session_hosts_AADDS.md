@@ -130,7 +130,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21a-hp1-DAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Assignments**.
 1. On the **az140-21a-hp1-DAG \| Assignments** blade, select **+ Add**.
 1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-apooled** and click **Select**.
-1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, and select **+ Create** again.
+1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, and select **+ Add**.
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
    |Setting|Value|
