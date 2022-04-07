@@ -112,6 +112,8 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create an AD DS computer object that represents the Azure Storage account you created earlier in this task and is used to implement its AD DS authentication:
 
+   >**Note**: If you receive an error when running this script block, ensure that you are in the same directory as the CopyToPSPath.ps1 script. Depending on how the files were extracted earlier in this lab, they might be in a sub-folder named AzFilesHybrid. In the PowerShell context, change directories to the folder using **cd AzFilesHybrid**.
+
    ```powershell
    Set-Location -Path 'C:\Allfiles\Labs\02'
    .\CopyToPSPath.ps1 
