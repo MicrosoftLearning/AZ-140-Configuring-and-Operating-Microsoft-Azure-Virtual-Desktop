@@ -66,7 +66,7 @@ The main tasks for this exercise are as follows:
    |Group scope|**Global**|
    |Group type|**Security**|
 
-1. In the **Active Directory Users and Computers** console, display the properties of the **Local Admins** group, switch to the **Members** tab, select **Add**, in the **Select Users, Contacts, Computers, Service Accounts, or Groups** dialog box, in the **Enter the object names to select**, type **aadadmin1** and select **OK**.
+1. In the **Active Directory Users and Computers** console, display the properties of the **Local Admins** group, switch to the **Members** tab, select **Add**, in the **Select Users, Contacts, Computers, Service Accounts, or Groups** dialog box, in the **Enter the object names to select**, type **aadadmin1;wvdaadmin1** and select **OK**.
 1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Group Policy Management**.
 1. In the **Group Policy Management** console, navigate to the **AADDC Computers** OU, right-click the **AADDC Computers GPO** icon and select **Edit**.
 1. In the **Group Policy Management Editor** console, expand **Computer Configuration**, **Policies**, **Windows Settings**, **Security Settings**, right-click **Restriced Groups**, and select **Add Group**.
