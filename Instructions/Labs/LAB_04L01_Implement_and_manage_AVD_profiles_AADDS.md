@@ -172,7 +172,6 @@ and select **OK** to close the group **Properties** window.
    ```
 
 1. Within the Remote Desktop session to **az140-21-p1-0**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to configure profile registry settings on the **az140-21-p1-1** session host:
->**Note**: Replace <storageAccountName> with actual name of your storage account.
 
    ```powershell
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
@@ -181,7 +180,7 @@ and select **OK** to close the group **Properties** window.
    Invoke-Command -ComputerName $server -ScriptBlock {
       New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey –Force
       New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
-      New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\<storageAccountName>.file.core.windows.net\$using:fileShareName"
+      New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$storageAccountName.file.core.windows.net\$using:fileShareName"
    }
    ```
 
