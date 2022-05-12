@@ -201,7 +201,7 @@ The main tasks for this exercise are as follows:
    $AutoAccount = (Get-AzAutomationAccount -ResourceGroupName $ResourceGroup.ResourceGroupName)[0]
    $AutoAccountConnection = Get-AzAutomationConnection -ResourceGroupName $AutoAccount.ResourceGroupName -AutomationAccountName $AutoAccount.AutomationAccountName
 
-   $WebhookURIAutoVar = <webhook_URI>
+   $WebhookURIAutoVar = '<webhook_URI>'
    ```
 
    >**Note**: The values of parameters are geared towards accelerating the autoscaling behavior. In your production environment, you should adjust them to match your own specific requirements.
