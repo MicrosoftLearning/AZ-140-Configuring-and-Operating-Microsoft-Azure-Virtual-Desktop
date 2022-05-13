@@ -230,7 +230,7 @@ The main tasks for this exercise are as follows:
      "LimitSecondsToForceLogOffUser" = $LimitSecondsToForceLogOffUser           # Optional. Default: 1
      "LogOffMessageTitle"            = $LogOffMessageTitle                      # Optional. Default: "Machine is about to shut down."
      "LogOffMessageBody"             = $LogOffMessageBody                       # Optional. Default: "Your session will be logged off. Please save and close everything."
-     "WebhookURI"                    = $WebhookURIAutoVar.Value
+     "WebhookURI"                    = $WebhookURIAutoVar
    }
 
    .\CreateOrUpdateAzLogicApp.ps1 @Params
