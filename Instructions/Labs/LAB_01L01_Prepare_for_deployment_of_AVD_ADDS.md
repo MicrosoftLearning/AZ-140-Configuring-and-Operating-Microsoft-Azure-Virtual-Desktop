@@ -89,6 +89,7 @@ The main tasks for this exercise are as follows:
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
 1. Repeat the steps 3-6 to set the quota limit for the **Standard DSv3** VM size to **30**.
 
+   >**Note**: Depending on the choice of the Azure region and the current demand, it might be necessary to raise a support request. For instructions regarding the process of creating support request, refer to [Create an Azure support request])https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### Exercise 1: Deploy an Active Directory Domain Services (AD DS) domain
 
