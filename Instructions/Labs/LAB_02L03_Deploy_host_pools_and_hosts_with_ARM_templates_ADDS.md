@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Lab: Deploy host pools and hosts by using Azure Resource Manager templates'
+    title: 'Lab: Deploy host pools and hosts by using Azure Resource Manager templates (AD DS)'
     module: 'Module 2: Implement a WVD Infrastructure'
 ---
 
