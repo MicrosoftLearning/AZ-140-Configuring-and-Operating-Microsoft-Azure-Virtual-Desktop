@@ -83,17 +83,11 @@ The main tasks for this exercise are as follows:
 
    **Note:** You might not need to raise a support ticket to increase quotas.
    
-1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select the following drop down arrows from the top search bar:
-
-   |**Setting**|**Value**|
-   |---|---|
-   |**Search**|**Standard BS**|
-   |**All locations**|**Clear all**, and then check *your location*|
-
-1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
-1. In the **Quota Details** blade, in the **New limit** column text box, type **30**, and then select **Save and continue**.
+1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select **Region**, in the drop down list, select the checkbox next to the name of the Azure region you intend to use for this lab, ensure that the **Compute** entry appears in the drop down list to the left of the **Region** entry, and, in the search box, type **Standard BS**. 
+1. In the list of results, select the checkbox next to the **Standard BS Family vCPUs** item, select the **Request quota increase** entry in the toolbar, and, in the drop down list, select **Enter a new limit**.
+1. In the **Request quota increase** pane, in the **New limit** column text box, type **30**, and then select **Submit**.
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
-1. Complete steps 5-8 above, using the **Standard DSv3** in the **Search** text box from step 5.
+1. Repeat the steps 3-6 to set the quota limit for the **Standard DSv3** VM size to **30**.
 
 
 ### Exercise 1: Deploy an Active Directory Domain Services (AD DS) domain
