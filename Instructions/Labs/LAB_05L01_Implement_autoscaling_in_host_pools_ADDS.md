@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Implement autoscaling in host pools (AD DS)'
-    module: 'Module: Monitor and Maintain a WVD Infrastructure'
+    module: 'Module 5: Monitor and Maintain a WVD Infrastructure'
 ---
 
 # Lab - Implement autoscaling in host pools (AD DS)
