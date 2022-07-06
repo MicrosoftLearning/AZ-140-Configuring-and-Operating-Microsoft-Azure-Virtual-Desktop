@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'Lab: Implement and manage Azure Virtual Desktop profiles (AD DS)'
     module: 'Module 4: Manage User Environments and Apps'
