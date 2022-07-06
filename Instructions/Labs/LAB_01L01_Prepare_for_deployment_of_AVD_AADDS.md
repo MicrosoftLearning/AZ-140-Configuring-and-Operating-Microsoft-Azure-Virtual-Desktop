@@ -16,7 +16,7 @@ lab:
 
 150 minutes
 
->**Note**: Provisioning of an Azure AD DS takes involves about 90-minute wait time.
+>**Note**: Provisioning of an Azure AD DS involves about 90-minute wait time.
 
 ## Lab scenario
 
