@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'Lab: Deploy host pools and session hosts by using the Azure portal (AD DS)'
     module: 'Module 2: Implement a AVD Infrastructure'
