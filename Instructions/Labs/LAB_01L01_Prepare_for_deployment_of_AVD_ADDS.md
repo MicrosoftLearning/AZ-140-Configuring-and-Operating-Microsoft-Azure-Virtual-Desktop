@@ -29,9 +29,9 @@ After completing this lab, you will be able to:
 
 ## Lab files
 
--  \\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json
--  \\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.json
--  \\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.parameters.json
+-  F:\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json
+-  F:\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.json
+-  F:\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.parameters.json
 
 ## Instructions
 
@@ -126,7 +126,7 @@ The main tasks for this exercise are as follows:
 1. From your lab computer, in the same web browser window, open another web browser tab and navigate a customized version of QuickStart template named [Create a new Windows VM and create a new AD Forest, Domain and DC](https://github.com/az140mp/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain). 
 1. On the **Create a new Windows VM and create a new AD Forest, Domain and DC** page, select **Deploy to Azure**. This will automatically redirect the browser to the **Create an Azure VM with a new AD Forest** blade in the Azure portal.
 1. On the **Create an Azure VM with a new AD Forest** blade, select **Edit parameters**.
-1. On the **Edit parameters** blade, select **Load file**, in the **Open** dialog box, select **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json**, select **Open**, and then select **Save**. 
+1. On the **Edit parameters** blade, select **Load file**, in the **Open** dialog box, select **F:\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json**, select **Open**, and then select **Save**. 
 1. On the **Create an Azure VM with a new AD Forest** blade, specify the following settings (leave others with their existing values):
 
    |Setting|Value|
@@ -153,7 +153,7 @@ The main tasks for this exercise are as follows:
    $vnet | Set-AzVirtualNetwork
    ```
 
-1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.json** and **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.parameters.json** into the Cloud Shell home directory.
+1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **F:\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.json** and **F:\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11.parameters.json** into the Cloud Shell home directory.
 1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a client into the newly created subnet:
 
    ```powershell
