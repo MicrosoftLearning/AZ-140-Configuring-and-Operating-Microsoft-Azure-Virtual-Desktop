@@ -101,7 +101,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-22a-profiles \| Access Control (IAM)** blade, select **+ Add** and, in the drop-down menu, select **Add role assignment**.
 1. On the **Add role assignment** blade, select **Storage File Data SMB Share Contributor**, and select **Next**:
 1. On the **Members** blade, select  **Assign access to** and then click on **+ Select members**.
-1. On the **Select Members** blade, in the **Select** tesxt box, type **az140-wvd-ausers**, and then click **Select**.
+1. On the **Select Members** blade, in the **Select** text box, type **az140-wvd-ausers**, and then click **Select**.
 1. On the  **Members** blade, select **Review + assign** two times.
 1. Repeat steps 3-8 above, specify the following settings:
 
