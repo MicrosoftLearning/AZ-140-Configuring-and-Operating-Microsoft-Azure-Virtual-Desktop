@@ -221,7 +221,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 1. Within the Remote Desktop session to **az140-25-vm0**, in the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the sysprep utility in order to prepare the operating system for generating an image and automatically shut it down:
 
    ```cmd
-   C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
+   C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm
    ```
 
    > **Note**: Wait for the sysprep process to complete. This might take about 2 minutes. This will automatically shut down the operating system. 
