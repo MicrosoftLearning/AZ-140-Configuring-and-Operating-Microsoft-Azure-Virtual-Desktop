@@ -50,10 +50,11 @@ The main tasks for this exercise are as follows:
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to register the **Microsoft.Compute** resource provider, in case it's not registered:
+1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to register the **Microsoft.Compute** and **Microsoft.Network** resource providers, in case they're not registered:
 
    ```powershell
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.Compute'
+   Register-AzResourceProvider -ProviderNamespace 'Microsoft.Network'
    ```
 
 1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to verify the registration status of the **Microsoft.Compute** resource provider:
