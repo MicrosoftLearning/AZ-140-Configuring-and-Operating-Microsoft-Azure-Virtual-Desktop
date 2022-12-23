@@ -83,12 +83,15 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, on the subscription blade, in the vertical menu on the left side, in the **Settings** section, select **Usage + quotas**. 
 
    **Note:** You might not need to raise a support ticket to increase quotas.
+
+   **Note:** Requesting quota increase requires signing-in with multi-factor authentication (MFA). If you need to configure your account with MFA, refer to [Plan an Azure Active Directory Multi-Factor Authentication deployment](https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted). 
    
-1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select **Region**, in the drop down list, select the checkbox next to the name of the Azure region you intend to use for this lab, ensure that the **Compute** entry appears in the drop down list to the left of the **Region** entry, and, in the search box, type **Standard BS**. 
+1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select **Region**, in the drop down list, select the checkbox next to the name of the Azure region you intend to use for this lab, select **Apply**, ensure that the **Compute** entry appears in the drop down list to the left of the **Region** entry, and, in the search box, type **Standard BS**. 
 1. In the list of results, select the checkbox next to the **Standard BS Family vCPUs** item, select the **Request quota increase** entry in the toolbar, and, in the drop down list, select **Enter a new limit**.
 1. In the **Request quota increase** pane, in the **New limit** column text box, type **30**, and then select **Submit**.
+1. If prompted, on the **Request quota increase** pane, select **Authenticate with Multi-Factory Authentication** and follow the prompts to authenticate.
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
-1. Repeat the steps 3-6 to set the quota limit for the **Standard DSv3** VM size to **30**.
+1. Repeat the steps 3-7 to set the quota limit for the **Standard DSv3** VM size to **30**.
 
    >**Note**: Depending on the choice of the Azure region and the current demand, it might be necessary to raise a support request. For instructions regarding the process of creating support request, refer to [Create an Azure support request])https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
