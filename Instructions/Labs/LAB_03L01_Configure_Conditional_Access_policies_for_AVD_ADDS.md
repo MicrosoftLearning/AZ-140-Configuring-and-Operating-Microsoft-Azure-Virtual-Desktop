@@ -80,8 +80,8 @@ The main tasks for this exercise are as follows:
 
 1. On your lab computer, in the web browser displaying the Azure portal, navigate back to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Security**.
 1. On the **Security | Getting started** blade, in the vertical menu on the left side, in the **Protect** section, click **Identity Protection**.
-1. On the **Identity Protection | Overview** blade, in the vertical menu on the left side, in the **Protect** section, click **MFA registration policy** (if necessary, refresh the web browser page).
-1. On the **Identity Protection | MFA registration policy** blade, in the **Assignments** section of the **Multi-factor authentication registration policy**, click **All users**, on the **Include** tab, click the **Select individuals and groups** option, on the **Select users**, click **aduser5**, click **Select**, at the bottom of the blade, set the **Enforce policy** switch to **On**, and click **Save**.
+1. On the **Identity Protection | Overview** blade, in the vertical menu on the left side, in the **Protect** section, click **Multifactor authentication registration policy** (if necessary, refresh the web browser page).
+1. On the **Identity Protection | Multifactor authentication registration policy** blade, in the **Assignments** section of the **Multi-factor authentication registration policy**, click **All users**, on the **Include** tab, click the **Select individuals and groups** option, on the **Select users**, click **aduser5**, click **Select**, at the bottom of the blade, set the **Enforce policy** switch to **On**, and click **Save**.
 
 #### Task 3: Register a user for Azure AD MFA
 
@@ -176,12 +176,12 @@ The main tasks for this exercise are as follows:
 
 1. On your lab computer, in the web browser displaying the Azure portal, navigate back to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Security**.
 1. On the **Security \| Getting started** blade, in the vertical menu on the left side, in the **Protect** section, click **Conditional Access**.
-1. On the **Conditional Access \| Policies** blade, in the toolbar, click **+ New policy**, and in the context menu, select **Create New Policy**.
+1. On the **Conditional Access \| Policies** blade, in the toolbar, click **+ New policy**.
 1. On the **New** blade, configure the following settings:
 
    - In the **Name** text box, type **az140-31-wvdpolicy1**
    - In the **Assignments** section, select the **Users or workload identities** option, in the **What does this policy apply to?** drop-down list, ensure that **Users and groups** is selected, in the **Select Users and groups** section, select the **Users and groups** checkbox, on the **Select** blade, click **aduser5**, and then click **Select**.
-   - In the **Assignments** section, click **Cloud apps or actions**, ensure that in the **Select what this policy applies to** switch, the **Cloud apps** option is selected, click the **Select apps** option, on the **Select** blade, select the checkbox next to the **Azure Virtual Desktop** entry, and click **Select**. 
+   - In the **Assignments** section, click **Cloud apps or actions**, ensure that in the **Select what this policy applies to** switch, the **Cloud apps** option is selected, click the **Select apps** option, on the **Select** blade, in the **Search** textbox, enter **9cdead84-a844-4324-93f2-b2e6bb768d07**, in the listing of results, select the checkbox next to the **Azure Virtual Desktop** entry, in the **Search** textbox, enter **a4a365df-50f1-4397-bc59-1a1564b8bb9c**, select the checkbox next to the **Microsoft Remote Desktop** entry, and click **Select**. 
    - In the **Assignments** section, click **Conditions**, click **Client apps**, on the **Client apps** blade, set the **Configure** switch to **Yes**, ensure that both the **Browser** and **Mobile apps and desktop clients** checkboxes are selected, and click **Done**.
    - In the **Access controls** section, click **Grant**, on the **Grant** blade, ensure that the **Grant access** option is selected, select the **Require multi-factor authentication** checkbox and click **Select**.
    - In the **Access controls** section, click **Session**, on the **Session** blade, select the **Sign-in frequency** checkbox, in the first textbox, type **4**, in the **Select units** dropdown list, select **Hours**, leave the **Persistent browser session** checkbox cleared, and click **Select**.
