@@ -103,12 +103,11 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|the name of a new resource group **az140-21-RG**|
    |Host pool name|**az140-21-hp1**|
-   |Load balancing algorithm|**Breadth-first**|
-   |Max session limit|**50**|
    |Location|the name of the Azure region into which you deployed resources in the first exercise of this lab or a region close to it |
    |Validation environment|**No**|
    |Host pool type|**Pooled**|
-
+   |Load balancing algorithm|**Breadth-first**|
+   |Max session limit|**50**|
 
 1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >** (leave other settings with their default values):
 
@@ -119,8 +118,7 @@ The main tasks for this exercise are as follows:
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
    |Availability options|**No infrastructure redundancy required**|
-   |Image type|**Gallery**|
-   |Image|**Windows 10 Enterprise multi-session, Version 20H2 + Microsoft 365 Apps**|
+   |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**2**|
    |OS disk type|**Standard SSD**|
@@ -163,8 +161,7 @@ The main tasks for this exercise are as follows:
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed the first two session host VMs|
    |Availability options|**No infrastructure redundancy required**|
-   |Image type|**Gallery**|
-   |Image|**Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps**|
+   |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
    |Number of VMs|**1**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
@@ -191,7 +188,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21-hp1-DAG** blade, select **Assignments**.
 1. On the **az140-21-hp1-DAG \| Assignments** blade, select **+ Add**.
 1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-pooled** and click **Select**.
-1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
+1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, select **+ Add**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
    |Setting|Value|
@@ -199,7 +196,7 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|**az140-21-RG**|
    |Host pool|**az140-21-hp1**|
-   |Application group type|**RemoteApp**|
+   |Application group type|**RemoteApp (RAIL)**|
    |Application group name|**az140-21-hp1-Office365-RAG**|
 
 1. On the **Applications** tab of the **Create an application group** blade, select **+ Add applications**.
@@ -257,7 +254,7 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|**az140-21-RG**|
    |Host pool|**az140-21-hp1**|
-   |Application group type|**RemoteApp**|
+   |Application group type|**RemoteApp (RAIL)**|
    |Application group name|**az140-21-hp1-Utilities-RAG**|
 
 1. On the **Applications** tab of the **Create an application group** blade, select **+ Add applications**.
@@ -343,7 +340,7 @@ The main tasks for this exercise are as follows:
    |User Name|**Student@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
-1. Within the Remote Desktop session to **az140-cl-vm11**, start Microsoft Edge and navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, when prompted, select **Run** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. When prompted by User Account Control for administrative credentials, authenticate by using the **ADATUM\\Student** username with **Pa55w.rd1234** as its password.
+1. Within the Remote Desktop session to **az140-cl-vm11**, start Microsoft Edge and navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, when prompted, select **Run** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. If prompted by User Account Control for administrative credentials, authenticate by using the **ADATUM\\Student** username with **Pa55w.rd1234** as its password.
 1. Once the installation completes, ensure that the **Launch Remote Desktop when setup exits** checkbox is selected and click **Finish** to start the Remote Desktop client.
 
 #### Task 2: Subscribe to a Azure Virtual Desktop workspace
@@ -352,7 +349,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Alternatively, in the **Remote Desktop** client window, select **Subscribe with URL**, in the **Subscribe to a Workspace** pane, in the **Email or Workspace URL**, type **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery**, select **Next**, and, once prompted, sign in with the **aduser1** credentials (using its userPrincipalName attribute as the user name and the password you set when creating this account). 
 
-1. In the **Stay signed in to all your apps** window, clear the checkbox for **Allow my organization to manage my device** and select **No, sign in to this app only**. 
+1. If prompted, in the **Stay signed in to all your apps** window, clear the checkbox for **Allow my organization to manage my device** and select **No, sign in to this app only**. 
 1. Ensure that the **Remote Desktop** page displays the listing of applications that are included in the application groups published to the workspace and associated with the user account **aduser1** via its group membership. 
 
 #### Task 3: Test Azure Virtual Desktop apps
@@ -360,6 +357,8 @@ The main tasks for this exercise are as follows:
 1. Within the Remote Desktop session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set when creating the **aduser1** user account, select the checkbox **Remember me**, and select **OK**.
 
    > **Note**: Initially, it might take a few minutes for the application to start, but subsequently, the application startup should be much faster.
+
+   > **Note**: If you are presented with the **Welcome to Microsoft Teams** sign-in prompt, close it.
 
 1. At the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Command Prompt is running.
 
