@@ -194,7 +194,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21-hp1-DAG** blade, select **Assignments**.
 1. On the **az140-21-hp1-DAG \| Assignments** blade, select **+ Add**.
 1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-pooled** and click **Select**.
-1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, select **+ Add**. 
+1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
    |Setting|Value|
@@ -202,7 +202,7 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|**az140-21-RG**|
    |Host pool|**az140-21-hp1**|
-   |Application group type|**RemoteApp (RAIL)**|
+   |Application group type|**Remote App (RAIL)**|
    |Application group name|**az140-21-hp1-Office365-RAG**|
 
 1. On the **Applications** tab of the **Create an application group** blade, select **+ Add applications**.
