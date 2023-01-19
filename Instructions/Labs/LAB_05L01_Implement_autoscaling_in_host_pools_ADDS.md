@@ -60,7 +60,7 @@ The main tasks for this exercise are as follows:
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
 1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
-1. When prompted, provde the following credentials and select **Connect**:
+1. When prompted, provide the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
@@ -160,6 +160,16 @@ The main tasks for this exercise are as follows:
 1. On the Automation Account blade, in the vertical menu on the left side, in the **Process Automation** section, select **Runbooks** and, in the list of runbooks, verify the presence of the **WVDAutoScaleRunbookARMBased** runbook.
 1. On the Automation Account blade, in the vertical menu on the left side, in the **Account Settings** section, select **Identity**.
 1. On the **System assigned** tab of the Identity blade of the automation account, set the **Status** to **On**, select **Save**, and, when prompted to  confirm, select **Yes**.
+1. On the **System assigned** tab of the Identity blade of the automation account, select **Azure role assignments**.
+1. On the **Azure role assignments** blade, select **+ Add role assignment (Preview)**.
+1. On the **Add role assignment (Preview)** blade, specify the following information and select **Save**.
+
+   |Setting|Value|
+   |---|---|
+   |Scope|**Subscription**|
+   |Subscription|the name of the Azure subscription where you provisioned the host pool resources|
+   |Role|**Contributor**|
+   
 <!-- 1. On the Automation Account blade, in the vertical menu on the left side, in the **Account Settings** section, select **Run as accounts** and, in the list of accounts on the right side, next to the **+ Azure Run As Account**, click **Create**.
 1. On the **Add Azure Run As Account** blade, click **Create** and verify that the new account was successfully created. 
 -->
@@ -175,7 +185,7 @@ The main tasks for this exercise are as follows:
    Invoke-WebRequest -Uri $uri -OutFile ".\CreateOrUpdateAzLogicApp.ps1"
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, Select the **File** from the top menu and open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzLogicApp.ps1** script, enclose the code between lines **134** an **138** into the multiline comment and save, such that they look as follows:
+1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, select the **File** from the top menu and open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzLogicApp.ps1** script, enclose the code between lines **134** an **138** into the multiline comment, such that they look as follows, and save the change:
 
    ```powershell
    <#
