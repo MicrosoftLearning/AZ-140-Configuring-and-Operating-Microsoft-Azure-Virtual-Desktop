@@ -112,11 +112,11 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE**, select File from the top menu, open the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** script, and add a single-line comments in the lines  **97**, **98**, and **99**, such that they look as follows:
 
-   ```powershell
+  ```powershell
   #	'Az.Compute'
   #	'Az.Resources'
   #	'Az.Automation'
-   ```
+  ```
 
 1. In the **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** script, enclose the code between lines **82** an **86** into the multiline comment, such that they look as follows, and save the changes to the file:
 
