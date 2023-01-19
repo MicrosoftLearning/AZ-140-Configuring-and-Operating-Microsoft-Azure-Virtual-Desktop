@@ -105,6 +105,7 @@ The main tasks for this exercise are as follows:
    |Host pool name|**az140-21-hp1**|
    |Location|the name of the Azure region into which you deployed resources in the first exercise of this lab or a region close to it |
    |Validation environment|**No**|
+   |Preferred app group type|**Desktop**|
    |Host pool type|**Pooled**|
    |Load balancing algorithm|**Breadth-first**|
    |Max session limit|**50**|
@@ -118,10 +119,12 @@ The main tasks for this exercise are as follows:
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
    |Availability options|**No infrastructure redundancy required**|
+   |Security type|**Standard**|
    |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**2**|
    |OS disk type|**Standard SSD**|
+   |Boot Diagnostics|**Enable with managed storage account (recommended)**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
    |Network security group|**Basic**|
@@ -161,8 +164,11 @@ The main tasks for this exercise are as follows:
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed the first two session host VMs|
    |Availability options|**No infrastructure redundancy required**|
+   |Security type|**Standard**|
    |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
    |Number of VMs|**1**|
+   |OS disk type|**Standard SSD**|
+   |Boot Diagnostics|**Enable with managed storage account (recommended)**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
    |Network security group|**Basic**|
@@ -172,7 +178,7 @@ The main tasks for this exercise are as follows:
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|   
-   |Virtual Machine Administrator account username|**student**|
+   |Virtual Machine Administrator account username|**Student**|
    |Virtual Machine Administrator account pasword|**Pa55w.rd1234**|
 
    > **Note**: As you likely noticed, it's possible to change the image and prefix of the VMs as you add session hosts to the existing pool. In general, this is not recommended unless you plan to replace all VMs in the pool. 
