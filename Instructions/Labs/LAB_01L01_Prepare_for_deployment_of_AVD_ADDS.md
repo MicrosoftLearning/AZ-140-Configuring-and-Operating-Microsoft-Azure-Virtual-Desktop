@@ -65,10 +65,15 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Verify that the status is listed as **Registered**. If not, wait a few minutes and repeat this step.
 
-1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to identify the current usage of vCPUs and the corresponding limits for the **StandardDSv3Family** and **StandardBSFamily** Azure VMs (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`):
+1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to set the location for the next commands (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`):
 
    ```powershell
    $location = '<Azure_region>'
+   ```
+
+1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to identify the current usage of vCPUs and the corresponding limits for the **StandardDSv3Family** and **StandardBSFamily** Azure VMs: 
+
+   ```powershell
    Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardDSv3Family'}
    Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardBSFamily'}
    ```
