@@ -396,8 +396,6 @@ The main tasks for this exercise are as follows:
    Add-AzureADDirectoryRoleMember -ObjectId $aadRole.ObjectId -RefObjectId $aadUser.ObjectId
    ```
 
-   > **Note**: Azure AD PowerShell module refers to the Global Administrator role as Company Administrator.
-
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to identify the user principal name of the newly created Azure AD user:
 
    ```powershell
