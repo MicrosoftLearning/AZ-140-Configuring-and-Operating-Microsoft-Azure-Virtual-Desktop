@@ -55,22 +55,22 @@ The main tasks for this exercise are as follows:
    |User Name|**aadadmin1@adatum.com**|
    |Password|Password defined in the previous lab|
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set when creating this account.
+1. Within the Bastion to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set when creating this account.
 
    >**Note**: You can identify the user principal name (UPN) attribute of the **aadadmin1** account by reviewing its properties dialog box from the Active Directory Users and Computers console or by switching back to your lab computer and reviewing its properties from the Azure AD tenant blade in the Azure portal.
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge displaying the Azure portal, open a PowerShell session in the **Cloud Shell** and run the following register the **Microsoft.DesktopVirtualization** resource provider:
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge displaying the Azure portal, open a PowerShell session in the **Cloud Shell** and run the following register the **Microsoft.DesktopVirtualization** resource provider:
 
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.DesktopVirtualization
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge displaying the Azure portal, search for and select **Virtual networks** and, from the **Virtual networks** blade, select the **az140-aadds-vnet11a** entry. 
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge displaying the Azure portal, search for and select **Virtual networks** and, from the **Virtual networks** blade, select the **az140-aadds-vnet11a** entry. 
 1. On the **az140-aadds-vnet11a** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, in the **Name** text box, type **hp1-Subnet**, leave all other settings with their default values, and select **Save**. 
 
 #### Task 2: Deploy an Azure Virtual Desktop host pool
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Create**. 
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
 
    |Setting|Value|
@@ -124,7 +124,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Configure Azure Virtual Desktop application groups
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
 1. On the **Azure Virtual Desktop \| Application groups** blade, select the auto-generated **az140-21a-hp1-DAG** desktop application group.
 1. On the **az140-21a-hp1-DAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Assignments**.
 1. On the **az140-21a-hp1-DAG \| Assignments** blade, select **+ Add**.
@@ -184,7 +184,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Now you will create an application group based on file path as the application source
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
 1. On the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
@@ -224,7 +224,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 4: Configure Azure Virtual Desktop workspaces
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Workspaces**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Workspaces**.
 1. On the **Azure Virtual Desktop \| Workspaces** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
 
@@ -257,7 +257,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Install Microsoft Remote Desktop client (MSRDC) on a Windows 10 computer
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, start Microsoft Edge and navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, when prompted, run its installation by following prompts. Select the option **Install for all users on this machine**. 
+1. Within the Bastion session to **az140-cl-vm11a**, start Microsoft Edge and navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, when prompted, run its installation by following prompts. Select the option **Install for all users on this machine**. 
 1. Once the installation completes, start the Remote Desktop client.
 
 #### Task 2: Subscribe to a Azure Virtual Desktop workspace
@@ -273,7 +273,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Test Azure Virtual Desktop apps
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set for the **aaduser1** user account, select the checkbox **Remember me**, and select **OK**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set for the **aaduser1** user account, select the checkbox **Remember me**, and select **OK**.
 
    > **Note**: Initially, it might take a few minutes for the application to start, but subsequently, the application startup should be much faster.
 
@@ -282,7 +282,7 @@ The main tasks for this exercise are as follows:
    > **Note**: Verify that the displayed name is either **az140-21-p1-0** or **az140-21-p1-1**, not **az140-cl-vm11a**.
 
 1. At the Command Prompt, type **logoff** and press the **Enter** key to log off from the current Remote App session.
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
+1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
 1. Within the **Default Desktop** session, right-click **Start**, select **Run**, in the **Open** text box of the **Run** dialog box, type **cmd** and select **OK**. 
 1. Within the **Default Desktop** session, at the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Remote Desktop session is running.
 1. Verify that the displayed name is either **az140-21-p1-0**, **az140-21-p1-1** or **az140-21-p1-2**.
