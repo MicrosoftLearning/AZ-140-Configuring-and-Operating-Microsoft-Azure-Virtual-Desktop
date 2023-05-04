@@ -55,11 +55,11 @@ The main tasks for this exercise are as follows:
    |User Name|**aadadmin1@adatum.com**|
    |Password|Password previously defined|
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account and the password you set when creating this account.
+1. Within the Bastion session to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account and the password you set when creating this account.
 
    >**Note**: You can identify the user principal name (UPN) attribute of the **aadadmin1** account by reviewing its properties dialog box from the Active Directory Users and Computers console or by switching back to your lab computer and reviewing its properties from the Azure AD tenant blade in the Azure portal.
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Create**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Create**.
 1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
 
    |Setting|Value|
@@ -79,7 +79,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Create an Azure Files share
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the newly created storage account.
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the newly created storage account.
 1. On the storage account blade, in the vertical menu on the left side, in the **Data storage** section, select **File shares** and then select **+ File share**.
 1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
 
@@ -89,14 +89,14 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Enable Azure AD DS authentication for the Azure Storage account
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window, in the Azure portal, on the blade displaying the properties of the storage account you created in the previous task, in the vertical menu on the left side, in the **Data storage** section, select **File shares**. 
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window, in the Azure portal, on the blade displaying the properties of the storage account you created in the previous task, in the vertical menu on the left side, in the **Data storage** section, select **File shares**. 
 1. In the **File share settings** section, next to the **Active Directory** label, select the **Not configured** link.
 1. In the **Enable an Active Directory source** section, in the rectangle labeled **Azure Active Directory Domain Services**, select **Set up**.
 1  On the **Identity-based access** blade, select the **Enabled** option, and select **Save**.
 
 #### Task 4: Configure the Azure Files RBAC-based permissions
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, on the blade displaying properties of the storage account you created earlier in this exercise, in the vertical menu on the left side, in the **Data storage** section, select **File shares**, and in the list of shares, select the **az140-22a-profiles** entry.
+1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, on the blade displaying properties of the storage account you created earlier in this exercise, in the vertical menu on the left side, in the **Data storage** section, select **File shares**, and in the list of shares, select the **az140-22a-profiles** entry.
 1. On the **az140-22a-profiles** blade, in the vertical menu on the left side, select **Access Control (IAM)**.
 1. On the **az140-22a-profiles \| Access Control (IAM)** blade, select **+ Add** and, in the drop-down menu, select **Add role assignment**.
 1. On the **Add role assignment** blade, select **Storage File Data SMB Share Contributor**, and select **Next**:
@@ -114,13 +114,13 @@ The main tasks for this exercise are as follows:
 
 #### Task 5: Configure the Azure Files directory and file level permissions
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the target share (replace the `<storage-account-name>` placeholder with the name of the storage account):
+1. Within the Bastion session to **az140-cl-vm11a**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the target share (replace the `<storage-account-name>` placeholder with the name of the storage account):
 
    ```cmd
    net use Z: \\<storage-account-name>.file.core.windows.net\az140-22a-profiles
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, open File Explorer, navigate to the newly mapped Z: drive, display its **Properties** dialog box, select the **Security** tab, select **Edit**, select **Add**, in the **Select Users, Computers, Service Accounts, and Groups** dialog box, ensure that the **From this location** textbox contains the **adatum.com** entry, in the **Enter the object name to select** textbox, type **az140-wvd-ausers** and click **OK**.
+1. Within the Bastion session to **az140-cl-vm11a**, open File Explorer, navigate to the newly mapped Z: drive, display its **Properties** dialog box, select the **Security** tab, select **Edit**, select **Add**, in the **Select Users, Computers, Service Accounts, and Groups** dialog box, ensure that the **From this location** textbox contains the **adatum.com** entry, in the **Enter the object name to select** textbox, type **az140-wvd-ausers** and click **OK**.
 1. Back on the **Security** tab of the dialog box displaying permissions of the mapped drive, ensure that the **az140-wvd-ausers** entry is selected, select the **Modify** checkbox in the **Allow** column, click **OK**, review the message displayed in the **Windows Security** text box, and click **Yes**. 
 1. Back on the **Security** tab of the dialog box displaying permissions of the mapped drive, select **Edit**, select **Add**, in the **Select Users, Computers, Service Accounts, and Groups** dialog box, ensure that the **From this location** textbox contains the **adatum.com** entry, in the **Enter the object name to select** textbox, type **az140-wvd-aadmins** and click **OK**.
 1. Back on the **Security** tab of the dialog box displaying permissions of the mapped drive, ensure that the **az140-wvd-aadmins** entry is selected, select the **Full control** checkbox in the **Allow** column, and click **OK**. 
