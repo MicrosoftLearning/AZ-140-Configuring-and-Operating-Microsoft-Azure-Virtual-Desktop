@@ -343,7 +343,7 @@ The main tasks for this exercise are as follows:
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
 1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a**, provde the following credentials and select **Connect**:
 1. When prompted, sign in as the **aadadmin1** user using its principal name you identified earlier in this lab and the password you set for this user account when creating it earlier in the lab.
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the Active Directory and DNS-related Remote Server Administration Tools:
+1. Within the Bastion to the **az140-cl-vm11a** Azure VM, start **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the Active Directory and DNS-related Remote Server Administration Tools:
 
    ```powershell
    Add-WindowsCapability -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0 -Online
@@ -354,7 +354,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the installation to complete before you proceed to the next step. This might take about 2 minutes.
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, in the **Start** menu, navigate to the **Windows Administrative Tools** folder, expand it, and, from the list of tools, start **Active Directory Users and Computers**. 
+1. Within the Bastion to the **az140-cl-vm11a** Azure VM, in the **Start** menu, navigate to the **Windows Administrative Tools** folder, expand it, and, from the list of tools, start **Active Directory Users and Computers**. 
 1. In the **Active Directory Users and Computers** console, review the default hierarchy, including the **AADDC Computers** and **AADDC Users** organizational units. Note that the former includes the **az140-cl-vm11a** computer account and the latter includes the user accounts synchronized from the Azure AD tenant associated with the Azure subscription hosting the deployment of Azure AD DS instance. The **AADDC Users** organizational unit also includes the **AAD DC Administrators** group synchronized from the same Azure AD tenant, along with its group membership. This membership cannot be modified directly within the Azure AD DS domain, but instead, you have to manage it within the Azure AD DS tenant. Any changes are automatically synchronized with the replica of the group hosted in the Azure AD DS domain. 
 
 **Hint:** If the **Active Directory Users and Computers** does not list out any domain related content then Right-Click on the **Active Directory Users and Computers** and select **Change Domain** and choose the domain **Adatum**.
@@ -366,7 +366,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 4: Create AD DS users and groups that will be synchronized to Azure AD DS
 
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set earlier in this lab as its password.
+1. Within the Bastion to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set earlier in this lab as its password.
 1. In the Azure portal, open the **Cloud Shell**.
 1. When prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
 
@@ -462,8 +462,8 @@ The main tasks for this exercise are as follows:
    ```
 
 1. Close the Cloud Shell pane.
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** blade, on your Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Users** and, on the **Users \| All users** blade, verify that new user accounts have been created.
+1. Within the Bastion to the **az140-cl-vm11a** Azure VM, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** blade, on your Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Users** and, on the **Users \| All users** blade, verify that new user accounts have been created.
 1. Navigate back to the Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Groups** and, on the **Groups \| All groups** blade, verify that new group accounts have been created.
-1. Within the Remote Desktop to the **az140-cl-vm11a** Azure VM, switch to the **Active Directory Users and Computers** console, in the **Active Directory Users and Computers** console, navigate to the **AADDC Users** OU, and verify that it contains the same user and group accounts.
+1. Within the Bastion to the **az140-cl-vm11a** Azure VM, switch to the **Active Directory Users and Computers** console, in the **Active Directory Users and Computers** console, navigate to the **AADDC Users** OU, and verify that it contains the same user and group accounts.
 
    >**Note**: You might have to refresh the view of the console.

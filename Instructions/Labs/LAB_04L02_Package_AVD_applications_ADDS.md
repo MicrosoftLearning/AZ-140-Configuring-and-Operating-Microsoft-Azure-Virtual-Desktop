@@ -89,7 +89,7 @@ The main tasks for this exercise are as follows:
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, in the list of virtual machines, select the **az140-cl-vm42** entry. This will open the **az140-cl-vm42** blade.
 1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm42 \| Connect** blade, select **Use Bastion**.
 1. When prompted, sign in with the **wvdadmin1** user name and the password you set when creating this user account. 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the operating system for MSIX packaging:
+1. Within the Bastion session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the operating system for MSIX packaging:
 
    ```powershell
    Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /Disable
@@ -106,7 +106,7 @@ The main tasks for this exercise are as follows:
 
 > **Note**: In this lab, you will use a self-signed certificate. In a production environment, you should be using a certificate issued by either a public Certification Authority or an internal one, depending on the intended use.
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to generate a self-signed certificate with the Common Name attribute set to **Adatum**, and store the certificate in the **Personal** folder of the **Local Machine** certificate store:
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to generate a self-signed certificate with the Common Name attribute set to **Adatum**, and store the certificate in the **Personal** folder of the **Local Machine** certificate store:
 
    ```powershell
    New-SelfSignedCertificate -Type Custom -Subject "CN=Adatum" -KeyUsage DigitalSignature -KeyAlgorithm RSA -KeyLength 2048 -CertStoreLocation "cert:\LocalMachine\My"
@@ -148,19 +148,19 @@ The main tasks for this exercise are as follows:
 
 #### Task 5: Download software to package
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Microsoft Edge** and browse to **https://github.com/microsoft/XmlNotepad**.
+1. Within the Bastion session to **az140-cl-vm42**, start **Microsoft Edge** and browse to **https://github.com/microsoft/XmlNotepad**.
 1. On the **microsoft/XmlNotepad** **readme.md** page, select the download link for Standalone downloadable installer and download the compressed installation files.
-1. Within the Remote Desktop session to **az140-cl-vm42**, start File Explorer, navigate to the **Downloads** folder, open the compressed file, copy the content from within the folder in the compressed file, and paste it to the **C:\\AllFiles\\Labs\\04\\** directory. 
+1. Within the Bastion session to **az140-cl-vm42**, start File Explorer, navigate to the **Downloads** folder, open the compressed file, copy the content from within the folder in the compressed file, and paste it to the **C:\\AllFiles\\Labs\\04\\** directory. 
 
 #### Task 6: Install the MSIX Packaging Tool
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start the **Microsoft Store** app.
+1. Within the Bastion session to **az140-cl-vm42**, start the **Microsoft Store** app.
 1. In the **Microsoft Store** app, search for and select **MSIX Packaging Tool**, on the **MSIX Packaging Tool** page, select **Get**.
 1. When prompted, skip signing in, wait for the installation to complete, select **Open** and, in the **Send diagnostic data** dialog box, select **Decline**, 
 
 #### Task 7: Create an MSIX package
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to disable the Windows Search service:
+1. Within the Bastion session to **az140-cl-vm42**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to disable the Windows Search service:
 
    ```powershell
    $serviceName = 'wsearch'
@@ -168,19 +168,19 @@ The main tasks for this exercise are as follows:
    Stop-Service -Name $serviceName
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to create the folder that will host the MSIX package:
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to create the folder that will host the MSIX package:
 
    ```powershell
    New-Item -ItemType Directory -Path 'C:\AllFiles\Labs\04\XmlNotepad' -Force
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to remove the Zone.Identifier alternate data stream from the extracted installer files, which has a value of "3" to indicate that they were downloaded from the Internet:
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to remove the Zone.Identifier alternate data stream from the extracted installer files, which has a value of "3" to indicate that they were downloaded from the Internet:
 
    ```powershell
    Get-ChildItem -Path 'C:\AllFiles\Labs\04' -Recurse -File | Unblock-File
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, switch to the **MSIX Packaging Tool** interface, on the **Select task** page, select **Application package - Create your app package** entry. This will start the **Create new package** wizard.
+1. Within the Bastion session to **az140-cl-vm42**, switch to the **MSIX Packaging Tool** interface, on the **Select task** page, select **Application package - Create your app package** entry. This will start the **Create new package** wizard.
 1. On the **Select environment** page of the **Create new package** wizard, ensure that the **Create package on this computer** option is selected, select **Next**, and wait for the installation of the **MSIX Packaging Tool Driver**.
 1. On the **Prepare computer** page of the **Create new package** wizard, review the recommendations. If there is a pending reboot, restart the operating system, sign in back by using the **ADATUM\wvdadmin1** account, and restart the **MSIX Packaging Tool** before you proceed. 
 
@@ -213,7 +213,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Enable Hyper-V on the Azure VMs running Window 10 Enterprise Edition
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the target Azure Virtual Desktop hosts for MSIX app attach: 
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the target Azure Virtual Desktop hosts for MSIX app attach: 
 
    ```powershell
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
@@ -230,7 +230,7 @@ The main tasks for this exercise are as follows:
    }
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to install Hyper-V and its management tools, including the Hyper-V PowerShell module on the Azure Virtual Desktop hosts:
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to install Hyper-V and its management tools, including the Hyper-V PowerShell module on the Azure Virtual Desktop hosts:
 
    ```powershell
    $wvdhosts = 'az140-21-p1-0','az140-21-p1-1','az140-21-p1-2'
@@ -242,7 +242,7 @@ The main tasks for this exercise are as follows:
    ```
 
 1. When prompted to restrart the target operating system, select **Yes**.
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to install Hyper-V and its management tools, including the Hyper-V PowerShell module on the local computer:
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to install Hyper-V and its management tools, including the Hyper-V PowerShell module on the local computer:
 
    ```powershell
    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
@@ -252,9 +252,9 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Create an MSIX app attach image
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Microsoft Edge**, browse to **https://aka.ms/msixmgr**. This will automatically download the **msixmgr.zip** file (the MSIX mgr tool archive) into the **Downloads** folder.
+1. Within the Bastion session to **az140-cl-vm42**, start **Microsoft Edge**, browse to **https://aka.ms/msixmgr**. This will automatically download the **msixmgr.zip** file (the MSIX mgr tool archive) into the **Downloads** folder.
 1. In File Explorer, navigate to the **Downloads** folder, open the compressed file and copy the content of the **x64** folder (including the folder) to the **C:\\AllFiles\\Labs\\04** folder. 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE**  script pane, run the following to create the VHD file that will serve as the MSIX app attach image:
+1. Within the Bastion session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE**  script pane, run the following to create the VHD file that will serve as the MSIX app attach image:
 
    ```powershell
    New-Item -ItemType Directory -Path 'C:\Allfiles\Labs\04\MSIXVhds' -Force
@@ -286,8 +286,8 @@ The main tasks for this exercise are as follows:
    .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps** folder and review its content. If prompted to gain access to the folder, select **Continue**.
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to unmount the VHD file that will serve as the MSIX image:
+1. Within the Bastion session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps** folder and review its content. If prompted to gain access to the folder, select **Continue**.
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to unmount the VHD file that will serve as the MSIX image:
 
    ```powershell
    Dismount-VHD -Path "C:\Allfiles\Labs\04\MSIXVhds\$appName.vhd" -Confirm:$false
@@ -314,7 +314,7 @@ The main tasks for this exercise are as follows:
    |User Name|**Student**|
    |Password|**Pa55w.rd1234**|
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
+1. Within the Bastion session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create an AD DS group object that will be synchronized to the Azure AD tenant used in this lab:
 
    ```powershell
@@ -339,7 +339,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: This step ensures that the group membership change takes effect. 
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the **Start** menu, expand the **Azure AD Connect** folder and select **Azure AD Connect**.
+1. Within the Bastion session to **az140-dc-vm11**, in the **Start** menu, expand the **Azure AD Connect** folder and select **Azure AD Connect**.
 1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** window, select **Configure**.
 1. On the **Additional tasks** page in the **Microsoft Azure Active Directory Connect** window, select **Customize synchronization options** and select **Next**.
 1. On the **Connect to Azure AD** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task with the password you set when creating this user account.
@@ -348,8 +348,8 @@ The main tasks for this exercise are as follows:
 1. On the **Optional features** page in the **Microsoft Azure Active Directory Connect** window, accept the default settings, and select **Next**.
 1. On the **Ready to configure** page in the **Microsoft Azure Active Directory Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
 1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Azure Active Directory Connect** window.
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
-1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Azure AD tenant associated with the Azure subscription you are using for this lab.
+1. Within the Bastion session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
+1. Within the Bastion session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Azure AD tenant associated with the Azure subscription you are using for this lab.
 1. On the Azure Active Directory blade, in the vertical menu bar on the left side, in the **Manage** section, click **Groups**. 
 1. On the **Groups | All groups** blade, in the list of groups, select the **az140-hosts-42-p1** entry.
 
@@ -360,12 +360,12 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Set up the Azure Files share for MSIX app attach
 
-1. On the lab computer, switch back to the Remote Desktop session to **az140-cl-vm42**.
-1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge in the InPrivate mode, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
+1. On the lab computer, switch back to the Bastion session to **az140-cl-vm42**.
+1. Within the Bastion session to **az140-cl-vm42**, start Microsoft Edge in the InPrivate mode, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 
    > **Note**: Ensure to use the Microsoft Edge InPrivate mode.
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select the storage account you configured to host user profiles.
+1. Within the Bastion session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select the storage account you configured to host user profiles.
 
    > **Note**: This part of the lab is contingent on completing the lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Azure AD DS)**
 
@@ -408,13 +408,13 @@ The main tasks for this exercise are as follows:
 
 1. In the Microsoft Edge displaying the Azure portal, in the list of file shares, select the newly created file share. 
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the **az140-42-msixvhds** share (replace the `<storage-account-name>` placeholder with the name of the storage account) and verify that the command completes successfully:
+1. Within the Bastion session to **az140-cl-vm42**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the **az140-42-msixvhds** share (replace the `<storage-account-name>` placeholder with the name of the storage account) and verify that the command completes successfully:
 
    ```cmd
    net use Z: \\<storage-account-name>.file.core.windows.net\az140-42-msixvhds
    ```
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Command Prompt** window, run the following to grant the required NTFS permissions to the computer accounts of session hosts:
+1. Within the Bastion session to **az140-cl-vm42**, from the **Command Prompt** window, run the following to grant the required NTFS permissions to the computer accounts of session hosts:
 
    ```cmd
    icacls Z:\ /grant ADATUM\az140-hosts-42-p1:(OI)(CI)(RX) /T
@@ -426,7 +426,7 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Next you will validate the functionality of MSIX App attach
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** window, run the following to copy the VHD file you created in the previous exercise to the Azure Files share you created earlier in this exercise:
+1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** window, run the following to copy the VHD file you created in the previous exercise to the Azure Files share you created earlier in this exercise:
 
    ```powershell
    New-Item -ItemType Directory -Path 'Z:\packages' 
@@ -435,7 +435,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Mount and register the MSIX App attach image on Azure Virtual Desktop session hosts
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools**.
+1. Within the Bastion session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools**.
 1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select the **az140-21-hp1** entry.
 1. On the **az140-21-hp1 \| Properties** blade, in the vertical menu on the left side, in the **Manage** section, select **MSIX packages**.
 1. On the **az140-21-hp1 \| MSIX packages** blade, click **+ Add**.
@@ -454,7 +454,7 @@ The main tasks for this exercise are as follows:
 
 > **Note**: You will publish the MSIX app to both the remote app and the desktop app group. 
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Application groups**.
+1. Within the Bastion session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Application groups**.
 1. On the **Azure Virtual Desktop \| Application groups** blade, select the **az140-21-hp1-Utilities-RAG** application group entry.
 1. On the **az140-21-hp1-Utilities-RAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Applications**. 
 1. On the **az140-21-hp1-Utilities-RAG | Applications** blade, click **+ Add**.
@@ -486,7 +486,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 5: Validate the functionality of MSIX App attach
 
-1. Within the Remote Desktop session to **az140-cl-vm42**, start Microsoft Edge, navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, once download completes, select **Open file** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. 
+1. Within the Bastion session to **az140-cl-vm42**, start Microsoft Edge, navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, once download completes, select **Open file** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. 
 1. Once the installation completes, ensure that the **Launch Remote Desktop when setup exits** checkbox is selected and click **Finish** to start the Remote Desktop client.
 1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** user principal name and the password you set when creating this user account. 
 1. If prompted, in the **Stay signed in to all your apps** window, clear the **Allow my organization to manage my device** checkbox and click **No, sign in to this app only**.
