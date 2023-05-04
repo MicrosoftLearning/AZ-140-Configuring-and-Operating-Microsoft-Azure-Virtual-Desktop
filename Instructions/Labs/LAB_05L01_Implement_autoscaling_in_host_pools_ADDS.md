@@ -53,8 +53,8 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    Update-AzWvdHostPool -ResourceGroupName 'az140-21-RG' `
-                            -Name az140-21-hp1 `
-                            -MaxSessionLimit 2
+   -Name az140-21-hp1 `
+   -MaxSessionLimit 2
    ```
 
    >**Note**: In this lab, the value of the **MaxSessionLimit** parameter is set artificially low in order to facilitate triggering the autoscaling behavior.
