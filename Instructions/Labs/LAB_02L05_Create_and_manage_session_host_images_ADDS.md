@@ -297,9 +297,8 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |Resource group|**Defaulted to same as host pool**|
    |Name prefix|**az140-25-p4**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
-   |Availability options|No infrastructure redundancy required|
-   |Image type|**Gallery**|
-
+   |Availability options|**No infrastructure redundancy required**|
+   
 1. On the **Virtual machines** tab of the **Create a host pool** blade, directly below the **Image** dropdown list, click the **See all images** link.
 1. On the **Select an image** blade, click the **My Items** tab, click **Shared Images**, and, in the list of shared images, select **az140-25-host-image**. 
 1. Back on the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >**
