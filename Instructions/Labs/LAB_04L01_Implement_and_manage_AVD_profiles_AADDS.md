@@ -55,7 +55,7 @@ The main tasks for this exercise are as follows:
    |User Name|**aadadmin1@adatum.com**|
    |Password|Password previously configured|
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Active Directory Users and Computers**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Active Directory Users and Computers**.
 1. In the **Active Directory Users and Computers** console, right-click the domain node, select **New**, followed by **Organizational Unit**, in the **New Object - Organizational Unit** dialog box, in the **Name** textbox, type **ADDC Users**, and select **OK**.
 1. In the **Active Directory Users and Computers** console, right-click the **ADDC Users**, select **New**, followed by **Group**, in the **New Object - Group** dialog box, specify the following settings and select **OK**:
 
@@ -67,7 +67,7 @@ The main tasks for this exercise are as follows:
    |Group type|**Security**|
 
 1. In the **Active Directory Users and Computers** console, display the properties of the **Local Admins** group, switch to the **Members** tab, select **Add**, in the **Select Users, Contacts, Computers, Service Accounts, or Groups** dialog box, in the **Enter the object names to select**, type **aadadmin1;wvdaadmin1** and select **OK**.
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Group Policy Management**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the Start menu, navigate to the **Windows Administration Tools** folder, expand it, and select **Group Policy Management**.
 1. In the **Group Policy Management** console, navigate to the **AADDC Computers** OU, right-click the **AADDC Computers GPO** icon and select **Edit**.
 1. In the **Group Policy Management Editor** console, expand **Computer Configuration**, **Policies**, **Windows Settings**, **Security Settings**, right-click **Restriced Groups**, and select **Add Group**.
 1. In the **Add Group** dialog box, in the **Group** text box, select **Browse**, in the **Select Groups** dialog box, in the **Enter the object names to select**, type **Local Admins** and select **OK**.
@@ -76,7 +76,7 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Make sure to use the section labeled **This group is a member of**
 
-1. Within the Remote Desktop to the az140-cl-vm11a Azure VM, start PowerShell ISE as Administrator and run the following to restart the two Azure Virtual Desktop hosts in order to trigger Group Policy processing:
+1. Within the Bastion session to the az140-cl-vm11a Azure VM, start PowerShell ISE as Administrator and run the following to restart the two Azure Virtual Desktop hosts in order to trigger Group Policy processing:
 
    ```powershell
    $servers = 'az140-21-p1-0','az140-21-p1-1'
@@ -87,7 +87,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, start a Remote Desktop session to **az140-21-p1-0** and, when prompted, sign in with the **ADATUM\wvdaadmin1** user name and the password you set when creating this user account. 
+1. Within the Bastion session to **az140-cl-vm11a**, start a Remote Desktop session to **az140-21-p1-0** and, when prompted, sign in with the **ADATUM\wvdaadmin1** user name and the password you set when creating this user account. 
 
    > **Note**: If the RDP connection is unable to connect, use the Azure Portal to connect to the VM using Bastion.
 
@@ -186,7 +186,7 @@ and select **OK** to close the group **Properties** window.
 
    > **Note**: Before you test the FSLogix-based profile functionality, you need to remove the locally cached profile of the ADATUM\wvdaadmin1 account you will be using for testing from the Azure Virtual Desktop session hosts you used in the previous lab.
 
-1. Switch to the Remote Desktop session to **az140-cl-vm11a**, within the Remote Desktop session to **az140-cl-vm11a**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to remove the locally cached profile of the ADATUM\aaduser1 account:
+1. Switch to the Bastion session to **az140-cl-vm11a**, within the Bastion session to **az140-cl-vm11a**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to remove the locally cached profile of the ADATUM\aaduser1 account:
 
    ```powershell
    $userName = 'aaduser1'
@@ -196,25 +196,25 @@ and select **OK** to close the group **Properties** window.
 
 #### Task 3: Test FSLogix-based profiles with Azure Virtual Desktop
 
-1. Within the Remote Desktop session to **az140-cl-vm11a**, switch to the Remote Desktop client.
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt**, when prompted, provide the password, and verify that it launches a **Command Prompt** window. 
+1. Within the Bastion session to **az140-cl-vm11a**, switch to the Remote Desktop client.
+1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt**, when prompted, provide the password, and verify that it launches a **Command Prompt** window. 
 
    > **Note**: Initially, it might take a few minutes for the application to start, but subsequently, the application startup should be much faster.
 
 1. In the upper left corner of the **Command Prompt** window, right-click the **Command Prompt** icon and, in the drop-down menu, select **Properties**.
 1. In the **Command Prompt Properties** dialog box, select the **Font** tab, modify the size and font settings, and select **OK**.
 1. From the **Command Prompt** window, type **logoff** and press the **Enter** key to sign out from the Remote Desktop session.
-1. Within the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
+1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
 1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** text box, type **cmd** and select **OK** to launch a **Command Prompt** window:
 1. Verify that the **Command Prompt** window properties match those you set earlier in this task.
 1. Within the **SessionDesktop** session, minimize all windows, right-click the desktop, in the right-click menu, select **New** and, in the cascading menu, select **Shortcut**. 
 1. On the **What item would you like to create a shortcut for?** page of the **Create Shortcut** wizard, in the **Type the location of the item** text box, type **Notepad** and select **Next**.
 1. On the **What would you like to name the shortcut** page of the **Create Shortcut** wizard, in the **Type a name for this shortcut** text box, type **Notepad** and select **Finish**.
 1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
-1. Back in the Remote Desktop session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, and double-click **SessionDesktop** to start a new Remote Desktop session. 
+1. Back in the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, and double-click **SessionDesktop** to start a new Remote Desktop session. 
 1. Within the **SessionDesktop** session, verify that the **Notepad** shortcut appears on the desktop.
 1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
-1. Switch to the Remote Desktop session to **az140-cl-vm11a**, switch to the Microsoft Edge window displaying the Azure portal.
+1. Switch to the Bastion session to **az140-cl-vm11a**, switch to the Microsoft Edge window displaying the Azure portal.
 1. In the Microsoft Edge window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the storage account you created in the prevous exercise.
 1. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22a-profiles**. 
 1. On the **az140-22a-profiles** blade, verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aaduser1** account followed by the **_aaduser1** suffix.
