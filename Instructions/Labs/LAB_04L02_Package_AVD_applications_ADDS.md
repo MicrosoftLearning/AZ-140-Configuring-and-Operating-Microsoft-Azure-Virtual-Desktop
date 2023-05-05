@@ -88,7 +88,7 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, in the list of virtual machines, select the **az140-cl-vm42** entry. This will open the **az140-cl-vm42** blade.
 1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm42 \| Connect** blade, select **Use Bastion**.
-1. When prompted, sign in with the **wvdadmin1** user name and the password you set when creating this user account. 
+1. When prompted, sign in with the **wvdadmin1@adatum.com** user name and the password you set when creating this user account. 
 1. Within the Bastion session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the operating system for MSIX packaging:
 
    ```powershell
