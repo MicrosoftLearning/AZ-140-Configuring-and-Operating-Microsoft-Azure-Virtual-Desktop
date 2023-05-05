@@ -217,7 +217,7 @@ and select **OK** to close the group **Properties** window.
 1. Switch to the Bastion session to **az140-cl-vm11a**, switch to the Microsoft Edge window displaying the Azure portal.
 1. In the Microsoft Edge window displaying the Azure portal, navigate back to the **Storage accounts** blade and select the entry representing the storage account you created in the prevous exercise.
 1. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22a-profiles**. 
-1. On the **az140-22a-profiles** blade, verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aaduser1** account followed by the **_aaduser1** suffix.
+1. On the **az140-22a-profiles** blade, select **Browse** and verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aaduser1** account followed by the **_aaduser1** suffix.
 1. Select the folder you identified in the previous step and note that it contains a single file named **Profile_aaduser1.vhd**.
 
 #### Task 4: Delete Azure lab resources
