@@ -65,7 +65,6 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, search for and select **Subscriptions** and, from the list of subscriptions, select the one that contains the Azure Virtual Desktop resources. 
 1. On the subscription page, select **Access control (IAM)**.
 1. On the **Access control (IAM)** page, in the toolbar, select the **+ Add button**, then select **Add role assignment** from the drop-down menu.
-1. On the **Assignment type** tab of the **Add role assignment** wizard, ensure that the **Job function role** option is selected and then click **Next**.
 1. On the **Role** tab of the **Add role assignment** wizard, search for and select the **Desktop Virtualization Power On Off Contributor** role and click **Next**.
 1. On the **Members** tab of the **Add role assignment** wizard, select **+ Members**, search for and select either **Azure Virtual Desktop** or **Windows Virtual Desktop**, click **Select** and click **Next**.
 
