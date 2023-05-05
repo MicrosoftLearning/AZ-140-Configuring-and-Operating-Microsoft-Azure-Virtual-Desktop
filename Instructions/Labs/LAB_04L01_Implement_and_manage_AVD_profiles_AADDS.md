@@ -46,6 +46,18 @@ The main tasks for this exercise are as follows:
 #### Task 1: Configure local Administrators group on Azure Virtual Desktop session host VMs
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
+1. In the Azure portal, open the **Cloud Shell** pane by selecting the toolbar icon directly to the right of the search textbox.
+1. If prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
+
+   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
+
+1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to enable PowerShell Remoting on the Session Hosts.
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
+   ```
+   
+1. Close the Cloud Shell
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
 1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a \| Connect** blade, select **Use Bastion**.
 1. When prompted, provde the following credentials and select **Connect**:
