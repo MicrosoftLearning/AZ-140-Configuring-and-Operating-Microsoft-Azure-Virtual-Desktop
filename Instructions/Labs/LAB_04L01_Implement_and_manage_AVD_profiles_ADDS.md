@@ -45,18 +45,6 @@ The main tasks for this exercise are as follows:
 #### Task 1: Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
-1. In the Azure portal, open the **Cloud Shell** pane by selecting the toolbar icon directly to the right of the search textbox.
-1. If prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
-
-   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
-
-1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to enable PowerShell Remoting on the Session Hosts.
-
-   ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
-   ```
-   
-1. Close the Cloud Shell
 1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-21-p1-0**.
 1. On the **az140-21-p1-0** blade, select **Start** and wait until the status of the virtual machine changes to **Running**.
 1. On the **az140-21-p1-0** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-21-p1-0 \| Connect** blade, select **Use Bastion**.
@@ -69,7 +57,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-21-p1-0**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Bastion session to **az140-21-p1-0**, in the Microsoft Edge window displaying the Azure portal, open a PowerShell session within the Cloud Shell pane. 
-1. From the PowerShell session in the Cloud Shell pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
+1. From the PowerShell session in the **Cloud Shell** pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
@@ -77,6 +65,13 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Wait until the Azure VMs are running before you proceed to the next step.
 
+1. From the PowerShell session in the **Cloud Shell** pane, run the following to enable PowerShell Remoting on the Session Hosts.
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
+   ```
+   
+1. Close the Cloud Shell
 1. Within the Bastion session to **az140-21-p1-0**, start Microsoft Edge, browse to [FSLogix download page](https://aka.ms/fslogix_download), download FSLogix compressed installation binaries, extract them into the **C:\\Allfiles\\Labs\\04** folder (create the folder if needed), navigate to the **x64\\Release** subfolder, double-click the **FSLogixAppsSetup.exe** file to launch the **Microsoft FSLogix Apps Setup** wizard, and step through the installation of Microsoft FSLogix Apps with the default settings.
 
    > **Note**: Installation of FXLogic is not necessary if the image already includes it.
