@@ -422,7 +422,7 @@ The main tasks for this exercise are as follows:
    icacls Z:\ /grant ADATUM\az140-wvd-admins:(OI)(CI)(F) /T
    ```
 
-   >**Note**: You could also set these permissions by using File Explorer while signed in as **ADATUM\\wvdadmin1**. 
+   >**Note**: You could also set these permissions by using File Explorer while signed in as **wvdadmin1\@adatum.com**. 
 
    >**Note**: Next you will validate the functionality of MSIX App attach
 
