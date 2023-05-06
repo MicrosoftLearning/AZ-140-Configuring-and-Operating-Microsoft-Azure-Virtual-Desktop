@@ -62,7 +62,7 @@ The main tasks for this exercise are as follows:
 
    >**Note**: The command executes asynchronously (as determined by the -NoWait parameter), so while you will be able to run another PowerShell command immediately afterwards within the same PowerShell session, it will take a few minutes before the Azure VMs are actually started. 
 
-   >**Note**: If you enabled PSRemoting in the first task of the previous lab (Implement and manage AVD profiles) then you may proceed directly to the next task without waiting for the Azure VMs to start. If you have not previously enabled PSRemoting of the Session hosts in az140-21-RG, wait for the VMs to start and then run the following step.
+   >**Note**: If you enabled PSRemoting in the first task of the previous lab (Implement and manage AVD profiles) then you may proceed directly to the next task without waiting for the Azure VMs to start. If you have not previously enabled PSRemoting of the Session hosts in az140-21-RG, wait for the VMs to start and then run the following command.
 
 1. From the PowerShell session of the **Cloud Shell**, run the following to enable PowerShell Remoting on the Session Hosts.
 
