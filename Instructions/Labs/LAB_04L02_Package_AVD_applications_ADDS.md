@@ -182,7 +182,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm42**, switch to the **MSIX Packaging Tool** interface, on the **Select task** page, select **Application package - Create your app package** entry. This will start the **Create new package** wizard.
 1. On the **Select environment** page of the **Create new package** wizard, ensure that the **Create package on this computer** option is selected, select **Next**, and wait for the installation of the **MSIX Packaging Tool Driver**.
-1. On the **Prepare computer** page of the **Create new package** wizard, review the recommendations. If there is a pending reboot, restart the operating system, sign in back by using the **ADATUM\wvdadmin1** account, and restart the **MSIX Packaging Tool** before you proceed. 
+1. On the **Prepare computer** page of the **Create new package** wizard, review the recommendations. If there is a pending reboot, restart the operating system, sign back in by using the **wvdadmin1@adatum.com** account, and restart the **MSIX Packaging Tool** before you proceed. 
 
    >**Note**: MSIX Packaging Tool disables temporarily Windows Update and Windows Search. In this case, the Windows Search service is already disabled. 
 
