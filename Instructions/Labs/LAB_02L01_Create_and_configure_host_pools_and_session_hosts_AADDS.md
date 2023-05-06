@@ -81,7 +81,7 @@ The main tasks for this exercise are as follows:
    |Location|the name of the Azure region into which you deployed the Azure AD DS instance earlier in this lab|
    |Validation environment|**No**|
    |Host pool type|**Pooled**|
-   |Max session limit|**10**|
+   |Max session limit|**12**|
    |Load balancing algorithm|**Breadth-first**|
 
 1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Azure AD tenant associated with the subscription into which you deployed the Azure AD DS instance and replace the `<password>` placeholder with the password you set when creating the aadadmin1 account):
@@ -285,4 +285,30 @@ The main tasks for this exercise are as follows:
 1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
 1. Within the **Default Desktop** session, right-click **Start**, select **Run**, in the **Open** text box of the **Run** dialog box, type **cmd** and select **OK**. 
 1. Within the **Default Desktop** session, at the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Remote Desktop session is running.
-1. Verify that the displayed name is either **az140-21-p1-0**, **az140-21-p1-1** or **az140-21-p1-2**.
+1. Verify that the displayed name is either **az140-21-p1-0** or **az140-21-p1-1**.
+
+### Exercise 3: Stop and deallocate Azure VMs provisioned and used in the lab
+
+The main tasks for this exercise are as follows:
+
+1. Stop and deallocate Azure VMs provisioned and used in the lab
+
+>**Note**: In this exercise, you will deallocate the Azure VMs provisioned and used in this lab to minimize the corresponding compute charges
+
+#### Task 1: Deallocate Azure VMs provisioned and used in the lab
+
+1. Switch to the lab computer and, in the web browser window displaying the Azure portal, open the **PowerShell** shell session within the **Cloud Shell** pane.
+1. From the PowerShell session in the Cloud Shell pane, run the following to list all Azure VMs created and used in this lab:
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG'
+   ```
+
+1. From the PowerShell session in the Cloud Shell pane, run the following to stop and deallocate all Azure VMs you created and used in this lab:
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Stop-AzVM -NoWait -Force
+   ```
+
+   >**Note**: The command executes asynchronously (as determined by the -NoWait parameter), so while you will be able to run another PowerShell command immediately afterwards within the same PowerShell session, it will take a few minutes before the Azure VMs are actually stopped and deallocated.
+
