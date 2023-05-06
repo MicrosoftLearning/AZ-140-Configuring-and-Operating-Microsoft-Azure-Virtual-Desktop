@@ -82,15 +82,17 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, on the subscription blade, in the vertical menu on the left side, in the **Settings** section, select **Usage + quotas**. 
 1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select the following drop down arrows from the top search bar:
 
-|**Setting**|**Value**|
-|---|---|
-|**Search**|**Standard DSv3**|
-|**All locations**|**Clear all**, and then check *your location*|
-|**Resource provider** | **Microsoft.Compute** |
+   |**Setting**|**Value**|
+   |---|---|
+   |**Search**|**Standard DSv3**|
+   |**All locations**|**Clear all**, and then check *your location*|
+   |**Resource provider** | **Microsoft.Compute** |
    
 1. In the returned **Standard DSv3 Family vCPUs** item, select the pencil icon, **Edit**.
 1. In the **Quota Details** blade, in the **New limit** column text box, type **30**, and then select **Save and continue**.
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
+
+    >**Note**: Depending on the choice of the Azure region and the current demand, it might be necessary to raise a support request. For instructions regarding the process of creating support request, refer to [Create an Azure support request](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### Exercise 1: Implement an Azure Active Directory Domain Services (AD DS) domain
 
