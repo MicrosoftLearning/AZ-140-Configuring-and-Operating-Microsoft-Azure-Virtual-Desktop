@@ -108,7 +108,7 @@ The main tasks for this exercise are as follows:
    |Preferred app group type|**Desktop**|
    |Host pool type|**Pooled**|
    |Load balancing algorithm|**Breadth-first**|
-   |Max session limit|**50**|
+   |Max session limit|**12**|
 
 1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >** (leave other settings with their default values):
 
