@@ -235,4 +235,4 @@ and select **OK** to close the group **Properties** window.
 #### Task 4: Delete Azure lab resources
 
 1. Remove Azure AD DS deployment by following instructions described in [Delete an Azure Active Directory Domain Services managed domain using the Azure portal]( https://docs.microsoft.com/en-us/azure/active-directory-domain-services/delete-aadds).
-1. Remove all Azure resource groups you provisioned in the Azure AD DS labs of this course by following instructions described in [Azure Resource Manager resource group and resource deletion] (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal).
+1. Remove all Azure resource groups you provisioned in the Azure AD DS labs of this course by following instructions described in [Azure Resource Manager resource group and resource deletion](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal).
