@@ -248,7 +248,7 @@ The main tasks for this exercise are as follows:
    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
    ```
 
-1. Once the installation of the Hyper-V components completes, select **Yes** to restart the operating system. Following the restart, sign in back by using the **wvdadmin1** account with the **Pa55w.rd1234** password.
+1. Once the installation of the Hyper-V components completes, select **Yes** to restart the operating system. Following the restart, sign back in with the **wvdadmin1@adatum.com** user name and the password you set when creating this user account.
 
 #### Task 2: Create an MSIX app attach image
 
