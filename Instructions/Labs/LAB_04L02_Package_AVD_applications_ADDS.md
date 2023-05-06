@@ -88,7 +88,7 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, in the list of virtual machines, select the **az140-cl-vm42** entry. This will open the **az140-cl-vm42** blade.
 1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm42 \| Connect** blade, select **Use Bastion**.
-1. When prompted, sign in with the **wvdadmin1** user name and the password you set when creating this user account. 
+1. When prompted, sign in with the **wvdadmin1@adatum.com** user name and the password you set when creating this user account. 
 1. Within the Bastion session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the operating system for MSIX packaging:
 
    ```powershell
@@ -96,8 +96,8 @@ The main tasks for this exercise are as follows:
    reg add HKLM\Software\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 0 /f
    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v PreInstalledAppsEnabled /t REG_DWORD /d 0 /f
    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
-   reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
    reg add HKLM\Software\Microsoft\RDInfraAgent\MSIXAppAttach /v PackageListCheckIntervalMinutes /t REG_DWORD /d 1 /f
+   reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
    ```
 
    > **Note**: The last of these registry changes disables User Access Control. This is technically not required but simplifies the process illustrated in this lab.
@@ -182,7 +182,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm42**, switch to the **MSIX Packaging Tool** interface, on the **Select task** page, select **Application package - Create your app package** entry. This will start the **Create new package** wizard.
 1. On the **Select environment** page of the **Create new package** wizard, ensure that the **Create package on this computer** option is selected, select **Next**, and wait for the installation of the **MSIX Packaging Tool Driver**.
-1. On the **Prepare computer** page of the **Create new package** wizard, review the recommendations. If there is a pending reboot, restart the operating system, sign in back by using the **ADATUM\wvdadmin1** account, and restart the **MSIX Packaging Tool** before you proceed. 
+1. On the **Prepare computer** page of the **Create new package** wizard, review the recommendations. If there is a pending reboot, restart the operating system, sign back in by using the **wvdadmin1@adatum.com** account, and restart the **MSIX Packaging Tool** before you proceed. 
 
    >**Note**: MSIX Packaging Tool disables temporarily Windows Update and Windows Search. In this case, the Windows Search service is already disabled. 
 
@@ -248,7 +248,7 @@ The main tasks for this exercise are as follows:
    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
    ```
 
-1. Once the installation of the Hyper-V components completes, select **Yes** to restart the operating system. Following the restart, sign in back by using the **wvdadmin1** account with the **Pa55w.rd1234** password.
+1. Once the installation of the Hyper-V components completes, select **Yes** to restart the operating system. Following the restart, sign back in with the **wvdadmin1@adatum.com** user name and the password you set when creating this user account.
 
 #### Task 2: Create an MSIX app attach image
 
@@ -422,7 +422,7 @@ The main tasks for this exercise are as follows:
    icacls Z:\ /grant ADATUM\az140-wvd-admins:(OI)(CI)(F) /T
    ```
 
-   >**Note**: You could also set these permissions by using File Explorer while signed in as **ADATUM\\wvdadmin1**. 
+   >**Note**: You could also set these permissions by using File Explorer while signed in as **wvdadmin1\@adatum.com**. 
 
    >**Note**: Next you will validate the functionality of MSIX App attach
 

@@ -203,7 +203,7 @@ The main tasks for this exercise are as follows:
 16. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
 17. Switch to your lab computer and, in the Microsoft Edge window displaying the Azure portal, navigate to the **Storage accounts** blade and select the entry representing the storage account you created in the previous exercise.
 18. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22-profiles**. 
-19. On the **az140-22-profiles** blade, verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aduser1** account followed by the **_aduser1** suffix.
+19. On the **az140-22-profiles** blade, select **Browse** and verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aduser1** account followed by the **_aduser1** suffix.
 20. Select the folder you identified in the previous step and note that it contains a single file named **Profile_aduser1.vhd**.
 
 ### Exercise 2: Stop and deallocate Azure VMs provisioned and used in the lab
