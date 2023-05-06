@@ -65,17 +65,16 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Verify that the status is listed as **Registered**. If not, wait a few minutes and repeat this step.
 
-1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to identify the current usage of vCPUs and the corresponding limits for the **StandardDSv3Family** and **StandardBSFamily** Azure VMs (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`):
+1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to identify the current usage of vCPUs and the corresponding limits for the **StandardDSv3Family** Azure VMs (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`):
 
    ```powershell
    $location = '<Azure_region>'
    Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardDSv3Family'}
-   Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardBSFamily'}
    ```
 
    > **Note**: To identify the names of Azure regions, in the **Cloud Shell**, at the PowerShell prompt, run `(Get-AzLocation).Location`.
    
-1. Review the output of the command executed in the previous step and ensure that you have at least **20** available vCPUs in both the **Standard DSv3 Family** and **StandardBSFamily** of Azure VMs in the target Azure region. If that's already the case, proceed directly to the next exercise. Otherwise, proceed to the next task of this exercise. 
+1. Review the output of the command executed in the previous step and ensure that you have at least **20** available vCPUs in the **Standard DSv3 Family** of Azure VMs in the target Azure region. If that's already the case, proceed directly to the next exercise. Otherwise, proceed to the next task of this exercise. 
 
 #### Task 2: Request vCPU quota increase
 
@@ -85,15 +84,13 @@ The main tasks for this exercise are as follows:
 
 |**Setting**|**Value**|
 |---|---|
-|**Search**|**Standard BS**|
+|**Search**|**Standard DSv3**|
 |**All locations**|**Clear all**, and then check *your location*|
 |**Resource provider** | **Microsoft.Compute** |
    
-1. In the returned **Standard BS Family vCPUs** item, select the pencil icon, **Edit**.
+1. In the returned **Standard DSv3 Family vCPUs** item, select the pencil icon, **Edit**.
 1. In the **Quota Details** blade, in the **New limit** column text box, type **30**, and then select **Save and continue**.
 1. Allow the quota request to complete.  After a few moments, the **Quota Details** blade will specify the request has been approved and Quota increased. Close the **Quota Details** blade.
-1. Repeat the above steps 3-6, replace the search value to **Standard DSv3** and increase the quota.
-
 
 ### Exercise 1: Implement an Azure Active Directory Domain Services (AD DS) domain
 
