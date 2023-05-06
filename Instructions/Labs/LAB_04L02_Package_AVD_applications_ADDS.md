@@ -62,8 +62,14 @@ The main tasks for this exercise are as follows:
 
    >**Note**: The command executes asynchronously (as determined by the -NoWait parameter), so while you will be able to run another PowerShell command immediately afterwards within the same PowerShell session, it will take a few minutes before the Azure VMs are actually started. 
 
-   >**Note**: Proceed directly to the next task without waiting for the Azure VMs to start.
+   >**Note**: If you enabled PSRemoting in the first task of the previous lab (Implement and manage AVD profiles) then you may proceed directly to the next task without waiting for the Azure VMs to start. If you have not previously enabled PSRemoting of the Session hosts in az140-21-RG, wait for the VMs to start and then run the following step.
 
+1. From the PowerShell session of the **Cloud Shell**, run the following to enable PowerShell Remoting on the Session Hosts.
+
+   ```powershell
+   Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
+   ```
+   
 #### Task 2: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
 1. From your lab computer, in the web browser window displaying the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.json** and **\\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.parameters.json** into the Cloud Shell home directory.
