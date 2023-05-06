@@ -189,7 +189,7 @@ The main tasks for this exercise are as follows:
    New-Item -ItemType Directory -Path $labFilesFolder
    ```
 
->**Note** take care using the [T] construct to copy over the PowerShell cmdlets. In some instances, the text copied over can be incorrect, such as the $ sign showing as a 4 number character. You will need to correct these before issuing the cmdlet. Copy over to the PowerShell ISE **Script** pane, make the corrections there, and then highlight the corrected text and press **F8** (**Run Selection**).
+   >**Note** take care using the [T] construct to copy over the PowerShell cmdlets. In some instances, the text copied over can be incorrect, such as the $ sign showing as a 4 number character. You will need to correct these before issuing the cmdlet. Copy over to the PowerShell ISE **Script** pane, make the corrections there, and then highlight the corrected text and press **F8** (**Run Selection**).
 
 1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to download the Azure Virtual Desktop Agent and Boot Loader installers, required to add the session host to the host pool:
 
