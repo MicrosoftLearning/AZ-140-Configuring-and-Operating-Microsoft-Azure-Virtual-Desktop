@@ -65,15 +65,20 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Verify that the status is listed as **Registered**. If not, wait a few minutes and repeat this step.
 
-1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to identify the current usage of vCPUs and the corresponding limits for the **StandardDSv3Family** Azure VMs (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`):
+1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to create a PowerShell variable with the name of an Azure region (replace the `<Azure_region>` placeholder with the name of the Azure region that you intend to use for this lab, such as, for example, `eastus`):
 
    ```powershell
    $location = '<Azure_region>'
-   Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardDSv3Family'}
    ```
 
    > **Note**: To identify the names of Azure regions, in the **Cloud Shell**, at the PowerShell prompt, run `(Get-AzLocation).Location`.
    
+1. In the Azure portal, in the PowerShell session of the **Cloud Shell**, run the following to identify the current usage of vCPUs and the corresponding limits for the **StandardDSv3Family** Azure VMs:
+
+   ```powershell
+   Get-AzVMUsage -Location $location | Where-Object {$_.Name.Value -eq 'StandardDSv3Family'}
+   ```
+
 1. Review the output of the command executed in the previous step and ensure that you have at least **20** available vCPUs in the **Standard DSv3 Family** of Azure VMs in the target Azure region. If that's already the case, proceed directly to the next exercise. Otherwise, proceed to the next task of this exercise. 
 
 #### Task 2: Request vCPU quota increase
@@ -338,7 +343,7 @@ The main tasks for this exercise are as follows:
    Add-AzureADGroupMember -ObjectId $groupObjectId -RefObjectId $userObjectId
    ```
 
-1  Close the Cloud Shell pane.
+1. Close the Cloud Shell pane.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
 1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a**, provde the following credentials and select **Connect**:
 1. When prompted, sign in as the **aadadmin1** user using its principal name you identified earlier in this lab and the password you set for this user account when creating it earlier in the lab.
@@ -356,7 +361,7 @@ The main tasks for this exercise are as follows:
 1. Within the Bastion to the **az140-cl-vm11a** Azure VM, in the **Start** menu, navigate to the **Windows Administrative Tools** folder, expand it, and, from the list of tools, start **Active Directory Users and Computers**. 
 1. In the **Active Directory Users and Computers** console, review the default hierarchy, including the **AADDC Computers** and **AADDC Users** organizational units. Note that the former includes the **az140-cl-vm11a** computer account and the latter includes the user accounts synchronized from the Azure AD tenant associated with the Azure subscription hosting the deployment of Azure AD DS instance. The **AADDC Users** organizational unit also includes the **AAD DC Administrators** group synchronized from the same Azure AD tenant, along with its group membership. This membership cannot be modified directly within the Azure AD DS domain, but instead, you have to manage it within the Azure AD DS tenant. Any changes are automatically synchronized with the replica of the group hosted in the Azure AD DS domain. 
 
-**Hint:** If the **Active Directory Users and Computers** does not list out any domain related content then Right-Click on the **Active Directory Users and Computers** and select **Change Domain** and choose the domain **Adatum**.
+   **Hint:** If the **Active Directory Users and Computers** does not list out any domain related content then Right-Click on the **Active Directory Users and Computers** and select **Change Domain** and choose the domain **Adatum**.
 
    > **Note**: Currently, the group includes only the **aadadmin1** user account.
 
@@ -410,7 +415,7 @@ The main tasks for this exercise are as follows:
 
 1. From the Cloud Shell pane, repeat the previous step to create Azure AD groups for users that you will use in the upcoming labs and add to them previously created Azure AD user accounts:
 
->**Note**: Note: Because of the limited size of the Clipboard on the virtual machine, not all the listed cmdlets will copy over correctly. Open up Notepad on the virtual machine and copy all of the cmdlets to it by using the Type Text, Type Clipboard Text construct that is part of the Lightning Bolt control. Once you have ensured that all of the cmdlets are in Notepad, cut and paste them in blocks into the Cloud Shell and run them.
+   >**Note**: Note: Because of the limited size of the Clipboard on the virtual machine, not all the listed cmdlets will copy over correctly. Open up Notepad on the virtual machine and copy all of the cmdlets to it by using the Type Text, Type Clipboard Text construct that is part of the Lightning Bolt control. Once you have ensured that all of the cmdlets are in Notepad, cut and paste them in blocks into the Cloud Shell and run them.
 
    ```powershell
    $az140wvdausers = New-AzureADGroup -Description 'az140-wvd-ausers' -DisplayName 'az140-wvd-ausers' -MailEnabled $false -SecurityEnabled $true -MailNickName 'az140-wvd-ausers'
