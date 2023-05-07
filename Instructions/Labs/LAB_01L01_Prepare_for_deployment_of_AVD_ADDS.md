@@ -345,7 +345,7 @@ The main tasks for this exercise are as follows:
    Connect-AzureAD -TenantId $tenantId
    ```
 
-1. When prompted, sign in with the same credentials you used earlier in this task. 
+1. When prompted, sign in with the same credentials you used earlier in this task (the user account with the Owner role in the subscription you are using in this lab). 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to retrieve the primary DNS domain name of the Azure AD tenant associated with your Azure subscription:
 
    ```powershell
