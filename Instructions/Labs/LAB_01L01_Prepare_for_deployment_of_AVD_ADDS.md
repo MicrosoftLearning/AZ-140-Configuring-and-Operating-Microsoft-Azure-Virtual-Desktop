@@ -259,7 +259,7 @@ The main tasks for this exercise are as follows:
 
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create AD DS user accounts that will be synchronized to the Azure AD tenant used in this lab (replace both `<password>` placeholders with random, complex passwords):
 
-   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
+   > **Note**: Ensure that you record the passwords used. You will need them later in this and subsequent labs.
 
    ```powershell
    $ouName = 'ToSync'
