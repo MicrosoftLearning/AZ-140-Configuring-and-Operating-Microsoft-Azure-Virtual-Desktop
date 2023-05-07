@@ -376,7 +376,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create a new Azure AD user (replace the `<password>` placeholder with a random, complex password):
 
-   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.:
+   > **Note**: Ensure that you record the password you used. You will need it later in this and subsequent labs.
 
    ```powershell
    $userName = 'aadsyncuser'
