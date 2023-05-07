@@ -343,6 +343,7 @@ The main tasks for this exercise are as follows:
    Add-AzureADGroupMember -ObjectId $groupObjectId -RefObjectId $userObjectId
    ```
 
+=======
 1. Close the Cloud Shell pane.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
 1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a**, provde the following credentials and select **Connect**:

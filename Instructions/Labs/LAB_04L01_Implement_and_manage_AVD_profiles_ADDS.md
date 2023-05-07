@@ -193,7 +193,7 @@ The main tasks for this exercise are as follows:
 1. Within the Bastion session to **az140-cl-vm11**, click **Start** and, in the **Start** menu, click **Remote Desktop** to start the Remote Desktop client.
 1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** credentials.
 
- >**Note**  If you're not asked to subscribe, you might have to unsubscribe from a previous suscription.
+   >**Note**  If you're not asked to subscribe, you might have to unsubscribe from a previous suscription.
 3. in the list of applications, double-click **Command Prompt**, when prompted, provide the password of the **aduser1** account, and verify a **Command Prompt** window opens successfully.
 4. In the upper left corner of the **Command Prompt** window, right-click the **Command Prompt** icon and, in the drop-down menu, select **Properties**.
 5. In the **Command Prompt Properties** dialog box, select the **Font** tab, modify the size and font settings, and select **OK**.
