@@ -257,7 +257,7 @@ The main tasks for this exercise are as follows:
    New-ADOrganizationalUnit 'WVDClients' -path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
-1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create AD DS user accounts that will be synchronized to the Azure AD tenant used in this lab (replace the `<password>` placeholder with a random, complex password):
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create AD DS user accounts that will be synchronized to the Azure AD tenant used in this lab (replace both `<password>` placeholders with random, complex passwords):
 
    > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
 
