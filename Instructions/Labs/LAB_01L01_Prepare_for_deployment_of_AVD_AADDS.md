@@ -213,7 +213,7 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select the **adatum.com** entry to navigate to the newly provisioned Azure AD DS instance. 
 1. On the **adatum.com** blade of the Azure AD DS instance, click the warning starting with **Configuration issues for your managed domain were detected**. 
-1. On the **adatum.com | Configuration diagnostics (preview)** blade, click **Run**.
+1. On the **adatum.com | Configuration diagnostics** blade, click **Run**.
 1. In the **Validation** section, expand the **DNS records** pane and click **Fix**.
 1. On the **DNS records** blade, click **Fix** again.
 1. Navigate back to the **adatum.com** blade of the Azure AD DS instance and, in the **Required configuration steps** section, review the information regarding the Azure AD DS password hash synchronization. 
