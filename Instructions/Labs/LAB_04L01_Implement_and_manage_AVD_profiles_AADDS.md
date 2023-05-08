@@ -54,7 +54,7 @@ The main tasks for this exercise are as follows:
 1. From the PowerShell session in the **Cloud Shell** pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
 
    ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
+   Get-AzVM -ResourceGroup 'az140-21a-RG' | Start-AzVM
    ```
 
    >**Note**: Wait until the Azure VMs are running before you proceed to the next step.
@@ -63,7 +63,7 @@ The main tasks for this exercise are as follows:
 1. From the PowerShell session in the **Cloud Shell** pane, run the following to enable PowerShell Remoting on the Session Hosts.
 
    ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
+   Get-AzVM -ResourceGroup 'az140-21a-RG' | Enable-AzVMPSRemoting
    ```
    
 1. Close the Cloud Shell
