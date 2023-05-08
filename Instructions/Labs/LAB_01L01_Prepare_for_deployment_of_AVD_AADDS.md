@@ -184,7 +184,6 @@ The main tasks for this exercise are as follows:
    |DNS domain name|**adatum.com**|
    |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
-   |Forest type|**User**|
 
    > **Note**: While this is technically not required, in general, you should assign an Azure AD DS domain name different from any existing Azure or on-premises DNS name space.
 
