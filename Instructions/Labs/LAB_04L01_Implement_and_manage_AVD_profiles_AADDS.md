@@ -54,7 +54,7 @@ The main tasks for this exercise are as follows:
 1. From the PowerShell session in the **Cloud Shell** pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
 
    ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
+   Get-AzVM -ResourceGroup 'az140-21a-RG' | Start-AzVM
    ```
 
    >**Note**: Wait until the Azure VMs are running before you proceed to the next step.
@@ -63,7 +63,7 @@ The main tasks for this exercise are as follows:
 1. From the PowerShell session in the **Cloud Shell** pane, run the following to enable PowerShell Remoting on the Session Hosts.
 
    ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
+   Get-AzVM -ResourceGroup 'az140-21a-RG' | Enable-AzVMPSRemoting
    ```
    
 1. Close the Cloud Shell
@@ -241,7 +241,7 @@ and select **OK** to close the group **Properties** window.
 1. On the **az140-22a-profiles** blade, select **Browse** and verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aaduser1** account followed by the **_aaduser1** suffix.
 1. Select the folder you identified in the previous step and note that it contains a single file named **Profile_aaduser1.vhd**.
 
-#### Task 4: Delete Azure lab resources
+### Exercise 2: Delete Azure lab resources (Optional)
 
 1. Remove Azure AD DS deployment by following instructions described in [Delete an Azure Active Directory Domain Services managed domain using the Azure portal]( https://docs.microsoft.com/en-us/azure/active-directory-domain-services/delete-aadds).
 1. Remove all Azure resource groups you provisioned in the Azure AD DS labs of this course by following instructions described in [Azure Resource Manager resource group and resource deletion](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal).

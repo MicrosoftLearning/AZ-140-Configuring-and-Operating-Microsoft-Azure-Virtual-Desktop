@@ -181,7 +181,7 @@ The main tasks for this exercise are as follows:
 
 > **Note**: Ensure that your browser has the pop-up functionality enabled.
 
-1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the Azure portal.
+1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the [Azure portal](https://portal.azure.com).
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. From the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **AzureBastionSubnet** to the virtual network named **az140-adds-vnet11** you created earlier in this exercise:
 
@@ -257,9 +257,9 @@ The main tasks for this exercise are as follows:
    New-ADOrganizationalUnit 'WVDClients' -path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
-1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create AD DS user accounts that will be synchronized to the Azure AD tenant used in this lab (replace the `<password>` placeholder with a random, complex password):
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create AD DS user accounts that will be synchronized to the Azure AD tenant used in this lab (replace both `<password>` placeholders with random, complex passwords):
 
-   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
+   > **Note**: Ensure that you record the passwords used. You will need them later in this and subsequent labs.
 
    ```powershell
    $ouName = 'ToSync'
@@ -345,7 +345,7 @@ The main tasks for this exercise are as follows:
    Connect-AzureAD -TenantId $tenantId
    ```
 
-1. When prompted, sign in with the same credentials you used earlier in this task. 
+1. When prompted, sign in with the same credentials you used earlier in this task (the user account with the Owner role in the subscription you are using in this lab). 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to retrieve the primary DNS domain name of the Azure AD tenant associated with your Azure subscription:
 
    ```powershell
@@ -376,7 +376,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create a new Azure AD user (replace the `<password>` placeholder with a random, complex password):
 
-   > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.:
+   > **Note**: Ensure that you record the password you used. You will need it later in this and subsequent labs.
 
    ```powershell
    $userName = 'aadsyncuser'
@@ -427,7 +427,7 @@ The main tasks for this exercise are as follows:
 1. From the [Microsoft Edge for Business download page](https://www.microsoft.com/en-us/edge/business/download) download the latest stable version of Microsoft Edge, install it, launch it, and configure it with the default settings.
 1. Within the Remote Desktop session to **az140-dc-vm11**, use Microsoft Edge to navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Azure Active Directory** blade and, on your Azure AD tenant blade, in the **Manage** section of the hub menu, select **Azure AD Connect**.
-1. On the **Azure AD Connect** blade, select first the **Connect Sync** link and then select the **Download Azure AD Connect** link. This will automatically open a new browser tab displaying the **Microsoft Azure Active Directory Connect** download page.
+1. On the **Azure AD Connect** blade, select first the **Connect Sync** link at the left and then select the **Download Azure AD Connect** link. This will automatically open a new browser tab displaying the **Microsoft Azure Active Directory Connect** download page.
 1. On the **Microsoft Azure Active Directory Connect** download page, select **Download**.
 1. If prompted whether to run or save the **AzureADConnect.msi** installer, select **Run**. Otherwise, open the file after it downloads to start the **Microsoft Azure Active Directory Connect** wizard.
 1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** wizard, select the checkbox **I agree to the license terms and privacy notice** and select **Continue**.

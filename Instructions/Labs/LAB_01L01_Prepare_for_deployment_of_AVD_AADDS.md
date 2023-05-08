@@ -166,7 +166,7 @@ The main tasks for this exercise are as follows:
 1. On the blade displaying properties of your Azure subscription, select **Access control (IAM)**, select **Add**, and then select **Add role assignment**. 
 1. On the **Add role assignment** blade, select **Owner** and then click **Next**
 1. Click the **+Select members** hyperlink.
-1. In the **Select Members** blade, select the **aadadmin** item, and then click the **Select** button, and then click **Next**.
+1. In the **Select Members** blade, select the **aadadmin1** item, and then click the **Select** button, and then click **Next**.
 1. In the **Review + assign** blade, select the **Review + Assign** button.
 
    > **Note**: You will use the **aadadmin1** account to manage your Azure subscription and the corresponding Azure AD tenant from an Azure AD DS joined Windows 10 Azure VM later in the lab. 
@@ -184,7 +184,6 @@ The main tasks for this exercise are as follows:
    |DNS domain name|**adatum.com**|
    |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
-   |Forest type|**User**|
 
    > **Note**: While this is technically not required, in general, you should assign an Azure AD DS domain name different from any existing Azure or on-premises DNS name space.
 
@@ -214,7 +213,7 @@ The main tasks for this exercise are as follows:
 
 1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select the **adatum.com** entry to navigate to the newly provisioned Azure AD DS instance. 
 1. On the **adatum.com** blade of the Azure AD DS instance, click the warning starting with **Configuration issues for your managed domain were detected**. 
-1. On the **adatum.com | Configuration diagnostics (preview)** blade, click **Run**.
+1. On the **adatum.com | Configuration diagnostics** blade, click **Run**.
 1. In the **Validation** section, expand the **DNS records** pane and click **Fix**.
 1. On the **DNS records** blade, click **Fix** again.
 1. Navigate back to the **adatum.com** blade of the Azure AD DS instance and, in the **Required configuration steps** section, review the information regarding the Azure AD DS password hash synchronization. 
@@ -293,7 +292,7 @@ The main tasks for this exercise are as follows:
 
 > **Note**: Ensure that your browser has the pop-up functionality enabled.
 
-1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the Azure portal.
+1. In the browser window displaying the Azure portal, open another tab and, in the browser tab, navigate to the [**Azure portal**](https://portal.azure.com).
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. From the PowerShell session in the Cloud Shell pane, run the following to add a subnet named **AzureBastionSubnet** to the virtual network named **az140-adds-vnet11** you created earlier in this exercise:
 
@@ -343,7 +342,6 @@ The main tasks for this exercise are as follows:
    Add-AzureADGroupMember -ObjectId $groupObjectId -RefObjectId $userObjectId
    ```
 
-=======
 1. Close the Cloud Shell pane.
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select the **az140-cl-vm11a** entry. This will open the **az140-cl-vm11a** blade.
 1. On the **az140-cl-vm11a** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11a**, provde the following credentials and select **Connect**:
