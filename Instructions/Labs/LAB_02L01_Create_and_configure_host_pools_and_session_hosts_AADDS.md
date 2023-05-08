@@ -301,13 +301,13 @@ The main tasks for this exercise are as follows:
 1. From the PowerShell session in the Cloud Shell pane, run the following to list all Azure VMs created and used in this lab:
 
    ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG'
+   Get-AzVM -ResourceGroup 'az140-21a-RG'
    ```
 
 1. From the PowerShell session in the Cloud Shell pane, run the following to stop and deallocate all Azure VMs you created and used in this lab:
 
    ```powershell
-   Get-AzVM -ResourceGroup 'az140-21-RG' | Stop-AzVM -NoWait -Force
+   Get-AzVM -ResourceGroup 'az140-21a-RG' | Stop-AzVM -NoWait -Force
    ```
 
    >**Note**: The command executes asynchronously (as determined by the -NoWait parameter), so while you will be able to run another PowerShell command immediately afterwards within the same PowerShell session, it will take a few minutes before the Azure VMs are actually stopped and deallocated.
