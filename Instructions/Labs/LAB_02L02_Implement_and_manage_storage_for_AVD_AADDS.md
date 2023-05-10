@@ -92,7 +92,7 @@ The main tasks for this exercise are as follows:
 1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window, in the Azure portal, on the blade displaying the properties of the storage account you created in the previous task, in the vertical menu on the left side, in the **Data storage** section, select **File shares**. 
 1. In the **File share settings** section, next to the **Active Directory** label, select the **Not configured** link.
 1. In the **Enable an Active Directory source** section, in the rectangle labeled **Azure Active Directory Domain Services**, select **Set up**.
-1  On the **Identity-based access** blade, select the **Enabled** option, and select **Save**.
+1.  On the **Identity-based access** blade, select the **Enabled** option, and select **Save**.
 
 #### Task 4: Configure the Azure Files RBAC-based permissions
 
