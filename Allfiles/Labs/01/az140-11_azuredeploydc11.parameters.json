@@ -15,7 +15,7 @@
       "value": "Standard_D2s_v3"
     },
     "_artifactsLocation": {
-      "value": "[deployment().properties.templateLink.uri]"
+      "value": "https://raw.githubusercontent.com/az140mp/azure-quickstart-templates/master/application-workloads/active-directory/active-directory-new-domain/"
     },
     "_artifactsLocationSasToken": {
       "value": null
