@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Prepare for deployment of Azure Virtual Desktop (AD DS)'
-    module: 'Module 1: Plan a AVD Architecture'
+    module: 'Module 1: Plan an AVD Architecture'
 ---
 
 # Lab - Prepare for deployment of Azure Virtual Desktop (AD DS)
@@ -10,7 +10,7 @@ lab:
 ## Lab dependencies
 
 - An Azure subscription you will be using in this lab.
-- A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
+- A Microsoft account or a Microsoft Entra account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
 
 ## Estimated Time
 
@@ -215,13 +215,13 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 5 minutes.
 
-### Exercise 2: Integrate an AD DS forest with an Azure AD tenant
+### Exercise 2: Integrate an AD DS forest with a Microsoft Entra tenant
   
 The main tasks for this exercise are as follows:
 
 1. Create AD DS users and groups that will be synchronized to Azure AD
 1. Configure AD DS UPN suffix
-1. Create an Azure AD user that will be used to configure synchronization with Azure AD
+1. Create a Microsoft Entra user that will be used to configure synchronization with Azure AD
 1. Install Azure AD Connect
 1. Configure hybrid Azure AD join
 
@@ -372,7 +372,7 @@ The main tasks for this exercise are as follows:
    $domainAdminUser | Set-ADUser -UserPrincipalName 'student@adatum.com'
    ```
 
-#### Task 3: Create an Azure AD user that will be used to configure directory synchronization
+#### Task 3: Create a Microsoft Entra user that will be used to configure directory synchronization
 
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create a new Azure AD user (replace the `<password>` placeholder with a random, complex password):
 
