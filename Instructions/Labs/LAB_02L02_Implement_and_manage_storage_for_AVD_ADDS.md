@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Implement and manage storage for AVD (AD DS)'
-    module: 'Module 2: Implement a AVD Infrastructure'
+    module: 'Module 2: Implement an AVD Infrastructure'
 ---
 
 # Lab - Implement and manage storage for AVD (AD DS)
@@ -10,7 +10,7 @@ lab:
 ## Lab dependencies
 
 - An Azure subscription you will be using in this lab.
-- A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
+- A Microsoft account or a Microsoft Entra account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Microsoft Entra tenant associated with that Azure subscription.
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 
 ## Estimated Time
@@ -19,7 +19,7 @@ lab:
 
 ## Lab scenario
 
-You need to implement and manage storage for a Azure Virtual Desktop deployment in an Azure Active Directory Domain Services (Azure AD DS) environment.
+You need to implement and manage storage for a Azure Virtual Desktop deployment in a Microsoft Entra DS environment.
 
 ## Objectives
   
@@ -55,7 +55,7 @@ The main tasks for this exercise are as follows:
    |User Name|**Student@adatum.com**|
    |Password|**Pa55w.rd1234**|
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Microsoft Entra credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Create**.
 1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
 
@@ -69,7 +69,7 @@ The main tasks for this exercise are as follows:
    |Redundancy|**Geo-redundant storage (GRS)**|
    |Make read access to data available in the event of regional unavailability|enabled|
 
-   >**Note**: Make sure that the length of the storage account name does not exceed 15 characters. The name will be used to create a computer account in the Active Directory Domain Services (AD DS) domain that is integrated with the Azure AD tenant associated with the Azure subscription containing the storage account. This will allow for AD DS-based authentication when accessing file shares hosted in this storage account.
+   >**Note**: Make sure that the length of the storage account name does not exceed 15 characters. The name will be used to create a computer account in the Active Directory Domain Services (AD DS) domain that is integrated with the Microsoft Entra tenant associated with the Azure subscription containing the storage account. This will allow for AD DS-based authentication when accessing file shares hosted in this storage account.
 
 1. On the **Basics** tab of the **Create storage account** blade, select **Review + Create**, wait for the validation process to complete, and then select **Create**.
 
@@ -101,7 +101,7 @@ The main tasks for this exercise are as follows:
    Connect-AzAccount
    ```
 
-1. When prompted, sign in with the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. When prompted, sign in with the Microsoft Entra credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to set the variables necessary to run the subsequent script:
 
    ```powershell
