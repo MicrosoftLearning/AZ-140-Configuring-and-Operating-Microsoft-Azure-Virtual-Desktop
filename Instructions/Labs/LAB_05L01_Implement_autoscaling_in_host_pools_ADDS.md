@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Implement autoscaling in host pools (AD DS)'
-    module: 'Module 5: Monitor and Maintain a WVD Infrastructure'
+    module: 'Module 5: Monitor and Maintain an AVD Infrastructure'
 ---
 
 # Lab - Implement autoscaling in host pools (AD DS)
@@ -10,7 +10,7 @@ lab:
 ## Lab dependencies
 
 - An Azure subscription you will be using in this lab.
-- A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
+- A Microsoft account or a Microsoft Entra account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Microsoft Entra tenant associated with that Azure subscription.
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 - The completed lab **Deploy host pools and session hosts by using the Azure portal (AD DS)**
 
