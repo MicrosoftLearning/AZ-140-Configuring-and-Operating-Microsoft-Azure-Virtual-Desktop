@@ -10,13 +10,13 @@ lab:
 ## Lab dependencies
 
 - An Azure subscription
-- A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
+- A Microsoft account or a Microsoft Entra account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
 
 ## Estimated Time
 
 150 minutes
 
->**Note**: Provisioning of an Azure AD DS involves about 90-minute wait time.
+>**Note**: Provisioning of a Microsoft Entra DS involves about 90-minute wait time.
 
 ## Lab scenario
 
@@ -26,7 +26,7 @@ You need to prepare for deployment of Azure Virtual Desktop in an Azure Active D
   
 After completing this lab, you will be able to:
 
-- Implement an Azure AD DS domain
+- Implement a Microsoft Entra DS domain
 - Configure the Azure AD DS domain environment
 
 ## Lab files
@@ -103,11 +103,11 @@ The main tasks for this exercise are as follows:
 
 The main tasks for this exercise are as follows:
 
-1. Create and configure an Azure AD user account for administration of Azure AD DS domain
-1. Deploy an Azure AD DS instance by using the Azure portal
+1. Create and configure a Microsoft Entra user account for administration of Azure AD DS domain
+1. Deploy a Microsoft Entra DS instance by using the Azure portal
 1. Configure the network and identity settings of the Azure AD DS deployment
 
-#### Task 1: Create and configure an Azure AD user account for administration of Azure AD DS domain
+#### Task 1: Create and configure a Microsoft Entra user account for administration of Azure AD DS domain
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
 1. In the web browser displaying the Azure portal, navigate  to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Properties**.
@@ -169,10 +169,10 @@ The main tasks for this exercise are as follows:
 1. In the **Select Members** blade, select the **aadadmin1** item, and then click the **Select** button, and then click **Next**.
 1. In the **Review + assign** blade, select the **Review + Assign** button.
 
-   > **Note**: You will use the **aadadmin1** account to manage your Azure subscription and the corresponding Azure AD tenant from an Azure AD DS joined Windows 10 Azure VM later in the lab. 
+   > **Note**: You will use the **aadadmin1** account to manage your Azure subscription and the corresponding Azure AD tenant from a Microsoft Entra DS joined Windows 10 Azure VM later in the lab. 
 
 
-#### Task 2: Deploy an Azure AD DS instance by using the Azure portal
+#### Task 2: Deploy a Microsoft Entra DS instance by using the Azure portal
 
 1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select **+ Create**. This will open the **Create Azure AD Domain Services** blade.
 1. On the **Basics** tab of the **Create Azure AD Domain Services** blade, specify the following settings and select **Next** (leave others with their existing values):
@@ -185,7 +185,7 @@ The main tasks for this exercise are as follows:
    |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
 
-   > **Note**: While this is technically not required, in general, you should assign an Azure AD DS domain name different from any existing Azure or on-premises DNS name space.
+   > **Note**: While this is technically not required, in general, you should assign a Microsoft Entra DS domain name different from any existing Azure or on-premises DNS name space.
 
 1. On the **Networking** tab of the **Create Azure AD Domain Services** blade, next to the **Virtual network** drop-down list, select **Create new**.
 1. On the **Create virtual network** blade, assign the following settings and select **OK**:
@@ -205,7 +205,7 @@ The main tasks for this exercise are as follows:
 2. On the **Review + create** tab of the **Create Azure AD Domain Services** blade, select **Create**. 
 3. Review the notification regarding settings that you will not be able to change following creation of the Azure AD DS domain and select **OK**.
 
-   >**Note**: The settings that you will not be able to change following provisioning of an Azure AD DS domain include its DNS name, its Azure subscription, its resource group, the virtual network and subnet hosting its domain controllers, and the forest type.
+   >**Note**: The settings that you will not be able to change following provisioning of a Microsoft Entra DS domain include its DNS name, its Azure subscription, its resource group, the virtual network and subnet hosting its domain controllers, and the forest type.
 
    > **Note**: Wait for the deployment to complete before you proceed to the next exercise. This might take about 90 minutes. 
 
@@ -331,7 +331,7 @@ The main tasks for this exercise are as follows:
 
 > **Note**: Before you can sign in to the newly Azure AD DS joined computer, you need to add the user account you intend to sign in with to the **AAD DC Administrators** Azure AD group. This Azure AD group is created automatically in the Azure AD tenant associated with the Azure subscription where you provisioned the Azure AD DS instance.
 
-> **Note**: You have the option of populating this group with existing Azure AD user accounts when you provision an Azure AD DS instance.
+> **Note**: You have the option of populating this group with existing Azure AD user accounts when you provision a Microsoft Entra DS instance.
 
 1. From your lab computer, in the Azure portal, from the Cloud Shell pane, run the following to add the **aadadmin1** Azure AD user account to the **AAD DC Administrators** Azure AD group:
 
@@ -402,7 +402,7 @@ The main tasks for this exercise are as follows:
    } 
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to create an Azure AD group named **az140-wvd-aadmins** and add to it the **aadadmin1** and **wvdaadmin1** user accounts:
+1. From the PowerShell session in the Cloud Shell pane, run the following to create a Microsoft Entra group named **az140-wvd-aadmins** and add to it the **aadadmin1** and **wvdaadmin1** user accounts:
 
    ```powershell
    $az140wvdaadmins = New-AzureADGroup -Description 'az140-wvd-aadmins' -DisplayName 'az140-wvd-aadmins' -MailEnabled $false -SecurityEnabled $true -MailNickName 'az140-wvd-aadmins'
