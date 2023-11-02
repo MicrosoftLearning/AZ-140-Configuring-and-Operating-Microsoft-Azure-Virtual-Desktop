@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Lab: Implement and manage Azure Virtual Desktop profiles (Azure AD DS)'
+    title: 'Lab: Implement and manage Azure Virtual Desktop profiles (Microsoft Entra DS)'
     module: 'Module 4: Manage User Environments and Apps'
 ---
 
-# Lab - Implement and manage Azure Virtual Desktop profiles (Azure AD DS)
+# Lab - Implement and manage Azure Virtual Desktop profiles (Microsoft Entra DS)
 # Student lab manual
 
 ## Lab dependencies
 
 - An Azure subscription
-- A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
-- A Azure Virtual Desktop environment provisioned in the lab **Introduction to Azure Virtual Desktop (Azure AD DS)**
+- A Microsoft account or a Microsoft Entra account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
+- A Azure Virtual Desktop environment provisioned in the lab **Introduction to Azure Virtual Desktop (Microsoft Entra DS)**
 
 ## Estimated Time
 
@@ -19,14 +19,14 @@ lab:
 
 ## Lab scenario
 
-You need to implement Azure Virtual Desktop profile management in an Azure Active Directory Domain Services (Azure AD DS) environment.
+You need to implement Azure Virtual Desktop profile management in a Microsoft Entra DS environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Configure Azure Files to store profile containers for Azure Virtual Desktop in Azure AD DS environment
-- Implement FSLogix based profiles for Azure Virtual Desktop in Azure AD DS environment
+- Configure Azure Files to store profile containers for Azure Virtual Desktop in a Microsoft Entra DS environment
+- Implement FSLogix based profiles for Azure Virtual Desktop in a Microsoft Entra DS environment
 
 ## Lab files
 
@@ -141,7 +141,7 @@ The main tasks for this exercise are as follows:
    Connect-AzAccount
    ```
 
-1. When prompted, sign in with the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. When prompted, sign in with the Microsoft Entra credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to retrieve the name of the Azure Storage account you configured earlier in this lab:
 
    ```powershell
@@ -243,5 +243,5 @@ and select **OK** to close the group **Properties** window.
 
 ### Exercise 2: Delete Azure lab resources (Optional)
 
-1. Remove Azure AD DS deployment by following instructions described in [Delete an Azure Active Directory Domain Services managed domain using the Azure portal]( https://docs.microsoft.com/en-us/azure/active-directory-domain-services/delete-aadds).
-1. Remove all Azure resource groups you provisioned in the Azure AD DS labs of this course by following instructions described in [Azure Resource Manager resource group and resource deletion](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal).
+1. Remove Microsoft Entra DS deployment by following instructions described in [Delete an Azure Active Directory Domain Services managed domain using the Azure portal]( https://docs.microsoft.com/en-us/azure/active-directory-domain-services/delete-aadds).
+1. Remove all Azure resource groups you provisioned in the Microsoft Entra DS labs of this course by following instructions described in [Azure Resource Manager resource group and resource deletion](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal).
