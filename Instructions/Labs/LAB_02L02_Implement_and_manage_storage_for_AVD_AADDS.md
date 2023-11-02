@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Lab: Implement and manage storage for AVD (Azure AD DS)'
+    title: 'Lab: Implement and manage storage for AVD (Microsoft Entra DS)'
     module: 'Module 2: Implement a AVD Infrastructure'
 ---
 
-# Lab - Implement and manage storage for AVD (Azure AD DS)
+# Lab - Implement and manage storage for AVD (Microsoft Entra DS)
 # Student lab manual
 
 ## Lab dependencies
 
 - An Azure subscription
-- A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
-- The completed lab **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
+- A Microsoft account or an Microsoft Entra account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (Microsoft Entra DS)**
 
 ## Estimated Time
 
@@ -19,13 +19,13 @@ lab:
 
 ## Lab scenario
 
-You need to implement and manage storage for a Azure Virtual Desktop deployment in an Azure Active Directory Domain Services (Azure AD DS) environment.
+You need to implement and manage storage for a Azure Virtual Desktop deployment in an Azure Active Directory Domain Services (Microsoft Entra DS) environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Configure Azure Files to store profile containers for Azure Virtual Desktop in Azure AD DS environment
+- Configure Azure Files to store profile containers for Azure Virtual Desktop in Microsoft Entra DS environment
 
 ## Lab files
 
@@ -39,7 +39,7 @@ The main tasks for this exercise are as follows:
 
 1. Create an Azure Storage account
 1. Create an Azure Files share
-1. Enable Azure AD DS authentication for the Azure Storage account 
+1. Enable Microsoft Entra DS authentication for the Azure Storage account 
 1. Configure the Azure Files share permissions
 1. Configure the Azure Files directory and file level permissions
 
@@ -57,7 +57,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account and the password you set when creating this account.
 
-   >**Note**: You can identify the user principal name (UPN) attribute of the **aadadmin1** account by reviewing its properties dialog box from the Active Directory Users and Computers console or by switching back to your lab computer and reviewing its properties from the Azure AD tenant blade in the Azure portal.
+   >**Note**: You can identify the user principal name (UPN) attribute of the **aadadmin1** account by reviewing its properties dialog box from the Active Directory Users and Computers console or by switching back to your lab computer and reviewing its properties from the Microsoft Entra tenant blade in the Azure portal.
 
 1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Create**.
 1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
@@ -71,7 +71,7 @@ The main tasks for this exercise are as follows:
    |Performance|**Standard**|
    |Replication|**Locally redundant storage (LRS)**|
 
-   >**Note**: Make sure that the length of the storage account name does not exceed 15 characters. The name will be used to create a computer account in the Active Directory Domain Services (AD DS) domain that is integrated with the Azure AD tenant associated with the Azure subscription containing the storage account. This will allow for AD DS-based authentication when accessing file shares hosted in this storage account.
+   >**Note**: Make sure that the length of the storage account name does not exceed 15 characters. The name will be used to create a computer account in the Active Directory Domain Services (AD DS) domain that is integrated with the Microsoft Entra tenant associated with the Azure subscription containing the storage account. This will allow for AD DS-based authentication when accessing file shares hosted in this storage account.
 
 1. On the **Basics** tab of the **Create storage account** blade, select **Review + Create**, wait for the validation process to complete, and then select **Create**.
 
@@ -87,7 +87,7 @@ The main tasks for this exercise are as follows:
    |---|---|
    |Name|**az140-22a-profiles**|
 
-#### Task 3: Enable Azure AD DS authentication for the Azure Storage account
+#### Task 3: Enable Microsoft Entra DS authentication for the Azure Storage account
 
 1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window, in the Azure portal, on the blade displaying the properties of the storage account you created in the previous task, in the vertical menu on the left side, in the **Data storage** section, select **File shares**. 
 1. In the **File share settings** section, next to the **Active Directory** label, select the **Not configured** link.
