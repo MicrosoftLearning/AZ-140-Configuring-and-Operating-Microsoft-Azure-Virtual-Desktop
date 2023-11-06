@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Deploy host pools and session hosts by using the Azure portal (AD DS)'
-    module: 'Module 2: Implement a AVD Infrastructure'
+    module: 'Module 2: Implement an AVD Infrastructure'
 ---
 
 # Lab - Deploy host pools and session hosts by using the Azure portal (AD DS)
@@ -10,7 +10,7 @@ lab:
 ## Lab dependencies
 
 - An Azure subscription you will be using in this lab.
-- A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
+- A Microsoft account or a Microsoft Entra account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Microsoft Entra tenant associated with that Azure subscription.
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 
 ## Estimated Time
@@ -84,7 +84,7 @@ The main tasks for this exercise are as follows:
    Register-AzResourceProvider -ProviderNamespace Microsoft.DesktopVirtualization
    ```
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Remote Desktop session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Microsoft Entra credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Virtual networks** and, on the **Virtual networks** blade, select **az140-adds-vnet11**. 
 1. On the **az140-adds-vnet11** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, specify the following settings (leave all other settings with their default values) and click **Save**:
 
@@ -193,7 +193,7 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Application groups** blade, note the existing, auto-generated **az140-21-hp1-DAG** desktop application group, and select it. 
 1. On the **az140-21-hp1-DAG** blade, select **Assignments**.
 1. On the **az140-21-hp1-DAG \| Assignments** blade, select **+ Add**.
-1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-pooled** and click **Select**.
+1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-pooled** and click **Select**.
 1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
@@ -236,8 +236,8 @@ The main tasks for this exercise are as follows:
    |Require command line|**No**|
 
 1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
-1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Azure AD users or user groups**.
-1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-remote-app** and click **Select**.
+1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
+1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-remote-app** and click **Select**.
 1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
@@ -278,8 +278,8 @@ The main tasks for this exercise are as follows:
    |Require command line|**No**|
 
 1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
-1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Azure AD users or user groups**.
-1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-remote-app** and **az140-wvd-admins** and click **Select**.
+1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
+1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-remote-app** and **az140-wvd-admins** and click **Select**.
 1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
