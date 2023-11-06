@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Deploy host pools and hosts by using Azure Resource Manager templates (AD DS)'
-    module: 'Module 2: Implement a WVD Infrastructure'
+    module: 'Module 2: Implement an AVD Infrastructure'
 ---
 
 # Lab - Deploy host pools and hosts by using Azure Resource Manager templates
@@ -10,7 +10,7 @@ lab:
 ## Lab dependencies
 
 - An Azure subscription you will be using in this lab.
-- A Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Azure AD tenant associated with that Azure subscription.
+- A Microsoft account or a Microsoft Entra account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Microsoft Entra tenant associated with that Azure subscription.
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 - The completed lab **Deploy host pools and session hosts by using the Azure portal (AD DS)**
 
@@ -91,7 +91,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: A registration token is required to authorize a host to join the pool. The value of token's expiration date must be between one hour and one month from the current date and time.
 
-1. Within the Bastion session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Azure AD credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. Within the Bastion session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Microsoft Entra credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Bastion session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Virtual networks** and, on the **Virtual networks** blade, select **az140-adds-vnet11**. 
 1. On the **az140-adds-vnet11** blade, select **Subnets**, on the **Subnets** blade, select **+ Subnet**, on the **Add subnet** blade, specify the following settings (leave all other settings with their default values) and click **Save**:
 
@@ -206,7 +206,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-23-hp2 \| Application groups** blade, in the list of application groups select **az140-23-hp2-DAG**.
 1. On the **az140-23-hp2-DAG** blade, in the vertical menu on the left, select **Assignments**. 
 1. On the **az140-23-hp2-DAG \| Assignments** blade, select **+ Add**.
-1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-personal** and click **Select**.
+1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-personal** and click **Select**.
 
    > **Note**: Now let's review the experience of a user connecting to the Azure Virtual Desktop host pool.
 
