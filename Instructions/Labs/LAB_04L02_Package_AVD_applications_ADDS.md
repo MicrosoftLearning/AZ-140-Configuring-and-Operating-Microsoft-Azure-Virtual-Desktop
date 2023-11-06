@@ -10,7 +10,7 @@ lab:
 ## Lab dependencies
 
 - An Azure subscription
-- A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
+- A Microsoft account or a Microsoft Entra account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
 - The completed lab **Azure Virtual Desktop profile management (AD DS)**
 - The completed lab **Configure Conditional Access policies for WVD (AD DS)**
@@ -28,7 +28,7 @@ You need to package and deploy Azure Virtual Desktop applications in an Active D
 After completing this lab, you will be able to:
 
 - Prepare for and create MSIX app packages
-- Implement an MSIX app attach image for Azure Virtual Desktop in Azure AD DS environment
+- Implement an MSIX app attach image for Azure Virtual Desktop in a Microsoft Entra DS environment
 - Implement the MSIX app attach on Azure Virtual Desktop in AD DS environment
 
 ## Lab files
@@ -73,7 +73,7 @@ The main tasks for this exercise are as follows:
 #### Task 2: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
 1. From your lab computer, in the web browser window displaying the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.json** and **\\\\AZ-140\\AllFiles\\Labs\\04\\az140-42_azuredeploycl42.parameters.json** into the Cloud Shell home directory.
-1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that you will use for creating MSIX packages to and to join it to the Azure AD DS domain:
+1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that you will use for creating MSIX packages to and to join it to the Microsoft Entra DS domain:
 
    ```powershell
    $vNetResourceGroupName = 'az140-11-RG'
@@ -210,7 +210,7 @@ The main tasks for this exercise are as follows:
 1. Copy the **XmlNotepad.msix** file to the **C:\\Allfiles\\Labs\\04** folder.
 
 
-### Exercise 2: Implement an MSIX app attach image for Azure Virtual Desktop in Azure AD DS environment
+### Exercise 2: Implement an MSIX app attach image for Azure Virtual Desktop in Microsoft Entra DS environment
 
 The main tasks for this exercise are as follows:
 
@@ -321,7 +321,7 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Within the Bastion session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
-1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create an AD DS group object that will be synchronized to the Azure AD tenant used in this lab:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create an AD DS group object that will be synchronized to the Microsoft Entra tenant used in this lab:
 
    ```powershell
    $ouPath = "OU=WVDInfra,DC=adatum,DC=com"
@@ -345,17 +345,17 @@ The main tasks for this exercise are as follows:
 
    > **Note**: This step ensures that the group membership change takes effect. 
 
-1. Within the Bastion session to **az140-dc-vm11**, in the **Start** menu, expand the **Azure AD Connect** folder and select **Azure AD Connect**.
-1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** window, select **Configure**.
-1. On the **Additional tasks** page in the **Microsoft Azure Active Directory Connect** window, select **Customize synchronization options** and select **Next**.
-1. On the **Connect to Azure AD** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task with the password you set when creating this user account.
-1. On the **Connect your directories** page in the **Microsoft Azure Active Directory Connect** window, select **Next**.
-1. On the **Domain and OU filtering** page in the **Microsoft Azure Active Directory Connect** window, ensure that the option **Sync selected domains and OUs** is selected, expand the **adatum.com** node, select the checkbox next to the **WVDInfra** OU (leave any other selected checkboxes unchanged), and select **Next**.
-1. On the **Optional features** page in the **Microsoft Azure Active Directory Connect** window, accept the default settings, and select **Next**.
-1. On the **Ready to configure** page in the **Microsoft Azure Active Directory Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
-1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Azure Active Directory Connect** window.
-1. Within the Bastion session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Azure AD credentials of the user account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription you are using in this lab.
-1. Within the Bastion session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Azure AD tenant associated with the Azure subscription you are using for this lab.
+1. Within the Bastion session to **az140-dc-vm11**, in the **Start** menu, expand the **Microsoft Entra Connect** folder and select **Microsoft Entra Connect**.
+1. On the **Welcome to Microsoft Entra Connect** page of the **Microsoft Entra Connect** window, select **Configure**.
+1. On the **Additional tasks** page in the **Microsoft Entra Connect** window, select **Customize synchronization options** and select **Next**.
+1. On the **Connect to Microsoft Entra** page in the **Microsoft Entra Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task with the password you set when creating this user account.
+1. On the **Connect your directories** page in the **Microsoft Entra Connect** window, select **Next**.
+1. On the **Domain and OU filtering** page in the **Microsoft Entra Connect** window, ensure that the option **Sync selected domains and OUs** is selected, expand the **adatum.com** node, select the checkbox next to the **WVDInfra** OU (leave any other selected checkboxes unchanged), and select **Next**.
+1. On the **Optional features** page in the **Microsoft Entra Connect** window, accept the default settings, and select **Next**.
+1. On the **Ready to configure** page in the **Microsoft Entra Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
+1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Entra Connect** window.
+1. Within the Bastion session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Microsoft Entra credentials of the user account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription you are using in this lab.
+1. Within the Bastion session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Microsoft Entra tenant associated with the Azure subscription you are using for this lab.
 1. On the Azure Active Directory blade, in the vertical menu bar on the left side, in the **Manage** section, click **Groups**. 
 1. On the **Groups | All groups** blade, in the list of groups, select the **az140-hosts-42-p1** entry.
 
@@ -373,9 +373,9 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select the storage account you configured to host user profiles.
 
-   > **Note**: This part of the lab is contingent on completing the lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Azure AD DS)**
+   > **Note**: This part of the lab is contingent on completing the lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Microsoft Entra DS)**
 
-   > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Azure AD DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
+   > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Microsoft Entra DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
 
 1. On the storage account blade, in the vertical menu on the left side, select **Access Control (IAM)**.
 1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
