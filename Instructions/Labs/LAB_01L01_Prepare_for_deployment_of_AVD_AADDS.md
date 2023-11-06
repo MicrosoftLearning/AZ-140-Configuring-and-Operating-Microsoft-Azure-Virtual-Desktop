@@ -1,33 +1,33 @@
 ---
 lab:
-    title: 'Lab: Prepare for deployment of Azure Virtual Desktop (Azure AD DS)'
-    module: 'Module 1: Plan a AVD Architecture'
+    title: 'Lab: Prepare for deployment of Azure Virtual Desktop (Microsoft Entra DS)'
+    module: 'Module 1: Plan an AVD Architecture'
 ---
 
-# Lab - Prepare for deployment of Azure Virtual Desktop (Azure AD DS)
+# Lab - Prepare for deployment of Azure Virtual Desktop (Microsoft Entra DS)
 # Student lab manual
 
 ## Lab dependencies
 
 - An Azure subscription
-- A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
+- A Microsoft account or a Microsoft Entra account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
 
 ## Estimated Time
 
 150 minutes
 
->**Note**: Provisioning of an Azure AD DS involves about 90-minute wait time.
+>**Note**: Provisioning of a Microsoft Entra DS involves about 90-minute wait time.
 
 ## Lab scenario
 
-You need to prepare for deployment of Azure Virtual Desktop in an Azure Active Directory Domain Services (Azure AD DS) environment
+You need to prepare for deployment of Azure Virtual Desktop in an Azure Active Directory Domain Services (Microsoft Entra DS) environment
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Implement an Azure AD DS domain
-- Configure the Azure AD DS domain environment
+- Implement a Microsoft Entra DS domain
+- Configure the Microsoft Entra DS domain environment
 
 ## Lab files
 
@@ -103,35 +103,35 @@ The main tasks for this exercise are as follows:
 
 The main tasks for this exercise are as follows:
 
-1. Create and configure an Azure AD user account for administration of Azure AD DS domain
-1. Deploy an Azure AD DS instance by using the Azure portal
-1. Configure the network and identity settings of the Azure AD DS deployment
+1. Create and configure a Microsoft Entra user account for administration of the  Microsoft Entra DS domain
+1. Deploy a Microsoft Entra DS instance by using the Azure portal
+1. Configure the network and identity settings of the Microsoft Entra DS deployment
 
-#### Task 1: Create and configure an Azure AD user account for administration of Azure AD DS domain
+#### Task 1: Create and configure a Microsoft Entra user account for administration of Microsoft Entra DS domain
 
-1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
-1. In the web browser displaying the Azure portal, navigate  to the **Overview** blade of the Azure AD tenant and, in the vertical menu on the left side, in the **Manage** section, click **Properties**.
-1. On the **Properties** blade of your Azure AD tenant, at the very bottom of the blade, select the **Manage Security deaults** link.
+1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab and the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription.
+1. In the web browser displaying the Azure portal, navigate  to the **Overview** blade of the Microsoft Entra tenant and, in the vertical menu on the left side, in the **Manage** section, click **Properties**.
+1. On the **Properties** blade of your Microsoft Entra tenant, at the very bottom of the blade, select the **Manage Security deaults** link.
 1. On the **Enable Security defaults** blade, if needed, select **No**, select the **My organization is using Conditional Access** checkbox, and select **Save**.
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. If prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1. From the Cloud Shell pane, run the following to sign in to your Azure AD tenant:
+1. From the Cloud Shell pane, run the following to sign in to your Microsoft Entra tenant:
 
    ```powershell
    Connect-AzureAD
    ```
 
-1. From the Cloud Shell pane, run the following to retrieve the primary DNS domain name of the Azure AD tenant associated with your Azure subscription:
+1. From the Cloud Shell pane, run the following to retrieve the primary DNS domain name of the Microsoft Entra tenant associated with your Azure subscription:
 
    ```powershell
    $aadDomainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
    $aadDomainName
    ```
 
-1. From the Cloud Shell pane, run the following to create Azure AD users that will be granted elevated privileges (replace the `<password>` placeholder with a random, complex password):
+1. From the Cloud Shell pane, run the following to create Microsoft Entra users that will be granted elevated privileges (replace the `<password>` placeholder with a random, complex password):
 
    > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
 
@@ -143,7 +143,7 @@ The main tasks for this exercise are as follows:
    New-AzureADUser -AccountEnabled $true -DisplayName 'wvdaadmin1' -PasswordProfile $passwordProfile -MailNickName 'wvdaadmin1' -UserPrincipalName "wvdaadmin1@$aadDomainName"
    ```
 
-1. From the Cloud Shell pane, run the following to assign the Global Administrator role to the first of the newly created Azure AD users:
+1. From the Cloud Shell pane, run the following to assign the Global Administrator role to the first of the newly created Microsoft Entra users:
 
    ```powershell
    $aadUser = Get-AzureADUser -ObjectId "aadadmin1@$aadDomainName"
@@ -153,7 +153,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Azure AD PowerShell module refers to the Global Administrator role as Company Administrator.
 
-1. From the Cloud Shell pane, run the following to identify the user principal name of the newly created Azure AD user:
+1. From the Cloud Shell pane, run the following to identify the user principal name of the newly created Microsoft Entra user:
 
    ```powershell
    (Get-AzureADUser -Filter "MailNickName eq 'aadadmin1'").UserPrincipalName
@@ -169,13 +169,13 @@ The main tasks for this exercise are as follows:
 1. In the **Select Members** blade, select the **aadadmin1** item, and then click the **Select** button, and then click **Next**.
 1. In the **Review + assign** blade, select the **Review + Assign** button.
 
-   > **Note**: You will use the **aadadmin1** account to manage your Azure subscription and the corresponding Azure AD tenant from an Azure AD DS joined Windows 10 Azure VM later in the lab. 
+   > **Note**: You will use the **aadadmin1** account to manage your Azure subscription and the corresponding Microsoft Entra tenant from an Microsoft Entra DS joined Windows 10 Azure VM later in the lab. 
 
 
-#### Task 2: Deploy an Azure AD DS instance by using the Azure portal
+#### Task 2: Deploy a Microsoft Entra DS instance by using the Azure portal
 
-1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select **+ Create**. This will open the **Create Azure AD Domain Services** blade.
-1. On the **Basics** tab of the **Create Azure AD Domain Services** blade, specify the following settings and select **Next** (leave others with their existing values):
+1. From your lab computer, in the Azure portal, search for and select **Microsoft Entra Domain Services** and, from the **Microsoft Entra Domain Services** blade, select **+ Create**. This will open the **Create Microsoft Entra Domain Services** blade.
+1. On the **Basics** tab of the **Create Microsoft Entra Domain Services** blade, specify the following settings and select **Next** (leave others with their existing values):
 
    |Setting|Value|
    |---|---|
@@ -185,9 +185,9 @@ The main tasks for this exercise are as follows:
    |Region|the name of the region where you want to host your AVD deployment|
    |SKU|**Standard**|
 
-   > **Note**: While this is technically not required, in general, you should assign an Azure AD DS domain name different from any existing Azure or on-premises DNS name space.
+   > **Note**: While this is technically not required, in general, you should assign a Microsoft Entra DS domain name different from any existing Azure or on-premises DNS name space.
 
-1. On the **Networking** tab of the **Create Azure AD Domain Services** blade, next to the **Virtual network** drop-down list, select **Create new**.
+1. On the **Networking** tab of the **Create Microsoft Entra Domain Services** blade, next to the **Virtual network** drop-down list, select **Create new**.
 1. On the **Create virtual network** blade, assign the following settings and select **OK**:
 
    |Setting|Value|
@@ -198,30 +198,30 @@ The main tasks for this exercise are as follows:
    |Subnet name|**10.10.0.0/24**|
 
 1. Back on the **Networking** tab of the **Create virtual network** blade, select **Next** (leave others with their existing values).
-1. On the **Administration** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select **Next**.
-1. On the **Synchronization** tab of the **Create Azure AD Domain Services** blade, ensure that **All** is selected and then select **Next**.
-1. On the **Security Settings** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select **Next**.
-1. On the **Tags** tab of the **Create Azure AD Domain Services** blade, accept the default settings and select Next
-2. On the **Review + create** tab of the **Create Azure AD Domain Services** blade, select **Create**. 
-3. Review the notification regarding settings that you will not be able to change following creation of the Azure AD DS domain and select **OK**.
+1. On the **Administration** tab of the **Create Microsoft Entra Domain Services** blade, accept the default settings and select **Next**.
+1. On the **Synchronization** tab of the **Create Microsoft Entra Domain Services** blade, ensure that **All** is selected and then select **Next**.
+1. On the **Security Settings** tab of the **Create Microsoft Entra Domain Services** blade, accept the default settings and select **Next**.
+1. On the **Tags** tab of the **Create Microsoft Entra Domain Services** blade, accept the default settings and select Next
+2. On the **Review + create** tab of the **Create Microsoft Entra Domain Services** blade, select **Create**. 
+3. Review the notification regarding settings that you will not be able to change following creation of the Microsoft Entra DS domain and select **OK**.
 
-   >**Note**: The settings that you will not be able to change following provisioning of an Azure AD DS domain include its DNS name, its Azure subscription, its resource group, the virtual network and subnet hosting its domain controllers, and the forest type.
+   >**Note**: The settings that you will not be able to change following provisioning of an Microsoft Entra DS domain include its DNS name, its Azure subscription, its resource group, the virtual network and subnet hosting its domain controllers, and the forest type.
 
    > **Note**: Wait for the deployment to complete before you proceed to the next exercise. This might take about 90 minutes. 
 
-#### Task 3: Configure the network and identity settings of the Azure AD DS deployment
+#### Task 3: Configure the network and identity settings of the Microsoft Entra DS deployment
 
-1. From your lab computer, in the Azure portal, search for and select **Azure AD Domain Services** and, from the **Azure AD Domain Services** blade, select the **adatum.com** entry to navigate to the newly provisioned Azure AD DS instance. 
-1. On the **adatum.com** blade of the Azure AD DS instance, click the warning starting with **Configuration issues for your managed domain were detected**. 
+1. From your lab computer, in the Azure portal, search for and select **Microsoft Entra Domain Services** and, from the **Microsoft Entra Domain Services** blade, select the **adatum.com** entry to navigate to the newly provisioned Microsoft Entra DS instance. 
+1. On the **adatum.com** blade of the Microsoft Entra DS instance, click the warning starting with **Configuration issues for your managed domain were detected**. 
 1. On the **adatum.com | Configuration diagnostics** blade, click **Run**.
 1. In the **Validation** section, expand the **DNS records** pane and click **Fix**.
 1. On the **DNS records** blade, click **Fix** again.
-1. Navigate back to the **adatum.com** blade of the Azure AD DS instance and, in the **Required configuration steps** section, review the information regarding the Azure AD DS password hash synchronization. 
+1. Navigate back to the **adatum.com** blade of the Microsoft Entra DS instance and, in the **Required configuration steps** section, review the information regarding the Microsoft Entra DS password hash synchronization. 
 
-   > **Note**: Any existing cloud-only users that need to be able to access Azure AD DS domain computers and their resources must either change their passwords or have them reset. This applies to the **aadadmin1** account you created earlier in this lab.
+   > **Note**: Any existing cloud-only users that need to be able to access Microsoft Entra DS domain computers and their resources must either change their passwords or have them reset. This applies to the **aadadmin1** account you created earlier in this lab.
 
 1. From your lab computer, in the Azure portal, open a **PowerShell** session in the **Cloud Shell** pane.
-1. From the PowerShell session in the Cloud Shell pane, run the following to identify the objectID attribute of the Azure AD **aadadmin1** user account:
+1. From the PowerShell session in the Cloud Shell pane, run the following to identify the objectID attribute of the Microsoft Entra **aadadmin1** user account:
 
    ```powershell
    Connect-AzureAD
@@ -242,14 +242,14 @@ The main tasks for this exercise are as follows:
 1. Repeat the previous two steps to reset the password for the **wvdaadmin1** user account.
 
 
-### Exercise 2: Configure the Azure AD DS domain environment
+### Exercise 2: Configure the Microsoft Entra DS domain environment
   
 The main tasks for this exercise are as follows:
 
 1. Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 1. Deploy Azure Bastion
-1. Review the default configuration of the Azure AD DS domain
-1. Create AD DS users and groups that will be synchronized to Azure AD DS
+1. Review the default configuration of the Microsoft Entra DS domain
+1. Create AD DS users and groups that will be synchronized to Microsoft Entra DS
 
 #### Task 1: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
@@ -270,7 +270,7 @@ The main tasks for this exercise are as follows:
 1.  At line 21, locate the value of the domainPassword parameter. Update the existing password in the parameter file to use the password that you set earlier in this lab for the **aadadmin1** user account, and then **Save** the file.
 
 1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11a.json** and **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploycl11a.parameters.json** into the Cloud Shell home directory.
-1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Azure Virtual Desktop client and join it to the Azure AD DS domain:
+1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Azure Virtual Desktop client and join it to the Microsoft Entra DS domain:
 
    ```powershell
    $resourceGroupName = 'az140-11a-RG'
@@ -327,13 +327,13 @@ The main tasks for this exercise are as follows:
    > **Note**: Wait for the deployment to complete before you proceed to the next task of this exercise. The deployment might take about 5 minutes.
 
 
-#### Task 3: Review the default configuration of the Azure AD DS domain
+#### Task 3: Review the default configuration of the Microsoft Entra DS domain
 
-> **Note**: Before you can sign in to the newly Azure AD DS joined computer, you need to add the user account you intend to sign in with to the **AAD DC Administrators** Azure AD group. This Azure AD group is created automatically in the Azure AD tenant associated with the Azure subscription where you provisioned the Azure AD DS instance.
+> **Note**: Before you can sign in to the newly Microsoft Entra DS joined computer, you need to add the user account you intend to sign in with to the **AAD DC Administrators** Microsoft Entra group. This Microsoft Entra group is created automatically in the Microsoft Entra tenant associated with the Azure subscription where you provisioned the Microsoft Entra DS instance.
 
-> **Note**: You have the option of populating this group with existing Azure AD user accounts when you provision an Azure AD DS instance.
+> **Note**: You have the option of populating this group with existing Microsoft Entra user accounts when you provision a Microsoft Entra DS instance.
 
-1. From your lab computer, in the Azure portal, from the Cloud Shell pane, run the following to add the **aadadmin1** Azure AD user account to the **AAD DC Administrators** Azure AD group:
+1. From your lab computer, in the Azure portal, from the Cloud Shell pane, run the following to add the **aadadmin1** Microsoft Entra user account to the **AAD DC Administrators** Microsoft Entra group:
 
    ```powershell
    Connect-AzureAD
@@ -358,16 +358,16 @@ The main tasks for this exercise are as follows:
    > **Note**: Wait for the installation to complete before you proceed to the next step. This might take about 2 minutes.
 
 1. Within the Bastion to the **az140-cl-vm11a** Azure VM, in the **Start** menu, navigate to the **Windows Administrative Tools** folder, expand it, and, from the list of tools, start **Active Directory Users and Computers**. 
-1. In the **Active Directory Users and Computers** console, review the default hierarchy, including the **AADDC Computers** and **AADDC Users** organizational units. Note that the former includes the **az140-cl-vm11a** computer account and the latter includes the user accounts synchronized from the Azure AD tenant associated with the Azure subscription hosting the deployment of Azure AD DS instance. The **AADDC Users** organizational unit also includes the **AAD DC Administrators** group synchronized from the same Azure AD tenant, along with its group membership. This membership cannot be modified directly within the Azure AD DS domain, but instead, you have to manage it within the Azure AD DS tenant. Any changes are automatically synchronized with the replica of the group hosted in the Azure AD DS domain. 
+1. In the **Active Directory Users and Computers** console, review the default hierarchy, including the **AADDC Computers** and **AADDC Users** organizational units. Note that the former includes the **az140-cl-vm11a** computer account and the latter includes the user accounts synchronized from the Microsoft Entra tenant associated with the Azure subscription hosting the deployment of Microsoft Entra DS instance. The **AADDC Users** organizational unit also includes the **AAD DC Administrators** group synchronized from the same Microsoft Entra tenant, along with its group membership. This membership cannot be modified directly within the Microsoft Entra DS domain, but instead, you have to manage it within the Microsoft Entra DS tenant. Any changes are automatically synchronized with the replica of the group hosted in the Microsoft Entra DS domain. 
 
    **Hint:** If the **Active Directory Users and Computers** does not list out any domain related content then Right-Click on the **Active Directory Users and Computers** and select **Change Domain** and choose the domain **Adatum**.
 
    > **Note**: Currently, the group includes only the **aadadmin1** user account.
 
-1. In the **Active Directory Users and Computers** console, in the **AADDC Users** OU, select the **aadadmin1** user account, display its **Properties** dialog box, switch to the **Accounts** tab, and note that the user principal name suffix matches the primary Azure AD DNS domain name and is not modifiable. 
+1. In the **Active Directory Users and Computers** console, in the **AADDC Users** OU, select the **aadadmin1** user account, display its **Properties** dialog box, switch to the **Accounts** tab, and note that the user principal name suffix matches the primary Microsoft Entra DNS domain name and is not modifiable. 
 1. In the **Active Directory Users and Computers** console, review the content of the **Domain Controllers** organizational unit and note that it includes computer accounts of two domain controllers with randomly generated names. 
 
-#### Task 4: Create AD DS users and groups that will be synchronized to Azure AD DS
+#### Task 4: Create AD DS users and groups that will be synchronized to Microsoft Entra DS
 
 1. Within the Bastion to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set earlier in this lab as its password.
 1. In the Azure portal, open the **Cloud Shell**.
@@ -375,19 +375,19 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Since this is the first time you are starting **Cloud Shell** by using the **aadadmin1** user account, you will need to configure its Cloud Shell home directory. When presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to sign in to authenticate to your Azure AD tenant:
+1. From the PowerShell session in the Cloud Shell pane, run the following to sign in to authenticate to your Microsoft Entra tenant:
 
    ```powershell
    Connect-AzureAD
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to retrieve the primary DNS domain name of the Azure AD tenant associated with your Azure subscription:
+1. From the PowerShell session in the Cloud Shell pane, run the following to retrieve the primary DNS domain name of the Microsoft Entra tenant associated with your Azure subscription:
 
    ```powershell
    $aadDomainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to create the Azure AD user accounts you will use in the upcoming labs (replace the `<password>` placeholder with a random, complex password):
+1. From the PowerShell session in the Cloud Shell pane, run the following to create the Microsoft Entra user accounts you will use in the upcoming labs (replace the `<password>` placeholder with a random, complex password):
 
    > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.
 
@@ -402,7 +402,7 @@ The main tasks for this exercise are as follows:
    } 
    ```
 
-1. From the PowerShell session in the Cloud Shell pane, run the following to create an Azure AD group named **az140-wvd-aadmins** and add to it the **aadadmin1** and **wvdaadmin1** user accounts:
+1. From the PowerShell session in the Cloud Shell pane, run the following to create a Microsoft Entra group named **az140-wvd-aadmins** and add to it the **aadadmin1** and **wvdaadmin1** user accounts:
 
    ```powershell
    $az140wvdaadmins = New-AzureADGroup -Description 'az140-wvd-aadmins' -DisplayName 'az140-wvd-aadmins' -MailEnabled $false -SecurityEnabled $true -MailNickName 'az140-wvd-aadmins'
@@ -412,7 +412,7 @@ The main tasks for this exercise are as follows:
    Add-AzureADGroupMember -ObjectId $az140wvdaadmins.ObjectId -RefObjectId $userObjectId
    ```
 
-1. From the Cloud Shell pane, repeat the previous step to create Azure AD groups for users that you will use in the upcoming labs and add to them previously created Azure AD user accounts:
+1. From the Cloud Shell pane, repeat the previous step to create Microsoft Entra groups for users that you will use in the upcoming labs and add to them previously created Microsoft Entra user accounts:
 
    >**Note**: Note: Because of the limited size of the Clipboard on the virtual machine, not all the listed cmdlets will copy over correctly. Open up Notepad on the virtual machine and copy all of the cmdlets to it by using the Type Text, Type Clipboard Text construct that is part of the Lightning Bolt control. Once you have ensured that all of the cmdlets are in Notepad, cut and paste them in blocks into the Cloud Shell and run them.
 
@@ -465,8 +465,8 @@ The main tasks for this exercise are as follows:
    ```
 
 1. Close the Cloud Shell pane.
-1. Within the Bastion to the **az140-cl-vm11a** Azure VM, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** blade, on your Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Users** and, on the **Users \| All users** blade, verify that new user accounts have been created.
-1. Navigate back to the Azure AD tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Groups** and, on the **Groups \| All groups** blade, verify that new group accounts have been created.
+1. Within the Bastion to the **az140-cl-vm11a** Azure VM, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** blade, on your Microsoft Entra tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Users** and, on the **Users \| All users** blade, verify that new user accounts have been created.
+1. Navigate back to the Microsoft Entra tenant blade, in the vertical menu bar on the left side, in the **Manage** section, select **Groups** and, on the **Groups \| All groups** blade, verify that new group accounts have been created.
 1. Within the Bastion to the **az140-cl-vm11a** Azure VM, switch to the **Active Directory Users and Computers** console, in the **Active Directory Users and Computers** console, navigate to the **AADDC Users** OU, and verify that it contains the same user and group accounts.
 
    >**Note**: You might have to refresh the view of the console.
