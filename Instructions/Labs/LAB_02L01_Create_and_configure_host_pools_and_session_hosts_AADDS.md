@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Lab: Create and configure host pools and session hosts (Azure AD DS)'
-    module: 'Module 2: Implement a AVD Infrastructure'
+    title: 'Lab: Create and configure host pools and session hosts (Microsoft Entra DS)'
+    module: 'Module 2: Implement an AVD Infrastructure'
 ---
 
-# Lab - Create and configure host pools and session hosts (Azure AD DS)
+# Lab - Create and configure host pools and session hosts (Microsoft Entra DS)
 # Student lab manual
 
 ## Lab dependencies
 
 - An Azure subscription
-- A Microsoft account or an Azure AD account with the Global Administrator role in the Azure AD tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
-- The completed lab **Prepare for deployment of Azure Virtual Desktop (Azure AD DS)**
+- A Microsoft account or a Microsoft Entra account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
+- The completed lab **Prepare for deployment of Azure Virtual Desktop (Microsoft Entra DS)**
 
 ## Estimated Time
 
@@ -19,14 +19,14 @@ lab:
 
 ## Lab scenario
 
-You need to create and configure host pools and session hosts in an Azure Active Directory Domain Services (Azure AD DS) environment.
+You need to create and configure host pools and session hosts in an Azure Active Directory Domain Services (Microsoft Entra DS) environment.
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Configure an Azure Virtual Desktop environment in an Azure AD DS domain. 
-- Validate Azure Virtual Desktop environment in an Azure AD DS domain. 
+- Configure an Azure Virtual Desktop environment in a Microsoft Entra DS domain. 
+- Validate Azure Virtual Desktop environment in a Microsoft Entra DS domain. 
 
 ## Lab files
 
@@ -57,7 +57,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion to the **az140-cl-vm11a** Azure VM, start Microsoft Edge, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing user principal name of the **aadadmin1** user account with the password you set when creating this account.
 
-   >**Note**: You can identify the user principal name (UPN) attribute of the **aadadmin1** account by reviewing its properties dialog box from the Active Directory Users and Computers console or by switching back to your lab computer and reviewing its properties from the Azure AD tenant blade in the Azure portal.
+   >**Note**: You can identify the user principal name (UPN) attribute of the **aadadmin1** account by reviewing its properties dialog box from the Active Directory Users and Computers console or by switching back to your lab computer and reviewing its properties from the Microsoft Entra tenant blade in the Azure portal.
 
 1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge displaying the Azure portal, open a PowerShell session in the **Cloud Shell** and run the following register the **Microsoft.DesktopVirtualization** resource provider:
 
@@ -78,13 +78,13 @@ The main tasks for this exercise are as follows:
    |Subscription|the name of the Azure subscription you are using in this lab|
    |Resource group|the name of a new resource group **az140-21a-RG**|
    |Host pool name|**az140-21a-hp1**|
-   |Location|the name of the Azure region into which you deployed the Azure AD DS instance earlier in this lab|
+   |Location|the name of the Azure region into which you deployed the Microsoft Entra DS instance earlier in this lab|
    |Validation environment|**No**|
    |Host pool type|**Pooled**|
    |Max session limit|**12**|
    |Load balancing algorithm|**Breadth-first**|
 
-1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Azure AD tenant associated with the subscription into which you deployed the Azure AD DS instance and replace the `<password>` placeholder with the password you set when creating the aadadmin1 account):
+1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Microsoft Entra tenant associated with the subscription into which you deployed the Microsoft Entra DS instance and replace the `<password>` placeholder with the password you set when creating the aadadmin1 account):
 
    > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.:
 
@@ -128,7 +128,7 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Application groups** blade, select the auto-generated **az140-21a-hp1-DAG** desktop application group.
 1. On the **az140-21a-hp1-DAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Assignments**.
 1. On the **az140-21a-hp1-DAG \| Assignments** blade, select **+ Add**.
-1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-apooled** and click **Select**.
+1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-apooled** and click **Select**.
 1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, and select **+ Create**.
 1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
 
@@ -171,8 +171,8 @@ The main tasks for this exercise are as follows:
    |Require command line|**No**|
 
 1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
-1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Azure AD users or user groups**.
-1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-aremote-app** and click **Select**.
+1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
+1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-aremote-app** and click **Select**.
 1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
@@ -211,8 +211,8 @@ The main tasks for this exercise are as follows:
    |Require command line|**No**|
 
 1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
-1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Azure AD users or user groups**.
-1. On the **Select Azure AD users or user groups** blade, select **az140-wvd-aremote-app** and **az140-wvd-aadmins** and click **Select**.
+1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
+1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-aremote-app** and **az140-wvd-aadmins** and click **Select**.
 1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
@@ -266,7 +266,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Alternatively, in the **Remote Desktop** client window, select **Subscribe with URL**, in the **Subscribe to a Workspace** pane, in the **Email or Workspace URL**, type **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery**, select **Next**, and, once prompted, sign in with the **aaduser1** credentials (using its userPrincipalName attribute as the user name and **Pa55w.rd1234** as its password). 
 
-   > **Note**: The user principal name of **aaduser1** should be in the format **aaduser1@***<Azure_AD_domain_name>*, where the *<Azure_AD_domain_name>* placeholder matches the name of the Azure AD tenant associated with the subscription into which you deployed the Azure AD DS instance.
+   > **Note**: The user principal name of **aaduser1** should be in the format **aaduser1@***<Azure_AD_domain_name>*, where the *<Azure_AD_domain_name>* placeholder matches the name of the Microsoft Entra tenant associated with the subscription into which you deployed the Microsoft Entra DS instance.
 
 1. In the **Stay signed in to all your apps** window, clear the checkbox **Allow my organization to manage my device** checkbox and select **No, sign in to this app only**. 
 1. Ensure that the **Remote Desktop** page displays the listing of applications that are included in the application groups associated with the user account **aaduser1** via its group membership. 
