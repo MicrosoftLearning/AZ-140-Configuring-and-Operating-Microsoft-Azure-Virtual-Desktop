@@ -63,7 +63,7 @@
       "value": "MicrosoftWindowsDesktop"
     },
     "vmGalleryImageSKU": {
-      "value": "20h1-evd-o365pp"
+      "value": "win11-22h2-avd-m365"
     },
     "vmImageVhdUri": {
       "value": null

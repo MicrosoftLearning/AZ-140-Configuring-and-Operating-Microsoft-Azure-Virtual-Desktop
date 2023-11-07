@@ -246,7 +246,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |VM Image definition name|**az140-25-host-image**|
    |Publisher|**MicrosoftWindowsDesktop**|
    |Offer|**office-365**|
-   |SKU|**20h1-evd-o365pp**|
+   |SKU|**win11-22h2-avd-m365**|
 
 1. Back on the **Basics** tab of the **Create an image** blade, specify the following settings and click **Review + create**:
 
