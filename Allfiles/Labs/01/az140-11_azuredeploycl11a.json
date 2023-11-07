@@ -83,7 +83,7 @@
     "storageAccountName": "[concat(uniquestring(resourceGroup().id, deployment().name))]",
     "imagePublisher": "MicrosoftWindowsDesktop",
     "imageOffer": "Windows-10",
-    "windowsOSVersion": "20h2-pro",
+    "windowsOSVersion": "22h2-pro",
     "nicName": "[concat(parameters('vmName'),'-nic')]",
     "nsgName": "[concat(parameters('vmName'),'-nsg')]",
     "subnetId": "[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks/subnets', parameters('existingVNETName'), parameters('existingSubnetName'))]",

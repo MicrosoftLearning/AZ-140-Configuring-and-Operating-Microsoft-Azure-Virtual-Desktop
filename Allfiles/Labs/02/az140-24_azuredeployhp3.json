@@ -115,7 +115,7 @@
     "subnetID": "[concat(variables('vnetID'), '/subnets/', parameters('existingSubnetName'))]",
     "imagePublisher": "MicrosoftWindowsDesktop",
     "imageOffer": "office-365",
-    "imageSku": "20h2-evd-o365pp-g2",
+    "imageSku": "win11-22h2-avd-m365",
     "windowsImage": {
       "publisher": "[variables('imagePublisher')]",
       "offer": "[variables('imageOffer')]",
