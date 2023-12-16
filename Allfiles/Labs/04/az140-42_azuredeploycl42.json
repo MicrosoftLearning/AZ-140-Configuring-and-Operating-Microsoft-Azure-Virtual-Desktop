@@ -89,7 +89,7 @@
     "storageAccountName": "[concat(uniquestring(resourceGroup().id, deployment().name))]",
     "imagePublisher": "MicrosoftWindowsDesktop",
     "imageOffer": "Windows-10",
-    "windowsOSVersion": "22h2-pro",
+    "windowsOSVersion": "Win10-22h2-pro",
     "nicName": "[concat(parameters('vmName'),'-nic')]",
     "subnetId": "[resourceId(parameters('existingVNetResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('existingVNETName'), parameters('existingSubnetName'))]",
     "computeAPIVersion": "2019-07-01",
