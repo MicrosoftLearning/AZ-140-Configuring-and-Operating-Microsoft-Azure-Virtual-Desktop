@@ -264,7 +264,7 @@ The main tasks for this exercise are as follows:
    |Application group name|**az140-21-hp1-Utilities-RAG**|
 
 1. On the **Applications** tab of the **Create an application group** blade, select **+ Add applications**.
-1. On the **Add application** blade, specify the following settings and select **Save**:
+1. On the **Add application** blade, use the **Basics** and **Index** tabs to specify the following settings and select **Save**:
 
    |Setting|Value|
    |---|---|
