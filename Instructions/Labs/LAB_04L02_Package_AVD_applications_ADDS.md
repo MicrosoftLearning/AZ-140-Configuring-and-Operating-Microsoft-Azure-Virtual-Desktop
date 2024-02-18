@@ -38,6 +38,8 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
+>**Important**: Microsoft renamed **Azure Active Directory** (**Azure AD**) to **Microsoft Entra ID**. For details regarding this change, refer to [New name for Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). This is an ongoing effort, so you might still encounter instances where there is a mismatch between the lab instruction and the elements of the interface as you step through individual exercises. Take this into considerations (in particular, in this lab, the **Microsoft Entra Connect** designates the new name of **Azure Active Directory Connect**).
+
 ### Exercise 1: Prepare for and create MSIX app packages
 
 The main tasks for this exercise are as follows:
