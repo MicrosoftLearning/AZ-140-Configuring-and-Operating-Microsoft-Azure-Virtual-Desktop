@@ -37,6 +37,8 @@ After completing this lab, you will be able to:
 
 >**Important**: Microsoft renamed **Azure Active Directory** (**Azure AD**) to **Microsoft Entra ID**. For details regarding this change, refer to [New name for Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). This is an ongoing effort, so you might still encounter instances where there is a mismatch between the lab instruction and the elements of the interface as you step through individual exercises. Take this into considerations (in particular, in this lab, the **Microsoft Entra Connect** designates the new name of **Azure Active Directory Connect** and the term **Azure Active Directory** is still used when configuring the service connection point in task 4 of exercise 1).
 
+>**Important**: Activating a Microsoft Entra ID P2 trial requires providing credit card information. For this reason, this exercise is entirely optional. Instead, course instructors might choose to demonstrate this functionality to students.
+
 ### Exercise 1: Prepare for Microsoft Entra-based Conditional Access for Azure Virtual Desktop
 
 The main tasks for this exercise are as follows:
@@ -51,7 +53,10 @@ The main tasks for this exercise are as follows:
 
 >**Note**: Premium P1 or P2 licensing of Microsoft Entra is required in order to implement Microsoft Entra Conditional Access. You will use a 30-day trial for this lab.
 
-1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab and the Global Administrator role in the Microsoft Entra tenant associated with that subscription.
+1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing a Microsoft Entra credentials of a user account with the Owner role in the subscription you will be using in this lab and the Global Administrator role in the Microsoft Entra tenant associated with that subscription.
+
+    >**Important**: Ensure that you are using a work or school account, **not** a Microsoft account.
+
 1. In the Azure portal, search for and select **Azure Active Directory** to navigate to the Microsoft Entra tenant associated with the Azure subscription you are using for this lab.
 1. On the Azure Active Directory blade, in the vertical menu bar on the left side, in the **Manage** section, click **Users**. 
 1. On the **Users | All users (Preview)** blade, select **aduser5**.
@@ -71,8 +76,7 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, navigate back to the **Overview** blade of the Microsoft Entra tenant and, in the vertical menu bar on the left side, in the **Manage** section, click **Licenses**.
 1. On the **Licenses \| Overview** blade, in the vertical menu bar on the left side, in the **Manage** section, click **All products**.
 1. On the **Licenses \| All products** blade, in the toolbar, click **+ Try/Buy**.
-1. On the **Activate** blade, click **Free trial** in the **ENTERPRISE MOBILITY + SECURITY E5** section and then click **Activate**. 
-1. While on the **Licenses \| Overview** blade, refresh the browser window to verify that the activation was successful. 
+1. On the **Activate** blade, click **Free trial** in the **MICROSOFT ENTRA ID P2** section and then click **Activate** and follow prompts to complete the activation process.
 1. On the **Licenses - All products** blade, select the **Enterprise Mobility + Security E5** entry. 
 1. On the **Enterprise Mobility + Security E5** blade, in the toolbar, click **+ Assign**.
 1. On the **Assign license** blade, click **Add users and groups**, on the **Add users and groups** blade, select **aduser5** and your user account, and click **Select**.
