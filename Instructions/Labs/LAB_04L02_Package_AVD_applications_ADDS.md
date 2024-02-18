@@ -464,18 +464,17 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Application groups** blade, select the **az140-21-hp1-Utilities-RAG** application group entry.
 1. On the **az140-21-hp1-Utilities-RAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Applications**. 
 1. On the **az140-21-hp1-Utilities-RAG \| Applications** blade, click **+ Add**.
-1. On the **Add application** blade, specify the following settings and select **Save**:
+1. On the **Add application** blade, on the **Basics** and **Icon** tabs, specify the following settings and select **Save**:
 
    |Setting|Value|
    |---|---|
-   |Application source|**MSIX package**|
-   |MSIX package|the name representing the package included in the image|
-   |MSIX application|**XMLNOTEPAD**|
-   |Application name|**XML Notepad**|
+   |Application source|**App Attach**|
+   |Package|the name representing the package included in the image|
+   |Application|**XMLNOTEPAD**|
+   |Application identifier|**XML Notepad**|
    |Display name|**XML Notepad**|
    |Description|**XML Notepad**|
-   |Icon path|**C:\\Program Files\\WindowsApps\\XmlNotepad_2.8.0.0_x64__4vm7ty4fw38e8\\VFS\\ProgramFilesX86\\LovettSoftware\\XmlNotepad\\XmlNotepad.exe**|
-   |Icon index|**0**|
+   |Icon source|**Default**|
 
 1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade and select the **az140-21-hp1-DAG** application group entry.
 1. On the **az140-21-hp1-DAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Applications**. 
