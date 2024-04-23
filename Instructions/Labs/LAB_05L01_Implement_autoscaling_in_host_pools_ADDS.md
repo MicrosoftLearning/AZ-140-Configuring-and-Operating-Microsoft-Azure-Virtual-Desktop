@@ -40,7 +40,8 @@ After completing this lab, you will be able to:
 The main tasks for this exercise are as follows:
 
 1. Prepare for scaling Azure Virtual Desktop session hosts
-2. Create a scaling plan for Azure Virtual Desktop session hosts
+2. Set up diagnostics to track Azure Virtual Desktop autoscaling
+3. Create a scaling plan for Azure Virtual Desktop session hosts
 
 #### Task 1: Prepare for scaling Azure Virtual Desktop session hosts
 
@@ -65,22 +66,59 @@ The main tasks for this exercise are as follows:
 1. In the Azure portal, search for and select **Subscriptions** and, from the list of subscriptions, select the one that contains the Azure Virtual Desktop resources. 
 1. On the subscription page, select **Access control (IAM)**.
 1. On the **Access control (IAM)** page, in the toolbar, select the **+ Add button**, then select **Add role assignment** from the drop-down menu.
-1. On the **Role** tab of the **Add role assignment** wizard, search for and select the **Desktop Virtualization Power On Off Contributor** role and click **Next**.
-1. On the **Members** tab of the **Add role assignment** wizard, select **+ Select members**, search for and select either **Azure Virtual Desktop** or **Windows Virtual Desktop**, click **Select** and click **Next**.
+1. On the **Add role assignment** blade, on the **Role** tab, specify the following settings and select **Next**:
+
+   |Setting|Value|
+   |---|---|
+   |Job function role|**Desktop Virtualization Power On Off Contributor**|
+
+1. On the **Add role assignment** blade, on the **Members** tab, click **+ Select members**, specify the following settings and click **Select**. 
+
+   |Setting|Value|
+   |---|---|
+   |Select|**Azure Virtual Desktop** or **Windows Virtual Desktop**|
+
+1. On the **Add role assignment** blade, select **Review + assign**
 
    >**Note**: The value depends on when the **Microsoft.DesktopVirtualization** resource provider was first registered in your Azure tenant.
 
 1. On the **Review + assign** tab, select **Review + assign**.
 
-#### Task 2: Create a scaling plan for Azure Virtual Desktop session hosts
+#### Task 2: Set up diagnostics to track Azure Virtual Desktop autoscaling
+
+1. On the lab computer, in the web browser window displaying the Azure portal, open a **PowerShell** session in the **Cloud Shell** pane.
+
+   >**Note**: You will use an Azure Storage account to store autoscaling events. You can create it directly from the Azure portal or use Azure PowerShell as illustrated in this task.
+
+1. From the PowerShell session in the Cloud Shell pane, run the following commands to create an Azure Storage account:
+
+   ```powershell
+   $resourceGroupName = 'az140-51-RG'
+   $location = (Get-AzResourceGroup -ResourceGroupName 'az140-11-RG').Location
+   New-AzResourceGroup -Location $location -Name $resourceGroupName
+   $suffix = Get-Random
+   $storageAccountName = "az140st51$suffix"
+   New-AzStorageAccount -Location $location -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName Standard_LRS
+   ```
+
+   >**Note**: Wait until the storage account is provisioned.
+
+1. In the browser window displaying the Azure portal, close the Cloud Shell pane.
+1. On your lab computer, in the browser displaying the Azure portal, navigate to the page of the **az140-21-hp1** host pool.
+1. On the **az140-21-hp1** page, select **Diagnostic settings** and then select **+ Add diagnostic setting**.
+1. On the **Diagnostic setting** page, in the **Diagnostic setting name** textbox, enter **az140-51-scaling-plan-diagnostics** and, in the **Category groups** section, select **Autoscale logs for pooled host pools**. 
+1. On the same page, in the **Destination details** section, select **Archive to a storage account** and, in the **Storage account** drop-down list, select the strorage account name starting with the **az140st51** prefix.
+1. Select **Save**.
+
+#### Task 3: Create a scaling plan for Azure Virtual Desktop session hosts
 
 1. On your lab computer, in the browser displaying the Azure portal, search for and select **Azure Virtual Desktop**. 
 1. On the **Azure Virtual Desktop** page, select **Scaling Plans** and then select **+ Create**.
-1. On the **Basics** tab of the **Create a scaling plan** wizard, specify the following information and select **Next Schedules >** (leave others with their default values):
+1. On the **Basics** tab of the **Create a scaling plan** wizard, specify the following information and select **Next: Schedules >** (leave others with their default values):
 
    |Setting|Value|
    |---|---|
-   |Resource group|the name **az140-51-RG** of a new resource group|
+   |Resource group|**az140-51-RG**|
    |Name|**az140-51-scaling-plan**|
    |Location|the same Azure region to which you deployed the session hosts in the previous labs|
    |Friendly name|**az140-51 scaling plan**|
@@ -154,35 +192,10 @@ The main tasks for this exercise are as follows:
 
 The main tasks for this exercise are as follows:
 
-1. Set up diagnostics to track Azure Virtual Desktop autoscaling
 1. Verify autoscaling of Azure Virtual Desktop session hosts
 
-#### Task 1: Set up diagnostics to track Azure Virtual Desktop autoscaling
 
-1. On the lab computer, in the web browser window displaying the Azure portal, open a **PowerShell** session in the **Cloud Shell** pane.
-
-   >**Note**: You will use an Azure Storage account to store autoscaling events. You can create it directly from the Azure portal or use Azure PowerShell as illustrated in this task.
-
-1. From the PowerShell session in the Cloud Shell pane, run the following commands to create an Azure Storage account:
-
-   ```powershell
-   $resourceGroupName = 'az140-51-RG'
-   $location = (Get-AzResourceGroup -ResourceGroupName $resourceGroupName).Location
-   $suffix = Get-Random
-   $storageAccountName = "az140st51$suffix"
-   New-AzStorageAccount -Location $location -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName Standard_LRS
-   ```
-
-   >**Note**: Wait until the storage account is provisioned.
-
-1. In the browser window displaying the Azure portal, close the Cloud Shell pane.
-1. On your lab computer, in the browser displaying the Azure portal, navigate to the page of the scaling plan you created in the previous exercise.
-1. On the **az140-51-scaling-plan** page, select **Diagnostic settings** and then select **+ Add diagnostic setting**.
-1. On the **Diagnostic setting** page, in the **Diagnostic setting name** textbox, enter **az140-51-scaling-plan-diagnostics** and, in the **Category groups** section, select **allLogs**. 
-1. On the same page, in the **Destination details** section, select **Archive to a storage account** and, in the **Storage account** drop-down list, select the strorage account name starting with the **az140st51** prefix.
-1. Select **Save**.
-
-#### Task 2: Verify autoscaling of Azure Virtual Desktop session hosts
+#### Task 1: Verify autoscaling of Azure Virtual Desktop session hosts
 
 1. On the lab computer, in the web browser window displaying the Azure portal, open a **PowerShell** session in the **Cloud Shell** pane.
 1. From the PowerShell session in the Cloud Shell pane, run the following command to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
@@ -197,18 +210,18 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21-hp1** page, select **Session hosts**.
 1. Wait until at least one session host is listed with the **Shutdown** status.
 
-   >**Note**: You might need to refresh the page to update the status of the session hosts.
+   > **Note**: You might need to refresh the page to update the status of the session hosts.
 
-   >**Note**: If all session hosts remain available, navigate back to the **az140-51-scaling-plan** page and reduce the value of the **Minimum percentage of hosts (%)** **Ramp down** setting.
+   > **Note**: If all session hosts remain available after 15 minutes, navigate back to the **az140-51-scaling-plan** page and reduce the value of the **Minimum percentage of hosts (%)** **Ramp down** setting.
 
-   >**Note**: Once the status of one or more session hosts changes, the autoscaling logs should be available in the Azure Storage account. 
+   > **Note**: Once the status of one or more session hosts changes, the autoscaling logs should be available in the Azure Storage account. 
 
 1. In the Azure portal, search and select **Storage accounts** and, on the **Storage accounts** page, select the entry representing the storage account created earlier in this exercise (which name starts with the **az140st51** prefix).
 1. On the storage account page, select **Containers**.
-1. In the list of containers, select **insights-logs-autoscale**.
-1. On the **insights-logs-autoscale** page, navigate through the folder hierarchy until you reach the entry representing a JSON-formatted blob stored in the container.
+1. In the list of containers, select **insights-logs-autoscaleevaluationpooled**.
+1. On the **insights-logs-autoscaleevaluationpooled** page, navigate through the folder hierarchy until you reach the entry representing a JSON-formatted blob stored in the container.
 1. Select the blob entry, select the ellipsis icon on the far right of the page, and, in the drop-down menu, select **Download**.
-1. On your lab computer, open the downloaded blob in a text editor of your choice and examine its content. You should be able to find there references to autoscaling events. 
+1. On your lab computer, open the downloaded blob in a text editor of your choice and examine its content. You should be able to find  references to autoscaling events, and in this case, we can search for 'deallocated' to make this easier to identify.
 
    >**Note**: Here is a sample blob content that includes references to autoscaling events:
 
@@ -219,7 +232,7 @@ The main tasks for this exercise are as follows:
    time	"2023-03-26T19:35:46.0074598Z"
    resourceId	"/SUBSCRIPTIONS/AAAAAAAE-0000-1111-2222-333333333333/RESOURCEGROUPS/AZ140-51-RG/PROVIDERS/MICROSOFT.DESKTOPVIRTUALIZATION/SCALINGPLANS/AZ140-51-SCALING-PLAN"
    operationName	"ScalingEvaluationSummary"
-   category	"Autoscale"
+   category	"AutoscaleEvaluationPooled"
    resultType	"Succeeded"
    level	"Informational"
    correlationId	"ddd3333d-90c2-478c-ac98-b026d29e24d5"

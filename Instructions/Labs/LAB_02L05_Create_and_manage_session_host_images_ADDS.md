@@ -19,7 +19,7 @@ lab:
 
 ## Lab scenario
 
-You need to create and manage Azure Virtual Desktop host images in a Microsoft Entra DS environment.
+You need to create and manage Azure Virtual Desktop host images in an AD DS environment.
 
 ## Objectives
   
@@ -34,22 +34,22 @@ After completing this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 1: Create and manage session host images
+### Exercise 1: Create and manage a session host image
   
 The main tasks for this exercise are as follows:
 
 1. Prepare for configuration of a Azure Virtual Desktop host image
 1. Deploy Azure Bastion
-1. Configure a Azure Virtual Desktop host image
-1. Create a Azure Virtual Desktop host image
-1. Provision a Azure Virtual Desktop host pool by using the custom image
+1. Configure an Azure Virtual Desktop host image
+1. Create an Azure Virtual Desktop host image
+1. Provision an Azure Virtual Desktop host pool by using the custom image
 
 #### Task 1: Prepare for configuration of a Azure Virtual Desktop host image
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. If prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
-1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group that will contain the Azure Virtual Desktop host image:
+1. On the lab computer, in the web browser displaying the Azure portal, from the PowerShell session in the Cloud Shell pane, run the following to create a resource group that will be used to contain the Azure Virtual Desktop host image:
 
    ```powershell
    $vnetResourceGroupName = 'az140-11-RG'
@@ -59,7 +59,7 @@ The main tasks for this exercise are as follows:
    ```
 
 1. In the Azure portal, in the toolbar of the Cloud Shell pane, select the **Upload/Download files** icon, in the drop-down menu select **Upload**, and upload the files **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_azuredeployvm25.json** and **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_azuredeployvm25.parameters.json** into the Cloud Shell home directory.
-1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 10 that will serve as a Azure Virtual Desktop client into the newly created subnet:
+1. From the PowerShell session in the Cloud Shell pane, run the following to deploy an Azure VM running Windows 11 Enterprise multi-session that will serve as the source image:
 
    ```powershell
    New-AzResourceGroupDeployment `
@@ -69,7 +69,7 @@ The main tasks for this exercise are as follows:
      -TemplateParameterFile $HOME/az140-25_azuredeployvm25.parameters.json
    ```
 
-   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 10 minutes.
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment should take about 5-10 minutes.
 
 #### Task 2: Deploy Azure Bastion 
 
@@ -109,20 +109,18 @@ The main tasks for this exercise are as follows:
 
 1. On the **Review + create** tab of the **Create a Bastion** blade, select **Create**:
 
-   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 5 minutes.
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 10 minutes.
 
-#### Task 3: Configure a Azure Virtual Desktop host image
+#### Task 3: Configure an Azure Virtual Desktop host image
 
 1. In the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select **az140-25-vm0**.
-1. On the **az140-25-vm0** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-25-vm0 \| Connect** blade, select **Use Bastion**.
+1. On the **az140-25-vm0** blade, select **Connect**, in the drop-down menu, select **Connect via Bastion**.
 1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
    |---|---|
    |User Name|**Student**|
    |Password|**Pa55w.rd1234**|
-
-   > **Note**: You will start by installing FSLogix binaries.
 
 1. Within the Bastion session to **az140-25-vm0**, start **Windows PowerShell ISE** as administrator.
 1. Within the Bastion session to **az140-25-vm0**, from the **Administrator: Windows PowerShell ISE** console, run the following to create a folder you will use as a temporary location for configuration of the image:
@@ -131,17 +129,9 @@ The main tasks for this exercise are as follows:
    New-Item -Type Directory -Path 'C:\Allfiles\Labs\02' -Force
    ```
 
-1. Within the Bastion session to **az140-25-vm0**, start Microsoft Edge, browse to [FSLogix download page](https://aka.ms/fslogix_download), download FSLogix compressed installation binaries into the **C:\\Allfiles\\Labs\\02** folder and, from File Explorer, extract the **x64** subfolder into the same folder.
-1. Within the Bastion session to **az140-25-vm0**, switch to the **Administrator: Windows PowerShell ISE** window and, from the **Administrator: Windows PowerShell ISE** console, run the following to perform per-machine installation of OneDrive:
+   > **Note**: You will step through installation and configuration of Classic Microsoft Teams (for learning purposes, since Teams is already present on the image used for this lab).
 
-   ```powershell
-   Start-Process -FilePath 'C:\Allfiles\Labs\02\x64\Release\FSLogixAppsSetup.exe' -ArgumentList '/quiet' -Wait
-   ```
-
-   > **Note**: Wait for the installation to complete. This might take about 1 minute. If the installation triggers a reboot, re-connect to **az140-25-vm0**.
-
-   > **Note**: Next, you will step through installation and configuration of Microsoft Teams (for learning purposes, since Teams are already present on the image used for this lab).
-
+1. Within the Bastion session to **az140-25-vm0**, go to **Control Panel > Programs > Programs and Features**, right-click on the **Teams Machine-Wide Installer** program and select **Uninstall**.
 1. Within the Bastion session to **az140-25-vm0**, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** textbox, type **cmd** and press the **Enter** key to start **Command Prompt**.
 1. In the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the following to prepare for per-machine installation of Microsoft Teams:
 
@@ -156,8 +146,7 @@ The main tasks for this exercise are as follows:
    C:\Allfiles\Labs\02\vc_redist.x64.exe /install /passive /norestart /log C:\Allfiles\Labs\02\vc_redist.log
    ```
 
-1. Within the Bastion session to **az140-25-vm0**, in Microsoft Edge, browse to the documentation page titled [
-Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm), click the **64-bit version** link, and, when prompted, save the **Teams_windows_x64.msi** file into the **C:\\Allfiles\\Labs\\02** folder.
+1. Within the Bastion session to **az140-25-vm0**, in Microsoft Edge, browse to the documentation page titled [Deploy the Teams desktop app to the VM](https://learn.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm), click the **64-bit version** link, and, when prompted, save the **Teams_windows_x64.msi** file into the **C:\\Allfiles\\Labs\\02** folder.
 1. Within the Bastion session to **az140-25-vm0**, switch to the **Administrator: C:\windows\system32\cmd.exe** window and, from the command prompt, run the following to perform per-machine installation of Microsoft Teams:
 
    ```cmd
@@ -165,9 +154,8 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    ```
 
    > **Note**: The installer supports the ALLUSER=1 and ALLUSERS=1 parameters. The ALLUSER=1 parameter is intended for per-machine installation in VDI environments. The ALLUSERS=1 parameter can be used in non-VDI and VDI environments. 
-   > **Note** if you encounter an error stating **Another version of the product is already installed**, then complete the following steps: Go to **Control Panel > Programs > Programs and Features** Right-click on the **Teams Machine-Wide Installer** program and select **Uninstall**. Proceed with removal of the program, and rerun step 13 above. 
 
-1. Within the Bastion session to **az140-25-vm0**, start the **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** console, run the following to install Microsoft Edge Chromium (for learning purposes, since Edge is already present on the image used for this lab).:
+1. Within the Bastion session to **az140-25-vm0**, start the **Windows PowerShell ISE** as Administrator and, from the **Administrator: Windows PowerShell ISE** console, run the following to install Microsoft Edge (for learning purposes, since Edge is already present on the image used for this lab).:
 
    ```powershell
    Start-BitsTransfer -Source "https://aka.ms/edge-msi" -Destination 'C:\Allfiles\Labs\02\MicrosoftEdgeEnterpriseX64.msi'
@@ -178,7 +166,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    > **Note**: When operating in a multi-language environment, you might need to install language packs. For details regarding this procedure, refer to the Microsoft Docs article [Add language packs to a Windows 10 multi-session image](https://docs.microsoft.com/en-us/azure/virtual-desktop/language-packs).
 
-   > **Note**: Next, you will disable Windows Automatic Updates, disable Storage Sense, configure time zone redirection, and configure collection of telemetry. In general, you should first apply all current updates first. In this lab, you skip this step in order to minimize the duration of the lab.
+   > **Note**: Next, you will disable Windows Automatic Updates, disable Storage Sense, configure time zone redirection, and configure collection of telemetry. In general, you should first apply the most recent quality update. In this lab, you skip this step in order to minimize the duration of the lab.
 
 1. Within the Bastion session to **az140-25-vm0**, switch to the **Administrator: C:\windows\system32\cmd.exe** window and, from the command prompt, run the following to disable Automatic Updates:
 
@@ -189,7 +177,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 1. In the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the following to disable Storage Sense:
 
    ```cmd
-   reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
+   reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
    ```
 
 1. In the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the following to configure time zone redirection:
@@ -216,6 +204,8 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    cleanmgr /d C: /verylowdisk
    ```
 
+   > **Note**: The disk cleanup process might take 3-5 minutes.
+
 #### Task 4: Create a Azure Virtual Desktop host image
 
 1. Within the Bastion session to **az140-25-vm0**, in the **Administrator: C:\windows\system32\cmd.exe** window, from the command prompt, run the sysprep utility in order to prepare the operating system for generating an image and automatically shut it down:
@@ -226,6 +216,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 
    > **Note**: Wait for the sysprep process to complete. This might take about 2 minutes. This will automatically shut down the operating system. 
 
+1. From your lab computer, in the **Connection Error** dialog, select **Close**.
 1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-25-vm0**.
 1. On the **az140-25-vm0** blade, in the toolbar above the **Essentials** section, click **Refresh**, verify that the **Status** of the Azure VM changed to **Stopped**, click **Stop**, and, when prompted for confirmation, click **OK** to transition the Azure VM into the **Stopped (deallocated)** state.
 1. On the **az140-25-vm0** blade, verify that the **Status** of the Azure VM changed to the **Stopped (deallocated)** state and, in the toolbar, click **Capture**. This will automatically display the **Create an image** blade.
@@ -235,7 +226,7 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |---|---|
    |Share image to Azure compute gallery|**Yes, share it to a gallery as an image version**|
    |Automatically delete this virtual machine after creating the image|checkbox cleared|
-   |Target Azure compute gallery|the name of a new gallery **az14025imagegallery**|
+   |Target Azure compute gallery|create a new gallery called **az14025imagegallery**|
    |Operating system state|**Generalized**|
 
 1. On the **Basics** tab of the **Create an image** blade, below the **Target VM image definition** textbox, click **Create new**.
@@ -257,11 +248,11 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |End of life date|one year ahead from the current date|
    |Default replica count|**1**|
    |Target region replica count|**1**|
-   |Storage account type|**Premium SSD LRS**|
+   |Default storage sku|**Premium SSD LRS**|
 
 1. On the **Review + create** tab of the **Create an image** blade, click **Create**.
 
-   > **Note**: Wait for the deployment to complete. This might take about 20 minutes.
+   > **Note**: Wait for the deployment to complete. This might take about 10-15 minutes.
 
 1. From your lab computer, in the web browser displaying the Azure portal, search for and select **Azure compute galleries** and, on the **Azure compute galleries** blade, select the **az14025imagegallery** entry, and, on the ****az14025imagegallery**** blade, verify the presence of the **az140-25-host-image** entry representing the newly created image.
 
@@ -285,9 +276,10 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |Host pool name|**az140-25-hp4**|
    |Location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
    |Validation environment|**No**|
+   |Preferred app group type|**Desktop**|
    |Host pool type|**Pooled**|
-   |Max session limit|**50**|
    |Load balancing algorithm|**Breadth-first**|
+   |Max session limit|**12**|
 
 1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings:
 
@@ -310,19 +302,21 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**1**|
    |OS disk type|**Standard SSD**|
+   |Boot Diagnostics|**Enable with managed storage account (recommended)**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp4-Subnet (10.0.4.0/24)**|
    |Network security group|**Basic**|
-   |Public inbound ports|**Yes**|
-   |Inbound ports to allow|**RDP**|
+   |Public inbound ports|**No**|
+   |Select which directory you would like to join|**Active Directory**|
    |AD domain join UPN|**student@adatum.com**|
    |Password|**Pa55w.rd1234**|
+   |Confirm password|**Pa55w.rd1234**|
    |Specify domain or unit|**Yes**|
    |Domain to join|**adatum.com**|
    |Organizational Unit path|**OU=WVDInfra,DC=adatum,DC=com**|
-   |User name|Student|
-   |Password|Pa55w.rd1234|
-   |Confirm password|Pa55w.rd1234|
+   |User name|**Student**|
+   |Password|**Pa55w.rd1234**|
+   |Confirm password|**Pa55w.rd1234**|
 
 1. On the **Workspace** tab of the **Create a host pool** blade, specify the following settings and select **Review + create**:
 
@@ -333,11 +327,10 @@ Deploy the Teams desktop app to the VM](https://docs.microsoft.com/en-us/microso
 1. On the **Review + create** tab of the **Create a host pool** blade, select **Create**.
 
    > **Note**: Wait for the deployment to complete. This might take about 10 minutes.
-   > 
-   > **Note** If the deployment fails due to the quota limit being reached, perform the steps spelled out in the first lab to automatically request quota increase of the Standard D2sv3 limit to 30.
+
+   > **Note**: If the deployment fails due to the quota limit being reached, perform the steps spelled out in the first lab to automatically request quota increase of the Standard D2sv3 limit to 30.
 
    > **Note**: Following deployment of hosts based on custom images, you should consider running the Virtual Desktop Optimization Tool, available from [its GitHub repository](https://github.com/The-Virtual-Desktop-Team/).
-
 
 ### Exercise 2: Stop and deallocate Azure VMs provisioned in the lab
 

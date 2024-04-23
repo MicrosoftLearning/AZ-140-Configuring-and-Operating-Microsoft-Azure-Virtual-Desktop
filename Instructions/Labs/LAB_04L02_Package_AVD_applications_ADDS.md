@@ -12,8 +12,8 @@ lab:
 - An Azure subscription
 - A Microsoft account or a Microsoft Entra account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription and with the Owner or Contributor role in the Azure subscription
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
-- The completed lab **Azure Virtual Desktop profile management (AD DS)**
-- The completed lab **Configure Conditional Access policies for WVD (AD DS)**
+- The completed lab **Configure Conditional Access policies for AVD (AD DS)**
+- The completed lab **Implement and Manage AVD Profiles (AD DS)**
 
 ## Estimated Time
 
@@ -28,8 +28,8 @@ You need to package and deploy Azure Virtual Desktop applications in an Active D
 After completing this lab, you will be able to:
 
 - Prepare for and create MSIX app packages
-- Implement an MSIX app attach image for Azure Virtual Desktop in a Microsoft Entra DS environment
-- Implement the MSIX app attach on Azure Virtual Desktop in AD DS environment
+- Implement an MSIX app attach image for Azure Virtual Desktop in an AD DS environment
+- Implement the MSIX app attach on Azure Virtual Desktop in an AD DS environment
 
 ## Lab files
 
@@ -62,9 +62,9 @@ The main tasks for this exercise are as follows:
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM -NoWait
    ```
 
-   >**Note**: The command executes asynchronously (as determined by the -NoWait parameter), so while you will be able to run another PowerShell command immediately afterwards within the same PowerShell session, it will take a few minutes before the Azure VMs are actually started. 
+   > **Note**: The command executes asynchronously (as determined by the -NoWait parameter), so while you will be able to run another PowerShell command immediately afterwards within the same PowerShell session, it will take a few minutes before the Azure VMs are actually started. 
 
-   >**Note**: If you enabled PSRemoting on the session hosts in the az140-21-RG resource group in the first task of the previous lab (Implement and manage AVD profiles) then you may proceed directly to the next task without waiting for the Azure VMs to start. If you have not previously enabled PSRemoting on the session hosts in the az140-21-RG resource group, wait for the VMs to start and then run the following command.
+   > **Note**: If you enabled PSRemoting on the session hosts in the az140-21-RG resource group in the first task of the previous lab (Implement and manage AVD profiles) then you may proceed directly to the next task without waiting for the Azure VMs to start. If you have not previously enabled PSRemoting on the session hosts in the az140-21-RG resource group, wait for the VMs to start and then run the following command.
 
 1. From the PowerShell session of the **Cloud Shell**, run the following to enable PowerShell Remoting on the session hosts.
 
@@ -95,7 +95,7 @@ The main tasks for this exercise are as follows:
 #### Task 3: Prepare the Azure VM running Windows 10 for MSIX packaging
 
 1. From your lab computer, in the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, in the list of virtual machines, select the **az140-cl-vm42** entry. This will open the **az140-cl-vm42** blade.
-1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm42 \| Connect** blade, select **Use Bastion**.
+1. On the **az140-cl-vm42** blade, select **Connect**, in the drop-down menu, select **Connect via Bastion**.
 1. When prompted, sign in with the **wvdadmin1@adatum.com** user name and the password you set when creating this user account. 
 1. Within the Bastion session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the operating system for MSIX packaging:
 
@@ -164,7 +164,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm42**, start the **Microsoft Store** app.
 1. In the **Microsoft Store** app, search for and select **MSIX Packaging Tool**, on the **MSIX Packaging Tool** page, select **Get**.
-1. When prompted, skip signing in, wait for the installation to complete, select **Open** and, in the **Send diagnostic data** dialog box, select **Decline**, 
+1. When prompted, skip signing in, wait for the installation to complete, select **Launch** and, in the **Send diagnostic data** dialog box, select **Decline**, 
 
 #### Task 7: Create an MSIX package
 
@@ -190,6 +190,9 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm42**, switch to the **MSIX Packaging Tool** interface, on the **Select task** page, select **Application package - Create your app package** entry. This will start the **Create new package** wizard.
 1. On the **Select environment** page of the **Create new package** wizard, ensure that the **Create package on this computer** option is selected, select **Next**, and wait for the installation of the **MSIX Packaging Tool Driver**.
+
+   > **Note**: The installation of the MSIX Packaging Tool Driver will take 5-10. The status column will initially say **Checking** and, once installed, will say **Installed**.
+
 1. On the **Prepare computer** page of the **Create new package** wizard, review the recommendations. If there is a pending reboot, restart the operating system, sign back in by using the **wvdadmin1@adatum.com** account, and restart the **MSIX Packaging Tool** before you proceed. 
 
    >**Note**: MSIX Packaging Tool disables temporarily Windows Update and Windows Search. In this case, the Windows Search service is already disabled. 
@@ -197,13 +200,11 @@ The main tasks for this exercise are as follows:
 1. On the **Prepare computer** page of the **Create new package** wizard, click **Next**.
 1. On the **Select installer** page of the **Create new package** wizard, next to the **Choose the installer you want to package** text box, select **Browse**, in the **Open** dialog box, browse to the **C:\\AllFiles\\Labs\\04** folder, select **XmlNotepadSetup.msi**, and click **Open**, 
 1. On the **Select installer** page of the **Create new package** wizard, in the **Signing preference** drop-down list, select the **Sign with a certificate (.pfx)** entry, next to the **Browse for certificate** textbox, select **Browse**, in the **Open** dialog box, navigate to the **C:\\AllFiles\\Labs\\04** folder, select the **adatum.pfx** file, click **Open**, in the **Password** text box, type **Pa55w.rd1234**, and select **Next**.
-1. On the **Package information** page of the **Create new package** wizard, review the package information, validate that the publisher name is set to **CN=Adatum**, and select **Next**. This will trigger installation of the downloaded software.
-1. In the **XMLNotepad Setup** window, accept the terms in the License Agreement and select **Install** and, once the installation completes, select the **Launch XML Notepad** checkbox and select **Finish**.
-1. When prompted, in the **XML Notepad Analytics** window, select **No**, verify that XML Notepad is running, close it, switch back to the **Create new package** wizard in the **MSIX Packaging Tool** window, and select **Next**.
-
-   > **Note**: In this case, restart is not required to complete the installation.
-
-1. On the **First launch tasks** page of the **Create new package** wizard, review the provided information and select **Next**.
+1. On the **Package information** page of the **Create new package** wizard, review the package information, validate that the publisher name is set to **CN=Adatum**, and select **Next**.
+1. On the **Choose the Accelerator for applying to the package** page, select **Next**. This will trigger installation of the downloaded software.
+1. In the **XMLNotepad Setup** window, accept the terms in the License Agreement and select **Install** and, once the installation completes, select **Finish**.
+1. In the **Installation** page of the **Create new package** wizard, select **Next**.
+1. On the **Manage first launch tasks** page of the **Create new package** wizard, review the provided information and select **Next**.
 1. When prompted **Are you done?**, select **Yes, move on**.
 1. On the **Services report** page of the **Create new package** wizard, verify that no services are listed and select **Next**.
 1. On the **Create package** page of the **Create new package** wizard, in the **Save location** textbox, type **C:\\Allfiles\\Labs\\04\\XmlNotepad\XmlNotepad.msix** and click **Create**.
@@ -212,14 +213,14 @@ The main tasks for this exercise are as follows:
 1. Copy the **XmlNotepad.msix** file to the **C:\\Allfiles\\Labs\\04** folder.
 
 
-### Exercise 2: Implement an MSIX app attach image for Azure Virtual Desktop in Microsoft Entra DS environment
+### Exercise 2: Implement an MSIX app attach image for Azure Virtual Desktop in an AD DS environment
 
 The main tasks for this exercise are as follows:
 
-1. Enable Hyper-V on the Azure VMs running Window 10 Enterprise Edition
+1. Enable Hyper-V on the Azure VMs running Window 11 Enterprise multi-session
 1. Create an MSIX app attach image
 
-#### Task 1: Enable Hyper-V on the Azure VMs running Window 10 Enterprise Edition
+#### Task 1: Enable Hyper-V on the Azure VMs running Window 11 Enterprise multi-session
 
 1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to prepare the target Azure Virtual Desktop hosts for MSIX app attach: 
 
@@ -262,44 +263,21 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm42**, start **Microsoft Edge**, browse to **https://aka.ms/msixmgr**. This will automatically download the **msixmgr.zip** file (the MSIX mgr tool archive) into the **Downloads** folder.
 1. In File Explorer, navigate to the **Downloads** folder, open the compressed file and copy the content of the **x64** folder (including the folder) to the **C:\\AllFiles\\Labs\\04** folder. 
-1. Within the Bastion session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE**  script pane, run the following to create the VHD file that will serve as the MSIX app attach image:
+1. Within the Bastion session to **az140-cl-vm42**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE**  script pane, run the following to create the folder that will store the MSIX app attach image:
 
    ```powershell
    New-Item -ItemType Directory -Path 'C:\Allfiles\Labs\04\MSIXVhds' -Force
-   New-VHD -SizeBytes 128MB -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Dynamic -Confirm:$false
    ```
 
-1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to mount the newly created VHD file:
-
-   ```powershell
-   $vhdObject = Mount-VHD -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Passthru
-   ```
-
-1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to initialize the disk, create a new partition, format it, and assign to it the first available drive letter:
-
-   ```powershell
-   $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-   $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-   Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-   ```
-
-   > **Note**: If presented with a pop-up window prompting you to format the F: drive, select **Cancel**.
-
-1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create a folder structure that will host the MSIX files and unpack into it the MSIX package you created in the previous task:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create the VHD that will host the MSIX files and unpack into it the MSIX package you created in the previous task:
 
    ```powershell
    $appName = 'XmlNotepad'
-   New-Item -ItemType Directory -Path "$($partition.DriveLetter):\Apps" -Force
    Set-Location -Path 'C:\AllFiles\Labs\04\x64'
-   .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
+   .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination ..\MSIXVhds\$appName.vhd -applyacls -create -filetype vhd -vhdSize 128 -rootDirectory Apps
    ```
 
-1. Within the Bastion session to **az140-cl-vm42**, in File Explorer, navigate to the **F:\\Apps** folder and review its content. If prompted to gain access to the folder, select **Continue**.
-1. Within the Bastion session to **az140-cl-vm42**, from the **Administrator: Windows PowerShell ISE** console, run the following to unmount the VHD file that will serve as the MSIX image:
-
-   ```powershell
-   Dismount-VHD -Path "C:\Allfiles\Labs\04\MSIXVhds\$appName.vhd" -Confirm:$false
-   ```
+1. Within the Bastion session to **az140-cl-vm42**, in File Explorer, navigate to the **C:\AllFiles\Labs\04\MSIXVhds** folder and ensure you have a virtual disk called XmlNotepad.vhd.
 
 ### Exercise 3: Implement MSIX app attach on Azure Virtual Desktop session hosts
 
@@ -314,7 +292,7 @@ The main tasks for this exercise are as follows:
 #### Task 1: Configure Active Directory groups containing Azure Virtual Desktop hosts
 
 1. Switch to the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
-1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
+1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Connect via Bastion**.
 1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
@@ -347,18 +325,18 @@ The main tasks for this exercise are as follows:
 
    > **Note**: This step ensures that the group membership change takes effect. 
 
-1. Within the Bastion session to **az140-dc-vm11**, in the **Start** menu, expand the **Microsoft Entra Connect** folder and select **Microsoft Entra Connect**.
-1. On the **Welcome to Microsoft Entra Connect** page of the **Microsoft Entra Connect** window, select **Configure**.
+1. Within the Bastion session to **az140-dc-vm11**, in the **Start** menu, expand the **Microsoft Azure AD Connect** folder and select **Microsoft Azure AD Connect**.
+1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** window, select **Configure**.
 1. On the **Additional tasks** page in the **Microsoft Entra Connect** window, select **Customize synchronization options** and select **Next**.
-1. On the **Connect to Microsoft Entra** page in the **Microsoft Entra Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task with the password you set when creating this user account.
-1. On the **Connect your directories** page in the **Microsoft Entra Connect** window, select **Next**.
-1. On the **Domain and OU filtering** page in the **Microsoft Entra Connect** window, ensure that the option **Sync selected domains and OUs** is selected, expand the **adatum.com** node, select the checkbox next to the **WVDInfra** OU (leave any other selected checkboxes unchanged), and select **Next**.
-1. On the **Optional features** page in the **Microsoft Entra Connect** window, accept the default settings, and select **Next**.
-1. On the **Ready to configure** page in the **Microsoft Entra Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
-1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Entra Connect** window.
+1. On the **Connect to Microsoft Entra** page in the **Microsoft Azure Active Directory Connect** window, authenticate by using the user principal name of the **aadsyncuser** user account you identified earlier in this task with the password you set when creating this user account.
+1. On the **Connect your directories** page in the **Microsoft Azure Active Directory Connect** window, select **Next**.
+1. On the **Domain and OU filtering** page in the **Microsoft Azure Active Directory Connect** window, ensure that the option **Sync selected domains and OUs** is selected, expand the **adatum.com** node, select the checkbox next to the **WVDInfra** OU (leave any other selected checkboxes unchanged), and select **Next**.
+1. On the **Optional features** page in the **Microsoft Azure Active Directory Connect** window, accept the default settings, and select **Next**.
+1. On the **Ready to configure** page in the **Microsoft Azure Active Directory Connect** window, ensure that the checkbox **Start the synchronization process when configuration completes** is selected and select **Configure**.
+1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Azure Active Directory Connect** window.
 1. Within the Bastion session to **az140-dc-vm11**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). When prompted, sign in by using the Microsoft Entra credentials of the user account with the Global Administrator role in the Microsoft Entra tenant associated with the Azure subscription you are using in this lab.
-1. Within the Bastion session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Active Directory** to navigate to the Microsoft Entra tenant associated with the Azure subscription you are using for this lab.
-1. On the Azure Active Directory blade, in the vertical menu bar on the left side, in the **Manage** section, click **Groups**. 
+1. Within the Bastion session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Microsoft Entra ID** to navigate to the Microsoft Entra tenant associated with the Azure subscription you are using for this lab.
+1. On the Microsoft Entra ID blade, in the vertical menu bar on the left side, in the **Manage** section, click **Groups**. 
 1. On the **Groups | All groups** blade, in the list of groups, select the **az140-hosts-42-p1** entry.
 
    > **Note**: You might need to refresh the page for the group to be displayed.
@@ -375,47 +353,64 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm42**, in the Microsoft Edge window displaying the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select the storage account you configured to host user profiles.
 
-   > **Note**: This part of the lab is contingent on completing the lab **Azure Virtual Desktop profile management (AD DS)** or **Azure Virtual Desktop profile management (Microsoft Entra DS)**
+   > **Note**: This part of the lab is contingent on completing the lab **Implement and Manage Storage for AVD (AD DS)** or **Implement and Manage Storage for AVD (Microsoft Entra DS)**
 
    > **Note**: In production scenarios, you should consider using a separate storage account. This would require configuring that storage account for Microsoft Entra DS authentication, which you already implemented for the storage account hosting user profiles. You are using the same storage account to minimize duplicate steps across individual labs.
 
 1. On the storage account blade, in the vertical menu on the left side, select **Access Control (IAM)**.
 1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
-1. On the **Add role assignment** blade, specify the following settings and select **Save**:
+1. On the **Add role assignment** blade, on the **Role** tab, specify the following settings and select **Next**:
 
    |Setting|Value|
    |---|---|
-   |Role|**Storage File Data SMB Share Elevated Contributor**|
-   |Assign access to|**User, group, or service principal**|
-   |Select|**az140-wvd-admins**|
+   |Job function role|**Storage File Data SMB Share Contributor**|
 
-   > **Note**: The **az140-wvd-admins** group contains the **wvdadmin1** user account, which you'll use to configure share permissions. 
-
-1. Repeat the previous two steps to configure the following role assignments:
+1. On the **Add role assignment** blade, on the **Members** tab, click **+ Select members**, specify the following settings and click **Select**. 
 
    |Setting|Value|
    |---|---|
-   |Role|**Storage File Data SMB Share Elevated Contributor**|
-   |Assign access to|**User, group, or service principal**|
-   |Select|**az140-hosts-42-p1**|
-
-   |Setting|Value|
-   |---|---|
-   |Role|**Storage File Data SMB Share Reader**|
-   |Assign access to|**User, group, or service principal**|
    |Select|**az140-wvd-users**|
 
-   > **Note**: Azure Virtual Desktop users and hosts need at least read access to the file share.
+1. On the **Add role assignment** blade, select **Review + assign**, and then select **Review + assign**.
+1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
+1. On the **Add role assignment** blade, on the **Role** tab, specify the following settings and select **Next**:
+
+   |Setting|Value|
+   |---|---|
+   |Job function role|**Storage File Data SMB Share Elevated Contributor**|
+
+1. On the **Add role assignment** blade, on the **Members** tab, click **+ Select members**, specify the following settings and click **Select**. 
+
+   |Setting|Value|
+   |---|---|
+   |Select|**az140-wvd-admins**|
+
+1. On the **Add role assignment** blade, select **Review + assign**, and then select **Review + assign**.
+1. On the **Access Control (IAM)** blade of the storage account, select **+ Add** and, in the drop-down menu, select **Add role assignment**, 
+1. On the **Add role assignment** blade, on the **Role** tab, specify the following settings and select **Next**:
+
+   |Setting|Value|
+   |---|---|
+   |Job function role|**Storage File Data SMB Share Elevated Contributor**|
+
+1. On the **Add role assignment** blade, on the **Members** tab, click **+ Select members**, specify the following settings and click **Select**. 
+
+   |Setting|Value|
+   |---|---|
+   |Select|**az140-hosts-42-p1**|
+
+1. On the **Add role assignment** blade, select **Review + assign**, and then select **Review + assign**.
 
 1. On the storage account blade, in the vertical menu on the left side, in the **Data storage** section, select **File shares** and then select **+ File share**.
-1. On the **New file share** blade, specify the following settings and select **Create** (leave other settings with their default values):
+1. On the **New file share** blade, specify the following settings and select **Next : Backup >** (leave other settings with their default values):
 
    |Setting|Value|
    |---|---|
    |Name|**az140-42-msixvhds**|
+   |Access tier|**Transaction optimized**|
 
+1. On the **Backup** blade, deselect the **Enable backup** checkbox, select **Review + Create**, wait for the validation process to complete, and then select **Create**.
 1. In the Microsoft Edge displaying the Azure portal, in the list of file shares, select the newly created file share. 
-
 1. Within the Bastion session to **az140-cl-vm42**, start **Command Prompt** and, from the **Command Prompt** window, run the following to map a drive to the **az140-42-msixvhds** share (replace the `<storage-account-name>` placeholder with the name of the storage account) and verify that the command completes successfully:
 
    ```cmd
@@ -438,7 +433,7 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    New-Item -ItemType Directory -Path 'Z:\packages' 
-   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
+   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages\' -Force
    ```
 
 #### Task 3: Mount and register the MSIX App attach image on Azure Virtual Desktop session hosts
@@ -466,7 +461,7 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Application groups** blade, select the **az140-21-hp1-Utilities-RAG** application group entry.
 1. On the **az140-21-hp1-Utilities-RAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Applications**. 
 1. On the **az140-21-hp1-Utilities-RAG \| Applications** blade, click **+ Add**.
-1. On the **Add application** blade, on the **Basics** and **Icon** tabs, specify the following settings and select **Save**:
+1. On the **Add application** blade, on the **Basics** and **Icon** tabs, specify the following settings and select **Review + add**:
 
    |Setting|Value|
    |---|---|
@@ -476,29 +471,31 @@ The main tasks for this exercise are as follows:
    |Application identifier|**XML Notepad**|
    |Display name|**XML Notepad**|
    |Description|**XML Notepad**|
-   |Icon source|**Default**|
 
+1. Review the configured settings, then select **Add**.
 1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade and select the **az140-21-hp1-DAG** application group entry.
 1. On the **az140-21-hp1-DAG** blade, in the vertical menu on the left side, in the **Manage** section, select **Applications**. 
 1. On the **az140-21-hp1-DAG \| Applications** blade, click **+ Add**.
-1. On the **Add application** blade, specify the following settings and select **Save**:
+1. On the **Add application** blade, specify the following settings and select **Review + add**:
 
    |Setting|Value|
    |---|---|
    |Application source|**MSIX package**|
    |MSIX package|the name representing the package included in the image|
-   |Application name|**XML Notepad**|
+   |Application identifier|**XML Notepad**|
    |Display name|**XML Notepad**|
    |Description|**XML Notepad**|
+
+1. Review the configured settings, then select **Add**.
 
 #### Task 5: Validate the functionality of MSIX App attach
 
 1. Within the Bastion session to **az140-cl-vm42**, start Microsoft Edge, navigate to [Windows Desktop client download page](https://go.microsoft.com/fwlink/?linkid=2068602) and, once download completes, select **Open file** to start its installation. On the **Installation Scope** page of the **Remote Desktop Setup** wizard, select the option **Install for all users of this machine** and click **Install**. 
 1. Once the installation completes, ensure that the **Launch Remote Desktop when setup exits** checkbox is selected and click **Finish** to start the Remote Desktop client.
 1. In the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** user principal name and the password you set when creating this user account. 
-1. If prompted, in the **Stay signed in to all your apps** window, clear the **Allow my organization to manage my device** checkbox and click **No, sign in to this app only**.
 1. In the **Remote Desktop** client window, within the **az140-21-ws1** section, double-click the **XML Notepad** icon, when prompted, provide the password, and verify that the XML Notepad launches successfully.
-
+1. Within the Bastion session to **az140-cl-vm42**, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
+1. In the **Disconnected** dialog, select **Close**.
 
 ### Exercise 4: Stop and deallocate Azure VMs provisioned and used in the lab
 
