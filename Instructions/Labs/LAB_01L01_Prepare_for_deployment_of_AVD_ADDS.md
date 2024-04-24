@@ -25,7 +25,7 @@ You need to prepare for deployment of an Active Directory Domain Services (AD DS
 After completing this lab, you will be able to:
 
 - Deploy an Active Directory Domain Services (AD DS) single-domain forest by using Azure VMs
-- Integrate an AD DS forest with an Microsoft Entra tenant
+- Integrate an AD DS forest with a Microsoft Entra tenant
 
 ## Lab files
 
@@ -110,9 +110,10 @@ The main tasks for this exercise are as follows:
 #### Task 1: Prepare for an Azure VM deployment
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
-1. In the web browser displaying the Azure portal, navigate to the **Overview** blade of the Microsoft Entra tenant and, in the vertical menu on the left side, in the **Manage** section, click **Properties**.
+1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Microsoft Entra ID** blade.
+1. From the **Overview** blade of the Microsoft Entra tenant and, in the vertical menu on the left side, in the **Manage** section, click **Properties**.
 1. On the **Properties** blade of your Microsoft Entra tenant, at the very bottom of the blade, select the **Manage Security defaults** link.
-1. On the **Enable Security defaults** blade, if needed, select **No**, select the **My organization is using Conditional Access** checkbox, and select **Save**.
+1. On the **Enable Security defaults** blade, if needed, select **Disabled (not recommended)**, select the **My organization is planning to use Conditional Access** option button, and select **Save**, and then select **Disable**.
 1. In the Azure portal, open **Cloud Shell** pane by selecting on the toolbar icon directly to the right of the search textbox.
 1. If prompted to select either **Bash** or **PowerShell**, select **PowerShell**. 
 
@@ -131,7 +132,7 @@ The main tasks for this exercise are as follows:
 
 1. In the Azure portal, close the **Cloud Shell** pane.
 1. From your lab computer, in the same web browser window, open another web browser tab and navigate a customized version of QuickStart template named [Create a new Windows VM and create a new AD Forest, Domain and DC](https://github.com/az140mp/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain). 
-1. On the **Create a new Windows VM and create a new AD Forest, Domain and DC** page, select **Deploy to Azure**. This will automatically redirect the browser to the **Create an Azure VM with a new AD Forest** blade in the Azure portal.
+1. On the **Create a new Windows VM and create a new AD Forest, Domain and DC** page, scroll down the page and select **Deploy to Azure**. This will automatically redirect the browser to the **Create an Azure VM with a new AD Forest** blade in the Azure portal.
 1. On the **Create an Azure VM with a new AD Forest** blade, select **Edit parameters**.
 1. On the **Edit parameters** blade, select **Load file**, in the **Open** dialog box, select **\\\\AZ-140\\AllFiles\\Labs\\01\\az140-11_azuredeploydc11.parameters.json**, select **Open**, and then select **Save**. 
 1. On the **Create an Azure VM with a new AD Forest** blade, specify the following settings (leave others with their existing values):
@@ -144,7 +145,7 @@ The main tasks for this exercise are as follows:
 
 1. On the **Create an Azure VM with a new AD Forest** blade, select **Review + create** and select **Create**.
 
-   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. This might take about 15 minutes. 
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take 20-25 minutes. 
 
 #### Task 3: Deploy an Azure VM running Windows 10 by using an Azure Resource Manager QuickStart template
 
@@ -213,7 +214,7 @@ The main tasks for this exercise are as follows:
 
 1. On the **Review + create** tab of the **Create a Bastion** blade, select **Create**:
 
-   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 5 minutes.
+   > **Note**: Wait for the deployment to complete before you proceed to the next exercise. The deployment might take about 10 minutes.
 
 ### Exercise 2: Integrate an AD DS forest with a Microsoft Entra tenant
   
@@ -223,12 +224,11 @@ The main tasks for this exercise are as follows:
 1. Configure AD DS UPN suffix
 1. Create a Microsoft Entra user that will be used to configure synchronization with Microsoft Entra
 1. Install Microsoft Entra Connect
-1. Configure hybrid Microsoft Entra join
 
 #### Task 1: Create AD DS users and groups that will be synchronized to Microsoft Entra
 
 1. On the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
-1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
+1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Connect via Bastion**.
 1. When prompted, provide the following credentials and select **Connect**:
 
    |Setting|Value|
@@ -236,7 +236,7 @@ The main tasks for this exercise are as follows:
    |User Name|**Student**|
    |Password|**Pa55w.rd1234**|
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
+1. Within the Bastion session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to disable Internet Explorer Enhanced Security for Administrators:
 
    ```powershell
@@ -306,7 +306,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 2: Configure AD DS UPN suffix
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
+1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
 
    ```powershell
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -318,6 +318,8 @@ The main tasks for this exercise are as follows:
    ```powershell
    Install-Module -Name Az -AllowClobber -SkipPublisherCheck
    ```
+
+   > **Note**: You may need to wait 3-5 minutes before any output from the installation of the Az module appears. You may also need to wait a further 5 minutes **after** output has stopped. This is expected behavior.
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to sign in to your Azure subscription:
 
@@ -365,7 +367,7 @@ The main tasks for this exercise are as follows:
    $domainUsers | foreach {$newUpn = $_.UserPrincipalName.Replace('adatum.com',$aadDomainName); $_ | Set-ADUser -UserPrincipalName $newUpn}
    ```
 
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to assign the **adatum.com** UPN suffix to the **Student** domain user:
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to assign the **adatum.com** UPN suffix back to the **Student** domain user:
 
    ```powershell
    $domainAdminUser = Get-ADUser -Filter {sAMAccountName -eq 'Student'} -Properties userPrincipalName
@@ -374,9 +376,9 @@ The main tasks for this exercise are as follows:
 
 #### Task 3: Create a Microsoft Entra user that will be used to configure directory synchronization
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create a new Microsoft Entra user (replace the `<password>` placeholder with a random, complex password):
+1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create a new Microsoft Entra user (replace the `<password>` placeholder with a random, complex password):
 
-   > **Note**: Ensure that you record the password you used. You will need it later in this and subsequent labs.
+   > **Note**: Ensure that you record the password you used. **You will need it later in this and subsequent labs**.
 
    ```powershell
    $userName = 'aadsyncuser'
@@ -400,12 +402,12 @@ The main tasks for this exercise are as follows:
    (Get-AzureADUser -Filter "MailNickName eq '$userName'").UserPrincipalName
    ```
 
-   > **Note**: Record the user principal name. You will need it later in this exercise. 
+   > **Note**: Record the user principal name **and** password. You will need it later in this exercise. 
 
 
 #### Task 4: Install Microsoft Entra Connect
 
-1. Within the Remote Desktop session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to eanble TLS 1.2:
+1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to eanble TLS 1.2:
 
    ```powershell
    New-Item 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319' -Force | Out-Null
@@ -423,18 +425,18 @@ The main tasks for this exercise are as follows:
    Write-Host 'TLS 1.2 has been enabled.'
    ```
    
-1. Within the Remote Desktop session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Microsoft Edge for Business download page](https://www.microsoft.com/en-us/edge/business/download).
+1. Within the Bastion session to **az140-dc-vm11**, start Internet Explorer and navigate to the [Microsoft Edge for Business download page](https://www.microsoft.com/en-us/edge/business/download).
 1. From the [Microsoft Edge for Business download page](https://www.microsoft.com/en-us/edge/business/download) download the latest stable version of Microsoft Edge, install it, launch it, and configure it with the default settings.
 1. Within the Remote Desktop session to **az140-dc-vm11**, use Microsoft Edge to navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Microsoft Entra credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Azure Active Directory** blade and, on your Microsoft Entra tenant blade, in the **Manage** section of the hub menu, select **Microsoft Entra Connect**.
-1. On the **Microsoft Entra Connect** blade, select first the **Connect Sync** link at the left and then select the **Download Microsoft Entra Connect** link. This will automatically open a new browser tab displaying the **Microsoft Azure Active Directory Connect** download page.
-1. On the **Microsoft Azure Active Directory Connect** download page, select **Download**.
+1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Microsoft Entra ID** blade and, on your Microsoft Entra tenant blade, in the **Manage** section of the hub menu, select **Microsoft Entra Connect**.
+1. On the **Microsoft Entra Connect** blade, select the **Connect Sync** link from the service menu and then select the **Download Microsoft Entra Connect** link. This will automatically open a new browser tab displaying the **Microsoft Entra Connect** download page.
+1. On the **Microsoft Entra Connect** download page, select **Download**.
 1. If prompted whether to run or save the **AzureADConnect.msi** installer, select **Run**. Otherwise, open the file after it downloads to start the **Microsoft Azure Active Directory Connect** wizard.
-1. On the **Welcome to Microsoft Entra Connect** page of the **Microsoft Azure Active Directory Connect** wizard, select the checkbox **I agree to the license terms and privacy notice** and select **Continue**.
+1. On the **Welcome to Azure AD Connect** page of the **Microsoft Azure Active Directory Connect** wizard, select the checkbox **I agree to the license terms and privacy notice** and select **Continue**.
 1. On the **Express Settings** page of the **Microsoft Azure Active Directory Connect** wizard, select the **Customize** option.
 1. On the **Install required components** page, leave all optional configuration options deselected and select **Install**.
 1. On the **User sign-in** page, ensure that only the **Password Hash Synchronization** is enabled and select **Next**.
-1. On the **Connect to Microsoft Entra** page, authenticate by using the credentials of the **aadsyncuser** user account you created in the previous exercise and select **Next**. 
+1. On the **Connect to Azure AD** page, authenticate by using the credentials of the **aadsyncuser** user account you created in the previous exercise and select **Next**. 
 
    > **Note**: Provide the userPrincipalName attribute of the **aadsyncuser** account you recorded earlier in this exercise and specify the password you set earlier in this lab as its password.
 
@@ -447,7 +449,7 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Back on the **Connect your directories** page, ensure that the **adatum.com** entry appears as a configured directory and select **Next**
-1. On the **Microsoft Entra sign-in configuration** page, note the warning stating **Users will not be able to sign-in to Microsoft Entra with on-premises credentials if the UPN suffix does not match a verified domain name**, enable the checkbox **Continue without matching all UPN suffixes to verified domain**, and select **Next**.
+1. On the **Azure AD sign-in configuration** page, note the warning stating **Users will not be able to sign-in to Azure AD with on-premises credentials if the UPN suffix does not match a verified domain name**, enable the checkbox **Continue without matching all UPN suffixes to verified domain**, and select **Next**.
 
    > **Note**: This is expected, since the Microsoft Entra tenant does not have a verified custom DNS domain matching one of the UPN suffixes of the **adatum.com** AD DS.
 
@@ -457,7 +459,7 @@ The main tasks for this exercise are as follows:
 1. On the **Optional features** page, accept the default settings, and select **Next**.
 1. On the **Ready to configure** page, ensure that the **Start the synchronization process when configuration completes** checkbox is selected and select **Install**.
 
-   > **Note**: Installation should take about 2 minutes.
+   > **Note**: Installation should take about 5 minutes.
 
 1. Review the information on the **Configuration complete** page and select **Exit** to close the **Microsoft Azure Active Directory Connect** window.
 1. Within the Remote Desktop session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, navigate to the **Users - All users** blade of the Adatum Lab Microsoft Entra tenant.

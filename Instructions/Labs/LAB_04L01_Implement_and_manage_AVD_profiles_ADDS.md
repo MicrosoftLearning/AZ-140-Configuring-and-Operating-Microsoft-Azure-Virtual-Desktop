@@ -12,7 +12,7 @@ lab:
 - An Azure subscription you will be using in this lab.
 - A Microsoft account or a Microsoft Entra account with the Owner or Contributor role in the Azure subscription you will be using in this lab and with the Global Administrator role in the Microsoft Entra tenant associated with that Azure subscription.
 - The completed lab **Prepare for deployment of Azure Virtual Desktop (AD DS)**
-- The completed lab **Implement and manage storage for WVD (AD DS)**
+- The completed lab **Implement and manage storage for AVD (AD DS)**
 
 ## Estimated Time
 
@@ -40,24 +40,12 @@ The main tasks for this exercise are as follows:
 
 1. Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
 1. Test FSLogix-based profiles with Azure Virtual Desktop
-1. Remove Azure resources deployed in the lab
 
 #### Task 1: Configure FSLogix-based profiles on Azure Virtual Desktop session host VMs
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
-1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-21-p1-0**.
-1. On the **az140-21-p1-0** blade, select **Start** and wait until the status of the virtual machine changes to **Running**.
-1. On the **az140-21-p1-0** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-21-p1-0 \| Connect** blade, select **Use Bastion**.
-1. When prompted, sign in with the following credentials:
-
-   |Setting|Value|
-   |---|---|
-   |User Name|**student@adatum.com**|
-   |Password|**Pa55w.rd1234**|
-
-1. Within the Bastion session to **az140-21-p1-0**, start Microsoft Edge and navigate to the [Azure portal](https://portal.azure.com). If prompted, sign in by using the Microsoft Entra credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. Within the Bastion session to **az140-21-p1-0**, in the Microsoft Edge window displaying the Azure portal, open a PowerShell session within the Cloud Shell pane. 
-1. From the PowerShell session in the **Cloud Shell** pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
+1. In the Azure portal, open **Cloud Shell** pane by selecting the toolbar icon directly to the right of the search textbox.
+1. In the **Cloud Shell** pane, run the following to start the Azure Virtual Desktop session host Azure VMs you will be using in this lab:
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
@@ -65,35 +53,34 @@ The main tasks for this exercise are as follows:
 
    >**Note**: Wait until the Azure VMs are running before you proceed to the next step.
 
-1. From the PowerShell session in the **Cloud Shell** pane, run the following to enable PowerShell Remoting on the Session Hosts.
+1. In the **Cloud Shell** pane, run the following to enable PowerShell Remoting on the Session Hosts.
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
    ```
-   
+
 1. Close the Cloud Shell
+1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-21-p1-0**.
+1. On the **az140-21-p1-0** blade, select **Connect**, in the drop-down menu, select **Connect via Bastion**.
+1. When prompted, sign in with the following credentials:
+
+   |Setting|Value|
+   |---|---|
+   |User Name|**student@adatum.com**|
+   |Password|**Pa55w.rd1234**|
+
 1. Within the Bastion session to **az140-21-p1-0**, start Microsoft Edge, browse to [FSLogix download page](https://aka.ms/fslogix_download), download FSLogix compressed installation binaries, extract them into the **C:\\Allfiles\\Labs\\04** folder (create the folder if needed), navigate to the **x64\\Release** subfolder, double-click the **FSLogixAppsSetup.exe** file to launch the **Microsoft FSLogix Apps Setup** wizard, and step through the installation of Microsoft FSLogix Apps with the default settings.
 
-   > **Note**: Installation of FXLogic is not necessary if the image already includes it.
+   > **Note**: Installation of FSLogix is not necessary if the image already includes it.
 
-1. Within the Bastion session to **az140-21-p1-0**, start **Windows PowerShell ISE** as administrator and, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
-
-   ```powershell
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   Install-Module -Name PowerShellGet -Force -SkipPublisherCheck
-   ```
-
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the latest version of the Az PowerShell module (select **Yes to All** when prompted for confirmation):
+1. Within the Bastion session to **az140-21-p1-0**, start **Windows PowerShell ISE** as administrator.
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the latest version of the Az PowerShell module (enter **Y** when prompted for installing and importing NuGet):
 
    ```powershell
-   Install-Module -Name Az -AllowClobber -SkipPublisherCheck
+   Install-Module -Name Az -AllowClobber -SkipPublisherCheck -Force
    ```
 
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to modify the execution policy:
-
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned -Force
-   ```
+   > **Note**: You may need to wait 3-5 minutes before any output from the installation of the Az module appears. You may also need to wait a further 5 minutes **after** output has stopped. This is expected behavior.
 
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to sign in to your Azure subscription:
 
@@ -106,7 +93,7 @@ The main tasks for this exercise are as follows:
 
    ```powershell
    $resourceGroupName = 'az140-22-RG'
-   $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName   
+   $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName
    ```
 
 1. Within the Bastion session to **az140-21-p1-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to configure profile registry settings:
@@ -138,6 +125,8 @@ The main tasks for this exercise are as follows:
 
    > **Note**: To provide consistent user experience, you need to install and configure FSLogix components on all Azure Virtual Desktop session hosts. You will perform this task in the unattended manner on the other session hosts in our lab environment. 
 
+   > **Note**: The following step is not required if FSLogix is already installed on the session hosts.
+
 1. Within the Bastion session to **az140-21-p1-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install FSLogix components on the **az140-21-p1-1** and **az140-21-p1-2** session hosts:
 
    ```powershell
@@ -157,6 +146,7 @@ The main tasks for this exercise are as follows:
 1. Within the Bastion session to **az140-21-p1-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to configure profile registry settings on the **az140-21-p1-1** and **az140-21-p1-1** session hosts:
 
    ```powershell
+   $servers = 'az140-21-p1-1', 'az140-21-p1-2'
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22-profiles'
@@ -179,10 +169,13 @@ The main tasks for this exercise are as follows:
    Get-CimInstance -ComputerName $servers -Class Win32_UserProfile | Where-Object { $_.LocalPath.split('\')[-1] -eq $userName } | Remove-CimInstance
    ```
 
+1. Within the Bastion session to **az140-21-p1-0**, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
+1. From the **Disconnected** window, select **Close**.
+
 #### Task 2: Test FSLogix-based profiles with Azure Virtual Desktop
 
 1. Switch to your lab computer, from the lab computer, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, select the **az140-cl-vm11** entry.
-1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-cl-vm11 \| Connect** blade, select **Use Bastion**.
+1. On the **az140-cl-vm11** blade, select **Connect**, in the drop-down menu, select **Connect via Bastion**.
 1. When prompted, provde the following credentials and select **Connect**:
 
    |Setting|Value|
@@ -194,24 +187,25 @@ The main tasks for this exercise are as follows:
 1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, select **Subscribe** and, when prompted, sign in with the **aduser1** credentials.
 
    >**Note**  If you're not asked to subscribe, you might have to unsubscribe from a previous suscription.
-3. in the list of applications, double-click **Command Prompt**, when prompted, provide the password of the **aduser1** account, and verify a **Command Prompt** window opens successfully.
-4. In the upper left corner of the **Command Prompt** window, right-click the **Command Prompt** icon and, in the drop-down menu, select **Properties**.
-5. In the **Command Prompt Properties** dialog box, select the **Font** tab, modify the size and font settings, and select **OK**.
-6. From the **Command Prompt** window, type **logoff** and press the **Enter** key to sign out from the Remote Desktop session.
-7. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** under az140-21-ws1 and verify that it launches a Remote Desktop session. 
-8. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** text box, type **cmd** and select **OK** to launch a **Command Prompt** window:
-9. Verify that the **Command Prompt** window settings match those you configured earlier in this task.
-10. Within the **SessionDesktop** session, minimize all windows, right-click the desktop, in the right-click menu, select **New** and, in the cascading menu, select **Shortcut**. 
-11. On the **What item would you like to create a shortcut for?** page of the **Create Shortcut** wizard, in the **Type the location of the item** text box, type **Notepad** and select **Next**.
-12. On the **What would you like to name the shortcut** page of the **Create Shortcut** wizard, in the **Type a name for this shortcut** text box, type **Notepad** and select **Finish**.
-13. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
-14. Back in the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, and double-click **SessionDesktop** to start a new Remote Desktop session. 
-15. Within the **SessionDesktop** session, verify that the **Notepad** shortcut appears on the desktop.
-16. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
-17. Switch to your lab computer and, in the Microsoft Edge window displaying the Azure portal, navigate to the **Storage accounts** blade and select the entry representing the storage account you created in the previous exercise.
-18. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22-profiles**. 
-19. On the **az140-22-profiles** blade, select **Browse** and verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aduser1** account followed by the **_aduser1** suffix.
-20. Select the folder you identified in the previous step and note that it contains a single file named **Profile_aduser1.vhd**.
+
+1. in the list of applications, double-click **Command Prompt**, when prompted, provide the password of the **aduser1** account, and verify a **Command Prompt** window opens successfully.
+1. In the upper left corner of the **Command Prompt** window, right-click the **Command Prompt** icon and, in the drop-down menu, select **Properties**.
+1. In the **Command Prompt Properties** dialog box, select the **Font** tab, modify the size and font settings, and select **OK**.
+1. From the **Command Prompt** window, type **logoff** and press the **Enter** key to sign out from the Remote Desktop session.
+1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** under az140-21-ws1 and verify that it launches a Remote Desktop session. 
+1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Run**, in the **Run** dialog box, in the **Open** text box, type **cmd** and select **OK** to launch a **Command Prompt** window:
+1. Verify that the **Command Prompt** window settings match those you configured earlier in this task.
+1. Within the **SessionDesktop** session, minimize all windows, right-click the desktop, in the right-click menu, select **New** and, in the cascading menu, select **Shortcut**. 
+1. On the **What item would you like to create a shortcut for?** page of the **Create Shortcut** wizard, in the **Type the location of the item** text box, type **Notepad** and select **Next**.
+1. On the **What would you like to name the shortcut** page of the **Create Shortcut** wizard, in the **Type a name for this shortcut** text box, type **Notepad** and select **Finish**.
+1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
+1. Back in the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, and double-click **SessionDesktop** to start a new Remote Desktop session. 
+1. Within the **SessionDesktop** session, verify that the **Notepad** shortcut appears on the desktop.
+1. Within the **SessionDesktop** session, right-click **Start**, in the right-click menu, select **Shut down or sign out** and then, in the cascading menu, select **Sign out**.
+1. Switch to your lab computer and, in the Microsoft Edge window displaying the Azure portal, navigate to the **Storage accounts** blade and select the entry representing the storage account you created in the previous exercise.
+1. On the storage account blade, in the **File services** section, select **File shares** and then, in the list of file shares, select **az140-22-profiles**. 
+1. On the **az140-22-profiles** blade, select **Browse** and verify that its content includes a folder which name consists of a combination of the Security Identifier (SID) of the **ADATUM\\aduser1** account followed by the **_aduser1** suffix.
+1. Select the folder you identified in the previous step and note that it contains a single file named **Profile_aduser1.vhd**.
 
 ### Exercise 2: Stop and deallocate Azure VMs provisioned and used in the lab
 

@@ -41,15 +41,15 @@ The main tasks for this exercise are as follows:
 
 1. Prepare for deployment of Azure Virtual Desktop host pool by using PowerShell
 1. Create a Azure Virtual Desktop host pool by using PowerShell
-1. Perform a template-based deployment of an Azure VM running Windows 10 Enterprise by using PowerShell
-1. Add an Azure VM running Windows 10 Enterprise as a session host to the Azure Virtual Desktop host pool by using PowerShell
+1. Perform a template-based deployment of an Azure VM running Windows 11 Enterprise by using PowerShell
+1. Add an Azure VM running Windows 11 Enterprise as a session host to the Azure Virtual Desktop host pool by using PowerShell
 1. Verify the deployment of the Azure Virtual Desktop session host
 
 #### Task 1: Prepare for deployment of Azure Virtual Desktop host pool by using PowerShell
 
 1. From your lab computer, start a web browser, navigate to the [Azure portal](https://portal.azure.com), and sign in by providing credentials of a user account with the Owner role in the subscription you will be using in this lab.
 1. In the Azure portal, search for and select **Virtual machines** and, from the **Virtual machines** blade, select **az140-dc-vm11**.
-1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Bastion**, on the **Bastion** tab of the **az140-dc-vm11 \| Connect** blade, select **Use Bastion**.
+1. On the **az140-dc-vm11** blade, select **Connect**, in the drop-down menu, select **Connect via Bastion**.
 1. When prompted, provide the following credentials and select **Connect**:
 
    |Setting|Value|
@@ -58,18 +58,6 @@ The main tasks for this exercise are as follows:
    |Password|**Pa55w.rd1234**|
 
 1. Within the Bastion session to **az140-dc-vm11**, start **Windows PowerShell ISE** as administrator.
-1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to identify the distinguished name of the organizational unit named **WVDInfra** that will host the computer objects of the Azure Virtual Desktop pool session hosts:
-
-   ```powershell
-   (Get-ADOrganizationalUnit -Filter "Name -eq 'WVDInfra'").distinguishedName
-   ```
-
-1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to identify the UPN suffix of the **ADATUM\\Student** account that you will use to join the Azure Virtual Desktop hosts to the AD DS domain (**student@adatum.com**):
-
-   ```powershell
-   (Get-ADUser -Filter {sAMAccountName -eq 'student'} -Properties userPrincipalName).userPrincipalName
-   ```
-
 1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the DesktopVirtualization PowerShell module (when prompted, click **Yes to All**):
 
    ```powershell
@@ -87,21 +75,8 @@ The main tasks for this exercise are as follows:
    |Name|**hp3-Subnet**|
    |Subnet address range|**10.0.3.0/24**|
 
-1. Within the Bastion session to **az140-dc-vm11**, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to **Network security groups** and, on the **Network security groups** blade, select the security group in the **az140-11-RG** resource group.
-1. On the network security group blade, in the vertical menu on the left, in the **Settings** section, click **Properties**.
-1. On the **Properties** blade, click the **Copy to clipboard** icon on the right side of the **Resource ID** textbox. 
-
-   > **Note**: The value should resemble the format `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`, although the subscription ID will differ. Record it since you will need it in the next task.
-
 #### Task 2: Create a Azure Virtual Desktop host pool by using PowerShell
 
-1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to sign in to your Azure subscription:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-1. When prompted, provide the credentials of the user account with the Owner role in the subscription you are using in this lab.
 1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to identify the Azure region hosting the Azure virtual network **az140-adds-vnet11**:
 
    ```powershell
@@ -139,7 +114,7 @@ The main tasks for this exercise are as follows:
    New-AzRoleAssignment -ObjectId $aadGroupObjectId -RoleDefinitionName $roleDefinitionName -ResourceName $dagAppGroupName -ResourceGroupName $resourceGroupName -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
    ```
 
-#### Task 3: Perform a template-based deployment of an Azure VM running Windows 10 Enterprise by using PowerShell
+#### Task 3: Perform a template-based deployment of an Azure VM running Windows 11 Enterprise by using PowerShell
 
 1. From your lab computer, navigate to the deployed storage account. On the File Share blade, select the **az140-22-profiles** file share.
 
@@ -147,7 +122,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-dc-vm11**, open File Explorer and navigate to the previously configured Z:, or the drive letter assigned to the connection to the File Share. Copy the uploaded deployment files to **C:\AllFiles\Labs\02**.
 
-1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to deploy an Azure VM running Windows 10 Enterprise (multi-session) that will serve as a Azure Virtual Desktop session host in the host pool you created in the previous task:
+1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** console, run the following to deploy an Azure VM running Windows 11 Enterprise (multi-session) that will serve as a Azure Virtual Desktop session host in the host pool you created in the previous task:
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
@@ -160,7 +135,7 @@ The main tasks for this exercise are as follows:
      -TemplateParameterFile C:\AllFiles\Labs\02\az140-24_azuredeployhp3.parameters.json
    ```
 
-   > **Note**: Wait for the deployment to complete before you proceed to the next task. This might take about 5 minutes. 
+   > **Note**: Wait for the deployment to complete before you proceed to the next task. This might take about 5-10 minutes. 
 
    > **Note**: The deployment uses an Azure Resource Manager template to provision an Azure VM and applies a VM extension that automatically joins the operating system to the **adatum.com** AD DS domain.
 
@@ -170,10 +145,13 @@ The main tasks for this exercise are as follows:
    Get-ADComputer -Filter "sAMAccountName -eq 'az140-24-p3-0$'"
    ```
 
-#### Task 4: Add an Azure VM running Windows 10 Enterprise as a host to the Azure Virtual Desktop host pool by using PowerShell
+#### Task 4: Add an Azure VM running Windows 11 Enterprise as a host to the Azure Virtual Desktop host pool by using PowerShell
 
 1. Within the Bastion session to **az140-dc-vm11**, in the browser window displaying the Azure portal, search for and select **Virtual machines** and, on the **Virtual machines** blade, in the list of virtual machines, select **az140-24-p3-0**.
-1. On the **az140-24-p3-0** blade, select **Connect**, in the drop-down menu, select **RDP**, on the **RDP** tab of the **az140-24-p3-0 \| Connect** blade, in the **IP address** drop-down list, select the **Private IP address (10.0.3.4)** entry, and then select **Download RDP File**.
+1. On the **az140-24-p3-0** blade, select **Connect**, in the drop-down menu, select **Connect**
+1. Ensure **Connecting using** says **Private IP address | 10.0.3.4**
+1. From within the **Native RDP** section, select **Download RDP File**.
+1. If prompted, select **Keep**, and then click the downloaded **az140-24-p3-0.rdp** file.
 1. When prompted, sign in with the following credentials:
 
    |Setting|Value|
@@ -203,29 +181,22 @@ The main tasks for this exercise are as follows:
    $webClient.DownloadFile($wvdBootLoaderInstallerURL,"$labFilesFolder/$wvdBootLoaderInstallerName")
    ```
 
-1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to install the latest version of the PowerShellGet module (select **Yes** when prompted for confirmation):
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the latest version of the Az PowerShell module, when prompted to install the NuGet provider, press **Y**:
 
    ```powershell
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   Install-Module -Name PowerShellGet -Force -SkipPublisherCheck
+   Install-Module -Name Az -Force
    ```
 
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to install the latest version of the Az.DesktopVirtualization PowerShell module:
+   > **Note**: You may need to wait 3-5 minutes before any output from the installation of the Az module appears. You may also need to wait a further 5 minutes **after** output has stopped. This is expected behavior.
+
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to sign in to your Azure subscription:
 
    ```powershell
-   Install-Module -Name Az.DesktopVirtualization -AllowClobber -Force
-   Install-Module -Name Az -AllowClobber -Force
-   ```
-
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to modify the PowerShell execution policy and sign in to your Azure subscription:
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser -Force
    Connect-AzAccount
    ```
 
 1. When prompted, provide the credentials of the user account with the Owner role in the subscription you are using in this lab.
-1. Within the Remote Desktopliveid session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** console, run the following to generate the token necessary to join new session hosts to the pool you provisioned earlier in this exercise:
+1. Within the Remote Desktop session to **az140-24-p3-0**, from the **Administrator: Windows PowerShell ISE** console, run the following to generate the token necessary to join this session host to the pool you provisioned earlier in this exercise:
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
@@ -246,6 +217,8 @@ The main tasks for this exercise are as follows:
    ```powershell
    Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $wvdBootLoaderInstallerName", "/quiet", "/qn", "/norestart", "/passive", "/l* $labFilesFolder\BootLoaderInstall.log" | Wait-process
    ```
+
+1. Within the Remote Desktop session to **az140-24-p3-0**, right-click **Start**, in the right-click menu, select **Shut down or sign out** and, in the cascading menu, click **Sign out**.
 
 #### Task 5: Verify the deployment of the Azure Virtual Desktop host
 
