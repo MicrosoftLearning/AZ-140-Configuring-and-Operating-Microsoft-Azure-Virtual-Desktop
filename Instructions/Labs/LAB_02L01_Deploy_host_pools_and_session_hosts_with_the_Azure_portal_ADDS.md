@@ -113,7 +113,7 @@ The main tasks for this exercise are as follows:
    |Virtual machine type|Azure virtual machine|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the previous lab|
    |Availability options|**No infrastructure redundancy required**|
-   |Security type|**Standard**|
+   |Security type|**Trusted launch virtual machines**|
    |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
    |Virtual machine size|**Standard D2s v3**|
    |Number of VMs|**2**|
