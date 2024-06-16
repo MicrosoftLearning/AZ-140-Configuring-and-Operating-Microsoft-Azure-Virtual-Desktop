@@ -110,7 +110,7 @@ The main tasks for this exercise are as follows:
    Update-AzConfig -EnableLoginByWam $false
    ```
    
-1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to set the variables necessary to run the subsequent script:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to set the variables necessary to run the subsequent script:
 
    ```powershell
    $subscriptionId = (Get-AzContext).Subscription.Id
@@ -118,7 +118,7 @@ The main tasks for this exercise are as follows:
    $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName
    ```
 
-1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to create an AD DS computer object that represents the Azure Storage account you created earlier in this task and is used to implement its AD DS authentication:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to create an AD DS computer object that represents the Azure Storage account you created earlier in this task and is used to implement its AD DS authentication:
 
    >**Note**: If you receive an error when running this script block, ensure that you are in the same directory as the CopyToPSPath.ps1 script. Depending on how the files were extracted earlier in this lab, they might be in a sub-folder named AzFilesHybrid. In the PowerShell context, change directories to the folder using **cd AzFilesHybrid**.
 
@@ -133,7 +133,7 @@ The main tasks for this exercise are as follows:
       -OrganizationalUnitDistinguishedName 'OU=WVDInfra,DC=adatum,DC=com'
    ```
 
-1. Within the Bastion session to **az140-dc-vm11**, from the **Administrator: Windows PowerShell ISE** script pane, run the following to verify that the AD DS authentication is enabled on the Azure Storage account:
+1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to verify that the AD DS authentication is enabled on the Azure Storage account:
 
    ```powershell
    $storageaccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
