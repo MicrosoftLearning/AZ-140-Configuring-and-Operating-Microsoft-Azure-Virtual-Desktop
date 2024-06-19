@@ -327,7 +327,13 @@ The main tasks for this exercise are as follows:
    Connect-AzAccount
    ```
 
-1. When prompted, provide the credentials of the user account with the Owner role in the subscription you are using in this lab.
+1. When prompted, provide the credentials of an Entra ID user account with the Owner role in the subscription you are using in this lab.
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to disable Windows Account Manager:
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to retrieve the Id property of the Microsoft Entra tenant associated with your Azure subscription:
 
    ```powershell
