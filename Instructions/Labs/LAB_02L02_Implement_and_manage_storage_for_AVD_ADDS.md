@@ -97,19 +97,19 @@ The main tasks for this exercise are as follows:
    Get-ChildItem -Path C:\Allfiles\Labs\02 -File -Recurse | Unblock-File
    ```
 
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to disable Windows Account Manager:
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to sign in to your Azure subscription:
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. When prompted, provide the credentials of an Entra ID user account with the Owner role in the subscription you are using in this lab.
-1. From the **Administrator: Windows PowerShell ISE** console, run the following to disable Windows Account Manager:
-
-   ```powershell
-   Update-AzConfig -EnableLoginByWam $false
-   ```
-   
+1. When prompted, provide the credentials of an Entra ID user account with the Owner role in the subscription you are using in this lab. 
 1. From the **Administrator: Windows PowerShell ISE** script pane, run the following to set the variables necessary to run the subsequent script:
 
    ```powershell
