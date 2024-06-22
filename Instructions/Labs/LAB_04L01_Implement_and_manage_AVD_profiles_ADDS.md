@@ -82,6 +82,12 @@ The main tasks for this exercise are as follows:
 
    > **Note**: You may need to wait 3-5 minutes before any output from the installation of the Az module appears. You may also need to wait a further 5 minutes **after** output has stopped. This is expected behavior.
 
+1. From the **Administrator: Windows PowerShell ISE** console, run the following to disable Windows Account Manager:
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. From the **Administrator: Windows PowerShell ISE** console, run the following to sign in to your Azure subscription:
 
    ```powershell
