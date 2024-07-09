@@ -115,7 +115,7 @@ The main tasks for this exercise are as follows:
    |Availability options|**No infrastructure redundancy required**|
    |Security type|**Trusted launch virtual machines**|
    |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
-   |Virtual machine size|**Standard D2as v5**|
+   |Virtual machine size|**Standard DC2s_v3**|
    |Number of VMs|**2**|
    |OS disk type|**Standard SSD**|
    |OS disk size|**Default size (128GiB)**|
