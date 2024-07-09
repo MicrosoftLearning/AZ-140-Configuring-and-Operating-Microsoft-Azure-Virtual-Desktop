@@ -115,10 +115,10 @@ The main tasks for this exercise are as follows:
    |Availability options|**No infrastructure redundancy required**|
    |Security type|**Trusted launch virtual machines**|
    |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
-   |Virtual machine size|**Standard D2s v3**|
+   |Virtual machine size|**Standard D2as v5**|
    |Number of VMs|**2**|
    |OS disk type|**Standard SSD**|
-   |OS disk size|**Resize to 128GB (P10)**|
+   |OS disk size|**Default size (128GiB)**|
    |Boot Diagnostics|**Enable with managed storage account (recommended)**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
@@ -160,11 +160,11 @@ The main tasks for this exercise are as follows:
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed the first two session host VMs|
    |Availability options|**No infrastructure redundancy required**|
-   |Security type|**Standard**|
+   |Security type|**Trusted launch virtual machines**|
    |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
    |Number of VMs|**1**|
    |OS disk type|**Standard SSD**|
-   |OS disk size|**Default size (128GB)**|
+   |OS disk size|**Default size (128GiB)**|
    |Boot Diagnostics|**Enable with managed storage account (recommended)**|
    |Virtual network|**az140-adds-vnet11**|
    |Subnet|**hp1-Subnet (10.0.1.0/24)**|
