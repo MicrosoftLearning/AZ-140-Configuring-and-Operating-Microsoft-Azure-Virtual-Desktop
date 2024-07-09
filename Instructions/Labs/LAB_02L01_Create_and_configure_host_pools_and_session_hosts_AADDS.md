@@ -95,9 +95,9 @@ The main tasks for this exercise are as follows:
    |Name prefix|**az140-21-p1**|
    |Virtual machine location|the name of the Azure region into which you deployed resources in the first exercise of this lab|
    |Availability options|**No infrastructure redundancy required**|
-   |Security type|**Standard**|
+   |Security type|**Trusted launch virtual machines**|
    |Image|**Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 22H2**|
-   |Virtual machine size|**Standard D2s v3**|
+   |Virtual machine size|**Standard D2as v5**|
    |Number of VMs|**2**|
    |OS disk type|**Standard SSD**|
    |Virtual network|**az140-aadds-vnet11a**|
