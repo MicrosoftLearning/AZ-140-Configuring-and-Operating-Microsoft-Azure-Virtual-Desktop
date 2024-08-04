@@ -84,7 +84,8 @@ The main tasks for this exercise are as follows:
    |Setting|Value|
    |---|---|
    |Name|**hp1-Subnet**|
-   |Subnet address range|**10.0.1.0/24**|
+   |Starting address|**10.0.1.0**|
+   |Size|**/24 (256 addresses)**|
 
 #### Task 2: Deploy an Azure Virtual Desktop host pool
 
