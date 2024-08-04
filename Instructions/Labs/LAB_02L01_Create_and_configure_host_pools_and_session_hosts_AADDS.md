@@ -80,9 +80,12 @@ The main tasks for this exercise are as follows:
    |Host pool name|**az140-21a-hp1**|
    |Location|the name of the Azure region into which you deployed the Microsoft Entra DS instance earlier in this lab|
    |Validation environment|**No**|
+   |Preferred app group type|**Desktop**|
    |Host pool type|**Pooled**|
    |Max session limit|**12**|
    |Load balancing algorithm|**Breadth-first**|
+
+   > **Note**: If a user has both RemoteApp and Desktop apps published, the preferred app group type determines which of them will appear in their feed.
 
 1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Microsoft Entra tenant associated with the subscription into which you deployed the Microsoft Entra DS instance and replace the `<password>` placeholder with the password you set when creating the aadadmin1 account):
 
@@ -270,23 +273,35 @@ The main tasks for this exercise are as follows:
    > **Note**: The user principal name of **aaduser1** should be in the format **aaduser1@***<Azure_AD_domain_name>*, where the *<Azure_AD_domain_name>* placeholder matches the name of the Microsoft Entra tenant associated with the subscription into which you deployed the Microsoft Entra DS instance.
 
 1. In the **Stay signed in to all your apps** window, clear the checkbox **Allow my organization to manage my device** checkbox and select **No, sign in to this app only**. 
-1. Ensure that the **Remote Desktop** page displays the listing of applications that are included in the application groups associated with the user account **aaduser1** via its group membership. 
+1. Verify that the **Remote Desktop** page displays the SessionDesktop included in the auto-generated az140-21-hp1-DAG desktop application group published to the workspace and associated with the user account **aduser1** via its group membership. 
+
+   > **Note**: This is expected, because the **Preferred app group type** of the host pool is currently set to **Desktop**.
 
 #### Task 3: Test Azure Virtual Desktop apps
 
-1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set for the **aaduser1** user account, select the checkbox **Remember me**, and select **OK**.
+1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
 
    > **Note**: Initially, it might take a few minutes for the application to start, but subsequently, the application startup should be much faster.
 
-1. At the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Command Prompt is running.
+   > **Note**: If you are presented with the **Welcome to Microsoft Teams** sign-in prompt, close it. 
 
-   > **Note**: Verify that the displayed name is either **az140-21-p1-0** or **az140-21-p1-1**, not **az140-cl-vm11a**.
+1. Within the **Session Desktop** session, right-click **Start**, select **Run**, in the **Open** text box of the **Run** dialog box, type **cmd** and select **OK**. 
+1. Within the **Session Desktop** session, at the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Remote Desktop session is running.
+1. Verify that the displayed name is either **az140-21-p1-0**, **az140-21-p1-1** or **az140-21-p1-2**.
+1. At the Command Prompt, type **logoff** and press the **Enter** key to log off from the Session Desktop.
 
+   > **Note**: Next, you will modify the **Preferred app group type** by setting it to **RemoteApp**.
+
+1. Within the Bastion session to **az140-cl-vm11a**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu bar, in the **Manage section**, select **Host pools**.
+1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select **az140-21-hp1**.
+1. On the **az140-21-hp1** blade, in the in the vertical menu bar, in the **Settings** section, select **Properties**, in the **Preferred app group type**, select **Remote App**, and then select **Save**. 
+1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, select the ellipsis symbol in the upper right corner and, in the drop-down menu, select **Refresh**.
+1. Verify that the **Remote Desktop** page displays individual apps included in the two application groups you created and published to the workspace, which are also associated with the user account **aduser1** via its group membership. 
+
+   > **Note**: This is expected, because the **Preferred app group type** of the host pool is now set to **RemoteApp**.
+
+1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set when creating the **aduser1** user account, select the checkbox **Remember me**, and select **OK**.
 1. At the Command Prompt, type **logoff** and press the **Enter** key to log off from the current Remote App session.
-1. Within the Bastion session to **az140-cl-vm11a**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
-1. Within the **Default Desktop** session, right-click **Start**, select **Run**, in the **Open** text box of the **Run** dialog box, type **cmd** and select **OK**. 
-1. Within the **Default Desktop** session, at the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Remote Desktop session is running.
-1. Verify that the displayed name is either **az140-21-p1-0** or **az140-21-p1-1**.
 
 ### Exercise 3: Stop and deallocate Azure VMs provisioned and used in the lab
 

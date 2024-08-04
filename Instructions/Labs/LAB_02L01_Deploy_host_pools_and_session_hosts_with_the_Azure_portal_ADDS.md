@@ -104,6 +104,8 @@ The main tasks for this exercise are as follows:
    |Load balancing algorithm|**Breadth-first**|
    |Max session limit|**12**|
 
+   > **Note**: If a user has both RemoteApp and Desktop apps published, the preferred app group type determines which of them will appear in their feed.
+
 1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >** (leave other settings with their default values):
 
    |Setting|Value|
@@ -150,7 +152,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-dc-vm11**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu bar, in the **Manage section**, select **Host pools**.
 1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select **az140-21-hp1**.
-1. On the **az140-21-hp1** blade, in the in the vertical menu bar, in the **Manage section**, select **Session hosts** and verify that the pool consists of two hosts. 
+1. On the **az140-21-hp1** blade, in the in the vertical menu bar, in the **Manage** section, select **Session hosts** and verify that the pool consists of two hosts. 
 1. On the **az140-21-hp1 \| Session hosts** blade, select **+ Add**.
 1. On the **Basics** tab of the **Add virtual machines to a host pool** blade, review the preconfigured settings and select **Next: Virtual Machines**.
 1. On the **Virtual Machines** tab of the **Add virtual machines to a host pool** blade, specify the following settings and select **Review + create** (leave others with their default settings):
@@ -363,27 +365,41 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Alternatively, in the **Remote Desktop** client window, select **Subscribe with URL**, in the **Subscribe to a Workspace** pane, in the **Email or Workspace URL**, type **https://client.wvd.microsoft.com/api/arm/feeddiscovery**, select **Next**, and, once prompted, sign in with the **aduser1** credentials (using its userPrincipalName attribute as the user name and the password you set when creating this account). 
 
-1. Ensure that the **Remote Desktop** page displays the listing of applications that are included in the application groups published to the workspace and associated with the user account **aduser1** via its group membership. 
+1. Verify that the **Remote Desktop** page displays the SessionDesktop included in the auto-generated az140-21-hp1-DAG desktop application group published to the workspace and associated with the user account **aduser1** via its group membership. 
+
+   > **Note**: This is expected, because the **Preferred app group type** of the host pool is currently set to **Desktop**.
 
 #### Task 3: Test Azure Virtual Desktop apps
 
-1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set when creating the **aduser1** user account, select the checkbox **Remember me**, and select **OK**.
+1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
 
    > **Note**: Initially, it might take a few minutes for the application to start, but subsequently, the application startup should be much faster.
 
    > **Note**: If you are presented with the **Welcome to Microsoft Teams** sign-in prompt, close it.
 
+1. Within the **Session Desktop** session, right-click **Start**, select **Run**, in the **Open** text box of the **Run** dialog box, type **cmd** and select **OK**. 
+1. Within the **Session Desktop** session, at the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Remote Desktop session is running.
+1. Verify that the displayed name is either **az140-21-p1-0**, **az140-21-p1-1** or **az140-21-p1-2**.
+1. At the Command Prompt, type **logoff** and press the **Enter** key to log off from the Session Desktop.
+
+   > **Note**: Next, you will modify the **Preferred app group type** by setting it to **RemoteApp**.
+
+1. From your lab computer, switch to the Bastion session to **az140-dc-vm11**.
+1. Within the Bastion session to **az140-dc-vm11**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, in the vertical menu bar, in the **Manage section**, select **Host pools**.
+1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select **az140-21-hp1**.
+1. On the **az140-21-hp1** blade, in the in the vertical menu bar, in the **Settings** section, select **Properties**, in the **Preferred app group type**, select **Remote App**, and then select **Save**. 
+1. From your lab computer, switch to the Bastion session to **az140-cl-vm11**.
+1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, select the ellipsis symbol in the upper right corner and, in the drop-down menu, select **Refresh**.
+1. Verify that the **Remote Desktop** page displays individual apps included in the two application groups you created and published to the workspace, which are also associated with the user account **aduser1** via its group membership. 
+
+   > **Note**: This is expected, because the **Preferred app group type** of the host pool is now set to **RemoteApp**.
+
+1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **Command Prompt** and verify that it launches a **Command Prompt** window. When prompted to authenticate, type the password you set when creating the **aduser1** user account, select the checkbox **Remember me**, and select **OK**.
 1. At the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Command Prompt is running.
 
    > **Note**: Verify that the displayed name is **az140-21-p1-0**, **az140-21-p1-1** or **az140-21-p1-2**, rather than **az140-cl-vm11**.
 
 1. At the Command Prompt, type **logoff** and press the **Enter** key to log off from the current Remote App session.
-1. Within the Bastion session to **az140-cl-vm11**, in the **Remote Desktop** client window, in the list of applications, double-click **SessionDesktop** and verify that it launches a Remote Desktop session. 
-1. Within the **Session Desktop** session, right-click **Start**, select **Run**, in the **Open** text box of the **Run** dialog box, type **cmd** and select **OK**. 
-1. Within the **Session Desktop** session, at the Command Prompt, type **hostname** and press the **Enter** key to display the name of the computer on which the Remote Desktop session is running.
-1. Verify that the displayed name is either **az140-21-p1-0**, **az140-21-p1-1** or **az140-21-p1-2**.
-1. At the Command Prompt, type **logoff** and press the **Enter** key to log off from the Session Desktop.
-1. Within the Bastion session to **az140-cl-vm11**, sign-out of the session, and then select **Close**.
 
 ### Exercise 3: Stop and deallocate Azure VMs provisioned in the lab
 
