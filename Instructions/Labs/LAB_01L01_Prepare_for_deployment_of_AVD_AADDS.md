@@ -195,7 +195,7 @@ The main tasks for this exercise are as follows:
    |Name|**az140-aadds-vnet11a**|
    |Address range|**10.10.0.0/16**|
    |Subnet name|**aadds-Subnet**|
-   |Subnet name|**10.10.0.0/24**|
+   |Address range|**10.10.0.0/24**|
 
 1. Back on the **Networking** tab of the **Create virtual network** blade, select **Next** (leave others with their existing values).
 1. On the **Administration** tab of the **Create Microsoft Entra Domain Services** blade, accept the default settings and select **Next**.
