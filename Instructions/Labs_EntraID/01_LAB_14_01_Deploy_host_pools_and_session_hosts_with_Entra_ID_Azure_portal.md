@@ -84,6 +84,7 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Name|**hp1-Subnet**|
     |Starting address|**10.20.1.0**|
+    |Enable private subnet (no default outbound access)|disabled|
 
 1. Back on the **IP addresses** tab, select **Review + create** and then, on the **Review + create** tab, select **Create**.
 
