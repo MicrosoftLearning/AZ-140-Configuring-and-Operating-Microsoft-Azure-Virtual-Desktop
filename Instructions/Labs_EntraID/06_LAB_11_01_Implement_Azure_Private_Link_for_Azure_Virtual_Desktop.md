@@ -86,6 +86,7 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Name|**pe-Subnet**|
     |Starting address|**10.20.255.0**|
+    |Enable private subnet (no default outbound access)|disabled|
 
 #### Task 3: Implement a private endpoint for connections to a host pool
 
@@ -253,6 +254,7 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Name|**client-Subnet**|
     |Starting address|**10.20.2.0**|
+    |Enable private subnet (no default outbound access)|disabled|
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines**, on the **Virtual machines** page, select **+ Create** and, in the drop-down list, select **Azure virtual machine**.
 1. On the **Basics** tab of the **Create a virtual machine** page, specify the following settings (leave other settings with their default values) and select **Next: Disks >**:
