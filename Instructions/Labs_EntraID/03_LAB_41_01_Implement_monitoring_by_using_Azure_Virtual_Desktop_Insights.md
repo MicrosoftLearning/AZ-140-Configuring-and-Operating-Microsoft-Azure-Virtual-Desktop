@@ -99,6 +99,8 @@ The main tasks for this exercise are as follows:
 
     > **Note**: Wait for the deployment to complete. This typically takes less than 1 minute.
 
+1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
+1. Review the **Host pool az140-21-hp1** section and verify that the diagnostic settings are enabled for **allLogs**.
 1. While on the **Resource diagnostics settings** tab, scroll down to the **Workspace az140-21-ws1** section and then select **Configure workspace**.
 1. In the **Deploy Template** pane, select **Deploy**.
 
@@ -107,11 +109,8 @@ The main tasks for this exercise are as follows:
     > **Note**: Wait for the deployment to complete. This typically takes less than 1 minute.
 
 1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
-1. Verify that there are no error or warning messages displayed. 
-
-    > **Note**: In case you encounter the issue with the warning message stating that no existing configuration was found for the selected workspace, disregard it as long as you successfully completed the workspace configuration step.
-
-1. On the **CheckAMAConfiguration** page, switch to the **Select host data settings** tab.
+1. Review the **Workspace az140-21-ws1** section and verify that the diagnostic settings are enabled for **allLogs** and that thre are no remaining warning messages.
+1. Navigate to the top of the **CheckAMAConfiguration** page and switch to the **Select host data settings** tab.
 1. On the **Select host data settings** tab, in the **Create DCR** section, in the **Workspace destination** drop-down list, select **az140-laworkspace41e** and then select **Create data collection rule**.
 1. In the **Deploy Template** pane, select **Deploy**.
 
@@ -119,7 +118,7 @@ The main tasks for this exercise are as follows:
 
 1. On the **CheckAMAConfiguration** page, on the **Select host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
 
-    > **Note**: Before you proceed, make sure that the newly created DCR is listed in the **Available DCRs** subsection of the **Create DCR** section. If that's not the case, wait for another minute and refresh the page again.
+    > **Note**: Before you proceed, make sure that the newly created DCR is listed in the **Available DCRs** subsection of the **Create DCR** section. If that is not the case, wait for another minute and refresh the page again.
 
 1. On the **Select host data settings** tab, in the **Selected DCR** drop-down list, select the entry starting with **microsoft-avdi-** prefix.
 1. On the **Select host data settings** tab, in the **DCR associations** section, select **Deploy Association**.
@@ -139,7 +138,7 @@ The main tasks for this exercise are as follows:
 
 1. On the **CheckAMAConfiguration** page, on the **Select host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
 1. Verify that there are no error or warning messages displayed. 
-1. On the **CheckAMAConfiguration** page, select the **Data generated** tab and then select the **Refresh** icon (a circular arrow) in the toolbar.
+1. Navigate to the top of the **CheckAMAConfiguration** page, select the **Data generated** tab, and then select the **Refresh** icon (a circular arrow) in the toolbar.
 1. Review the sections displaying graphs representing collected data, including **Billed data over last 24hrs**, **Performance Counters**, and **Events**.
 
     > **Note**: Use the **Billed data over last 24hrs** section to monitor data ingestion. You are responsible for Log Analytics charges for data storage and ingestion.
