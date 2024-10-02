@@ -317,7 +317,7 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Boot diagnostics|**Disable**|
 
-1. On the **Review + create** tab the **Create a private endpoint** page, select **Create**.
+1. On the **Review + create** tab of the **Create a virtual machine** page, select **Create**.
 
     > **Note**: Wait for the deployment to complete. The deployment might take about 5 minutes.
 
