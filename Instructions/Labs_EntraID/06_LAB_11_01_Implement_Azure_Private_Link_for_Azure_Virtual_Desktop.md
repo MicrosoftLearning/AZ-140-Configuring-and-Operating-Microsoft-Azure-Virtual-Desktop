@@ -231,6 +231,14 @@ The main tasks for this exercise are as follows:
 
     > **Note**: You would need to a create private endpoint for the feed sub-resource for each workspace you want to use with Private Link.
 
+    > **Note**: For the network changes to take effect, you need to restart the session hosts in the target host pool.
+
+1. From the lab computer, in the web browser displaying the Azure portal, navigate to the **Azure Virtual Desktop** page, in the **Manage** section of the vertical navigation menu, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** page, select **az140-21-hp1**.
+1. On the **az140-21-hp1** page, in the **Manage** section of the vertical navigation menu, select **Session hosts**. 
+1. In the list of session hosts, select all checkboxes to the left of each session host and then select **Restart** in the toolbar.
+
+    > **Note**: Wait until all session hosts are in the **Running** state. 
+
 #### Task 6: Validate the private endpoint functionality
 
 > **Note**: By default, connectivity to Azure Virtual Desktop workspaces and host pools is allowed from public networks. You will start by changing the default settings and enforcing private access.
