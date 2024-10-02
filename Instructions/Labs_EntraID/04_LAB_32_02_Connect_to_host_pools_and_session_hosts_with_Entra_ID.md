@@ -72,7 +72,7 @@ Since none of these criteria apply to the lab computer, it is necessary to add `
     enablerdsaadauth:i:value
     ```
 
-1. On the **az140-21-hp1\|Properties** page, select **Save**.
+1. On the **az140-21-hp1\|RDP Properties** page, select **Save**.
 
 #### Task 2: Install Microsoft Remote Desktop client on a Windows 11 computer
 
