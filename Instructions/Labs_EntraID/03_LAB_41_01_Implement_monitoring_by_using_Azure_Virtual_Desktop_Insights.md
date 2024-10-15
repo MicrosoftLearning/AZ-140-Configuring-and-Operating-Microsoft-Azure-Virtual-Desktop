@@ -68,7 +68,7 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Subscription|the name of the Azure subscription you are using in this lab|
     |Resource group|the name of a new resource group **az140-411e-RG**|
-    |Virtual network name|**az140-laworkspace41e**|
+    |Name|**az140-laworkspace41e**|
     |Region|the name of the Azure region where you deployed the Azure Virtual Desktop environment|
 
 1. On the **Review + Create** page, select **Create**.
