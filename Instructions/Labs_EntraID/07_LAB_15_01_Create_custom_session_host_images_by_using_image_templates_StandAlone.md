@@ -330,7 +330,7 @@ The main tasks for this exercise are as follows:
     |---|---|
     |IP address space|**10.30.0.0/16**|
 
-1. Select the edit (pencil) icon next to the **default** subnet entry, in the **Edit** pane, specify the following settings (leave others with their existing values) and select **Add**:
+1. Select the edit (pencil) icon next to the **default** subnet entry, in the **Edit** pane, specify the following settings (leave others with their existing values) and select **Save**:
 
     |Setting|Value|
     |---|---|
