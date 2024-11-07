@@ -155,7 +155,7 @@ The main tasks for this exercise are as follows:
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22a-profiles'
-   New-Item -Path $profilesParentKey -Name $profilesChildKey –Force
+   New-Item -Path $profilesParentKey -Name $profilesChildKey -Force
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$storageAccountName.file.core.windows.net\$fileShareName"
    ```
@@ -199,7 +199,7 @@ and select **OK** to close the group **Properties** window.
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22a-profiles'
    Invoke-Command -ComputerName $server -ScriptBlock {
-      New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey –Force
+      New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey -Force
       New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
       New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$storageAccountName.file.core.windows.net\$using:fileShareName"
    }

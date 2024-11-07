@@ -90,7 +90,7 @@ The main tasks for this exercise are as follows:
 
    **Note:** Requesting quota increase requires signing-in with multi-factor authentication (MFA). If you need to configure your account with MFA, refer to [Plan an Azure Active Directory Multi-Factor Authentication deployment](https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted). 
    
-1. On the **Azure Pass – Sponsorship | Usage + quotas** blade, select **Region**, in the drop down list, select the checkbox next to the name of the Azure region you intend to use for this lab, select **Apply**, ensure that the **Compute** entry appears in the drop down list to the left of the **Region** entry, and, in the search box, type **Standard DSv3**. 
+1. On the **Azure Pass - Sponsorship | Usage + quotas** blade, select **Region**, in the drop down list, select the checkbox next to the name of the Azure region you intend to use for this lab, select **Apply**, ensure that the **Compute** entry appears in the drop down list to the left of the **Region** entry, and, in the search box, type **Standard DSv3**. 
 1. In the list of results, select the checkbox next to the **Standard DSv3 Family vCPUs** item, select the **Request quota increase** entry in the toolbar, and, in the drop down list, select **Enter a new limit**.
 1. In the **Request quota increase** pane, in the **New limit** column text box, type **30**, and then select **Submit**.
 1. If prompted, on the **Request quota increase** pane, select **Authenticate with Multi-Factory Authentication** and follow the prompts to authenticate.
