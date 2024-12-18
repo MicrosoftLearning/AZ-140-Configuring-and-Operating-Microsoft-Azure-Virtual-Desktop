@@ -114,7 +114,7 @@ The main tasks for this exercise are as follows:
 
 1. On your lab computer, in the browser displaying the Azure portal, search for and select **Azure Virtual Desktop**. 
 1. On the **Azure Virtual Desktop** page, select **Scaling Plans** and then select **+ Create**.
-1. On the **Basics** tab of the **Create a scaling plan** wizard, specify the following information and select **Next: Schedules >** (leave others with their default values):
+1. On the **Basics** tab of the **Create a scaling plan** wizard, specify the following information and select **Next : Schedules >** (leave others with their default values):
 
    |Setting|Value|
    |---|---|
@@ -184,7 +184,7 @@ The main tasks for this exercise are as follows:
 
    >**Note**: The capacity threshold value in this phase is determined by the ramp-down capacity threshold value.
 
-1. Back on the **Schedules** tab of the **Create a scaling plan** wizard, select **Next: Host pool assignments >**:
+1. Back on the **Schedules** tab of the **Create a scaling plan** wizard, select **Next : Host pool assignments >**:
 1. On the **Host pool assignments** page, in the **Select host pool** drop-down list, select **az140-21-hp1**, ensure that the **Enable autoscale** checkbox is enabled, select **Review + create**, and then select **Create**.
 
 

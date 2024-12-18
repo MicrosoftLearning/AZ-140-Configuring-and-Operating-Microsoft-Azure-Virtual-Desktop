@@ -267,7 +267,7 @@ The main tasks for this exercise are as follows:
    |Subnet address range|**10.0.4.0/24**|
 
 1. From the lab computer, in the Azure portal, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
+1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next : Virtual Machines >**:
 
    |Setting|Value|
    |---|---|
@@ -295,7 +295,7 @@ The main tasks for this exercise are as follows:
    
 1. On the **Virtual machines** tab of the **Create a host pool** blade, directly below the **Image** dropdown list, click the **See all images** link.
 1. On the **Select an image** blade, under **Other Items**, click **Shared Images**, and, in the list of shared images, select **az140-25-host-image**. 
-1. Back on the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >**:
+1. Back on the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next : Workspace >**:
 
    |Setting|Value|
    |---|---|

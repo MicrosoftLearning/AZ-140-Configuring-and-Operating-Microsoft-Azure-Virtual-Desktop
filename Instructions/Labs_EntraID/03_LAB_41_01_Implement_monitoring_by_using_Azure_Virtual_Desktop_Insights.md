@@ -26,7 +26,7 @@ You have an existing Azure Virtual Desktop environment. You want to monitor the 
   
 After completing this lab, you will be able to:
 
-- implement monitoring of an Azure Virtual Desktop environment
+- Implement monitoring of an Azure Virtual Desktop environment
 
 ## Lab files
 
@@ -66,10 +66,10 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-411e-RG**|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-411e-RG**|
     |Name|**az140-laworkspace41e**|
-    |Region|the name of the Azure region where you deployed the Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you deployed the Azure Virtual Desktop environment|
 
 1. On the **Review + Create** page, select **Create**.
 
