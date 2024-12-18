@@ -90,7 +90,7 @@ The main tasks for this exercise are as follows:
 #### Task 2: Deploy an Azure Virtual Desktop host pool
 
 1. Within the Bastion session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >** (leave other settings with their default values):
+1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next : Virtual Machines >** (leave other settings with their default values):
 
    |Setting|Value|
    |---|---|
@@ -106,7 +106,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: If a user has both RemoteApp and Desktop apps published, the preferred app group type determines which of them will appear in their feed.
 
-1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next: Workspace >** (leave other settings with their default values):
+1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings and select **Next : Workspace >** (leave other settings with their default values):
 
    |Setting|Value|
    |---|---|
@@ -154,7 +154,7 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Host pools** blade, in the list of host pools, select **az140-21-hp1**.
 1. On the **az140-21-hp1** blade, in the in the vertical menu bar, in the **Manage** section, select **Session hosts** and verify that the pool consists of two hosts. 
 1. On the **az140-21-hp1 \| Session hosts** blade, select **+ Add**.
-1. On the **Basics** tab of the **Add virtual machines to a host pool** blade, review the preconfigured settings and select **Next: Virtual Machines**.
+1. On the **Basics** tab of the **Add virtual machines to a host pool** blade, review the preconfigured settings and select **Next : Virtual Machines**.
 1. On the **Virtual Machines** tab of the **Add virtual machines to a host pool** blade, specify the following settings and select **Review + create** (leave others with their default settings):
 
    |Setting|Value|
@@ -198,7 +198,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21-hp1-DAG \| Assignments** blade, select **+ Add**.
 1. On the **Select Microsoft Entra users or user groups** blade, select **Groups**, select **az140-wvd-pooled** and click **Select**.
 1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
+1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next : Applications >**:
 
    |Setting|Value|
    |---|---|
@@ -238,10 +238,10 @@ The main tasks for this exercise are as follows:
    |Description|**Microsoft PowerPoint**|
    |Require command line|**No**|
 
-1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
+1. Back on the **Applications** tab of the **Create an application group** blade, select **Next : Assignments >**.
 1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
 1. On the **Select Microsoft Entra users or user groups** blade, select **Groups**, then select **az140-wvd-remote-app** and click **Select**.
-1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
+1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next : Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
    |Setting|Value|
@@ -256,7 +256,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-dc-vm11**, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
 1. On the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
+1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next : Applications >**:
 
    |Setting|Value|
    |---|---|
@@ -285,10 +285,10 @@ The main tasks for this exercise are as follows:
    |Icon path|**C:\Windows\system32\cmd.exe**|
    |Icon index|0|
 
-1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
+1. Back on the **Applications** tab of the **Create an application group** blade, select **Next : Assignments >**.
 1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
 1. On the **Select Microsoft Entra users or user groups** blade, select **groups**, select **az140-wvd-remote-app** and **az140-wvd-admins** and click **Select**.
-1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
+1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next : Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
    |Setting|Value|
@@ -301,7 +301,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-dc-vm11**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Workspaces**.
 1. On the **Azure Virtual Desktop \| Workspaces** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
+1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next : Application groups >**:
 
    |Setting|Value|
    |---|---|

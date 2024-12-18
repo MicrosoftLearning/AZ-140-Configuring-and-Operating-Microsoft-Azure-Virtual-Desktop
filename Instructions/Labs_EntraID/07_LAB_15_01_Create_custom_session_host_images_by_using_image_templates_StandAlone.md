@@ -24,7 +24,7 @@ You plan to implement an Azure Virtual Desktop environment. You need to use cust
   
 After completing this lab, you will be able to:
 
-- create custom session host images for Azure Virtual Desktop by using image templates
+- Create custom session host images for Azure Virtual Desktop by using image templates
 
 ## Lab files
 
@@ -88,9 +88,9 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-15a-RG**|
-    |Region|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-15a-RG**|
+    |Region|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |Name|**az140**-*random*-**uami**|
 
 1. On the **Review + create** tab, select **Create**.
@@ -158,9 +158,9 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-15b-RG**|
-    |Region|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-15b-RG**|
+    |Region|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
 
 1. On the **Review + create** tab, select **Create**.
 1. Refresh the **Resource groups** page and, in the list of resource groups, select **az140-15b-RG**.
@@ -168,7 +168,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-15b-RG\|Access control (IAM)** page, select **+ Add** and, in the drop-down menu, select **Add role assignment**.
 1. On the **Role** tab of the **Add role assignment** page, ensure that the **Job function roles** tab is selected, in the search textbox, enter **Desktop Virtualization Image Creator** (*random*), in the list of results, select **Desktop Virtualization Image Creator** (*random*), and then select **Next**.
 
-    >**Note**: Make sure to replace the *random* placehodler with the same string you used when defining the new custom RBAC role.
+    >**Note**: Make sure to replace the *random* placeholder with the same string you used when defining the new custom RBAC role.
 
 1. On the **Members** tab of the **Add role assignment** page, select the **Managed identity** option, click **+ Select members**, in the **Select managed identities** pane, in the **Managed identity** drop-down list, select **User-assigned managed identity**, in the list of user-assigned managed identities, select **az140**-*random*-**uami** (where the *random* placehodler represents the same string you used when defining the new custom RBAC role), and then click **Select**.
 1. Back on the **Members** tab of the **Add role assignment** page, select **Review + assign**.
@@ -177,14 +177,14 @@ The main tasks for this exercise are as follows:
 #### Task 5: Create an Azure Compute Gallery instance and an image definition
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure compute galleries** and, on the **Azure compute galleries** page, select **+ Create**.
-1. On the **Basics** tab of the **Create Azure compute gallery** page, specify the following settings and then select **Next: Sharing method**:
+1. On the **Basics** tab of the **Create Azure compute gallery** page, specify the following settings and then select **Next : Sharing method**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-15b-RG**|
     |Name|**az14015computegallery**|
-    |Region|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
 
 1. On the **Sharing** tab of the **Create Azure compute gallery** page, leave the default option **Role based access control (RBAC)** selected and then select **Review + create**.
 1. On the **Review + create** tab, select **Create**.
@@ -193,11 +193,11 @@ The main tasks for this exercise are as follows:
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure compute galleries** and, on the **Azure compute galleries** page, select **az14015computegallery**. 
 1. On the **az14015computegallery** page, select **+ Add** and, in the drop-down menu, select **+ VM image definition**. 
-1. On the **Basics** tab of the **Create VM image definition** page, specify the following settings (leave other settings with their default values) and then select **Next: Version**:
+1. On the **Basics** tab of the **Create VM image definition** page, specify the following settings (leave other settings with their default values) and then select **Next : Version**:
 
     |Setting|Value|
     |---|---|
-    |Region|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |VM image definition name|**az14015imagedefinition**|
     |OS type|**Windows**|
     |Security type|**Trusted launch supported**|
@@ -208,14 +208,14 @@ The main tasks for this exercise are as follows:
 
     > **Note**: VM generation is automatically set to Gen2, because Gen 1 virtual machines are not supported with Trusted and Confidential security type.
 
-1. On the **Version** tab of the **Create VM image definition** page, leave the settings unchanged and select **Next: Publishing options**.
+1. On the **Version** tab of the **Create VM image definition** page, leave the settings unchanged and select **Next : Publishing options**.
 
     > **Note**: You should not create the VM image version at this stage. This will be done by Azure Virtual Desktop.
 
 1. On the **Publishing options** tab of the **Create VM image definition** page, leave the settings unchanged and select **Review + create**.
 1. On the **Review + create** tab the **Create VM image definition** page, select **Create**.
 
-    > **Note**: Wait for the re-registration process to complete. This typically takes less than 1 minute.
+    > **Note**: Wait for the provisioning process to complete. This typically takes less than 1 minute.
 
 #### Task 6: Create a custom image template
 
@@ -226,11 +226,11 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Name|**az140-15b-imagetemplate**|
+    |Template name|**az140-15b-imagetemplate**|
     |Import from existing template|**No**|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-15b-RG**|
-    |Location|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Location|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |Managed identity|**az140**-*random*-**uami**|
 
 1. On the **Source image** tab of the **Create custom image template** page, specify the following settings and select **Next**:
@@ -238,7 +238,7 @@ The main tasks for this exercise are as follows:
     |Setting|Value|
     |---|---|
     |Source type|**Platform image (marketplace)**|
-    |Select image|**Windows 11 Enterprise multi-session, Version 23H2 + Microsoft 365 Apps - Gen 2**|
+    |Select image|**Windows 11 Enterprise multi-session, Version 23H2 + Microsoft 365 Apps**|
 
 1. On the **Distribution targets** tab of the **Create custom image template** page, specify the following settings (leave other settings with their default values) and select **Next**:
 
@@ -249,7 +249,7 @@ The main tasks for this exercise are as follows:
     |Gallery image definition|**az14015imagedefinition**|
     |Gallery image version|**1.0.0**|
     |Run output name|**az140-15-image-1.0.0**|
-    |Replication regions|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Replication regions|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |Exclude from latest|**No**|
     |Storage account type|**Standard_LRS**|
 
@@ -263,7 +263,7 @@ The main tasks for this exercise are as follows:
     |Build VM size|**Standard_DC2s_v3**|
     |OS disk size (GB)|**127**|
     |Staging group|**az140-15c-RG**|
-    |VNet|leave not set|
+    |VNet|Leave not set|
 
     > **Note**: **Staging group** is the resource group used to stage resources to build the image and store logs. If you don't provide its name, it will be automatically generated. If the **VNet** name is not set, a temporary one is created, along with a public IP address for the VM used to create the build.
 
@@ -282,7 +282,7 @@ The main tasks for this exercise are as follows:
 
 1. Back on the **Customization** tab of the **Create custom image template** page, select **Next**.
 1. On the **Tags** tab of the **Create custom image template** page, select **Next**.
-1. On the **Review + create** tab the **Create custom image template** page, select **Create**.
+1. On the **Review + create** tab of the **Create custom image template** page, select **Create**.
 
     > **Note**: Wait for the template to be created. This might take a few minutes. Refresh the **Azure Virtual Desktop \| Custom image templates** page to review the template status.
 
@@ -318,10 +318,10 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-15d-RG**|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-15d-RG**|
     |Virtual network name|**az140-vnet15d**|
-    |Region|the name of the Azure region where you want to deploy the Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you want to deploy the Azure Virtual Desktop environment|
 
 1. On the **Security** tab, accept the default settings and select **Next**.
 1. On the **IP addresses** tab, specify the following settings:
@@ -336,29 +336,30 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Name|**hp1-Subnet**|
     |Starting address|**10.30.1.0**|
-    |Enable private subnet (no default outbound access)|disabled|
+    |Enable private subnet (no default outbound access)|Disabled|
 
 1. Back on the **IP addresses** tab, select **Review + create** and then select **Create**.
 
     > **Note**: Wait for the provisioning process to complete. This typically takes less than 1 minute.
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** page, in the **Manage** section of the vertical navigation menu, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** page, select **+ Create**. 
-1. On the **Basics** tab of the **Create a host pool** page, specify the following settings and select **Next: Virtual Machines >** (leave other settings with their default values):
+1. On the **Basics** tab of the **Create a host pool** page, specify the following settings and select **Next : Session hosts >** (leave other settings with their default values):
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-15d-RG**|
     |Host pool name|**az140-15-hp1**|
-    |Location|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Location|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |Validation environment|**No**|
     |Preferred app group type|**Desktop**|
     |Host pool type|**Pooled**|
+    |Create Session Host Configuration|**No**|
     |Load balancing algorithm|**Breadth-first**|
 
     > **Note**: When using the Breadth-first load balancing algorithm, the max session limit parameter is optional.
 
-1. On the **Virtual machines** tab of the **Create a host pool** page, specify the following settings (leave other settings with their default values):
+1. On the **Session hosts** tab of the **Create a host pool** page, specify the following settings (leave other settings with their default values):
 
     > **Note**: When setting the **Name prefix** value, switch to the Resources tab on the right side of the lab session window and identify the string of characters between *User1-* and the *@* character. Use this string to replace the *random* placeholder.
 
@@ -368,13 +369,13 @@ The main tasks for this exercise are as follows:
     |Resource group|**Defaulted to same as host pool**|
     |Name prefix|**sh0**_random_|
     |Virtual machine type|**Azure virtual machine**|
-    |Virtual machine location|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Virtual machine location|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |Availability options|**No infrastructure redundancy required**|
     |Security type|**Trusted launch virtual machines**|
 
 1. On the **Virtual machines** tab of the **Create a host pool** page, below the **Image** drop-down list, select **See all images**.
 1. On the **Select an image** page, select **Shared images** and, in the list of images, select **az14015imagedefinition**. 
-1. Back on the **Virtual machines** tab of the **Create a host pool** page, specify the following settings and select **Next: Workspace >** (leave other settings with their default values):
+1. Back on the **Virtual machines** tab of the **Create a host pool** page, specify the following settings and select **Next : Workspace >** (leave other settings with their default values):
 
     |Setting|Value|
     |---|---|
@@ -390,8 +391,8 @@ The main tasks for this exercise are as follows:
     |Select which directory you would like to join|**Microsoft Entra ID**|
     |Enroll VM with Intune|**No**|
     |User name|**Student**|
-    |Password|any sufficiently complex string of characters that will be used as the password for the built-in administrator account|
-    |Confirm password|the same string of characters you specified previously|
+    |Password|Any sufficiently complex string of characters that will be used as the password for the built-in administrator account|
+    |Confirm password|The same string of characters you specified previously|
 
     > **Note**: The password should be at least 12 characters in length and consist of a combination of lower-case characters, upper-case characters, digits, and special characters. For details, refer to the information about [the password requirements when creating an Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 

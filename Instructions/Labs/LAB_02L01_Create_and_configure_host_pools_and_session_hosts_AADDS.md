@@ -71,7 +71,7 @@ The main tasks for this exercise are as follows:
 #### Task 2: Deploy an Azure Virtual Desktop host pool
 
 1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** blade, in the vertical menu on the left side, in the **Manage** section, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next: Virtual Machines >**:
+1. On the **Basics** tab of the **Create a host pool** blade, specify the following settings and select **Next : Virtual Machines >**:
 
    |Setting|Value|
    |---|---|
@@ -87,7 +87,7 @@ The main tasks for this exercise are as follows:
 
    > **Note**: If a user has both RemoteApp and Desktop apps published, the preferred app group type determines which of them will appear in their feed.
 
-1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next: Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Microsoft Entra tenant associated with the subscription into which you deployed the Microsoft Entra DS instance and replace the `<password>` placeholder with the password you set when creating the aadadmin1 account):
+1. On the **Virtual machines** tab of the **Create a host pool** blade, specify the following settings (leave others with their defaults) and select **Next : Workspace >** (replace the *<Azure_AD_domain_name>* placeholder with the name of the Microsoft Entra tenant associated with the subscription into which you deployed the Microsoft Entra DS instance and replace the `<password>` placeholder with the password you set when creating the aadadmin1 account):
 
    > **Note**: Ensure that you remember the password you used. You will need it later in this and subsequent labs.:
 
@@ -134,7 +134,7 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21a-hp1-DAG \| Assignments** blade, select **+ Add**.
 1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-apooled** and click **Select**.
 1. Navigate back to the **Azure Virtual Desktop \| Application groups** blade, and select **+ Create**.
-1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
+1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next : Applications >**:
 
    |Setting|Value|
    |---|---|
@@ -174,10 +174,10 @@ The main tasks for this exercise are as follows:
    |Description|**Microsoft PowerPoint**|
    |Require command line|**No**|
 
-1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
+1. Back on the **Applications** tab of the **Create an application group** blade, select **Next : Assignments >**.
 1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
 1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-aremote-app** and click **Select**.
-1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
+1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next : Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
    |Setting|Value|
@@ -190,7 +190,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm11a**, in the web browser window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Application groups**.
 1. On the **Azure Virtual Desktop \| Application groups** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next: Applications >**:
+1. On the **Basics** tab of the **Create an application group** blade, specify the following settings and select **Next : Applications >**:
 
    |Setting|Value|
    |---|---|
@@ -214,10 +214,10 @@ The main tasks for this exercise are as follows:
    |Description|**Windows Command Prompt**|
    |Require command line|**No**|
 
-1. Back on the **Applications** tab of the **Create an application group** blade, select **Next: Assignments >**.
+1. Back on the **Applications** tab of the **Create an application group** blade, select **Next : Assignments >**.
 1. On the **Assignments** tab of the **Create an application group** blade, select **+ Add Microsoft Entra users or user groups**.
 1. On the **Select Microsoft Entra users or user groups** blade, select **az140-wvd-aremote-app** and **az140-wvd-aadmins** and click **Select**.
-1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next: Workspace >**.
+1. Back on the **Assignments** tab of the **Create an application group** blade, select **Next : Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** blade, specify the following setting and select **Review + create**:
 
    |Setting|Value|
@@ -230,7 +230,7 @@ The main tasks for this exercise are as follows:
 
 1. Within the Bastion session to **az140-cl-vm11a**, in the Microsoft Edge window displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** blade, select **Workspaces**.
 1. On the **Azure Virtual Desktop \| Workspaces** blade, select **+ Create**. 
-1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next: Application groups >**:
+1. On the **Basics** tab of the **Create a workspace** blade, specify the following settings and select **Next : Application groups >**:
 
    |Setting|Value|
    |---|---|

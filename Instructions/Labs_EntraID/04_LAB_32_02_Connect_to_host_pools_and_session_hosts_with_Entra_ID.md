@@ -26,7 +26,7 @@ You have an existing Azure Virtual Desktop environment containing Entra joined s
   
 After completing this lab, you will be able to:
 
-- validate the functionality of Microsoft Entra joined Azure Virtual Desktop session hosts by connecting to them from a Windows client which is not Microsoft Entra-joined or registered.
+- Validate the functionality of Microsoft Entra joined Azure Virtual Desktop session hosts by connecting to them from a Windows client which is not Microsoft Entra-joined or registered.
 
 ## Lab files
 

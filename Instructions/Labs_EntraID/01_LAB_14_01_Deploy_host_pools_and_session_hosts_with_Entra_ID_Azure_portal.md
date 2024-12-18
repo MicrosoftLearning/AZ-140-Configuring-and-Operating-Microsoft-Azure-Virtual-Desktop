@@ -24,7 +24,7 @@ You have a Microsoft Azure subscription. You need to deploy Azure Virtual Deskto
   
 After completing this lab, you will be able to:
 
-- deploy Microsoft Entra joined Azure Virtual Desktop session hosts
+- Deploy Microsoft Entra joined Azure Virtual Desktop session hosts
 
 ## Lab files
 
@@ -66,10 +66,10 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-11e-RG**|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-11e-RG**|
     |Virtual network name|**az140-vnet11e**|
-    |Region|the name of the Azure region where you want to deploy the Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you want to deploy the Azure Virtual Desktop environment|
 
 1. On the **Security** tab, accept the default settings and select **Next**.
 1. On the **IP addresses** tab, specify the following settings:
@@ -84,7 +84,7 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Name|**hp1-Subnet**|
     |Starting address|**10.20.1.0**|
-    |Enable private subnet (no default outbound access)|disabled|
+    |Enable private subnet (no default outbound access)|Disabled|
 
 1. Back on the **IP addresses** tab, select **Review + create** and then, on the **Review + create** tab, select **Create**.
 
@@ -104,22 +104,23 @@ The main tasks for this exercise are as follows:
 #### Task 2: Deploy an Azure Virtual Desktop host pool
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** page, in the **Manage** section of the vertical navigation menu, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** page, select **+ Create**. 
-1. On the **Basics** tab of the **Create a host pool** page, specify the following settings and select **Next: Virtual Machines >** (leave other settings with their default values):
+1. On the **Basics** tab of the **Create a host pool** page, specify the following settings and select **Next : Session hosts >** (leave other settings with their default values):
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-21e-RG**|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-21e-RG**|
     |Host pool name|**az140-21-hp1**|
-    |Location|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Location|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |Validation environment|**No**|
     |Preferred app group type|**Desktop**|
     |Host pool type|**Pooled**|
+    |Create Session Host Configuration|**No**|
     |Load balancing algorithm|**Breadth-first**|
 
     > **Note**: When using the Breadth-first load balancing algorithm, the max session limit parameter is optional.
 
-1. On the **Virtual machines** tab of the **Create a host pool** page, specify the following settings and select **Next: Workspace >** (leave other settings with their default values):
+1. On the **Session hosts** tab of the **Create a host pool** page, specify the following settings and select **Next : Workspace >** (leave other settings with their default values):
 
     > **Note**: When setting the **Name prefix** value, switch to the Resources tab on the right side of the lab session window and identify the string of characters between *User1-* and the *@* character. Use this string to replace the *random* placeholder.
 
@@ -129,10 +130,10 @@ The main tasks for this exercise are as follows:
     |Resource group|**Defaulted to same as host pool**|
     |Name prefix|**sh**-*random*|
     |Virtual machine type|**Azure virtual machine**|
-    |Virtual machine location|the name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
+    |Virtual machine location|The name of the Azure region where you want to deploy your Azure Virtual Desktop environment|
     |Availability options|**No infrastructure redundancy required**|
     |Security type|**Trusted launch virtual machines**|
-    |Image|**Windows 11 Enterprise multi-session, Version 23H2 + Microsoft 365 Apps - Gen2**|
+    |Image|**Windows 11 Enterprise multi-session, Version 23H2 + Microsoft 365 Apps**|
     |Virtual machine size|**Standard DC2s_v3**|
     |Number of VMs|**2**|
     |OS disk type|**Standard SSD**|
@@ -145,8 +146,8 @@ The main tasks for this exercise are as follows:
     |Select which directory you would like to join|**Microsoft Entra ID**|
     |Enroll VM with Intune|**No**|
     |User name|**Student**|
-    |Password|any sufficiently complex string of characters that will be used as the password for the built-in administrator account|
-    |Confirm password|the same string of characters you specified previously|
+    |Password|Any sufficiently complex string of characters that will be used as the password for the built-in administrator account|
+    |Confirm password|The same string of characters you specified previously|
 
     > **Note**: The password should be at least 12 characters in length and consist of a combination of lower-case characters, upper-case characters, digits, and special characters. For details, refer to the information about [the password requirements when creating an Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 
@@ -168,11 +169,11 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21-hp1-DAG \| Assignments** page, select **+ Add**.
 1. On the **Select Microsoft Entra users or user groups** page, select **Groups**, in the search box, type the full name of the **AVD-DAG** group you identified in the first task of this exercise, select the checkbox next to the group name, and click **Select**.
 1. Navigate back to the **Azure Virtual Desktop \| Application groups** page, select **+ Create**. 
-1. On the **Basics** tab of the **Create an application group** page, specify the following settings and select **Next: Applications >**:
+1. On the **Basics** tab of the **Create an application group** page, specify the following settings and select **Next : Applications >**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-21e-RG**|
     |Host pool|**az140-21-hp1**|
     |Application group type|**Remote App**|
@@ -211,10 +212,10 @@ The main tasks for this exercise are as follows:
     |Description|**Microsoft PowerPoint**|
     |Require command line|**No**|
 
-1. Back on the **Applications** tab of the **Create an application group** page, select **Next: Assignments >**.
+1. Back on the **Applications** tab of the **Create an application group** page, select **Next : Assignments >**.
 1. On the **Assignments** tab of the **Create an application group** page, select **+ Add Microsoft Entra users or user groups**.
 1. On the **Select Microsoft Entra users or user groups** page, select **Groups**, type the full name of the **AVD-RemoteApp** group you identified in the first task of this exercise, select the checkbox next to the group name, and click **Select**.
-1. Back on the **Assignments** tab of the **Create an application group** page, select **Next: Workspace >**.
+1. Back on the **Assignments** tab of the **Create an application group** page, select **Next : Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** page, specify the following setting and select **Review + create**:
 
     |Setting|Value|
@@ -229,11 +230,11 @@ The main tasks for this exercise are as follows:
 
 1. In the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** page, select **Application groups**.
 1. On the **Azure Virtual Desktop \| Application groups** page, select **+ Create**. 
-1. On the **Basics** tab of the **Create an application group** page, specify the following settings and select **Next: Applications >**:
+1. On the **Basics** tab of the **Create an application group** page, specify the following settings and select **Next : Applications >**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-21e-RG**|
     |Host pool|**az140-21-hp1**|
     |Application group type|**RemoteApp**|
@@ -258,10 +259,10 @@ The main tasks for this exercise are as follows:
     |Icon path|**C:\Windows\system32\cmd.exe**|
     |Icon index|0|
 
-1. Back on the **Applications** tab of the **Create an application group** page, select **Next: Assignments >**.
+1. Back on the **Applications** tab of the **Create an application group** page, select **Next : Assignments >**.
 1. On the **Assignments** tab of the **Create an application group** page, select **+ Add Microsoft Entra users or user groups**.
 1. On the **Select Microsoft Entra users or user groups** page, select **Groups**, type the full name of the **AVD-RemoteApp** group you identified in the first task of this exercise, select the checkbox next to the group name, and click **Select**.
-1. Back on the **Assignments** tab of the **Create an application group** page, select **Next: Workspace >**.
+1. Back on the **Assignments** tab of the **Create an application group** page, select **Next : Workspace >**.
 1. On the **Workspace** tab of the **Create a workspace** page, specify the following setting and select **Review + create**:
 
     |Setting|Value|
@@ -276,15 +277,15 @@ The main tasks for this exercise are as follows:
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** page, select **Workspaces**.
 1. On the **Azure Virtual Desktop \| Workspaces** page, select **+ Create**. 
-1. On the **Basics** tab of the **Create a workspace** page, specify the following settings and select **Next: Application groups >**:
+1. On the **Basics** tab of the **Create a workspace** page, specify the following settings and select **Next : Application groups >**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-21e-RG**|
     |Workspace name|**az140-21-ws1**|
     |Friendly name|**az140-21-ws1**|
-    |Location|the name of the Azure region into which you deployed resources in the first exercise of this lab or a region close to it|
+    |Location|The name of the Azure region into which you deployed resources in the first exercise of this lab or a region close to it|
 
 1. On the **Application groups** tab of the **Create a workspace** page, specify the following settings:
 
@@ -305,9 +306,9 @@ The main tasks for this exercise are as follows:
 1. On the **az140-21e-RG** page, in the vertical navigation menu, select **Access control (IAM)**.
 1. On the **az140-21e-RG\|Access control (IAM)** page, select **+ Add** and, in the drop-down menu, select **Add role assignment**.
 1. On the **Role** tab of the **Add role assignment** page, ensure that the **Job function roles** tab is selected, in the search textbox, enter **Virtual Machine User Login**, in the list of results, select **Virtual Machine User Login**, and then select **Next**.
-1. On the **Members** tab of the **Add role assignment** page, ensure that the **User, group, or service principal** option is selected, click **+ Select memebers**, in the **Select members** pane, locate the **AVD-RemoteApp** group you identified in the first task of this exercise, and click **Select**.
+1. On the **Members** tab of the **Add role assignment** page, ensure that the **User, group, or service principal** option is selected, click **+ Select members**, in the **Select members** pane, locate the **AVD-RemoteApp** group you identified in the first task of this exercise, and click **Select**.
 1. Back on the **Members** tab of the **Add role assignment** page, select **Next**.
-1. On the **Assignment type (Preview)** tab of the **Add role assignment** page, set the **Assignment type (Preview)** to **Active** and then select **Review + assign**.
+1. On the **Assignment type** tab of the **Add role assignment** page, set the **Assignment type** to **Active** and then select **Review + assign**.
 1. On the **Review + assign** tab of the **Add role assignment** page, select **Review + assign**. 
 1. Back on the **az140-21e-RG\|Access control (IAM)** page, select **+ Add** and, in the drop-down menu, select **Add role assignment**.
 1. On the **Role** tab of the **Add role assignment** page, ensure that the **Job function roles** tab is selected, in the search textbox, enter **Virtual Machine Administrator Login**, in the list of results, select **Virtual Machine Administrator Login**, and then select **Next**.

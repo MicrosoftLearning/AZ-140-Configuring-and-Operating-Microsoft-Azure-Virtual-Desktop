@@ -27,7 +27,7 @@ You have an Azure Virtual Desktop environment which usage changes on regular bas
   
 After completing this lab, you will be able to:
 
-- implement and evaluate Azure Virtual Desktop autoscaling
+- Implement and evaluate Azure Virtual Desktop autoscaling
 
 ## Lab files
 
@@ -110,17 +110,18 @@ The main tasks for this exercise are as follows:
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** page, in the **Manage** section of the vertical navigation menu, select **Scaling plans**.
 1. On the **Azure Virtual Desktop \| Scaling plans** page, select **+ Create**.
-1. On the **Basics** tab of the **Create a scaling plan** page, specify the following settings and select **Next: Schedules**:
+1. On the **Basics** tab of the **Create a scaling plan** page, specify the following settings and select **Next : Schedules**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-412e-RG**|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-412e-RG**|
     |Scaling plan name|**az140-scalingplan412e**|
-    |Region|the name of the Azure region where you deployed the Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you deployed the Azure Virtual Desktop environment|
     |Friendly name|**az140-scalingplan412e**|
-    |Time zone|the local time zone of the Azure region where you deployed the Azure Virtual Desktop environment|
+    |Time zone|The local time zone of the Azure region where you deployed the Azure Virtual Desktop environment|
     |Host pool type|**Pooled**|
+    |Scaling method|**Power management autoscaling**|
 
     > **Note**: Leave the **Exclusion tag** property not set. In general, you can use this feature to exclude Azure VMs with arbitrarily set tags from autoscaling.
 
@@ -132,7 +133,7 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Time zone|the local time zone of your Azure Virtual Desktop environment (based on the region you selected earlier in this task)|
+    |Time zone|The local time zone of your Azure Virtual Desktop environment (based on the region you selected earlier in this task)|
     |Schedule name|**week_schedule**|
     |Repeat on|**7 selected** (select all days of the week)|
 
@@ -142,7 +143,7 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Start time (12 hour system)|your current time minus 1 hour|
+    |Start time (12 hour system)|Your current time minus 1 hour|
     |Load balancing algorithm|**Breadth-first**|
     |Minimum percentage of hosts (%)|**30**|
     |Capacity threshold (%)|**60**|
@@ -159,7 +160,7 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Start time (12 hour system)|your current time plus 1 hour|
+    |Start time (12 hour system)|Your current time plus 1 hour|
     |Load balancing algorithm|**Depth-first**|
     |Capacity threshold (%)|**60**|
 
@@ -169,7 +170,7 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Start time (12 hour system)|your current time plus 2 hours|
+    |Start time (12 hour system)|Your current time plus 2 hours|
     |Load balancing algorithm|**Depth-first**|
     |Minimum percentage of active hosts (%)|**10**|
     |Capacity threshold (%)|**80**|
@@ -191,13 +192,13 @@ The main tasks for this exercise are as follows:
 
     |Setting|Value|
     |---|---|
-    |Start time (12 hour system)|your current time plus 3 hours|
+    |Start time (12 hour system)|Your current time plus 3 hours|
     |Load balancing algorithm|**Depth-first**|
     |Capacity threshold (%)|**80**|
 
     > **Note**: The **Capacity threshold** setting is shared between the **Ramp-down** and **Off-peak hours** settings.
 
-1. Back on the **Schedule** tab of the **Create a scaling plan** page, select **Next: Host pool assignments**.
+1. Back on the **Schedule** tab of the **Create a scaling plan** page, select **Next : Host pool assignments**.
 1. On the **Host pool assignments** tab, in the **Select host pool** drop-down list, select **az140-21-hp1**, ensure that **Enable autoscale** checkbox is selected, and then select **Review + create**.
 1. On the **Review + Create** page, select **Create**.
 
@@ -225,7 +226,7 @@ The main tasks for this exercise are as follows:
 1. When prompted to sign in, in the **Windows Security** dialog box, enter the password of the Microsoft Entra user account you used to connect to the target Azure Virtual Desktop environment.
 1. Verify that a **Command Prompt** window appears shortly afterwards. 
 
-    > **Note**: At this point, the used host pool capacity is 100%, which is greater than the capacity threshold (%60). This should result in autoscaling turning on another host, which will bring the used host pool capacity to 50%. Since this is below the capacity threshold, the third host will remain stopped/deallocated. You will verify this next.
+    > **Note**: At this point, the used host pool capacity is 100%, which is greater than the capacity threshold (60%). This should result in autoscaling turning on another host, which will bring the used host pool capacity to 50%. Since this is below the capacity threshold, the third host will remain stopped/deallocated. You will verify this next.
 
 1. From the lab computer, switch to the web browser displaying the Azure portal. 
 1. On the **az140-21-hp1 \| Session hosts** page, select **Refresh**, review the values of the **Power state** setting of session hosts, and verify that now two of them are listed as **Running**.
@@ -250,6 +251,8 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Host pools** page, in the list of host pools, select **az140-21-hp1**.
 1. On the **az140-21-hp1** page, in the in the vertical menu bar, in the **Manage** section, select **Session hosts**.
 1. On the **az140-21-hp1 \| Session hosts** page, review the values of the **Power state** setting of session hosts and verify that now only one of them is listed as **Running**.
+
+    > **Note**: It may take 1-2 minutes before the session host is shut down.
 
 #### Task 6: Disable host pool autoscaling
 

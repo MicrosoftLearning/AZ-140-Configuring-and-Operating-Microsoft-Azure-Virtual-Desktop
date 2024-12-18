@@ -25,7 +25,7 @@ You have an existing Azure Virtual Desktop environment. You need to implement co
   
 After completing this lab, you will be able to:
 
-- implement Azure Private Link for Azure Virtual Desktop
+- Implement Azure Private Link for Azure Virtual Desktop
 
 ## Lab files
 
@@ -86,30 +86,30 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Name|**pe-Subnet**|
     |Starting address|**10.20.255.0**|
-    |Enable private subnet (no default outbound access)|disabled|
+    |Enable private subnet (no default outbound access)|Disabled|
 
 #### Task 3: Implement a private endpoint for connections to a host pool
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop**, on the **Azure Virtual Desktop** page, in the **Manage** section of the vertical navigation menu, select **Host pools** and, on the **Azure Virtual Desktop \| Host pools** page, select **az140-21-hp1**. 
 1. On the **az140-21-hp1** page, in the vertical navigation menu, in the **Settings** section, select **Networking**.
 1. On the **az140-21-hp1 \| Networking** page, select the **Private endpoint connections** tab and then, select **+ New private endpoint**.
-1. On the **Basics** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Resource >**:
+1. On the **Basics** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Resource >**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-11e-RG**|
     |Name|**az140-11-pehp1**|
     |Network Interface Name|**az140-11-pehp1-nic**|
-    |Region|the name of the Azure region where you deployed your Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you deployed your Azure Virtual Desktop environment|
 
-1. On the **Resource** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Virtual network >**:
+1. On the **Resource** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Virtual network >**:
 
     |Setting|Value|
     |---|---|
     |Target sub-resource|**connection**|
 
-1. On the **Virtual network** tab of the **Create a private endpoint** page, specify the following settings and select **Next: DNS >** (leave other settings with their default values):
+1. On the **Virtual network** tab of the **Create a private endpoint** page, specify the following settings and select **Next : DNS >** (leave other settings with their default values):
 
     |Setting|Value|
     |---|---|
@@ -118,17 +118,17 @@ The main tasks for this exercise are as follows:
     |Network policy for private endpoints|**Disabled**|
     |Private IP configuration|**Dynamically allocate IP address**|
 
-1. On the **DNS** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Tags >**:
+1. On the **DNS** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Tags >**:
 
     |Setting|Value|
     |---|---|
     |Integrate with private DNS zone|**Yes**|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-11e-RG**|
 
     > **Note**: This step will result in creation of a private DNS zone named **privatelink.wvd.microsoft.com**.
 
-1. On the **Tags** tab of the **Create a private endpoint** page, select **Review + create**.
+1. On the **Tags** tab of the **Create a private endpoint** page, select **Next : Review + create**.
 1. On the **Review + create** tab of the **Create a private endpoint** page, select **Create**.
 
     > **Note**: Wait for the deployment to complete. The deployment might take about 3 minutes.
@@ -141,23 +141,23 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Workspaces** page, select **az140-21-ws1**.
 1. On the **az140-21-ws1** page, in the vertical navigation menu, in the **Settings** section, select **Networking**.
 1. On the **az140-21-ws1 \| Networking** page, select the **Private endpoint connections** tab and then, select **+ New private endpoint**.
-1. On the **Basics** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Resource >**:
+1. On the **Basics** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Resource >**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-11e-RG**|
     |Name|**az140-11-pefeeddwnld**|
     |Network Interface Name|**az140-11-pefeeddwnld-nic**|
-    |Region|the name of the Azure region where you deployed your Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you deployed your Azure Virtual Desktop environment|
 
-1. On the **Resource** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Virtual network >**:
+1. On the **Resource** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Virtual network >**:
 
     |Setting|Value|
     |---|---|
     |Target sub-resource|**feed**|
 
-1. On the **Virtual network** tab of the **Create a private endpoint** page, specify the following settings and select **Next: DNS >** (leave other settings with their default values):
+1. On the **Virtual network** tab of the **Create a private endpoint** page, specify the following settings and select **Next : DNS >** (leave other settings with their default values):
 
     |Setting|Value|
     |---|---|
@@ -166,17 +166,17 @@ The main tasks for this exercise are as follows:
     |Network policy for private endpoints|**Disabled**|
     |Private IP configuration|**Dynamically allocate IP address**|
 
-1. On the **DNS** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Tags >**:
+1. On the **DNS** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Tags >**:
 
     |Setting|Value|
     |---|---|
     |Integrate with private DNS zone|**Yes**|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-11e-RG**|
 
     > **Note**: This step will leverage the private DNS zone named **privatelink.wvd.microsoft.com** you created in the previous task.
 
-1. On the **Tags** tab of the **Create a private endpoint** page, select **Review + create**.
+1. On the **Tags** tab of the **Create a private endpoint** page, select **Next : Review + create**.
 1. On the **Review + create** tab the **Create a private endpoint** page, select **Create**.
 
     > **Note**: Do not wait for the deployment to complete but instead proceed to the next task. The deployment might take about 1 minute.
@@ -189,23 +189,23 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Workspaces** page, select **az140-21-ws1**.
 1. On the **az140-21-ws1** page, in the vertical navigation menu, in the **Settings** section, select **Networking**.
 1. On the **az140-21-ws1 \| Networking** page, select the **Private endpoint connections** tab and then, select **+ New private endpoint**.
-1. On the **Basics** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Resource >**:
+1. On the **Basics** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Resource >**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-11e-RG**|
     |Name|**az140-11-pefeeddisc**|
     |Network Interface Name|**az140-11-pefeeddisc-nic**|
-    |Region|the name of the Azure region where you deployed your Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you deployed your Azure Virtual Desktop environment|
 
-1. On the **Resource** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Virtual network >**:
+1. On the **Resource** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Virtual network >**:
 
     |Setting|Value|
     |---|---|
     |Target sub-resource|**global**|
 
-1. On the **Virtual network** tab of the **Create a private endpoint** page, specify the following settings and select **Next: DNS >** (leave other settings with their default values):
+1. On the **Virtual network** tab of the **Create a private endpoint** page, specify the following settings and select **Next : DNS >** (leave other settings with their default values):
 
     |Setting|Value|
     |---|---|
@@ -214,17 +214,17 @@ The main tasks for this exercise are as follows:
     |Network policy for private endpoints|**Disabled**|
     |Private IP configuration|**Dynamically allocate IP address**|
 
-1. On the **DNS** tab of the **Create a private endpoint** page, specify the following settings and select **Next: Tags >**:
+1. On the **DNS** tab of the **Create a private endpoint** page, specify the following settings and select **Next : Tags >**:
 
     |Setting|Value|
     |---|---|
     |Integrate with private DNS zone|**Yes**|
-    |Subscription|the name of the Azure subscription you are using in this lab|
+    |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-11e-RG**|
 
     > **Note**: This step will leverage the private DNS zone named **privatelink.wvd.microsoft.com** you created in one of the earlier task.
 
-1. On the **Tags** tab of the **Create a private endpoint** page, select **Review + create**.
+1. On the **Tags** tab of the **Create a private endpoint** page, select **Next : Review + create**.
 1. On the **Review + create** tab the **Create a private endpoint** page, select **Create**.
 
     > **Note**: Do not wait for the deployment to complete but instead proceed to the next task. The deployment might take about 1 minute.
@@ -262,35 +262,35 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Name|**client-Subnet**|
     |Starting address|**10.20.2.0**|
-    |Enable private subnet (no default outbound access)|disabled|
+    |Enable private subnet (no default outbound access)|Disabled|
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Virtual machines**, on the **Virtual machines** page, select **+ Create** and, in the drop-down list, select **Azure virtual machine**.
-1. On the **Basics** tab of the **Create a virtual machine** page, specify the following settings (leave other settings with their default values) and select **Next: Disks >**:
+1. On the **Basics** tab of the **Create a virtual machine** page, specify the following settings (leave other settings with their default values) and select **Next : Disks >**:
 
     |Setting|Value|
     |---|---|
-    |Subscription|the name of the Azure subscription you are using in this lab|
-    |Resource group|the name of a new resource group **az140-111e-RG**|
+    |Subscription|The name of the Azure subscription you are using in this lab|
+    |Resource group|The name of a new resource group **az140-111e-RG**|
     |Virtual machine name|**az140-111e-vm0**|
-    |Region|the name of the Azure region where you deployed your Azure Virtual Desktop environment|
+    |Region|The name of the Azure region where you deployed your Azure Virtual Desktop environment|
     |Availability options|**No infrastructure redundancy required**|
     |Security type|**Standard**|
-    |Image|**Windows 11 Pro, version 22H2 - x64 Gen2**|
+    |Image|**Windows 11 Pro, version 23H2 - x64 Gen2**|
     |Size|**Standard DC2s_v3**|
-    |Username|any valid user name of your choice|
-    |Password|any valid password of your choice|
+    |Username|Any valid user name of your choice|
+    |Password|Any valid password of your choice|
     |Public inbound ports|**None**|
-    |Licensing|enable the checkbox|
+    |Licensing|Enable the checkbox|
 
     > **Note**: The password should be at least 12 characters in length and consist of a combination of lower-case characters, upper-case characters, digits, and special characters. For details, refer to the information about [the password requirements when creating an Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 
-1. On the **Disks** tab of the **Create a virtual machine** page, set the **OS disk type** to **Standard HDD (locally-redundant storage)** and select **Next: Networking >**.
+1. On the **Disks** tab of the **Create a virtual machine** page, set the **OS disk type** to **Standard HDD (locally-redundant storage)** and select **Next : Networking >**.
 1. On the **Networking** tab of the **Create a virtual machine** page, specify the following settings (leave other settings with their default values):
 
     |Setting|Value|
     |---|---|
     |Virtual network|**az140-vnet11e**|
-    |Subnet|*a new subnet named* **client-Subnet**|
+    |Subnet|**client-Subnet**|
     |Public IP|**(new) az140-111e-vm0-ip**|
     |NIC network security group|**Advanced**|
 
@@ -302,7 +302,7 @@ The main tasks for this exercise are as follows:
     |Setting|Value|
     |---|---|
     |Source|**IP Addresses**|
-    |Source IP addresses/CIDR ranges|leave unchanged (this should still contain your public IP address)|
+    |Source IP addresses/CIDR ranges|Leave unchanged (this should still contain your public IP address)|
     |Source port ranges|*|
     |Destination|**Any**|
     |Service|**RDP**|
@@ -311,8 +311,8 @@ The main tasks for this exercise are as follows:
     |Name|**AllowCidrBlockRDPInbound**|
 
 1. Back on the **Create network security group** page, select **OK**.
-1. Back on the **Networking** tab of the **Create a virtual machine** page, select **Next: Management >**:
-1. On the **Management** tab of the **Create a virtual machine** page, specify the following settings (leave other settings with their default values), and then select **Next: Monitoring >**:
+1. Back on the **Networking** tab of the **Create a virtual machine** page, select **Next : Management >**:
+1. On the **Management** tab of the **Create a virtual machine** page, specify the following settings (leave other settings with their default values), and then select **Next : Monitoring >**:
 
     |Setting|Value|
     |---|---|
@@ -355,7 +355,7 @@ The main tasks for this exercise are as follows:
     > **Note**: To minimize charges associated with running the lab environment, you will stop and deallocate the newly provisioned Azure VM.
 
 1. Switch to the console session to the lab computer, in the web browser displaying the Azure portal, on the **az140-111e-vm0** page, select **Overview** and then, in the toolbar, select **Stop**.
-1. In the **Stop this virtual machine** pop-up window, seletct **Yes**.
+1. In the **Stop this virtual machine** pop-up window, select **Yes**.
 
 #### Task 7: Allow public network access to a host pool and workspace
 

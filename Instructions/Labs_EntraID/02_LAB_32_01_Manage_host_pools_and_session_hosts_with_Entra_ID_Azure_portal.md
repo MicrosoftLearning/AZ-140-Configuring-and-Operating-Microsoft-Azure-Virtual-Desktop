@@ -21,17 +21,17 @@ lab:
 
 You have an existing Azure Virtual Desktop environment. You need to configure host pool with Microsoft Entra joined session hosts to support a range of functional and business requirements. These requirements include:
 
-- deploy additional session hosts to accommodate increased number of remote users
-- minimize the cost of the Azure Virtual Desktop environment by optimizing the host pool load balancing configuration and leveraging the *Start VM on Connect* functionality
-- maximize the availability of session hosts during business hours by implementing maintenance windows
-- enable single sign-on to Microsoft Entra-joined session hosts
-- maximize usability and user experience (such as automatic reconnection of disconnected sessions)
+- Deploy additional session hosts to accommodate increased number of remote users
+- Minimize the cost of the Azure Virtual Desktop environment by optimizing the host pool load balancing configuration and leveraging the *Start VM on Connect* functionality
+- Maximize the availability of session hosts during business hours by implementing maintenance windows
+- Enable single sign-on to Microsoft Entra-joined session hosts
+- Maximize usability and user experience (such as automatic reconnection of disconnected sessions)
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- configure Microsoft Entra joined Azure Virtual Desktop session hosts to support a range of functional and business requirements
+- Configure Microsoft Entra joined Azure Virtual Desktop session hosts to support a range of functional and business requirements
 
 ## Lab files
 
@@ -59,7 +59,7 @@ The main tasks for this exercise are as follows:
 1. On the **Azure Virtual Desktop \| Host pools** page, in the list of host pools, select **az140-21-hp1**.
 1. On the **az140-21-hp1** page, in the in the vertical menu bar, in the **Manage** section, select **Session hosts** and verify that the pool consists of two hosts. 
 1. On the **az140-21-hp1 \| Session hosts** page, select **+ Add**.
-1. On the **Basics** tab of the **Add virtual machines to a host pool** page, review the preconfigured settings and select **Next: Virtual Machines**.
+1. On the **Basics** tab of the **Add virtual machines to a host pool** page, review the preconfigured settings and select **Next : Virtual Machines**.
 1. On the **Virtual Machines** tab of the **Add virtual machines to a host pool** page, specify the following settings and select **Review + create** (leave others with their default settings):
 
     > **Note**: When setting the **Name prefix** value, switch to the Resources tab on the right side of the lab session window and identify the string of characters between *User1-* and the *@* character. Use this string to replace the *random* placeholder.
@@ -68,10 +68,10 @@ The main tasks for this exercise are as follows:
     |---|---|
     |Resource group|**az140-21e-RG**|
     |Name prefix|**sh**-*random*|
-    |Virtual machine location|the name of the Azure region into which you deployed the first two session host VMs|
+    |Virtual machine location|The name of the Azure region into which you deployed the first two session host VMs|
     |Availability options|**No infrastructure redundancy required**|
     |Security type|**Trusted launch virtual machines**|
-    |Image|**Windows 11 Enterprise multi-session, Version 23H2 + Microsoft 365 Apps - Gen2**|
+    |Image|**Windows 11 Enterprise multi-session, Version 23H2 + Microsoft 365 Apps**|
     |Virtual machine size|**Standard DC2s_v3**|
     |Number of VMs|**1**|
     |OS disk type|**Standard SSD**|
@@ -84,8 +84,8 @@ The main tasks for this exercise are as follows:
     |Select which directory you would like to join|**Microsoft Entra ID**|
     |Enroll VM with Intune|**No**|
     |User name|**Student**|
-    |Password|the same password you used when deploying the session hosts in the lab *Deploy host pools and session hosts by using the Azure portal (Entra ID)* 
-    |Confirm password|the same password you specified previously|
+    |Password|The same password you used when deploying the session hosts in the lab *Deploy host pools and session hosts by using the Azure portal (Entra ID)* 
+    |Confirm password|The same password you specified previously|
 
     > **Note**: The password should be at least 12 characters in length and consist of a combination of lower-case characters, upper-case characters, digits, and special characters. For details, refer to the information about [the password requirements when creating an Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).
 
