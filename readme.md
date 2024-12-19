@@ -1,5 +1,3 @@
-**This course will be retiring on  **2024/9/30**.  Once course is retired, all GitHub repos will be removed. Thank you.**
-
 # AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop
 
 - **[Link to labs (HTML format)](https://microsoftlearning.github.io/AZ-140-Configuring-and-Operating-Microsoft-Azure-Virtual-Desktop/)**
