@@ -354,12 +354,7 @@ The main tasks for this exercise are as follows:
 
     > **Note**: To minimize charges associated with running the lab environment, you will stop and deallocate the newly provisioned Azure VM.
 
-1. Switch to the console session to the lab computer, in the web browser displaying the Azure portal, on the **az140-111e-vm0** page, select **Overview** and then, in the toolbar, select **Stop**.
-1. In the **Stop this virtual machine** pop-up window, select **Yes**.
-
 #### Task 7: Allow public network access to a host pool and workspace
-
-> **Note**: To eliminate impact on other labs that use the same Azure Virtual Desktop environment, you will revert the changes applied in the previous task and allow public network access to the host pool and workspace that are part of the Azure Virtual Desktop environment.
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** page, select **Workspaces**.
 1. On the **Azure Virtual Desktop \| Workspaces** page, select **az140-21-ws1**.
