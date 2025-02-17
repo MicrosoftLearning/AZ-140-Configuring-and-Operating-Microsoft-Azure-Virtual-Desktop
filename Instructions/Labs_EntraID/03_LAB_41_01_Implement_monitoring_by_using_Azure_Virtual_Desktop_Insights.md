@@ -85,7 +85,7 @@ The main tasks for this exercise are as follows:
 1. In the list of **Windows Virtual Desktop** workbooks, in the **Windows Virtual Desktop** section, select the **Insights** workbook.
 1. On the **Azure Virtual Desktop \| Workbooks \| Insights** page, review the warning messages indicating that the workspace and session hosts are not sending data to the workspace and then select the **Configuration workbook** link to repair the issue.
 1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, in the **Log Analytics workspace** drop-down list, select **az140-laworkspace41e**.
-1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, in the **Host pool az140-21-hp1** section, note the warning message indicating that no existing diagnostic configuration was found for the selected host pool and then select **Configure host pool**.
+1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, in the **Host pool az140-21-hp1** section, note the warning message indicating that no existing diagnostic configuration was found for the selected host pool and then select **Configure workspace**.
 1. In the **Deploy Template** pane, select **Deploy**.
 
     > **Note**: This effectively enables the following diagnostics tables in the target Log Analytics workspace:
