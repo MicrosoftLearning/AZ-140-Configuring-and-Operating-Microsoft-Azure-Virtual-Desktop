@@ -313,4 +313,4 @@ The main tasks for this exercise are as follows:
 1. Back on the **az140-21e-RG\|Access control (IAM)** page, select **+ Add** and, in the drop-down menu, select **Add role assignment**.
 1. On the **Role** tab of the **Add role assignment** page, ensure that the **Job function roles** tab is selected, in the search textbox, enter **Virtual Machine Administrator Login**, in the list of results, select **Virtual Machine Administrator Login**, and then select **Next**.
 1. On the **Members** tab of the **Add role assignment** page, ensure that the **User, group, or service principal** option is selected, click **+ Select memebers**, in the **Select members** pane, locate the **AVD-DAG** group you identified in the first task of this exercise, and click **Select**.
-1. Back on the **Members** tab of the **Add role assignment** page, select **Review + assign** and then select **Review + assign**. 
+1. Back on the **Members** tab of the **Add role assignment** page, , set the **Assignment type** to **Active**  and then select **Review + assign** and then select **Review + assign**. 
