@@ -30,7 +30,9 @@
 
 ## Notes
 
-**The labs comprise two separate tracks, depending on the identity provider you decide to use.**
+> **Important**: The labs have been updated to target Microsoft Entra ID-based scenarios of implementing Azure Virtual Desktop (instructions for this lab are located in the **Instructions** -&gt; **Labs_EntraID** directory). 
+
+> **Important**: The following two tracks are no longer maintained or supported (instructions for this lab are located in the **Instructions** -&gt; **Labs** directory)
 
 - Active Directory Domain Services (AD DS). This track consists of the following labs:
 
@@ -45,7 +47,7 @@
    - LAB_04L02_Package_AVD_applications_ADDS.md
    - LAB_05L01_Implement_autoscaling_in_host_pools_ADDS.md
 
-- Azure Active Directory Domain Services (Azure AD DS). This track consists of the following labs:
+- Microsoft Entra Domain Services (Microsoft Entra DS). This track consists of the following labs:
 
    - LAB_01L01_Prepare_for_deployment_of_AVD_AADDS.md
    - LAB_02L01_Create_and_configure_host_pools_and_session_hosts_AADDS.md
