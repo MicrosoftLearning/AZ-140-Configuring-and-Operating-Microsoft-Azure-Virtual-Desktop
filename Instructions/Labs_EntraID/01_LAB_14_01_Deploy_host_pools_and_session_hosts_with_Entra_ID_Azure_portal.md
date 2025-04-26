@@ -14,7 +14,7 @@ lab:
 
 ## Estimated Time
 
-30 minutes
+60 minutes
 
 ## Lab scenario
 
@@ -72,7 +72,7 @@ The main tasks for this exercise are as follows:
     |Region|The name of the Azure region where you want to deploy the Azure Virtual Desktop environment|
 
 1. On the **Security** tab, accept the default settings and select **Next**.
-1. On the **IP addresses** tab, specify the following settings:
+1. On the **IP addresses** tab, apply the following settings (modify the default if needed):
 
     |Setting|Value|
     |---|---|
