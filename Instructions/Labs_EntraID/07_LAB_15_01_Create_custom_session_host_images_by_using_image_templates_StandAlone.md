@@ -382,7 +382,7 @@ The main tasks for this exercise are as follows:
     |Virtual machine size|**Standard DC2s_v3**|
     |Number of VMs|**1**|
     |OS disk type|**Standard SSD**|
-    |OS disk size|**Default size (128GiB)**|
+    |OS disk size|**Default size**|
     |Boot Diagnostics|**Enable with managed storage account (recommended)**|
     |Virtual network|az140-vnet15d|
     |Subnet|**hp1-Subnet**|
