@@ -85,7 +85,7 @@ The main tasks for this exercise are as follows:
 1. In the list of **Windows Virtual Desktop** workbooks, in the **Windows Virtual Desktop** section, select the **Insights** workbook.
 1. On the **Azure Virtual Desktop \| Workbooks \| Insights** page, review the warning messages indicating that the workspace and session hosts are not sending data to the workspace and then select the **Configuration workbook** link to repair the issue.
 1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, in the **Log Analytics workspace** drop-down list, select **az140-laworkspace41e**.
-1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, in the **Host pool az140-21-hp1** section, note the warning message indicating that no existing diagnostic configuration was found for the selected host pool and then select **Configure host pool**.
+1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, in the **Host pool az140-21-hp1** section, review the warning message indicating that no existing diagnostic configuration was found for the selected host pool and then select **Configure host pool**.
 1. In the **Deploy Template** pane, select **Deploy**.
 
     > **Note**: This effectively enables the following diagnostics tables in the target Log Analytics workspace:
@@ -116,27 +116,26 @@ The main tasks for this exercise are as follows:
 
     > **Note**: Wait for the deployment to complete. This typically takes less than 1 minute.
 
-1. On the **CheckAMAConfiguration** page, on the **Select host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
+1. On the **CheckAMAConfiguration** page, on the **Session host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
 
     > **Note**: Before you proceed, make sure that the newly created DCR is listed in the **Available DCRs** subsection of the **Create DCR** section. If that is not the case, wait for another minute and refresh the page again.
 
-1. On the **Select host data settings** tab, in the **Selected DCR** drop-down list, select the entry starting with **microsoft-avdi-** prefix.
-1. On the **Select host data settings** tab, in the **DCR associations** section, select **Deploy Association**.
-1. In the **Deploy Template** pane, select **Deploy**.
+1. On the **Session host data settings** tab, in the **Selected DCR** drop-down list, select the entry starting with **microsoft-avdi-** prefix.
+1. If needed, on the **Session host data settings** tab, in the **DCR associations** section, select **Deploy Association** and, in the **Deploy Template** pane, select **Deploy**.
 
     > **Note**: This effectively associates the newly created DCR with the session hosts in the **az140-21-hp1** host pool.
 
     > **Note**: Wait for the deployment to complete. This typically takes less than 1 minute.
 
-1. On the **CheckAMAConfiguration** page, on the **Select host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
-1. On the **Select host data settings** tab, in the **Session hosts missing Azure Monitor extension** section, select **Add extension**.
+1. On the **CheckAMAConfiguration** page, on the **Session host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
+1. On the **Session host data settings** tab, in the **Session hosts missing Azure Monitor extension** section, select **Add extension**.
 1. In the **Deploy Template** pane, select **Deploy**.
 
     > **Note**: This effectively installs the Azure Monitor extension on the session hosts in the **az140-21-hp1** host pool.
 
     > **Note**: Wait for the deployment to complete. This might take about 1 minute.
 
-1. On the **CheckAMAConfiguration** page, on the **Select host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
+1. On the **CheckAMAConfiguration** page, on the **Session host data settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
 1. Verify that there are no error or warning messages displayed. 
 1. Navigate to the top of the **CheckAMAConfiguration** page, select the **Data generated** tab, and then select the **Refresh** icon (a circular arrow) in the toolbar.
 1. Review the sections displaying graphs representing collected data, including **Billed data over last 24hrs**, **Performance Counters**, and **Events**.
