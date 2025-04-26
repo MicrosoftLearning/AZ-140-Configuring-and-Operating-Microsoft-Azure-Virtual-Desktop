@@ -15,7 +15,7 @@ lab:
 
 ## Estimated Time
 
-40 minutes
+60 minutes
 
 ## Lab scenario
 
@@ -222,14 +222,14 @@ The main tasks for this exercise are as follows:
     |Subscription|The name of the Azure subscription you are using in this lab|
     |Resource group|**az140-11e-RG**|
 
-    > **Note**: This step will leverage the private DNS zone named **privatelink.wvd.microsoft.com** you created in one of the earlier task.
+    > **Note**: This step will will result in creation of a private DNS zone named **privatelink-global.wvd.microsoft.com**.
 
 1. On the **Tags** tab of the **Create a private endpoint** page, select **Next : Review + create**.
 1. On the **Review + create** tab the **Create a private endpoint** page, select **Create**.
 
     > **Note**: Do not wait for the deployment to complete but instead proceed to the next task. The deployment might take about 1 minute.
 
-    > **Note**: You would need to a create private endpoint for the feed sub-resource for each workspace you want to use with Private Link.
+    > **Note**: You would need to a create private endpoint for the global sub-resource for each workspace you want to use with Private Link.
 
     > **Note**: For the network changes to take effect, you need to restart the session hosts in the target host pool.
 
@@ -275,7 +275,7 @@ The main tasks for this exercise are as follows:
     |Region|The name of the Azure region where you deployed your Azure Virtual Desktop environment|
     |Availability options|**No infrastructure redundancy required**|
     |Security type|**Standard**|
-    |Image|**Windows 11 Pro, version 23H2 - x64 Gen2**|
+    |Image|**Windows 11 Pro, version 24H2 - x64 Gen2**|
     |Size|**Standard DC2s_v3**|
     |Username|Any valid user name of your choice|
     |Password|Any valid password of your choice|
