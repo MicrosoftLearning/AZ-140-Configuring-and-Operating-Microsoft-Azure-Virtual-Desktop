@@ -174,7 +174,7 @@ The main tasks for this exercise are as follows:
     |Load balancing algorithm|**Depth-first**|
     |Minimum percentage of active hosts (%)|**10**|
     |Capacity threshold (%)|**80**|
-    |Force logoff users|**No**|
+    |Force sign out users|**No**|
     |Stop VMs when|**VMs have no active or disconnected sessions**|
 
     > **Note**: The **Minimum percentage of active hosts (%)** setting designates the minimum percentage of session host virtual machines that you would like to get to for ramp-down and off-peak hours. For example, if **Minimum percentage of active hosts (%)** is set to 10% and total number of session hosts in your host pool is 3, autoscale will ensure a minimum of 1 session host is available to take user connections.
@@ -233,7 +233,7 @@ The main tasks for this exercise are as follows:
 
     > **Note**: Next, you will evaluate the **Ramp-down** capacity threshold setting by adjusting its time window. 
 
-1. On the **az140-21-hp1 \| Session hosts** page, in the vertical navigation menu, in the **Settings** section, select **Scaling plans** and then, on the **Scaling plans** page, select **az140-scalingplan412e**.
+1. On the **az140-21-hp1 \| Session hosts** page, in the vertical navigation menu, in the **Manage** section, select **Scaling plans** and then, on the **Scaling plans** page, select **az140-scalingplan412e**.
 1. On the **az140-scalingplan412e** page, in the vertical navigation menu, in the **Settings** section, select **Schedules** and then select **week_schedule**.
 1. In the **week_schedule** pane, navigate to the **Ramp-down** tab and adjust the value of the **Start time (12 hour system)** setting to any time between the 
 **Start time (12 hour system)** of the **Peek hours** phase and your current time.
