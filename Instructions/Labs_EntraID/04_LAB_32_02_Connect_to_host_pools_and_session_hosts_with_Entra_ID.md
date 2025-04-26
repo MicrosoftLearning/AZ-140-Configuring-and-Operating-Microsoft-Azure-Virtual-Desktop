@@ -58,7 +58,7 @@ Since none of these criteria apply to the lab computer, it is necessary to add `
 
     > **Note**: Use the credentials of the `User1-` account listed on the Resources tab on the right side of the lab session window.
 
-1. In the web browser displaying the Azure portal, on the **az140-21-hp1** page, in the in the vertical menu bar, in the **Settings** section, select the **RDP Properties** entry.
+1. In the web browser displaying the Azure portal, on the **az140-21-hp1** Azure Virtual Desktop host pool page, in the in the vertical menu bar, in the **Settings** section, select the **RDP Properties** entry.
 1. On the **az140-21-hp1 \| RDP Properties** page, select the **Advanced** tab. 
 1. On the **Advanced** tab of the **az140-21-hp1 \| RDP Properties** page, in the **RDP Properties** text box, append the following string to the existing content (make sure to add a leading semicolon character (`;`) if needed to separate this string from the one which preceeds it:
 
