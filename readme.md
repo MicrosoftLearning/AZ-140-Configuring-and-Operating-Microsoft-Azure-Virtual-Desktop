@@ -30,7 +30,7 @@
 
 ## Notes
 
-> **Important**: The labs have been updated to target Microsoft Entra ID-based scenarios of implementing Azure Virtual Desktop (instructions for this lab are located in the **Instructions** -&gt; **Labs_Current** directory). 
+> **Important**: The labs have been updated to target Microsoft Entra ID-based scenarios of implementing Azure Virtual Desktop (instructions for this lab are located in the **Instructions** -&gt; **Labs_EntraID** directory). 
 
 > **Important**: The following two tracks are no longer maintained or supported (instructions for this lab are located in the **Instructions** -&gt; **Labs_Legacy** directory)
 
