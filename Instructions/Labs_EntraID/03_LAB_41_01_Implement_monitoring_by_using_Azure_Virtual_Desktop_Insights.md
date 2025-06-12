@@ -110,8 +110,8 @@ The main tasks for this exercise are as follows:
 
 1. On the **CheckAMAConfiguration** page, on the **Resource diagnostics settings** tab, select the **Refresh** icon (a circular arrow) in the toolbar.
 1. Review the **Workspace az140-21-ws1** section and verify that the diagnostic settings are enabled for **allLogs** and that thre are no remaining warning messages.
-1. Navigate to the top of the **CheckAMAConfiguration** page and switch to the **Select host data settings** tab.
-1. On the **Select host data settings** tab, in the **Create DCR** section, in the **Workspace destination** drop-down list, select **az140-laworkspace41e** and then select **Create data collection rule**.
+1. Navigate to the top of the **CheckAMAConfiguration** page and switch to the **Session host data settings** tab.
+1. On the **Session host data settings** tab, in the **Create DCR** section, in the **Workspace destination** drop-down list, select **az140-laworkspace41e** and then select **Create data collection rule**.
 1. In the **Deploy Template** pane, select **Deploy**.
 
     > **Note**: Wait for the deployment to complete. This typically takes less than 1 minute.
