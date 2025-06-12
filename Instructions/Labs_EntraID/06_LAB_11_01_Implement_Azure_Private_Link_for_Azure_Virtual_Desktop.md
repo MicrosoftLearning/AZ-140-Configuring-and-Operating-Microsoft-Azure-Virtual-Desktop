@@ -352,8 +352,6 @@ The main tasks for this exercise are as follows:
 
    > **Note**: Optionally, you might consider attempting to subscribe to the feed and connect to The Azure Virtual Desktop workspace from the lab computer to validate that this connection will fail. 
 
-    > **Note**: To minimize charges associated with running the lab environment, you will stop and deallocate the newly provisioned Azure VM.
-
 #### Task 7: Allow public network access to a host pool and workspace
 
 1. From the lab computer, in the web browser displaying the Azure portal, search for and select **Azure Virtual Desktop** and, on the **Azure Virtual Desktop** page, select **Workspaces**.
