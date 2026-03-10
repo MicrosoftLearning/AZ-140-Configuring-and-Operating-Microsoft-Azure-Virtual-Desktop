@@ -1,7 +1,15 @@
 ---
 lab:
-    title: 'Lab: Implement Azure Private Link for Azure Virtual Desktop'
-    module: 'Module 1.1: Plan, implement, and manage networking for Azure Virtual Desktop'
+  title: 'Lab: Implement Azure Private Link for Azure Virtual Desktop'
+  module: 'Module 1.1: Plan, implement, and manage networking for Azure Virtual Desktop'
+  description: 60 minutes
+  duration: 60 minutes
+  level: 400
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Private Link
+  - Azure Virtual Desktop
 ---
 
 # Lab - Implement Azure Private Link for Azure Virtual Desktop
