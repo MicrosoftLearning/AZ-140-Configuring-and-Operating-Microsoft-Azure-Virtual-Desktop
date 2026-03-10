@@ -1,7 +1,14 @@
 ---
 lab:
-    title: 'Lab: Package Azure Virtual Desktop applications (AD DS)'
-    module: 'Module 4: Manage User Environments and Apps'
+  title: 'Lab: Package Azure Virtual Desktop applications (AD DS)'
+  module: 'Module 4: Manage User Environments and Apps'
+  description: 60 minutes
+  duration: 60 minutes
+  level: 400
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Virtual Desktop
 ---
 
 # Lab - Package Azure Virtual Desktop applications (AD DS)
