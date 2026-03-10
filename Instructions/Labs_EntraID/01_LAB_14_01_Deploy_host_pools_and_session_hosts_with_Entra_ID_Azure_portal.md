@@ -1,7 +1,15 @@
 ---
 lab:
-    title: 'Lab: Deploy host pools and session hosts by using the Azure portal (Entra ID)'
-    module: 'Module 1.4: Implement host pools and session hosts'
+  title: 'Lab: Deploy host pools and session hosts by using the Azure portal (Entra
+    ID)'
+  module: 'Module 1.4: Implement host pools and session hosts'
+  description: 60 minutes
+  duration: 60 minutes
+  level: 400
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Portal
 ---
 
 # Lab - Deploy host pools and session hosts by using the Azure portal (Entra ID)
