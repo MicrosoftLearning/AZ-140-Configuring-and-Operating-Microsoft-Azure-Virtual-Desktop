@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Implement and manage storage for AVD (AD DS)'
-    module: 'Module 2: Implement an AVD Infrastructure'
+  title: 'Lab: Implement and manage storage for AVD (AD DS)'
+  module: 'Module 2: Implement an AVD Infrastructure'
+  description: 30 minutes
+  duration: 30 minutes
+  level: 300
+  islab: true
 ---
 
 # Lab - Implement and manage storage for AVD (AD DS)
