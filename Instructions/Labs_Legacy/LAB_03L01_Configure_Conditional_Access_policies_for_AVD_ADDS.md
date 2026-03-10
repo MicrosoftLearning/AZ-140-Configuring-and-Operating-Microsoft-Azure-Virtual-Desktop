@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Configure Conditional Access policies for AVD (AD DS)'
-    module: 'Module 3: Manage Access and Security'
+  title: 'Lab: Configure Conditional Access policies for AVD (AD DS)'
+  module: 'Module 3: Manage Access and Security'
+  description: 60 minutes
+  duration: 60 minutes
+  level: 400
+  islab: true
 ---
 
 # Lab - Configure Conditional Access policies for AVD (AD DS)
