@@ -1,7 +1,14 @@
 ---
 lab:
-    title: 'Lab: Prepare for deployment of Azure Virtual Desktop (AD DS)'
-    module: 'Module 1: Plan an AVD Architecture'
+  title: 'Lab: Prepare for deployment of Azure Virtual Desktop (AD DS)'
+  module: 'Module 1: Plan an AVD Architecture'
+  description: 60 minutes
+  duration: 60 minutes
+  level: 300
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Virtual Desktop
 ---
 
 # Lab - Prepare for deployment of Azure Virtual Desktop (AD DS)
