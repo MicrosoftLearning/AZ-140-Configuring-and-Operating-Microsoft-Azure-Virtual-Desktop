@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Connect to session hosts (Entra ID)'
-    module: 'Module 3.2: Plan and implement user experience and client settings'
+  title: 'Lab: Connect to session hosts (Entra ID)'
+  module: 'Module 3.2: Plan and implement user experience and client settings'
+  description: 20 minutes
+  duration: 20 minutes
+  level: 300
+  islab: true
 ---
 
 # Lab - Connect to session hosts (Entra ID)
