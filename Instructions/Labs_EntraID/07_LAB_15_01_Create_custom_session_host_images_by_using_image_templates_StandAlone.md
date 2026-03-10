@@ -1,7 +1,12 @@
 ---
 lab:
-    title: 'Lab: Create custom session host images by using image templates'
-    module: 'Module 1.5: Create and manage session host images'
+  title: 'Lab: Create custom session host images by using image templates'
+  module: 'Module 1.5: Create and manage session host images'
+  description: 90 minutes (about 45 minutes is the wait time for the image build to
+    complete)
+  duration: 90 minutes
+  level: 500
+  islab: true
 ---
 
 # Lab - Create custom session host images by using image templates
