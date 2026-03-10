@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Create and manage session host images (AD DS)'
-    module: 'Module 2: Implement an AVD Infrastructure'
+  title: 'Lab: Create and manage session host images (AD DS)'
+  module: 'Module 2: Implement an AVD Infrastructure'
+  description: 60 minutes
+  duration: 60 minutes
+  level: 400
+  islab: true
 ---
 
 # Lab - Create and manage session host images (AD DS)
