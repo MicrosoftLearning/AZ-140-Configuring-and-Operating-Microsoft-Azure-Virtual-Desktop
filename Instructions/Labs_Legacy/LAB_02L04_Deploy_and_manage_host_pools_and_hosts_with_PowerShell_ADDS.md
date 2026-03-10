@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Deploy and manage host pools and hosts by using PowerShell (AD DS)'
-    module: 'Module 2: Implement a WVD Infrastructure'
+  title: 'Lab: Deploy and manage host pools and hosts by using PowerShell (AD DS)'
+  module: 'Module 2: Implement a WVD Infrastructure'
+  description: 60 minutes
+  duration: 60 minutes
+  level: 400
+  islab: true
 ---
 
 # Lab - Deploy and manage host pools and hosts by using PowerShell
