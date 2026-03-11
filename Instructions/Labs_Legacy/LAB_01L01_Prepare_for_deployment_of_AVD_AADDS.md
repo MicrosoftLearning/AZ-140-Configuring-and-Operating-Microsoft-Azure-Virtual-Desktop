@@ -1,7 +1,15 @@
 ---
 lab:
-    title: 'Lab: Prepare for deployment of Azure Virtual Desktop (Microsoft Entra DS)'
-    module: 'Module 1: Plan an AVD Architecture'
+  title: 'Lab: Prepare for deployment of Azure Virtual Desktop (Microsoft Entra DS)'
+  module: 'Module 1: Plan an AVD Architecture'
+  description: 'After completing this lab, you will be able to:'
+  duration: 150 minutes
+  level: 400
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure Virtual Desktop
+    - Microsoft Entra
 ---
 
 # Lab - Prepare for deployment of Azure Virtual Desktop (Microsoft Entra DS)
