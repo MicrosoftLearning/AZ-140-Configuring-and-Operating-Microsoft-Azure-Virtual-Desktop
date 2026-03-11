@@ -1,7 +1,14 @@
 ---
 lab:
-    title: 'Lab: Manage host pools and session hosts by using the Azure portal (Entra ID)'
-    module: 'Module 3.2: Plan and implement user experience and client settings'
+  title: 'Lab: Manage host pools and session hosts by using the Azure portal (Entra ID)'
+  module: 'Module 3.2: Plan and implement user experience and client settings'
+  description: 'After completing this lab, you will be able to:'
+  duration: 30 minutes
+  level: 500
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure Portal
 ---
 
 # Lab - Manage host pools and session hosts by using the Azure portal (Entra ID)
