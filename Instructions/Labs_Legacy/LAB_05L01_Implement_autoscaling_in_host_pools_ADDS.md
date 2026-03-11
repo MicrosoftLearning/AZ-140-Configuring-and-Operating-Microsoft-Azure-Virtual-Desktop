@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Implement autoscaling in host pools (AD DS)'
-    module: 'Module 5: Monitor and Maintain an AVD Infrastructure'
+  title: 'Lab: Implement autoscaling in host pools (AD DS)'
+  module: 'Module 5: Monitor and Maintain an AVD Infrastructure'
+  description: 'After completing this lab, you will be able to:'
+  duration: 60 minutes
+  level: 300
+  islab: true
 ---
 
 # Lab - Implement autoscaling in host pools (AD DS)
