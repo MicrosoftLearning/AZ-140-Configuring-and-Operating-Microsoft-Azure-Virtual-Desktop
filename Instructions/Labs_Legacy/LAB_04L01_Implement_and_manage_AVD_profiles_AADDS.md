@@ -1,7 +1,15 @@
 ---
 lab:
-    title: 'Lab: Implement and manage Azure Virtual Desktop profiles (Microsoft Entra DS)'
-    module: 'Module 4: Manage User Environments and Apps'
+  title: 'Lab: Implement and manage Azure Virtual Desktop profiles (Microsoft Entra DS)'
+  module: 'Module 4: Manage User Environments and Apps'
+  description: 'After completing this lab, you will be able to:'
+  duration: 30 minutes
+  level: 300
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure Virtual Desktop
+    - Microsoft Entra
 ---
 
 # Lab - Implement and manage Azure Virtual Desktop profiles (Microsoft Entra DS)
