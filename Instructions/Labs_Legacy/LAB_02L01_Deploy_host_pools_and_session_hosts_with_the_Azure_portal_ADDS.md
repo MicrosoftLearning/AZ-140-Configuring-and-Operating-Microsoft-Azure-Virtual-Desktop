@@ -1,7 +1,14 @@
 ---
 lab:
-    title: 'Lab: Deploy host pools and session hosts by using the Azure portal (AD DS)'
-    module: 'Module 2: Implement an AVD Infrastructure'
+  title: 'Lab: Deploy host pools and session hosts by using the Azure portal (AD DS)'
+  module: 'Module 2: Implement an AVD Infrastructure'
+  description: 'After completing this lab, you will be able to:'
+  duration: 60 minutes
+  level: 400
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure Portal
 ---
 
 # Lab - Deploy host pools and session hosts by using the Azure portal (AD DS)

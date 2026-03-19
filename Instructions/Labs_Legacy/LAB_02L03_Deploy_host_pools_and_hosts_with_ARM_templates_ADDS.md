@@ -1,7 +1,14 @@
 ---
 lab:
-    title: 'Lab: Deploy host pools and hosts by using Azure Resource Manager templates (AD DS)'
-    module: 'Module 2: Implement an AVD Infrastructure'
+  title: 'Lab: Deploy host pools and hosts by using Azure Resource Manager templates (AD DS)'
+  module: 'Module 2: Implement an AVD Infrastructure'
+  description: 'After completing this lab, you will be able to:'
+  duration: 45 minutes
+  level: 500
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure Resource Manager
 ---
 
 # Lab - Deploy host pools and hosts by using Azure Resource Manager templates

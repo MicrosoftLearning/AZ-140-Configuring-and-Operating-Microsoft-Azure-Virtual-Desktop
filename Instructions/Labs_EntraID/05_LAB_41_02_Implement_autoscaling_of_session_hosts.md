@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Implement autoscaling of session hosts'
-    module: 'Module 4.1: Monitor and manage Azure Virtual Desktop services'
+  title: 'Lab: Implement autoscaling of session hosts'
+  module: 'Module 4.1: Monitor and manage Azure Virtual Desktop services'
+  description: 'After completing this lab, you will be able to:'
+  duration: 45 minutes
+  level: 300
+  islab: true
 ---
 
 # Lab - Implement and monitor autoscaling of session hosts
