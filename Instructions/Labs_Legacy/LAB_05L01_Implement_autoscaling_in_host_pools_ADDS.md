@@ -2,10 +2,12 @@
 lab:
   title: 'Lab: Implement autoscaling in host pools (AD DS)'
   module: 'Module 5: Monitor and Maintain an AVD Infrastructure'
-  description: 'After completing this lab, you will be able to:'
+  description: Configure autoscaling of Azure Virtual Desktop session hosts.
   duration: 60 minutes
   level: 300
   islab: true
+  primarytopics:
+  - Azure Virtual Desktop
 ---
 
 # Lab - Implement autoscaling in host pools (AD DS)
