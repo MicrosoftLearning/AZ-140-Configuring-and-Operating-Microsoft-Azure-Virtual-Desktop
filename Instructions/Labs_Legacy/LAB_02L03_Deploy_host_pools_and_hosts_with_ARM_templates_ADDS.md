@@ -2,12 +2,12 @@
 lab:
   title: 'Lab: Deploy host pools and hosts by using Azure Resource Manager templates (AD DS)'
   module: 'Module 2: Implement an AVD Infrastructure'
-  description: 'After completing this lab, you will be able to:'
+  description: Deploy Azure Virtual Desktop host pools and hosts by using Azure Resource Manager templates.
   duration: 45 minutes
-  level: 500
+  level: 400
   islab: true
   primarytopics:
-    - Azure
+    - Azure Virtual Desktop
     - Azure Resource Manager
 ---
 
