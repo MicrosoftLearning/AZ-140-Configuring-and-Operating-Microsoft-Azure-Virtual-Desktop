@@ -8,7 +8,7 @@ lab:
   islab: true
   primarytopics:
     - Azure Virtual Desltop
-    - Azure FIles
+    - Azure Files
     - Microsoft Entra DS
 ---
 
