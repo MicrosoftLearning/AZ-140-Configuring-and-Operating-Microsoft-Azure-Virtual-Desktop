@@ -6,6 +6,9 @@ lab:
   duration: 30 minutes
   level: 300
   islab: true
+  primarytopics:
+    - Azure Virtual Desltop
+    - Azure FIies
 ---
 
 # Lab - Implement and manage storage for AVD (AD DS)
