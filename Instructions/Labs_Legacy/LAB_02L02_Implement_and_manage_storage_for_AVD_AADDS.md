@@ -7,7 +7,9 @@ lab:
   level: 300
   islab: true
   primarytopics:
-    - Microsoft Entra
+    - Azure Virtual Desltop
+    - Azure FIles
+    - Microsoft Entra DS
 ---
 
 # Lab - Implement and manage storage for AVD (Microsoft Entra DS)
