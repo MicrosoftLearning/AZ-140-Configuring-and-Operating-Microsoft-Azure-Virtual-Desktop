@@ -2,7 +2,7 @@
 lab:
   title: 'Lab: Connect to session hosts (Entra ID)'
   module: 'Module 3.2: Plan and implement user experience and client settings'
-  description: 'After completing this lab, you will be able to:'
+  description: Validate the functionality of Microsoft Entra joined Azure Virtual Desktop session hosts by connecting to them from a Windows client which is not Microsoft Entra-joined or registered.
   duration: 20 minutes
   level: 300
   islab: true
