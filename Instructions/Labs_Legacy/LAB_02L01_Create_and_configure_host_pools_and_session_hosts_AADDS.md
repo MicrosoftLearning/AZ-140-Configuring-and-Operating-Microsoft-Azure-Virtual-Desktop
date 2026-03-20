@@ -2,7 +2,7 @@
 lab:
   title: 'Lab: Create and configure host pools and session hosts (Microsoft Entra DS)'
   module: 'Module 2: Implement an AVD Infrastructure'
-  description: 'After completing this lab, you will be able to:'
+  description: Configure an Azure Virtual Desktop environment in a Microsoft Entra DS domain. Validate Azure Virtual Desktop environment in a Microsoft Entra DS domain. 
   duration: 60 minutes
   level: 400
   islab: true
