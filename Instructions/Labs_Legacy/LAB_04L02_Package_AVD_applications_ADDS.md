@@ -2,12 +2,11 @@
 lab:
   title: 'Lab: Package Azure Virtual Desktop applications (AD DS)'
   module: 'Module 4: Manage User Environments and Apps'
-  description: 'After completing this lab, you will be able to:'
+  description: Prepare for and create MSIX app packages.
   duration: 60 minutes
   level: 400
   islab: true
   primarytopics:
-    - Azure
     - Azure Virtual Desktop
 ---
 
