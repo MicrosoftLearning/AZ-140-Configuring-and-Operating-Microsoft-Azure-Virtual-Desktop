@@ -2,7 +2,7 @@
 lab:
   title: 'Lab: Prepare for deployment of Azure Virtual Desktop (AD DS)'
   module: 'Module 1: Plan an AVD Architecture'
-  description: 'After completing this lab, you will be able to:'
+  description: Deploy an Active Directory Domain Services (AD DS) single-domain forest by using Azure VMs. Integrate an AD DS forest with a Microsoft Entra tenant.
   duration: 60 minutes
   level: 300
   islab: true
