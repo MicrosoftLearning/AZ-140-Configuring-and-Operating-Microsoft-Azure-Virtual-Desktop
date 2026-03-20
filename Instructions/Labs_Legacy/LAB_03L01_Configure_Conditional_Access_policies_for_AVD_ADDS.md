@@ -2,10 +2,13 @@
 lab:
   title: 'Lab: Configure Conditional Access policies for AVD (AD DS)'
   module: 'Module 3: Manage Access and Security'
-  description: 'After completing this lab, you will be able to:'
+  description: Prepare for Microsoft Entra-based Conditional Access for Azure Virtual Desktop. Implement Microsoft Entra-based Conditional Access for Azure Virtual Desktop.
   duration: 60 minutes
   level: 400
   islab: true
+  primarytopics:
+  - Azure Virtual Desktop
+  - Conditional Access
 ---
 
 # Lab - Configure Conditional Access policies for AVD (AD DS)
