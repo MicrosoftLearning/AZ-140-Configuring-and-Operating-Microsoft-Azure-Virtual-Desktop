@@ -2,7 +2,7 @@
 lab:
   title: 'Lab: Deploy host pools and session hosts by using the Azure portal (Entra ID)'
   module: 'Module 1.4: Implement host pools and session hosts'
-  description: 'After completing this lab, you will be able to:'
+  description: Deploy Microsoft Entra joined Azure Virtual Desktop session hosts.
   duration: 60 minutes
   level: 400
   islab: true
