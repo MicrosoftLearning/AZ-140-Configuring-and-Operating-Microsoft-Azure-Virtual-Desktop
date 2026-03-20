@@ -2,7 +2,7 @@
 lab:
   title: 'Lab: Deploy host pools and session hosts by using the Azure portal (AD DS)'
   module: 'Module 2: Implement an AVD Infrastructure'
-  description: 'After completing this lab, you will be able to:'
+  description: Implement an Azure Virtual Desktop environment in an AD DS domain. Validate an Azure Virtual Desktop environment in an AD DS domain.
   duration: 60 minutes
   level: 400
   islab: true
