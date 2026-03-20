@@ -2,10 +2,13 @@
 lab:
   title: 'Lab: Deploy and manage host pools and hosts by using PowerShell (AD DS)'
   module: 'Module 2: Implement a WVD Infrastructure'
-  description: 'After completing this lab, you will be able to:'
+  description: Deploy Azure Virtual Desktop host pools and hosts by using PowerShell. Add hosts to the Azure Virtual Desktop host pool by using PowerShell.
   duration: 60 minutes
   level: 400
   islab: true
+  primarytopics:
+  - Azure Virtual Desktop
+  - Azure PowerShell
 ---
 
 # Lab - Deploy and manage host pools and hosts by using PowerShell
