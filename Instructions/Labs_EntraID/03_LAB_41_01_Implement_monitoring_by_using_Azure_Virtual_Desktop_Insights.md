@@ -2,7 +2,7 @@
 lab:
   title: 'Lab: Implement monitoring by using Azure Virtual Desktop Insights'
   module: 'Module 4.1: Monitor and manage Azure Virtual Desktop services'
-  description: 'After completing this lab, you will be able to:'
+  description: Implement monitoring of an Azure Virtual Desktop environment.
   duration: 25 minutes
   level: 400
   islab: true
