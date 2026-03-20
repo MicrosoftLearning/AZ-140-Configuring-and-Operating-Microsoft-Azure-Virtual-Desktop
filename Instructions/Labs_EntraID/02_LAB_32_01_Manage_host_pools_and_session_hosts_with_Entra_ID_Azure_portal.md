@@ -2,7 +2,7 @@
 lab:
   title: 'Lab: Manage host pools and session hosts by using the Azure portal (Entra ID)'
   module: 'Module 3.2: Plan and implement user experience and client settings'
-  description: 'After completing this lab, you will be able to:'
+  description: Configure Microsoft Entra joined Azure Virtual Desktop session hosts to support a range of functional and business requirements.
   duration: 30 minutes
   level: 500
   islab: true
