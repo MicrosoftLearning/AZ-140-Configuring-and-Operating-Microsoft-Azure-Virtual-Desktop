@@ -2,10 +2,13 @@
 lab:
   title: 'Lab: Create and manage session host images (AD DS)'
   module: 'Module 2: Implement an AVD Infrastructure'
-  description: 'After completing this lab, you will be able to:'
+  description:  Create and manage WVD session host images.
   duration: 60 minutes
   level: 400
   islab: true
+  primarytopics:
+  - Azure Virtual Desktop
+  - DNS resolution
 ---
 
 # Lab - Create and manage session host images (AD DS)
