@@ -121,6 +121,8 @@ The main tasks for this exercise are as follows:
       "Name": "Desktop Virtualization Image Creator (random)",
       "IsCustom": true,
       "Description": "Create custom image templates for Azure Virtual Desktop images.",
+      "Permissions" : [
+      {
       "Actions": [
         "Microsoft.Compute/galleries/read",
         "Microsoft.Compute/galleries/images/read",
@@ -132,7 +134,9 @@ The main tasks for this exercise are as follows:
       ],
       "NotActions": [],
       "DataActions": [],
-      "NotDataActions": [],
+      "NotDataActions": []
+       }
+      ],
       "AssignableScopes": [
         "/subscriptions/$subscriptionId",
         "/subscriptions/$subscriptionId/resourceGroups/az140-15b-RG"
